@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Registrar Estudiante";
+}
+<h2>Registrar Estudiante</h2>
+<form>
+    <div class="mb-3">
+        <label>Cédula</label>
+        <input class="form-control" type="text" />
+    </div>
+    <div class="mb-3">
+        <label>Nombre Completo</label>
+        <input class="form-control" type="text" />
+    </div>
+    <div class="mb-3">
+        <label>Correo</label>
+        <input class="form-control" type="email" />
+    </div>
+    <div class="mb-3">
+        <label>Carrera</label>
+        <select class="form-control">
+            <option>Informática</option>
+            <option>Contabilidad</option>
+            <option>Electrónica</option>
+        </select>
+    </div>
+    <button class="btn btn-success">Guardar</button>
+</form>

@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Listado de Estudiantes";
+}
+<h2>Estudiantes Registrados</h2>
+<table id="miTabla" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Cédula</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Carrera</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>2023101234</td>
+            <td>Laura Rodríguez</td>
+            <td>laura@ejemplo.com</td>
+            <td>Informática</td>
+            <td>
+                <a href="/Estudiante/Editar" class="btn btn-sm btn-warning">Editar</a>
+                <a href="/Estudiante/Eliminar" class="btn btn-sm btn-danger">Eliminar</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@section scripts {
+    <script src="~/Scripts/app/datatables-init.js"></script>
+}

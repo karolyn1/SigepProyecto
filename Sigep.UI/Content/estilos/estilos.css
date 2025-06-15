@@ -1,0 +1,181 @@
+﻿/* Estilos generales */
+body {
+    background-color: #f1f8e9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar personalizado */
+.navbar-custom {
+    background-color: #1b5e20;
+}
+
+    .navbar-custom .navbar-brand,
+    .navbar-custom .nav-link {
+        color: #fff;
+    }
+
+        .navbar-custom .nav-link:hover {
+            color: #c8e6c9;
+        }
+
+/* Footer */
+footer {
+    background-color: #1b5e20;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 50px;
+    border-top: 3px solid #a5d6a7;
+}
+
+/* Layout principal */
+.main-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    background: linear-gradient(to bottom, #2e7d32, #1b5e20);
+    color: white;
+    padding: 20px;
+    width: 250px;
+    box-sizing: border-box;
+}
+
+    .sidebar h5 {
+        margin-bottom: 20px;
+        font-weight: bold;
+        font-size: 1.3rem;
+        border-bottom: 1px solid #4caf50;
+        padding-bottom: 8px;
+    }
+
+    /* Botones menú */
+    .sidebar .menu-btn {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: transparent;
+        border: none;
+        color: white;
+        width: 100%;
+        text-align: left;
+        padding: 12px 15px;
+        font-weight: bold;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 6px;
+        margin-bottom: 6px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        user-select: none;
+    }
+
+        /* Estado activo y hover */
+        .sidebar .menu-btn.active,
+        .sidebar .menu-btn:hover {
+            background-color: #66bb6a;
+            color: #1b5e20;
+        }
+
+        /* Flecha */
+        .sidebar .menu-btn .arrow {
+            transition: transform 0.3s ease;
+            font-size: 1.1rem;
+            user-select: none;
+        }
+
+        /* Flecha rotada cuando abierto */
+        .sidebar .menu-btn.active .arrow {
+            transform: rotate(90deg);
+        }
+
+    /* Submenú */
+    .sidebar .submenu {
+        padding-left: 20px;
+        margin-bottom: 15px;
+        display: none;
+    }
+
+        .sidebar .submenu a {
+            display: block;
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+            .sidebar .submenu a:hover {
+                background-color: #81c784;
+                color: #1b5e20;
+            }
+
+/* Contenido principal */
+.content {
+    flex-grow: 1;
+    padding: 30px 40px;
+    box-sizing: border-box;
+}
+
+/* Sección de bienvenida */
+.welcome-section {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.welcome-text {
+    flex: 1;
+    min-width: 300px;
+    color: #2e7d32;
+}
+
+    .welcome-text h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .welcome-text p {
+        font-size: 1.1rem;
+        line-height: 1.5;
+        margin-bottom: 12px;
+    }
+
+/* Botón CTA */
+.btn-cta {
+    background-color: #388e3c;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    font-weight: 700;
+    margin-top: 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+    .btn-cta:hover {
+        background-color: #66bb6a;
+    }
+
+/* Imagen bienvenida */
+.welcome-image {
+    flex: 1;
+    max-width: 450px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+    .welcome-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
