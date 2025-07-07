@@ -220,6 +220,12 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\2.jpg" />
+    <Content Include="Images\auth-bg.jpg" />
+    <Content Include="Images\logo-icon.png" />
+    <Content Include="Images\logo-light-icon.png" />
+    <Content Include="Images\logo-light-text.png" />
+    <Content Include="Images\logo-text.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -252,7 +258,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Index2.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -277,6 +283,9 @@
     <Content Include="Views\Estudiante\CrearEstudiante.cshtml" />
     <Content Include="Views\Estudiante\EditarEstudiante.cshtml" />
     <Content Include="Views\Estudiante\EliminarEstudiante.cshtml" />
+    <Content Include="Views\Shared\_LayoutTest.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Principal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
