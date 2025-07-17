@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card cardLogin" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+
+                        <div class="mb-md-5 mt-md-4 pb-5">
+
+                            <h2 class="fw-bold mb-2 ">INICIO DE SESIÓN</h2>
+                            <hr />
+
+                            <div class="custom-form">
+                                <div class="mb-3">
+                                    <label class="form-label" for="typeEmailX">Cédula</label>
+                                    <input type="email" id="typeEmailX" class="form-control form-control-lg" placeholder="Cédula" />   
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="typePasswordX">Password</label>
+                                    <input type="password" id="typePasswordX" class="form-control form-control-lg" placeholder="Password"/>
+
+                                </div>
+
+                           
+                            </div>
+                            <hr />
+
+                            <p ><a class="text-white-50" href="#!">¿Olvidaste tu contraseña? Recupera tu acceso!</a></p>
+
+                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" type="submit"><a href="@Url.Action("Index", "Home")" class="text-white text-decoration-none">Iniciar Sesión</a></button>
+
+                        </div>
+
+                        <div>
+                            <p class="mb-0">
+                                ¿No tienes una cuenta? <a href="#!" class="text-white-50 fw-bold">Regístrate</a>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
