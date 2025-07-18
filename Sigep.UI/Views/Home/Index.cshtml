@@ -2,3 +2,140 @@
     Layout = "~/Views/Shared/_LayoutTest.cshtml";
 }
 
+<main class="container py-4">
+    <h2 class="fw-bold mb-4">Dashboard - Prácticas Profesionales</h2>
+
+    <!-- Cards resumen -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 text-white bg-primary h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title">Estudiantes Activos</h6>
+                            <h3 class="fw-bold">152</h3>
+                        </div>
+                        <i class="fas fa-user-graduate fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 text-white bg-success h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title">Prácticas Asignadas</h6>
+                            <h3 class="fw-bold">87</h3>
+                        </div>
+                        <i class="fas fa-briefcase fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 text-white bg-warning h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title">Empresas Registradas</h6>
+                            <h3 class="fw-bold">45</h3>
+                        </div>
+                        <i class="fas fa-building fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 text-white bg-danger h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title">Prácticas Finalizadas</h6>
+                            <h3 class="fw-bold">32</h3>
+                        </div>
+                        <i class="fas fa-check-circle fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de progreso + accesos rápidos -->
+    <div class="row g-4 mb-4">
+        <!-- Progreso -->
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">Progreso General de Estudiantes</h5>
+                    <p>Estudiantes con práctica asignada</p>
+                    <div class="progress mb-2" style="height: 25px;">
+                        <div class="progress-bar bg-success fw-bold" role="progressbar" style="width: 57%;" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100">
+                            57%
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accesos rápidos -->
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">Accesos Rápidos</h5>
+                    <div class="d-grid gap-2">
+                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-user-plus me-2"></i>Registrar nuevo estudiante</a>
+                        <a href="#" class="btn btn-outline-success"><i class="fas fa-building me-2"></i>Agregar empresa</a>
+                        <a href="#" class="btn btn-outline-warning"><i class="fas fa-briefcase me-2"></i>Asignar práctica</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabla resumen -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <h5 class="card-title fw-bold mb-3">Últimas Prácticas Asignadas</h5>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Estudiante</th>
+                            <th>Carrera</th>
+                            <th>Empresa</th>
+                            <th>Fecha de inicio</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ana Rodríguez</td>
+                            <td>Ing. en Sistemas</td>
+                            <td>Intel CR</td>
+                            <td>2025-07-01</td>
+                            <td><span class="badge bg-success">Activa</span></td>
+                        </tr>
+                        <tr>
+                            <td>José Mora</td>
+                            <td>Administración</td>
+                            <td>Bac Credomatic</td>
+                            <td>2025-06-20</td>
+                            <td><span class="badge bg-warning text-dark">En revisión</span></td>
+                        </tr>
+                        <tr>
+                            <td>Laura Vargas</td>
+                            <td>Contaduría</td>
+                            <td>PwC</td>
+                            <td>2025-06-15</td>
+                            <td><span class="badge bg-danger">Cancelada</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
