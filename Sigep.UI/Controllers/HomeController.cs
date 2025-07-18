@@ -26,5 +26,13 @@ namespace Sigep.UI.Controllers
 
             return View();
         }
+
+
+        [HttpGet]
+
+        public ActionResult Login()
+        {
+            return View();
+        }
     }
 }
