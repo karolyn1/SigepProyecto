@@ -181,6 +181,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BolsaEmpleoController.cs" />
     <Compile Include="Controllers\CoordinadorController.cs" />
     <Compile Include="Controllers\EgresadoController.cs" />
     <Compile Include="Controllers\EstudianteController.cs" />
@@ -282,11 +283,12 @@
     <Content Include="Views\Estudiante\CrearEstudiante.cshtml" />
     <Content Include="Views\Estudiante\EditarEstudiante.cshtml" />
     <Content Include="Views\Estudiante\EliminarEstudiante.cshtml" />
-    <Content Include="Views\Shared\_LayoutTest.cshtml" />
+    <Content Include="Views\Shared\_LayoutMain.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Principal.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutExterno.cshtml" />
+    <Content Include="Views\BolsaEmpleo\Vacantes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

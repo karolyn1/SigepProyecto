@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Vacantes Disponibles";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<section class="vacantes-wrapper">
+    <h2 class="vacantes-titulo">Vacantes Disponibles</h2>
+
+    <div class="vacantes-lista">
+
+        <article class="vacante-card">
+            <header class="vacante-header">
+                <h3 class="vacante-titulo">Desarrollador Full Stack</h3>
+                <span class="vacante-empresa">TechSolutions S.A.</span>
+            </header>
+            <ul class="vacante-detalles">
+                <li><strong>Requisitos:</strong> C#, .NET, SQL Server, JavaScript</li>
+                <li><strong>Tipo de contrato:</strong> Tiempo completo</li>
+                <li><strong>Fecha de publicación:</strong> 15/06/2025</li>
+                <li><strong>Fecha límite de aplicación:</strong> 30/06/2025</li>
+            </ul>
+            <a href="#" class="btn-cta">Ver más</a>
+        </article>
+
+        <article class="vacante-card">
+            <header class="vacante-header">
+                <h3 class="vacante-titulo">Analista de Datos</h3>
+                <span class="vacante-empresa">DataCorp Ltda.</span>
+            </header>
+            <ul class="vacante-detalles">
+                <li><strong>Requisitos:</strong> Python, Power BI, manejo de bases de datos</li>
+                <li><strong>Tipo de contrato:</strong> Práctica profesional</li>
+                <li><strong>Fecha de publicación:</strong> 10/06/2025</li>
+                <li><strong>Fecha límite de aplicación:</strong> 25/06/2025</li>
+            </ul>
+            <a href="#" class="btn-cta">Ver más</a>
+        </article>
+
+        <article class="vacante-card">
+            <header class="vacante-header">
+                <h3 class="vacante-titulo">Ingeniero de QA</h3>
+                <span class="vacante-empresa">Innovatek Group</span>
+            </header>
+            <ul class="vacante-detalles">
+                <li><strong>Requisitos:</strong> Automatización con Selenium, pruebas manuales, conocimientos en CI/CD</li>
+                <li><strong>Tipo de contrato:</strong> Tiempo parcial</li>
+                <li><strong>Fecha de publicación:</strong> 12/06/2025</li>
+                <li><strong>Fecha límite de aplicación:</strong> 28/06/2025</li>
+            </ul>
+            <a href="#" class="btn-cta">Ver más</a>
+        </article>
+
+
+        <!-- Si no hay vacantes disponibles -->
+        <!--
+    <div class="vacante-alerta">
+        <strong>Información:</strong> No hay vacantes disponibles por el momento.
+    </div>
+    -->
+    </div>
+</section>
+
+<link href="~/Content/estilos/estilos.css" rel="stylesheet" />
