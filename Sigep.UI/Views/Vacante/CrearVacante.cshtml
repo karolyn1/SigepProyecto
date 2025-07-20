@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Crear Vacante";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<section class="vacantes-wrapper">
+    <h2 class="vacantes-titulo">Publicar Nueva Vacante</h2>
+
+    <form class="formulario-vacante" method="post" action="#">
+        <label for="nombrePuesto">Nombre del puesto <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="nombrePuesto" name="nombrePuesto" placeholder="Ejemplo: Desarrollador Full Stack" required />
+
+        <label for="empresa">Empresa <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="empresa" name="empresa" placeholder="Ejemplo: TechSolutions S.A." required />
+
+        <label for="descripcion">Descripción <span style="color:#E04F4F">*</span></label>
+        <textarea id="descripcion" name="descripcion" placeholder="Detalles de la vacante..." required></textarea>
+
+        <label for="requisitos">Requisitos <span style="color:#E04F4F">*</span></label>
+        <textarea id="requisitos" name="requisitos" placeholder="Habilidades y conocimientos requeridos" required></textarea>
+
+        <label for="ubicacion">Ubicación <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="ubicacion" name="ubicacion" placeholder="Ciudad, país, etc." required />
+
+        <label for="modalidad">Modalidad <span style="color:#E04F4F">*</span></label>
+        <select id="modalidad" name="modalidad" required>
+            <option value="" disabled selected>-- Seleccione modalidad --</option>
+            <option value="Presencial">Presencial</option>
+            <option value="Remoto">Remoto</option>
+            <option value="Híbrido">Híbrido</option>
+        </select>
+
+        <label for="fechaPublicacion">Fecha de publicación <span style="color:#E04F4F">*</span></label>
+        <input type="date" id="fechaPublicacion" name="fechaPublicacion" required />
+
+        <label for="fechaLimite">Fecha límite de aplicación <span style="color:#E04F4F">*</span></label>
+        <input type="date" id="fechaLimite" name="fechaLimite" required />
+
+        <label for="areaProfesional">Área profesional <span style="color:#E04F4F">*</span></label>
+        <select id="areaProfesional" name="areaProfesional" required>
+            <option value="" disabled selected>-- Seleccione área --</option>
+            <option value="Administración">Administración</option>
+            <option value="Ingeniería">Ingeniería</option>
+            <option value="Salud">Salud</option>
+            <option value="Educación">Educación</option>
+        </select>
+
+        <button type="submit" class="btn-guardar">Guardar y Publicar</button>
+    </form>
+</section>
+
+<link href="~/Content/estilos/estilos.css" rel="stylesheet" />

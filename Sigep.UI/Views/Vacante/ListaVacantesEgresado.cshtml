@@ -6,9 +6,26 @@
 <section class="vacantes-wrapper">
     <h2 class="vacantes-titulo">Vacantes Disponibles</h2>
 
+    <!-- Filtro por área profesional -->
+    <div class="filtro-container">
+        <label for="filtro-area" class="filtro-label">Filtrar por área profesional:</label>
+        <select id="filtro-area" class="filtro-select">
+            <option value="">-- Seleccione un área --</option>
+            <option value="Administración">Administración</option>
+            <option value="Ingeniería">Ingeniería</option>
+            <option value="Salud">Salud</option>
+            <option value="Educación">Educación</option>
+        </select>
+    </div>
+
     <div class="vacantes-lista">
 
-        <article class="vacante-card">
+        <!-- Mensaje si no hay vacantes para el área -->
+        <div id="mensaje-vacio" class="vacante-alerta" style="display:none;">
+            <strong>Información:</strong> No se encontraron vacantes en esta área.
+        </div>
+
+        <article class="vacante-card" data-area="Ingeniería">
             <header class="vacante-header">
                 <h3 class="vacante-titulo">Desarrollador Full Stack</h3>
                 <span class="vacante-empresa">TechSolutions S.A.</span>
@@ -19,10 +36,10 @@
                 <li><strong>Fecha de publicación:</strong> 15/06/2025</li>
                 <li><strong>Fecha límite de aplicación:</strong> 30/06/2025</li>
             </ul>
-            <a href="#" class="btn-cta">Ver más</a>
+            <a href="@Url.Action("DetalleVacanteEgresado", "Vacante")" class="btn-cta">Ver más</a>
         </article>
 
-        <article class="vacante-card">
+        <article class="vacante-card" data-area="Administración">
             <header class="vacante-header">
                 <h3 class="vacante-titulo">Analista de Datos</h3>
                 <span class="vacante-empresa">DataCorp Ltda.</span>
@@ -36,7 +53,7 @@
             <a href="#" class="btn-cta">Ver más</a>
         </article>
 
-        <article class="vacante-card">
+        <article class="vacante-card" data-area="Ingeniería">
             <header class="vacante-header">
                 <h3 class="vacante-titulo">Ingeniero de QA</h3>
                 <span class="vacante-empresa">Innovatek Group</span>
@@ -50,14 +67,28 @@
             <a href="#" class="btn-cta">Ver más</a>
         </article>
 
-
-        <!-- Si no hay vacantes disponibles -->
-        <!--
-    <div class="vacante-alerta">
-        <strong>Información:</strong> No hay vacantes disponibles por el momento.
-    </div>
-    -->
     </div>
 </section>
+
+<script>
+    // JS para filtrar vacantes por área (solo front-end)
+    document.getElementById('filtro-area').addEventListener('change', function() {
+        const areaSeleccionada = this.value;
+        const vacantes = document.querySelectorAll('.vacante-card');
+        const mensajeVacio = document.getElementById('mensaje-vacio');
+        let hayCoincidencias = false;
+
+        vacantes.forEach(vacante => {
+            if (!areaSeleccionada || vacante.dataset.area === areaSeleccionada) {
+                vacante.style.display = 'block';
+                hayCoincidencias = true;
+            } else {
+                vacante.style.display = 'none';
+            }
+        });
+
+        mensajeVacio.style.display = hayCoincidencias ? 'none' : 'block';
+    });
+</script>
 
 <link href="~/Content/estilos/estilos.css" rel="stylesheet" />

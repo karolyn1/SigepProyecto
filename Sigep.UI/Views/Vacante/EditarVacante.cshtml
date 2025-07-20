@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Editar Vacante";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<section class="vacantes-wrapper">
+    <h2 class="vacantes-titulo">Editar Vacante</h2>
+
+    <form class="formulario-vacante" method="post" action="#">
+        <label for="nombrePuesto">Nombre del puesto <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="nombrePuesto" name="nombrePuesto" value="Desarrollador Full Stack" required />
+
+        <label for="empresa">Empresa <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="empresa" name="empresa" value="TechSolutions S.A." required />
+
+        <label for="descripcion">Descripción <span style="color:#E04F4F">*</span></label>
+        <textarea id="descripcion" name="descripcion" required>Responsable de desarrollo backend y frontend usando C# y JS.</textarea>
+
+        <label for="requisitos">Requisitos <span style="color:#E04F4F">*</span></label>
+        <textarea id="requisitos" name="requisitos" required>C#, .NET, SQL Server, JavaScript</textarea>
+
+        <label for="ubicacion">Ubicación <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="ubicacion" name="ubicacion" value="San José, Costa Rica" required />
+
+        <label for="modalidad">Modalidad <span style="color:#E04F4F">*</span></label>
+        <select id="modalidad" name="modalidad" required>
+            <option value="Presencial">Presencial</option>
+            <option value="Remoto" selected>Remoto</option>
+            <option value="Híbrido">Híbrido</option>
+        </select>
+
+        <label for="fechaPublicacion">Fecha de publicación <span style="color:#E04F4F">*</span></label>
+        <input type="date" id="fechaPublicacion" name="fechaPublicacion" value="2025-06-15" required />
+
+        <label for="fechaLimite">Fecha límite de aplicación <span style="color:#E04F4F">*</span></label>
+        <input type="date" id="fechaLimite" name="fechaLimite" value="2025-06-30" required />
+
+        <label for="areaProfesional">Área profesional <span style="color:#E04F4F">*</span></label>
+        <select id="areaProfesional" name="areaProfesional" required>
+            <option value="Administración">Administración</option>
+            <option value="Ingeniería" selected>Ingeniería</option>
+            <option value="Salud">Salud</option>
+            <option value="Educación">Educación</option>
+        </select>
+
+        <button type="submit" class="btn-guardar">Guardar Cambios</button>
+    </form>
+</section>
+
+<link href="~/Content/estilos/estilos.css" rel="stylesheet" />

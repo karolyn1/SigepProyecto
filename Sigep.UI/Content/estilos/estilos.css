@@ -183,19 +183,22 @@ footer {
 
 /*estilos de las vacantes*/
 .vacantes-wrapper {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 20px 40px;
+    max-width: 700px;
+    margin: 30px auto 60px;
+    padding: 0 20px;
+    background-color: #EAF2D8;
+    border-radius: 12px;
+    box-shadow: 0 12px 25px rgba(45, 89, 77, 0.15);
 }
 
 .vacantes-titulo {
-    font-size: 2.8rem;
+    font-size: 2.4rem;
     font-weight: 700;
-    text-align: center;
-    margin-bottom: 40px;
     color: #2D594D;
+    text-align: center;
+    margin-bottom: 30px;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
 }
 
 .vacantes-lista {
@@ -262,8 +265,10 @@ footer {
 }
 
     .btn-cta:hover {
-        background-color: #768C46;
-        box-shadow: 0 8px 25px rgba(118, 140, 70, 0.6);
+       /* background-color: #768C46;
+        box-shadow: 0 8px 25px rgba(118, 140, 70, 0.6);*/
+        background-color: #2D594D;
+        color: #fff; /* Asegura que no se torne azul */
     }
 
 .vacante-alerta {
@@ -277,4 +282,164 @@ footer {
     color: #2D594D;
     font-weight: 700;
     font-size: 1.1rem;
+}
+
+/*estilos de detalle  vacantes*/
+
+.vacante-detalle {
+    max-width: 800px;
+    margin: auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.vacante-titulo {
+    font-size: 28px;
+    color: #2D594D;
+    margin-bottom: 10px;
+}
+
+.vacante-empresa {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.vacante-info p {
+    margin-bottom: 10px;
+}
+
+.warning {
+    color: #8CA653;
+    font-style: italic;
+}
+
+.btn-volver {
+    display: inline-block; /* o 'block' si prefieres que ocupe toda la línea */
+    margin-top: 50px;
+    padding: 10px 20px;
+    background-color: #768C46;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-volver-container {
+    padding-top: 30px; /* espacio adicional si margin no funciona solo */
+}
+
+    .btn-volver:hover {
+        background-color: #2D594D;
+        color: #fff; /* Asegura que no se torne azul */
+    }
+
+a:visited, a:active {
+    color: #fff;
+}
+
+
+/*estilos de filtro vacantes*/
+.filtro-container {
+    max-width: 300px;
+    margin: 0 auto 30px;
+    text-align: center;
+}
+
+.filtro-label {
+    font-weight: 600;
+    color: #2D594D;
+    margin-bottom: 8px;
+    display: block;
+    font-size: 1.1rem;
+}
+
+.filtro-select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1.5px solid #8CA653;
+    font-size: 1rem;
+    color: #2D594D;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+    .filtro-select:hover,
+    .filtro-select:focus {
+        border-color: #768C46;
+    }
+
+
+/* Formulario */
+.formulario-vacante {
+    display: flex;
+    flex-direction: column;
+}
+
+    /* Labels */
+    .formulario-vacante label {
+        font-weight: 600;
+        color: #2D594D;
+        margin-bottom: 6px;
+        margin-top: 15px;
+        font-size: 1rem;
+    }
+
+    /* Inputs y selects */
+    .formulario-vacante input[type="text"],
+    .formulario-vacante input[type="date"],
+    .formulario-vacante select,
+    .formulario-vacante textarea {
+        padding: 10px 15px;
+        font-size: 1rem;
+        border: 2px solid #768C46;
+        border-radius: 6px;
+        background-color: #F2F2F2;
+        color: #2D594D;
+        transition: border-color 0.3s ease;
+        resize: vertical;
+    }
+
+        /* Focus para inputs y textarea */
+        .formulario-vacante input[type="text"]:focus,
+        .formulario-vacante input[type="date"]:focus,
+        .formulario-vacante select:focus,
+        .formulario-vacante textarea:focus {
+            border-color: #8CA653;
+            outline: none;
+            background-color: #fff;
+        }
+
+    /* Textarea */
+    .formulario-vacante textarea {
+        min-height: 90px;
+    }
+
+/* Botón guardar */
+.btn-guardar {
+    margin-top: 30px;
+    padding: 14px 30px;
+    background-color: #8CA653;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    align-self: flex-start;
+    box-shadow: 0 5px 15px rgba(140, 166, 83, 0.4);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+    /* Hover botón */
+    .btn-guardar:hover {
+        background-color: #2D594D;
+        box-shadow: 0 8px 25px rgba(45, 89, 77, 0.6);
+    }
+
+/* Asterisco para campos obligatorios */
+.formulario-vacante span {
+    color: #E04F4F;
 }

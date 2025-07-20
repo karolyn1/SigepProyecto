@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Detalle de Vacante";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<section class="vacante-detalle">
+    <h2 class="vacante-titulo">Desarrollador Full Stack</h2>
+    <p class="vacante-empresa"><strong>Empresa:</strong> TechSolutions S.A.</p>
+
+    <div class="vacante-info">
+        <p><strong>Descripción:</strong> Empresa de desarrollo busca profesional para diseñar, construir y mantener aplicaciones web modernas usando tecnologías .NET y JavaScript.</p>
+        <p><strong>Requisitos:</strong> C#, ASP.NET Core, SQL Server, JavaScript, HTML5, CSS3, experiencia con Git.</p>
+        <p><strong>Tipo de contrato:</strong> Tiempo completo</p>
+        <p><strong>Salario:</strong> ₡1.500.000 - ₡1.800.000 mensuales</p>
+        <p><strong>Modalidad:</strong> Híbrida (3 días presencial, 2 días remoto)</p>
+        <p><strong>Ubicación:</strong> San José, Costa Rica</p>
+        <p><strong>Fecha de publicación:</strong> 15/06/2025</p>
+        <p><strong>Fecha límite de aplicación:</strong> 30/06/2025</p>
+        <p><strong>Contacto:</strong> rrhh@techsolutions.co.cr</p>
+    </div>
+
+    <div class="boton-volver-container">
+        <a href="@Url.Action("ListaVacantesEgresado", "Vacante")" class="btn-volver">← Volver</a>
+    </div>
+</section>
+
+
+<link href="~/Content/estilos/estilos.css" rel="stylesheet" />

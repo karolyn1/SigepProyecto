@@ -1,0 +1,172 @@
+﻿@{
+    ViewBag.Title = "Lista de Vacantes - Coordinador";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<section class="vacantes-wrapper">
+    <h2 class="vacantes-titulo">Vacantes Publicadas</h2>
+
+    <a href="@Url.Action("CrearVacante", "Vacante")" class="btn-cta btn-nuevo" style="margin-bottom: 25px;">+ Publicar Nueva Vacante</a>
+
+    <div class="table-container">
+        <table class="vacantes-table">
+            <thead>
+                <tr>
+                    <th>Nombre del puesto</th>
+                    <th>Empresa</th>
+                    <th>Descripción</th>
+                    <th>Requisitos</th>
+                    <th>Ubicación</th>
+                    <th>Modalidad</th>
+                    <th>Fecha publicación</th>
+                    <th>Fecha límite</th>
+                    <th>Área profesional</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Desarrollador Full Stack</td>
+                    <td>TechSolutions S.A.</td>
+                    <td>Desarrollo de aplicaciones web con .NET y JavaScript.</td>
+                    <td>C#, SQL Server, Angular</td>
+                    <td>Remoto</td>
+                    <td>Tiempo completo</td>
+                    <td>15/06/2025</td>
+                    <td>30/06/2025</td>
+                    <td>Ingeniería</td>
+                    <td class="acciones">
+                        <a href="@Url.Action("EditarVacante", "Vacante", new { id = 1 })" class="btn-editar">Editar</a>
+                        <a href="@Url.Action("ConfirmarDesactivacion", "Vacante", new { id = 1 })" class="btn-eliminar">Desactivar</a>
+                    </td>
+                </tr>
+                <!-- Más filas aquí -->
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<style>
+    .vacantes-wrapper {
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 0 20px 40px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #2D594D;
+    }
+
+    .vacantes-titulo {
+        font-size: 2.8rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #2D594D;
+    }
+
+    .btn-cta.btn-nuevo {
+        background-color: #8CA653;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 1rem;
+        display: inline-block;
+        text-decoration: none;
+        box-shadow: 0 6px 15px rgba(140, 166, 83, 0.5);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .btn-cta.btn-nuevo:hover {
+            background-color: #768C46;
+            box-shadow: 0 8px 20px rgba(118, 140, 70, 0.7);
+        }
+
+    .table-container {
+        overflow-x: auto;
+        border-radius: 12px;
+        box-shadow: 0 15px 35px rgba(45, 89, 77, 0.15);
+        background-color: #EAF2D8;
+        padding: 15px;
+    }
+
+    .vacantes-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 15px;
+        font-size: 0.95rem;
+        min-width: 1000px;
+    }
+
+        .vacantes-table thead tr {
+            background-color: #2D594D;
+            color: #EAF2D8;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+        }
+
+        .vacantes-table th, .vacantes-table td {
+            padding: 12px 15px;
+            vertical-align: middle;
+        }
+
+        .vacantes-table tbody tr {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(45, 89, 77, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+            .vacantes-table tbody tr:hover {
+                box-shadow: 0 10px 30px rgba(45, 89, 77, 0.25);
+            }
+
+            .vacantes-table tbody tr td {
+                border-bottom: none;
+            }
+
+    .acciones a {
+        margin-right: 10px;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-decoration: none;
+        color: white;
+        display: inline-block;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-editar {
+        background-color: #8CA653;
+    }
+
+        .btn-editar:hover {
+            background-color: #768C46;
+        }
+
+    .btn-eliminar {
+        background-color: #E04F4F;
+    }
+
+        .btn-eliminar:hover {
+            background-color: #b83b3b;
+        }
+
+    /* Scrollbar para tabla en navegadores modernos */
+    .table-container::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .table-container::-webkit-scrollbar-thumb {
+        background-color: #8CA653;
+        border-radius: 4px;
+    }
+
+    .table-container::-webkit-scrollbar-track {
+        background-color: #EAF2D8;
+    }
+</style>
