@@ -183,23 +183,40 @@ footer {
 
 /*estilos de las vacantes*/
 .vacantes-wrapper {
-    max-width: 700px;
-    margin: 30px auto 60px;
-    padding: 0 20px;
-    background-color: #EAF2D8;
-    border-radius: 12px;
-    box-shadow: 0 12px 25px rgba(45, 89, 77, 0.15);
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2D594D;
 }
 
 .vacantes-titulo {
-    font-size: 2.4rem;
+    font-size: 2.8rem;
     font-weight: 700;
-    color: #2D594D;
     text-align: center;
     margin-bottom: 30px;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
+    color: #2D594D;
 }
+
+.btn-cta.btn-nuevo {
+    background-color: #8CA653;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    display: inline-block;
+    text-decoration: none;
+    box-shadow: 0 6px 15px rgba(140, 166, 83, 0.5);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .btn-cta.btn-nuevo:hover {
+        background-color: #768C46;
+        box-shadow: 0 8px 20px rgba(118, 140, 70, 0.7);
+    }
 
 .vacantes-lista {
     display: grid;
@@ -443,3 +460,145 @@ a:visited, a:active {
 .formulario-vacante span {
     color: #E04F4F;
 }
+
+
+/* Table */
+.table-container {
+    width: 100%;
+    max-width: 100%; /* evita que se salga del contenedor padre */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* para buen scroll en móviles */
+}
+
+/* Compatibles con DataTables */
+table#miTabla {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    background-color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100% !important;
+}
+
+#miTabla thead th {
+    background-color: #2D594D;
+    color: #EAF2D8;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 12px;
+    font-size: 0.85rem;
+    border-bottom: none;
+}
+
+#miTabla tbody tr {
+    background-color: #EAF2D8;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-radius: 8px;
+}
+
+#miTabla tbody td {
+    padding: 12px;
+    vertical-align: middle;
+    color: #2D594D;
+    font-size: 0.9rem;
+    border-bottom: none;
+    white-space: normal !important; /* permite salto de línea dentro de celdas */
+    word-wrap: break-word;
+}
+
+
+.vacantes-table {
+    min-width: 1000px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .vacantes-table thead tr {
+        background-color: #2D594D;
+        color: #EAF2D8;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 1px;
+        font-size: 0.85rem;
+    }
+
+    .vacantes-table th, .vacantes-table td {
+        padding: 8px 12px;
+        text-align: left;
+    }
+
+    .vacantes-table tbody tr {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 6px 15px rgba(45, 89, 77, 0.1);
+        transition: box-shadow 0.3s ease;
+    }
+
+        .vacantes-table tbody tr:hover {
+            box-shadow: 0 10px 30px rgba(45, 89, 77, 0.25);
+        }
+
+        .vacantes-table tbody tr td {
+            border-bottom: none;
+        }
+
+/* Alinear columnas de acción */
+.acciones a {
+    margin-right: 8px;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.btn-editar {
+    background-color: #8CA653;
+}
+
+    .btn-editar:hover {
+        background-color: #768C46;
+    }
+
+.btn-eliminar {
+    background-color: #E04F4F;
+}
+
+    .btn-eliminar:hover {
+        background-color: #b83b3b;
+    }
+
+/* Scrollbar para tabla en navegadores modernos */
+.table-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: #8CA653;
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background-color: #EAF2D8;
+}
+
+table.dataTable {
+    width: 100% !important;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+    table.dataTable th, table.dataTable td {
+        padding: 10px 15px;
+        text-align: left;
+        vertical-align: middle;
+        font-size: 14px;
+        color: #2D594D;
+    }
+
+    table.dataTable tbody tr {
+        background-color: #EAF2D8;
+        border-radius: 8px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+    }

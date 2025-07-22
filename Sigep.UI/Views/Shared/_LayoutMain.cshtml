@@ -8,7 +8,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>SIGEP</title>
+    <link href="~/Content/DataTable/dataTables.dataTables.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css" rel="stylesheet" />
     <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/estilos/estilos.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -27,7 +31,7 @@
                                 <img src="~/Images/logo-light-icon.png" alt="homepage" class="light-logo" />
                             </b>
                             <span class="logo-text text-white">
-                             SIGEP
+                                SIGEP
                             </span>
                         </a>
                         <a class="sidebartoggler d-none d-md-block" href="javascript:void(0)" data-sidebartype="mini-sidebar">
@@ -43,7 +47,7 @@
                     <ul class="navbar-nav float-left mr-auto">
                     </ul>
                     <ul class="navbar-nav float-right">
-                       
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img src="~/Images/2.jpg" alt="user" class="rounded-circle" width="40">
@@ -103,7 +107,7 @@
 
             </div>
             <footer class="footer text-center">
-               SIGEP | Todos los derechos reservados.
+                SIGEP | Todos los derechos reservados.
             </footer>
         </div>
     </div>
@@ -119,7 +123,10 @@
     <script src="~/Scripts/waves.js"></script>
     <script src="~/Scripts/sidebarmenu.js"></script>
     <script src="~/Scripts/custom.min.js"></script>
+    <script src="~/Scripts/DataTable/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
 
+    @RenderSection("Scripts", required: false)
 </body>
 
 </html>
