@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sigep.UI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,26 +14,95 @@ namespace Sigep.UI.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+       [HttpGet]
 
+        public ActionResult Registro() { 
+        
             return View();
         }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
 
         [HttpGet]
 
         public ActionResult Login()
         {
             return View();
+        }
+
+        [HttpPost]
+
+        public ActionResult Login(Usuario usuario) {
+            var coordinador = "118810955";
+            var nombreCoordinador = "Ariana";
+            var estudiante = "123456789";
+            var nombreEstudiante = "Johnny";
+            var egresado = "987654321";
+            var nombreEgresado = "Karolyn";
+            var profesor = "112233445";
+            var nombreProfesor = "Jean Pool";
+            var contrasenna = "Hola123456";
+
+            if (usuario.cedula == coordinador && contrasenna == usuario.contrasenna)
+            {
+                Session["rol"] = 1;
+                Session["nombre"] = nombreCoordinador;
+            } else if (usuario.cedula == estudiante && contrasenna == usuario.contrasenna)
+            {
+                Session["rol"] = 2;
+                Session["nombre"] = nombreEstudiante;
+
+            } else if (usuario.cedula == egresado && contrasenna == usuario.contrasenna)
+            {
+                Session["rol"] = 3;
+                Session["nombre"] = nombreEgresado;
+            }
+            else if (usuario.cedula == profesor && contrasenna == usuario.contrasenna)
+            {
+                Session["rol"] = 4;
+                Session["nombre"] = nombreProfesor;
+            } else
+            {
+                TempData["SwalError"] = "Lo sentimos, el usuario no se encuentra registrado. Por favor, crea una cuenta";
+            }
+
+            return RedirectToAction("Index");
+
+        }
+
+        [HttpPost] 
+        public ActionResult Registro(Usuario usuario)
+        {
+            TempData["SwalSuccess"] = "Usuario registrado correctamente";
+            return RedirectToAction("Login");
+        }
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            return RedirectToAction("Login");
+        }
+
+
+        [HttpGet]
+
+        public ActionResult RecuperarAcceso()
+        {
+            return View();
+        }
+
+        [HttpPost]
+
+        public ActionResult RecuperarAcceso(Usuario usuario)
+        {
+            var cedula = "118810955";
+            if (usuario.cedula == cedula)
+            {
+                TempData["SwalSuccess"] = "Hemos enviado un link de recuperación al correo ari*****@gmail.com";
+                return RedirectToAction("Login");
+            } else
+            {
+                TempData["SwalError"] = "La cédula proporcionada no se encuentra registrada";
+                return View();
+            }
         }
     }
 }
