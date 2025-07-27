@@ -85,5 +85,12 @@ namespace Sigep.UI.Controllers
                 return View();
             }
         }
+
+
+        // Vista con la lista de egresados para el coordinador (con acciones de editar/desactivar)
+        public ActionResult ListaEgresados()
+        {
+            return View();
+        }
     }
 }

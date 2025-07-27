@@ -8,6 +8,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>SIGEP</title>
+    <!-- Fuente Rubik desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="~/Content/DataTable/dataTables.dataTables.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css" rel="stylesheet" />
     <link href="~/Content/style.css" rel="stylesheet" />
@@ -161,7 +163,30 @@
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html" aria-expanded="false"><i class="ti-id-badge"></i> <span class="hide-menu">Mi Perfil</span></a></li>
                     </ul>
                     <ul id="sidebarnav">
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Logout","Home")" aria-expanded="false"><i class="ti-id-badge"></i> <span class="hide-menu">Cerrar Sesión</span></a></li>
+                        @*<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html" aria-expanded="false"><i class="ti-id-badge"></i> <span class="hide-menu">Egresados</span></a></li>*@
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                                <i class="ti-id-badge"></i>
+                                <span class="hide-menu">Egresados</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item">
+                                    <a href="@Url.Action("ListaVacantesEgresado", "Vacante")" class="sidebar-link">
+                                        <i class="mdi mdi-briefcase-outline"></i>
+                                        <span class="hide-menu">Bolsa de Empleo</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="@Url.Action("ComunicadosImportantes", "Comunicado")" class="sidebar-link">
+                                        <i class="mdi mdi-bullhorn"></i>
+                                        <span class="hide-menu">Comunicados Importantes</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
                     </ul>
 </nav>
         </div>
