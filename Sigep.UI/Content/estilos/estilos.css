@@ -4,6 +4,42 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+/* Títulos primarios */
+.titulo-principal {
+    font-family: 'Rubik', sans-serif;
+    /*font-size: 30px;*/
+    /*font-weight: 700;*/
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #2D594D;
+}
+
+/* Títulos secundarios */
+.titulo-secundario {
+    font-family: 'Rubik', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Texto plano */
+.texto-plano {
+    font-family: 'Rubik', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* Enlaces y acentos */
+.enlace-acento {
+    font-family: 'Rubik', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
 }
 
 /* Navbar personalizado */
@@ -184,9 +220,9 @@ footer {
 /*estilos de las vacantes*/
 .vacantes-wrapper {
     max-width: 1100px;
-    margin: 40px auto;
+    margin: 20px auto;
     padding: 0 20px 40px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
     color: #2D594D;
 }
 
@@ -198,6 +234,7 @@ footer {
     text-transform: uppercase;
     letter-spacing: 2px;
     color: #2D594D;
+    margin-top: 10px;
 }
 
 .btn-cta.btn-nuevo {
@@ -464,10 +501,21 @@ a:visited, a:active {
 
 /* Table */
 .table-container {
+    /*width: 100%;
+    max-width: 100%;*/ /* evita que se salga del contenedor padre */
+    /*overflow-x: auto;*/
+    /*-webkit-overflow-scrolling: touch;*/ /* para buen scroll en móviles */
+
     width: 100%;
-    max-width: 100%; /* evita que se salga del contenedor padre */
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* para buen scroll en móviles */
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-sizing: border-box;  incluye el padding dentro del ancho 
+    box-shadow: 0 4px 15px rgba(45, 89, 77, 0.1);
+    overflow-x: auto;  para scroll si la tabla es muy ancha 
+
 }
 
 /* Compatibles con DataTables */
@@ -475,13 +523,14 @@ table#miTabla {
     border-collapse: separate;
     border-spacing: 0 10px;
     background-color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Rubik', sans-serif;
     width: 100% !important;
+    
 }
 
 #miTabla thead th {
     background-color: #2D594D;
-    color: #EAF2D8;
+    color: white;
     text-transform: uppercase;
     font-weight: bold;
     padding: 12px;
@@ -491,11 +540,13 @@ table#miTabla {
 
 #miTabla tbody tr {
     background-color: #EAF2D8;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    /*box-shadow: 0 4px 10px rgba(0,0,0,0.05);*/
+    box-shadow: 4px 0 0 white, -4px 0 0 white; /* Bordes izquierdo y derecho */
     border-radius: 8px;
 }
 
 #miTabla tbody td {
+    color: white;
     padding: 12px;
     vertical-align: middle;
     color: #2D594D;
@@ -542,16 +593,35 @@ table#miTabla {
         }
 
 /* Alinear columnas de acción */
-.acciones a {
-    margin-right: 8px;
-    padding: 8px 12px;
-    font-size: 0.85rem;
-    font-weight: bold;
-    border-radius: 6px;
-    text-decoration: none;
-    color: #fff;
-    transition: all 0.3s ease;
+.acciones {
+    height: 100%;
+    display: flex;
+    gap: 16px; /* espacio entre botones */
+    justify-content: flex-start;
+    align-items: center; 
+    background-color: #EAF2D8; /* Igual que el fondo de la fila */
+    padding: 0; /* Opcional */
+    border: none;
+    align-items: stretch;
 }
+
+    .acciones a {
+        /*margin-right: 16px;*/
+        height: 100%;
+        margin: 0;
+        background-color: #8CA653;
+        padding: 10px 14px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        /*height: 36px;*/ /* uniforme */
+        border-radius: 6px;
+        text-decoration: none;
+        color: #fff;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
 .btn-editar {
     background-color: #8CA653;
@@ -562,12 +632,16 @@ table#miTabla {
     }
 
 .btn-eliminar {
-    background-color: #E04F4F;
+    background-color: #E04F4F !important;
 }
 
     .btn-eliminar:hover {
-        background-color: #b83b3b;
+        background-color: #b83b3b !important;
+        color: #fff !important;
     }
+
+
+
 
 /* Scrollbar para tabla en navegadores modernos */
 .table-container::-webkit-scrollbar {
@@ -602,3 +676,26 @@ table.dataTable {
         border-radius: 8px;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
     }
+
+.acciones-superiores {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px; /* Añade espacio entre filtros y la tabla */
+    gap: 32px; /* Espacio entre filtros y botones */
+    flex-wrap: wrap; /* Para que se acomoden en pantallas pequeñas */
+}
+
+.filtros label {
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.filtros select {
+    margin-right: 16px;
+    padding: 4px 8px;
+}
+
+.exportar .btn-cta {
+    margin-left: 8px;
+}

@@ -293,10 +293,10 @@
     <Content Include="Views\Vacante\CrearVacante.cshtml" />
     <Content Include="Views\Vacante\ListaVacanteCoordinador.cshtml" />
     <Content Include="Views\Vacante\EditarVacante.cshtml" />
+    <Content Include="Views\Coordinador\ListaEgresados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Coordinador\" />
     <Folder Include="Views\Egresado\" />
     <Folder Include="Views\Profesor\" />
   </ItemGroup>

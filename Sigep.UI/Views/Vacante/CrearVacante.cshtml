@@ -4,7 +4,7 @@
 }
 
 <section class="vacantes-wrapper">
-    <h2 class="vacantes-titulo">Publicar Nueva Vacante</h2>
+    <h2 class="vacantes-titulo titulo-principal">Publicar Nueva Vacante</h2>
 
     <form class="formulario-vacante" method="post" action="#">
         <label for="nombrePuesto">Nombre del puesto <span style="color:#E04F4F">*</span></label>
@@ -45,7 +45,8 @@
             <option value="Educación">Educación</option>
         </select>
 
-        <button type="submit" class="btn-guardar">Guardar y Publicar</button>
+       @* <button type="submit" class="btn-guardar">Guardar y Publicar</button>*@
+        <a href="@Url.Action("ListaVacanteCoordinador", "Vacante")" class="btn-guardar">Guardar y Publicar</a>
     </form>
 </section>
 
