@@ -2329,14 +2329,16 @@ fieldset:disabled a.btn {
       box-shadow: 0 0 0 0.2rem rgba(116, 96, 238, 0.5); }
 
 .btn-outline-secondary {
-  color: #6c757d;
-  background-color: transparent;
-  background-image: none;
-  border-color: #6c757d; }
-  .btn-outline-secondary:hover {
-    color: #fff;
-    background-color: #6c757d;
-    border-color: #6c757d; }
+    color: #2D594D;
+    background-color: transparent;
+    background-image: none;
+    border-color: #2D594D;
+}
+    .btn-outline-secondary:hover {
+        color: #fff;
+        background-color: #8ca653;
+        border-color: #8ca653;
+    }
   .btn-outline-secondary:focus, .btn-outline-secondary.focus {
     box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5); }
   .btn-outline-secondary.disabled, .btn-outline-secondary:disabled {
@@ -2650,7 +2652,7 @@ input[type="button"].btn-block {
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 0.875rem;
-  color: #6a7a8c;
+  color: #2d594d;
   text-align: left;
   list-style: none;
   background-color: #fff;
@@ -2751,23 +2753,25 @@ input[type="button"].btn-block {
   height: 0;
   margin: 0.5rem 0;
   overflow: hidden;
-  border-top: 1px solid #f6f8f9; }
+  border-top: 1px solid #2d594d; }
 
 .dropdown-item {
-  display: block;
-  width: 100%;
-  padding: 0.65rem 1rem;
-  clear: both;
-  font-weight: 400;
-  color: #212529;
-  text-align: inherit;
-  white-space: nowrap;
-  background-color: transparent;
-  border: 0; }
-  .dropdown-item:hover, .dropdown-item:focus {
-    color: #16181b;
-    text-decoration: none;
-    background-color: #f6f8f9; }
+    display: block;
+    width: 100%;
+    padding: 0.65rem 1rem;
+    clear: both;
+    font-weight: 400;
+    color: #2d594d;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+    .dropdown-item:hover, .dropdown-item:focus {
+        color: #fff;
+        text-decoration: none;
+        background-color: #8CA653;
+    }
   .dropdown-item.active, .dropdown-item:active {
     color: #fff;
     text-decoration: none;
