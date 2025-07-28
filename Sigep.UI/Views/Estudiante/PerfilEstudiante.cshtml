@@ -1,0 +1,280 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+@section Styles {
+    <style>
+        body {
+            background-color: #F2F2F2;
+            font-family: 'Rubik', sans-serif;
+        }
+
+        .perfil-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .info-box {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .perfil-icon {
+            width: 120px;
+            height: 120px;
+            background-color: #2D594D;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 50px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .section-title {
+            color: #2D594D;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #8CA653;
+            padding-bottom: .5rem;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: #2D594D;
+        }
+
+        .form-control {
+            background-color: #ffffff;
+            border: 1px solid #8CA653;
+            border-radius: 6px;
+        }
+
+        .action-buttons button {
+            width: 100%;
+            margin-bottom: 1rem;
+            background-color: #2D594D;
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+
+            .action-buttons button:hover {
+                background-color: #768C46;
+            }
+
+        .top-buttons .col-md-6 {
+            margin-bottom: 1rem;
+        }
+    </style>
+}
+
+<div class="perfil-wrapper">
+    <!-- BOTONES DOCUMENTOS ARRIBA -->
+    <div class="row top-buttons mb-4 action-buttons">
+        <div class="col-md-6">
+            <button data-bs-toggle="modal" data-bs-target="#modalSubirDoc">
+                <i class="fas fa-folder-open me-2"></i> Subir Documentos
+            </button>
+        </div>
+        <div class="col-md-6">
+            <button data-bs-toggle="modal" data-bs-target="#modalVerDocs">
+                <i class="fas fa-folder-open me-2"></i> Ver Mis Documentos
+            </button>
+        </div>
+    </div>
+
+    <!-- CONTENIDO INFORMACIÓN PERSONAL -->
+    <div class="info-box">
+        <div class="perfil-icon">
+            <i class="fas fa-user-graduate"></i>
+        </div>
+
+        <h5 class="section-title">INFORMACIÓN PERSONAL</h5>
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label>Nombre y Apellidos</label>
+                <input type="text" class="form-control" value="Johnny Castillo Fallas" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Correo Electrónico</label>
+                <input type="email" class="form-control" value="johnny.castillo@example.com" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Teléfono</label>
+                <input type="text" class="form-control" value="8888-0000" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Dirección</label>
+                <input type="text" class="form-control" value="San José, Costa Rica" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Sexo</label>
+                <input type="text" class="form-control" value="Masculino" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Especialidad</label>
+                <input type="text" class="form-control" value="Ingeniería en Sistemas" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Edad</label>
+                <input type="text" class="form-control" value="19 años" />
+            </div>
+        </div>
+
+        <div class="action-buttons mt-3 mb-4">
+            <button>
+                <i class="fas fa-edit me-2"></i> Actualizar Información Personal
+            </button>
+        </div>
+
+        <!-- CONTACTO EMERGENCIA -->
+        <h5 class="section-title">CONTACTO DE EMERGENCIA</h5>
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label>Nombre y Apellidos</label>
+                <input type="text" class="form-control" value="Carlos Fallas" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Teléfono</label>
+                <input type="text" class="form-control" value="8899-1122" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Parentesco</label>
+                <input type="text" class="form-control" value="Padre" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Residencia o Trabajo</label>
+                <input type="text" class="form-control" value="Cartago, CR" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Ocupación</label>
+                <input type="text" class="form-control" value="Ingeniero Civil" />
+            </div>
+        </div>
+
+        <div class="action-buttons mt-3">
+            <button>
+                <i class="fas fa-edit me-2"></i> Actualizar Contacto de Emergencia
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalSubirDoc" tabindex="-1" aria-labelledby="modalSubirDocLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="border-radius: 10px; background-color: #F2F2F2;">
+            <!-- Header -->
+            <div class="modal-header" style="background-color: #2D594D; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                <h5 class="modal-title text-white" id="modalSubirDocLabel">Subir Documento</h5>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body">
+                <form>
+                    <!-- Tipo de Documento -->
+                    <div class="mb-3">
+                        <label for="tipoDoc" class="form-label fw-bold" style="color: #2D594D;">Tipo de Documento</label>
+                        <select class="form-select" id="tipoDoc" style="border: 1px solid #8CA653;">
+                            <option selected disabled>Seleccione un tipo</option>
+                            <option>CV</option>
+                            <option>Cédula</option>
+                            <option>Autorización</option>
+                        </select>
+                    </div>
+
+                    <!-- Simular selección de archivo -->
+                    <div class="mb-3">
+                        <label class="form-label fw-bold" style="color: #2D594D;">Archivo</label><br />
+                        <button type="button" class="btn" style="background-color: #8CA653; color: white;">
+                            <i class="fas fa-folder-open me-2"></i>Seleccionar Documento
+                        </button>
+                        <div class="mt-2" style="color: #A0A0A0; font-size: 0.9rem;">
+                            * CV_JOHNNYCASTILLO.pdf
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                <button type="button" class="btn btn-secondary" style="background-color: #A0A0A0; border: none;" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn" style="background-color: #2D594D; color: white; border: none;" data-bs-dismiss="modal">Subir Documento</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalVerDocs" tabindex="-1" aria-labelledby="modalVerDocsLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="border-radius: 10px; background-color: #F2F2F2;">
+
+            <!-- Header -->
+            <div class="modal-header" style="background-color: #2D594D; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                <h5 class="modal-title text-white" id="modalVerDocsLabel">Mis Documentos</h5>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body">
+
+                <!-- CV -->
+                <div class="mb-4">
+                    <h6 class="fw-bold" style="color: #8CA653;">Currículum Vitae (CV)</h6>
+                    <div class="d-flex justify-content-between align-items-center p-2" style="background-color: white; border: 1px solid #8CA653; border-radius: 8px;">
+                        <span style="color: #2D594D;">CV_JohnnyCastillo.pdf</span>
+                        <div>
+                            <i class="fas fa-eye me-3" title="Visualizar" style="cursor: pointer;"></i>
+                            <i class="fas fa-download" title="Descargar" style="cursor: pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Autorización -->
+                <div class="mb-4">
+                    <h6 class="fw-bold" style="color: #8CA653;">Autorización</h6>
+                    <div class="d-flex justify-content-between align-items-center p-2" style="background-color: white; border: 1px solid #8CA653; border-radius: 8px;">
+                        <span style="color: #2D594D;">Autorizacion_Practica.pdf</span>
+                        <div>
+                            <i class="fas fa-eye me-3" title="Visualizar" style="cursor: pointer;"></i>
+                            <i class="fas fa-download" title="Descargar" style="cursor: pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cédula -->
+                <div class="mb-2">
+                    <h6 class="fw-bold" style="color: #8CA653;">Cédula</h6>
+                    <div class="d-flex justify-content-between align-items-center p-2" style="background-color: white; border: 1px solid #8CA653; border-radius: 8px;">
+                        <span style="color: #2D594D;">Cedula_Front_Back.pdf</span>
+                        <div>
+                            <i class="fas fa-eye me-3" title="Visualizar" style="cursor: pointer;"></i>
+                            <i class="fas fa-download" title="Descargar" style="cursor: pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer" style="background-color: #F2F2F2;">
+                <button data-bs-dismiss="modal">Cerrar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</div>
+
+

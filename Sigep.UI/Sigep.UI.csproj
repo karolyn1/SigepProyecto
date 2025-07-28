@@ -302,6 +302,8 @@
     <Content Include="Views\Home\Registro.cshtml" />
     <Content Include="Views\Home\RecuperarAcceso.cshtml" />
     <Content Include="Views\Coordinador\ListaEgresados.cshtml" />
+    <Content Include="Views\Estudiante\PerfilEstudiante.cshtml" />
+    <Content Include="Views\Estudiante\ComunicadosEstudiante.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

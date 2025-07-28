@@ -85,5 +85,17 @@ namespace Sigep.UI.Controllers
                 return View();
             }
         }
+
+        // GET: Estudiante mi perfil
+        public ActionResult PerfilEstudiante()
+        {
+            return View();
+        }
+
+        // GET: Estudiante comunicados
+        public ActionResult ComunicadosEstudiante()
+        {
+            return View();
+        }
     }
 }
