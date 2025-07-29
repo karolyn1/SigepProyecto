@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Datos del Encargado";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<section class="vacantes-wrapper">
+    <h2 class="vacantes-titulo titulo-principal">Datos del Encargado</h2>
+
+    <form class="formulario-vacante" method="post" action="@Url.Action("GuardarEncargado", "Perfil")">
+
+        <!-- INFORMACIÓN DEL ENCARGADO -->
+        <h3 class="subtitulo-seccion" style="margin-top: 40px;">Información del Encargado</h3>
+
+        <label for="cedula">Cédula <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="cedula" name="cedula" required />
+
+        <label for="nombre">Nombre <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="nombre" name="nombre" required />
+
+        <label for="primerApellido">Primer Apellido <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="primerApellido" name="primerApellido" required />
+
+        <label for="segundoApellido">Segundo Apellido <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="segundoApellido" name="segundoApellido" required />
+
+        <label for="telefono">Teléfono <span style="color:#E04F4F">*</span></label>
+        <input type="tel" id="telefono" name="telefono" required />
+
+        <label for="ocupacion">Ocupación <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="ocupacion" name="ocupacion" required />
+
+        <label for="lugarTrabajo">Lugar de trabajo <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="lugarTrabajo" name="lugarTrabajo" required />
+
+        @if (ViewBag.MensajeExito != null)
+        {
+            <div class="mensaje-exito">@ViewBag.MensajeExito</div>
+        }
+
+        @if (ViewBag.MensajeError != null)
+        {
+            <div class="mensaje-error">@ViewBag.MensajeError</div>
+        }
+
+        <button type="submit" class="btn-guardar" style="margin-top: 30px;">Guardar Encargado</button>
+    </form>
+</section>
+
+<link href="~/Content/estilos/estilos.css" rel="stylesheet" />
+
+

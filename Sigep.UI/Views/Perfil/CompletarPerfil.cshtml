@@ -7,7 +7,9 @@
     <h2 class="vacantes-titulo titulo-principal">Completar Perfil</h2>
 
     <form class="formulario-vacante" method="post" action="@Url.Action("GuardarPerfil", "Perfil")" enctype="multipart/form-data">
-        <h3 class="subtitulo-seccion">Datos Personales</h3>
+
+        <!-- DATOS PERSONALES -->
+        <h3 class="subtitulo-seccion" style="margin-top: 40px;">Datos Personales</h3>
 
         <label for="telefono">Teléfono personal <span style="color:#E04F4F">*</span></label>
         <input type="tel" id="telefono" name="telefono" required />
@@ -32,7 +34,8 @@
             <option value="Otro">Otro</option>
         </select>
 
-        <h3 class="subtitulo-seccion">Datos Académicos</h3>
+        <!-- DATOS ACADÉMICOS -->
+        <h3 class="subtitulo-seccion" style="margin-top: 40px;">Datos Académicos</h3>
 
         <label for="carrera">Carrera o programa cursado</label>
         <input type="text" id="carrera" name="carrera" />
@@ -52,7 +55,8 @@
             <option value="Educación">Educación</option>
         </select>
 
-        <h3 class="subtitulo-seccion">Datos Laborales (solo egresados)</h3>
+        <!-- DATOS LABORALES -->
+        <h3 class="subtitulo-seccion" style="margin-top: 40px;">Datos Laborales (solo egresados)</h3>
 
         <label for="empresa">Empresa actual</label>
         <input type="text" id="empresa" name="empresa" />
@@ -63,7 +67,8 @@
         <label for="correoLaboral">Correo electrónico laboral</label>
         <input type="email" id="correoLaboral" name="correoLaboral" />
 
-        <h3 class="subtitulo-seccion">Datos Médicos</h3>
+        <!-- DATOS MÉDICOS -->
+        <h3 class="subtitulo-seccion" style="margin-top: 40px;">Datos Médicos</h3>
 
         <label for="padecimientos">Padecimientos</label>
         <textarea id="padecimientos" name="padecimientos" placeholder="Indique si padece alguna condición médica..."></textarea>
@@ -74,16 +79,27 @@
         <label for="alergias">Alergias</label>
         <textarea id="alergias" name="alergias" placeholder="Alergias conocidas..."></textarea>
 
-        <h3 class="subtitulo-seccion">Currículum Vitae</h3>
+        <!-- DOCUMENTOS PERSONALES -->
+        <h3 class="subtitulo-seccion" style="margin-top: 40px;">Documentos personales</h3>
 
-        <label for="cv">Subir archivo PDF (máx. 5 MB) <span style="color:#E04F4F">*</span></label>
-        <input type="file" id="cv" name="cv" accept=".pdf" required />
+        <label for="documento">Subir archivo (.pdf, .jpg, .png, .xls) <span style="color:#E04F4F">*</span></label>
+        <input type="file" id="documento" name="documento" accept=".pdf,.jpg,.png,.xls" required />
 
         <small class="nota-formulario">
-            Solo se permiten archivos PDF de hasta 5 MB.
+            Solo se permiten archivos .pdf, .jpg, .png, .xls con tamaño máximo de 5 MB.
         </small>
 
-        <button type="submit" class="btn-guardar">Guardar</button>
+        @if (ViewBag.MensajeExito != null)
+        {
+            <div class="mensaje-exito">@ViewBag.MensajeExito</div>
+        }
+
+        @if (ViewBag.MensajeError != null)
+        {
+            <div class="mensaje-error">@ViewBag.MensajeError</div>
+        }
+
+        <button type="submit" class="btn-guardar" style="margin-top: 30px;">Guardar</button>
     </form>
 </section>
 

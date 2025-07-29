@@ -307,6 +307,7 @@
     <Content Include="Views\Estudiante\ComunicadosEstudiante.cshtml" />
     <Content Include="Views\Perfil\CompletarPerfil.cshtml" />
     <Content Include="Views\Perfil\ActualizarPerfil.cshtml" />
+    <Content Include="Views\Perfil\FormularioEncargado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

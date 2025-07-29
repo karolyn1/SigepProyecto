@@ -699,3 +699,15 @@ table.dataTable {
 .exportar .btn-cta {
     margin-left: 8px;
 }
+
+.subtitulo-seccion {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2D594D;
+}
+
+.grupo-campo {
+    margin-bottom: 15px;
+}

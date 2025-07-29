@@ -16,11 +16,17 @@ namespace Sigep.UI.Controllers
         }
 
         // GET: editar perfil de usuario
-        public ActionResult ActualizarPerfil(int? id)
+        public ActionResult ActualizarPerfil(int id)
         {
             return View();
         }
 
+
+        // GET: Formulario para los los encargados de los estudiantes
+        public ActionResult FormularioEncargado()
+        {
+            return View();
+        }
 
         // GET: Perfil
         public ActionResult Index()

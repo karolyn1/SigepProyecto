@@ -1,44 +1,104 @@
 ﻿@{
-    ViewBag.Title = "Editar Perfil de Usuario";
+    ViewBag.Title = "Editar Perfil";
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
 }
 
 <section class="vacantes-wrapper">
-    <h2 class="vacantes-titulo titulo-principal">Editar Perfil de Usuario</h2>
+    <h2 class="vacantes-titulo titulo-principal">Editar Perfil</h2>
 
-    <form class="formulario-vacante" method="post" action="@Url.Action("GuardarPerfil", "Usuario")">
-        <label for="nombre">Nombre <span style="color:#E04F4F">*</span></label>
-        <input type="text" id="nombre" name="nombre" value="@Model.Nombre" required />
+    <form class="formulario-vacante" method="post" enctype="multipart/form-data" action="@Url.Action("GuardarCambiosPerfil", "Perfil")">
 
-        <label for="apellido1">Primer Apellido <span style="color:#E04F4F">*</span></label>
-        <input type="text" id="apellido1" name="apellido1" value="@Model.Apellido1" required />
+        <!-- DATOS PERSONALES -->
+        <h3 class="subtitulo-seccion" style="margin-top: 40px;">Datos Personales</h3>
 
-        <label for="apellido2">Segundo Apellido</label>
-        <input type="text" id="apellido2" name="apellido2" value="@Model.Apellido2" />
+        <label for="telefono">Teléfono personal <span style="color:#E04F4F">*</span></label>
+        <input type="tel" id="telefono" name="telefono" value="8888-8888" required />
 
-        <label for="correo">Correo Electrónico <span style="color:#E04F4F">*</span></label>
-        <input type="email" id="correo" name="correo" value="@Model.Correo" required />
+        <label for="direccion">Dirección de residencia <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="direccion" name="direccion" value="San José, Costa Rica" required />
 
-        <label for="telefono">Teléfono</label>
-        <input type="text" id="telefono" name="telefono" value="@Model.Telefono" />
+        <label for="correoAlternativo">Correo electrónico alternativo <span style="color:#E04F4F">*</span></label>
+        <input type="email" id="correoAlternativo" name="correoAlternativo" value="alternativo@email.com" required />
 
-        <label for="carrera">Carrera <span style="color:#E04F4F">*</span></label>
-        <input type="text" id="carrera" name="carrera" value="@Model.Carrera" required />
+        <label for="pais">País de residencia <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="pais" name="pais" value="Costa Rica" required />
 
-        <label for="rol">Rol <span style="color:#E04F4F">*</span></label>
-        <select id="rol" name="rol" required>
-            <option value="Estudiante" @(Model.Rol == "Estudiante" ? "selected" : "")>Estudiante</option>
-            <option value="Egresado" @(Model.Rol == "Egresado" ? "selected" : "")>Egresado</option>
-            <option value="Otro" @(Model.Rol == "Otro" ? "selected" : "")>Otro</option>
+        <label for="correoMEP">Correo electrónico MEP (solo estudiantes)</label>
+        <input type="email" id="correoMEP" name="correoMEP" value="karolyn.mep@estudiante.mep.go.cr" />
+
+        <label for="sexo">Sexo <span style="color:#E04F4F">*</span></label>
+        <select id="sexo" name="sexo" required>
+            <option value="Femenino" selected>Femenino</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Otro">Otro</option>
         </select>
 
-        <label for="estado">Estado <span style="color:#E04F4F">*</span></label>
-        <select id="estado" name="estado" required>
-            <option value="Activo" @(Model.Estado == "Activo" ? "selected" : "")>Activo</option>
-            <option value="Inactivo" @(Model.Estado == "Inactivo" ? "selected" : "")>Inactivo</option>
+        <!-- DATOS ACADÉMICOS -->
+        <h3 class="subtitulo-seccion" style="margin-top: 40px;">Datos Académicos</h3>
+
+        <label for="carrera">Carrera o programa cursado</label>
+        <input type="text" id="carrera" name="carrera" value="Ingeniería en Sistemas" />
+
+        <label for="anioGraduacion">Año de graduación</label>
+        <input type="number" id="anioGraduacion" name="anioGraduacion" min="1900" max="2099" value="2022" />
+
+        <label for="titulo">Título obtenido</label>
+        <input type="text" id="titulo" name="titulo" value="Licenciatura en Ingeniería en Sistemas" />
+
+        <label for="areaProfesional">Área profesional</label>
+        <select id="areaProfesional" name="areaProfesional">
+            <option value="" disabled>-- Seleccione área --</option>
+            <option value="Administración">Administración</option>
+            <option value="Ingeniería" selected>Ingeniería</option>
+            <option value="Salud">Salud</option>
+            <option value="Educación">Educación</option>
         </select>
 
-        <a href="@Url.Action("ListaUsuarios", "Usuario")" class="btn-guardar">Guardar Cambios</a>
+        <!-- DATOS LABORALES -->
+        <h3 class="subtitulo-seccion" style="margin-top: 40px;">Datos Laborales (solo egresados)</h3>
+
+        <label for="empresa">Empresa actual</label>
+        <input type="text" id="empresa" name="empresa" value="Tech Solutions S.A." />
+
+        <label for="puesto">Puesto actual</label>
+        <input type="text" id="puesto" name="puesto" value="Desarrolladora Full Stack" />
+
+        <label for="correoLaboral">Correo electrónico laboral</label>
+        <input type="email" id="correoLaboral" name="correoLaboral" value="karolyn.batista@techsolutions.com" />
+
+        <!-- DATOS MÉDICOS -->
+        <h3 class="subtitulo-seccion" style="margin-top: 40px;">Datos Médicos</h3>
+
+        <label for="padecimientos">Padecimientos</label>
+        <textarea id="padecimientos" name="padecimientos">Ninguno</textarea>
+
+        <label for="medicamentos">Medicamentos</label>
+        <textarea id="medicamentos" name="medicamentos">N/A</textarea>
+
+        <label for="alergias">Alergias</label>
+        <textarea id="alergias" name="alergias">Penicilina</textarea>
+
+        <!-- DOCUMENTOS PERSONALES -->
+        <h3 class="subtitulo-seccion" style="margin-top: 40px;">Documentos personales</h3>
+
+        <p>Documentos ya cargados:</p>
+        <ul>
+            <li>
+                <a href="/Documentos/cv_karolyn.pdf" target="_blank">cv_karolyn.pdf</a> – cargado el 2025-06-20
+            </li>
+            <li>
+                <a href="/Documentos/titulo_karolyn.pdf" target="_blank">titulo_karolyn.pdf</a> – cargado el 2025-06-20
+            </li>
+        </ul>
+
+        <label for="documento">Subir nuevos archivos (.pdf, .jpg, .png, .xls)</label>
+        <input type="file" id="documento" name="documento" accept=".pdf,.jpg,.png,.xls" multiple />
+
+        <small class="nota-formulario">
+            Solo se permiten archivos .pdf, .jpg, .png, .xls con tamaño máximo de 5 MB.
+        </small>
+
+        <button type="submit" class="btn-guardar" style="margin-top: 30px;">Guardar Cambios</button>
     </form>
 </section>
 
