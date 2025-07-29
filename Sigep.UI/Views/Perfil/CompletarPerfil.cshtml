@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Completar Perfil";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<section class="vacantes-wrapper">
+    <h2 class="vacantes-titulo titulo-principal">Completar Perfil</h2>
+
+    <form class="formulario-vacante" method="post" action="@Url.Action("GuardarPerfil", "Perfil")">
+        <h3 class="subtitulo-seccion">Datos Personales</h3>
+
+        <label for="telefono">Teléfono personal <span style="color:#E04F4F">*</span></label>
+        <input type="tel" id="telefono" name="telefono" required />
+
+        <label for="direccion">Dirección de residencia <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="direccion" name="direccion" required />
+
+        <label for="correoAlternativo">Correo electrónico alternativo <span style="color:#E04F4F">*</span></label>
+        <input type="email" id="correoAlternativo" name="correoAlternativo" required />
+
+        <label for="pais">País de residencia <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="pais" name="pais" required />
+
+        <label for="correoMEP">Correo electrónico MEP (solo estudiantes)</label>
+        <input type="email" id="correoMEP" name="correoMEP" />
+
+        <label for="sexo">Sexo <span style="color:#E04F4F">*</span></label>
+        <select id="sexo" name="sexo" required>
+            <option value="" disabled selected>-- Seleccione --</option>
+            <option value="Femenino">Femenino</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Otro">Otro</option>
+        </select>
+
+        <h3 class="subtitulo-seccion">Datos Académicos</h3>
+
+        <label for="carrera">Carrera o programa cursado</label>
+        <input type="text" id="carrera" name="carrera" />
+
+        <label for="anioGraduacion">Año de graduación</label>
+        <input type="number" id="anioGraduacion" name="anioGraduacion" min="1900" max="2099" />
+
+        <label for="titulo">Título obtenido</label>
+        <input type="text" id="titulo" name="titulo" />
+
+        <label for="areaProfesional">Área profesional</label>
+        <select id="areaProfesional" name="areaProfesional">
+            <option value="" disabled selected>-- Seleccione área --</option>
+            <option value="Administración">Administración</option>
+            <option value="Ingeniería">Ingeniería</option>
+            <option value="Salud">Salud</option>
+            <option value="Educación">Educación</option>
+        </select>
+
+        <h3 class="subtitulo-seccion">Datos Laborales (solo egresados)</h3>
+
+        <label for="empresa">Empresa actual</label>
+        <input type="text" id="empresa" name="empresa" />
+
+        <label for="puesto">Puesto actual</label>
+        <input type="text" id="puesto" name="puesto" />
+
+        <label for="correoLaboral">Correo electrónico laboral</label>
+        <input type="email" id="correoLaboral" name="correoLaboral" />
+
+        <h3 class="subtitulo-seccion">Datos Médicos</h3>
+
+        <label for="padecimientos">Padecimientos</label>
+        <textarea id="padecimientos" name="padecimientos" placeholder="Indique si padece alguna condición médica..."></textarea>
+
+        <label for="medicamentos">Medicamentos</label>
+        <textarea id="medicamentos" name="medicamentos" placeholder="Medicamentos que utiliza regularmente..."></textarea>
+
+        <label for="alergias">Alergias</label>
+        <textarea id="alergias" name="alergias" placeholder="Alergias conocidas..."></textarea>
+
+        <button type="submit" class="btn-guardar">Guardar</button>
+    </form>
+</section>
+
+<link href="~/Content/estilos/estilos.css" rel="stylesheet" />
