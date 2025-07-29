@@ -6,7 +6,7 @@
 <section class="vacantes-wrapper">
     <h2 class="vacantes-titulo titulo-principal">Completar Perfil</h2>
 
-    <form class="formulario-vacante" method="post" action="@Url.Action("GuardarPerfil", "Perfil")">
+    <form class="formulario-vacante" method="post" action="@Url.Action("GuardarPerfil", "Perfil")" enctype="multipart/form-data">
         <h3 class="subtitulo-seccion">Datos Personales</h3>
 
         <label for="telefono">Teléfono personal <span style="color:#E04F4F">*</span></label>
@@ -73,6 +73,15 @@
 
         <label for="alergias">Alergias</label>
         <textarea id="alergias" name="alergias" placeholder="Alergias conocidas..."></textarea>
+
+        <h3 class="subtitulo-seccion">Currículum Vitae</h3>
+
+        <label for="cv">Subir archivo PDF (máx. 5 MB) <span style="color:#E04F4F">*</span></label>
+        <input type="file" id="cv" name="cv" accept=".pdf" required />
+
+        <small class="nota-formulario">
+            Solo se permiten archivos PDF de hasta 5 MB.
+        </small>
 
         <button type="submit" class="btn-guardar">Guardar</button>
     </form>

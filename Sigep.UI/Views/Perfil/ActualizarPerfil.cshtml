@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Editar Perfil de Usuario";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<section class="vacantes-wrapper">
+    <h2 class="vacantes-titulo titulo-principal">Editar Perfil de Usuario</h2>
+
+    <form class="formulario-vacante" method="post" action="@Url.Action("GuardarPerfil", "Usuario")">
+        <label for="nombre">Nombre <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="nombre" name="nombre" value="@Model.Nombre" required />
+
+        <label for="apellido1">Primer Apellido <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="apellido1" name="apellido1" value="@Model.Apellido1" required />
+
+        <label for="apellido2">Segundo Apellido</label>
+        <input type="text" id="apellido2" name="apellido2" value="@Model.Apellido2" />
+
+        <label for="correo">Correo Electrónico <span style="color:#E04F4F">*</span></label>
+        <input type="email" id="correo" name="correo" value="@Model.Correo" required />
+
+        <label for="telefono">Teléfono</label>
+        <input type="text" id="telefono" name="telefono" value="@Model.Telefono" />
+
+        <label for="carrera">Carrera <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="carrera" name="carrera" value="@Model.Carrera" required />
+
+        <label for="rol">Rol <span style="color:#E04F4F">*</span></label>
+        <select id="rol" name="rol" required>
+            <option value="Estudiante" @(Model.Rol == "Estudiante" ? "selected" : "")>Estudiante</option>
+            <option value="Egresado" @(Model.Rol == "Egresado" ? "selected" : "")>Egresado</option>
+            <option value="Otro" @(Model.Rol == "Otro" ? "selected" : "")>Otro</option>
+        </select>
+
+        <label for="estado">Estado <span style="color:#E04F4F">*</span></label>
+        <select id="estado" name="estado" required>
+            <option value="Activo" @(Model.Estado == "Activo" ? "selected" : "")>Activo</option>
+            <option value="Inactivo" @(Model.Estado == "Inactivo" ? "selected" : "")>Inactivo</option>
+        </select>
+
+        <a href="@Url.Action("ListaUsuarios", "Usuario")" class="btn-guardar">Guardar Cambios</a>
+    </form>
+</section>
+
+<link href="~/Content/estilos/estilos.css" rel="stylesheet" />
