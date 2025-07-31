@@ -176,6 +176,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ComunicadosController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="Controllers\VacanteController.cs" />
     <Compile Include="Controllers\CoordinadorController.cs" />
@@ -308,6 +309,8 @@
     <Content Include="Views\Perfil\CompletarPerfil.cshtml" />
     <Content Include="Views\Perfil\ActualizarPerfil.cshtml" />
     <Content Include="Views\Perfil\FormularioEncargado.cshtml" />
+    <Content Include="Views\Perfil\MiPerfil.cshtml" />
+    <Content Include="Views\Comunicados\Comunicados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

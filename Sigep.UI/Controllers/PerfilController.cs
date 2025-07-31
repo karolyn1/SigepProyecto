@@ -105,5 +105,17 @@ namespace Sigep.UI.Controllers
                 return View();
             }
         }
+        // GET:  mi perfil
+        public ActionResult MiPerfil()
+        {
+            if (Session["rol"] == null)
+            {
+                // Redirige a login o página principal si no hay sesión de rol
+                return RedirectToAction("Login", "Home");
+            }
+
+            return View();
+        }
+
     }
 }

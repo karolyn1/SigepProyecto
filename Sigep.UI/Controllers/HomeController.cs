@@ -33,7 +33,7 @@ namespace Sigep.UI.Controllers
         public ActionResult Login(Usuario usuario) {
             var coordinador = "118810955";
             var nombreCoordinador = "Ariana";
-            var estudiante = "123456789";
+            var estudiante = "305550650";
             var nombreEstudiante = "Johnny";
             var egresado = "987654321";
             var nombreEgresado = "Karolyn";
