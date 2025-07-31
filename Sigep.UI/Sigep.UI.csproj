@@ -170,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\BundleConfig2.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -177,7 +178,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ComunicadosController.cs" />
+    <Compile Include="Controllers\EvaluacionController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
+    <Compile Include="Controllers\VacanteController.cs" />
+    <Compile Include="Controllers\PerfilController.cs" />
+    <Compile Include="Controllers\PracticasController.cs" />
     <Compile Include="Controllers\VacanteController.cs" />
     <Compile Include="Controllers\CoordinadorController.cs" />
     <Compile Include="Controllers\EgresadoController.cs" />
@@ -237,6 +242,9 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\custom.min.js" />
+    <Content Include="Scripts\DataTable\dataTables.js" />
+    <Content Include="Content\Documentos\Estudio de caso.pdf" />
+    <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\DataTable\dataTables.js" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\javascript.js" />
@@ -311,10 +319,13 @@
     <Content Include="Views\Perfil\FormularioEncargado.cshtml" />
     <Content Include="Views\Perfil\MiPerfil.cshtml" />
     <Content Include="Views\Comunicados\Comunicados.cshtml" />
+    <Content Include="Views\Practicas\VacantesEstudiantes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Data\" />
     <Folder Include="Views\Egresado\" />
+    <Folder Include="Views\Evaluacion\" />
     <Folder Include="Views\Profesor\" />
   </ItemGroup>
   <ItemGroup>
