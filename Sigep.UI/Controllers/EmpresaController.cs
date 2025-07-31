@@ -6,29 +6,32 @@ using System.Web.Mvc;
 
 namespace Sigep.UI.Controllers
 {
-    public class CoordinadorController : Controller
+    public class EmpresaController : Controller
     {
-        // GET: Coordinador
-        public ActionResult Index()
+        
+        // GET: Empresa/ListaEmpresas
+        public ActionResult ListaEmpresas()
         {
-            return View();
+            return View(); // Retorna la vista con el listado
         }
 
-        // GET: Coordinador/Details/5
+        // GET: Empresa/Agregar
+        public ActionResult CrearEmpresa()
+        {
+            return View(); // Retorna el formulario de agregar empresa
+        }
+
+        // GET: Empresa/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Coordinador/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+       
 
-        // POST: Coordinador/Create
+        // POST: Empresa/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult CrearEmpresa(FormCollection collection)
         {
             try
             {
@@ -42,15 +45,15 @@ namespace Sigep.UI.Controllers
             }
         }
 
-        // GET: Coordinador/Edit/5
-        public ActionResult Edit(int id)
+        // GET: Empresa/Edit/5
+        public ActionResult EditarEmpresa(int id)
         {
             return View();
         }
 
-        // POST: Coordinador/Edit/5
+        // POST: Empresa/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult EditarEmpresa(int id, FormCollection collection)
         {
             try
             {
@@ -64,15 +67,15 @@ namespace Sigep.UI.Controllers
             }
         }
 
-        // GET: Coordinador/Delete/5
-        public ActionResult Delete(int id)
+        // GET: Empresa/Delete/5
+        public ActionResult EliminarEmpresa(int id)
         {
             return View();
         }
 
-        // POST: Coordinador/Delete/5
+        // POST: Empresa/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult EliminarEmpresa(int id, FormCollection collection)
         {
             try
             {
@@ -85,15 +88,5 @@ namespace Sigep.UI.Controllers
                 return View();
             }
         }
-
-
-        // Vista con la lista de egresados para el coordinador (con acciones de editar/desactivar)
-        public ActionResult ListaEgresados()
-        {
-            return View();
-        }
-
-      
-     
     }
 }

@@ -178,6 +178,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ComunicadosController.cs" />
+    <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="Controllers\EvaluacionController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="Controllers\VacanteController.cs" />
@@ -320,6 +321,10 @@
     <Content Include="Views\Perfil\MiPerfil.cshtml" />
     <Content Include="Views\Comunicados\Comunicados.cshtml" />
     <Content Include="Views\Practicas\VacantesEstudiantes.cshtml" />
+    <Content Include="Views\Empresa\ListaEmpresas.cshtml" />
+    <Content Include="Views\Empresa\CrearEmpresa.cshtml" />
+    <Content Include="Views\Empresa\EditarEmpresa.cshtml" />
+    <Content Include="Views\Empresa\EliminarEmpresa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

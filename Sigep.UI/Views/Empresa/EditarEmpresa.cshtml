@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Editar Empresa";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<section class="vacantes-wrapper">
+    <h2 class="vacantes-titulo titulo-principal">Editar Empresa</h2>
+
+    <form class="formulario-vacante" method="post" action="#">
+        <label for="nombreEmpresa">Nombre de la empresa <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="nombreEmpresa" name="nombreEmpresa" value="TechSolutions S.A." required />
+
+        <label for="direccion">Dirección física <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="direccion" name="direccion" value="Avenida Central 123" required />
+
+        <label for="nombreContacto">Nombre de la persona de contacto <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="nombreContacto" name="nombreContacto" value="Juan Pérez" required />
+
+        <label for="correo">Correo electrónico <span style="color:#E04F4F">*</span></label>
+        <input type="email" id="correo" name="correo" value="juan.perez@techsolutions.com" required />
+
+        <label for="telefono">Número de teléfono <span style="color:#E04F4F">*</span></label>
+        <input type="tel" id="telefono" name="telefono" value="8888-8888" required />
+
+        <label for="areasAfines">Áreas afines <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="areasAfines" name="areasAfines" value="Informática, Electrónica" required />
+
+        @*<button type="submit" class="btn-guardar">Guardar Cambios</button>*@
+        <a href="@Url.Action("ListaEmpresas", "Empresa")" class="btn-guardar">Guardar Cambios</a>
+    </form>
+</section>
+
+<link href="~/Content/estilos/estilos.css" rel="stylesheet" />

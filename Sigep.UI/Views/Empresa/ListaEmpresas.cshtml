@@ -1,0 +1,73 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    ViewBag.Title = "Listado de Empresas";
+}
+
+<h2 class="vacantes-titulo titulo-principal d-flex justify-content-between align-items-center">
+    Empresas Registradas
+    <a href="@Url.Action("CrearEmpresa", "Empresa")" class="btn btn-outline-secondary">
+        <i class="fas fa-plus"></i> Agregar Empresa
+    </a>
+</h2>
+
+<div class="card rounded-5 p-3 mt-3">
+    <table id="tablaEmpresas" class="display responsive nowrap w-100">
+        <thead>
+            <tr>
+                <th>Nombre de Empresa</th>
+                <th>Especialidades que Reciben</th>
+                <th>Ubicación</th>
+                <th>Historial de Vacantes</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>TechSolutions</td>
+                <td>Informática, Electrónica</td>
+                <td>San José</td>
+                <td>5 vacantes anteriores</td>
+                <td>
+                    <button class="btn bg-transparent" style="color: #2d594d" title="Editar">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn bg-transparent" style="color: #2d594d" title="Desactivar">
+                        <i class="fas fa-ban"></i>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>InnovaCorp</td>
+                <td>Electromecánica</td>
+                <td>Heredia</td>
+                <td>3 vacantes anteriores</td>
+                <td>
+                    @*<button class="btn bg-transparent" style="color: #2d594d" title="Editar">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="btn bg-transparent" style="color: #2d594d" title="Desactivar">
+            <i class="fas fa-ban"></i>
+        </button>*@
+                    <a href="@Url.Action("EditarEmpresa", "Empresa", new { id = 1 })"
+                       class="btn bg-transparent" style="color: #2d594d" title="Editar">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="@Url.Action("EliminarEmpresa", "Empresa", new { id = 1 })"
+                       class="btn bg-transparent" style="color: #2d594d" title="Desactivar">
+                        <i class="fas fa-ban"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('#tablaEmpresas').DataTable({
+                responsive: true
+            });
+        });
+    </script>
+}
