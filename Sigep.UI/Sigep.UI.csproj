@@ -182,6 +182,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+<<<<<<< Updated upstream
+=======
+    <Compile Include="Controllers\PerfilController.cs" />
+    <Compile Include="Controllers\PracticasController.cs" />
+    <Compile Include="Controllers\VacanteController.cs" />
+>>>>>>> Stashed changes
     <Compile Include="Controllers\CoordinadorController.cs" />
     <Compile Include="Controllers\EgresadoController.cs" />
     <Compile Include="Controllers\EstudianteController.cs" />
@@ -226,6 +232,12 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+<<<<<<< Updated upstream
+=======
+    <Content Include="Scripts\custom.min.js" />
+    <Content Include="Scripts\DataTable\dataTables.js" />
+    <Content Include="Content\Documentos\Estudio de caso.pdf" />
+>>>>>>> Stashed changes
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\DataTable\dataTables.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
@@ -277,6 +289,27 @@
     <Content Include="Views\Estudiante\CrearEstudiante.cshtml" />
     <Content Include="Views\Estudiante\EditarEstudiante.cshtml" />
     <Content Include="Views\Estudiante\EliminarEstudiante.cshtml" />
+<<<<<<< Updated upstream
+=======
+    <Content Include="Views\Shared\_LayoutMain.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutExterno.cshtml" />
+    <Content Include="Views\Vacante\ListaVacantesEgresado.cshtml" />
+    <Content Include="Views\Vacante\DetalleVacanteEgresado.cshtml" />
+    <Content Include="Views\Vacante\CrearVacante.cshtml" />
+    <Content Include="Views\Vacante\ListaVacanteCoordinador.cshtml" />
+    <Content Include="Views\Vacante\EditarVacante.cshtml" />
+    <Content Include="Views\Home\Registro.cshtml" />
+    <Content Include="Views\Home\RecuperarAcceso.cshtml" />
+    <Content Include="Views\Coordinador\ListaEgresados.cshtml" />
+    <Content Include="Views\Estudiante\PerfilEstudiante.cshtml" />
+    <Content Include="Views\Estudiante\ComunicadosEstudiante.cshtml" />
+    <Content Include="Views\Perfil\CompletarPerfil.cshtml" />
+    <Content Include="Views\Perfil\ActualizarPerfil.cshtml" />
+    <Content Include="Views\Perfil\FormularioEncargado.cshtml" />
+    <Content Include="Views\Practicas\VacantesEstudiantes.cshtml" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
