@@ -54,33 +54,13 @@
                     </ul>
                     <ul class="navbar-nav float-right">
 
-                        <li class="nav-item dropdown">
+                        <span class="mr-3" style="color: #2d594d">
+                            <b>                                Hola, @Session["nombre"]</b>
+                         
 
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Hola, @Session["nombre"]
-                                <span class="m-l-5 font-medium d-none d-sm-inline-block">  <i class="mdi mdi-chevron-down"></i></span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
-                                <span class="with-arrow">
-                                    <span class="bg-primary"></span>
-                                </span>
-
-                                <div class="profile-dis scrollable">
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="@Url.Action("ConsultarPerfilUsuario","Usuario")">
-                                        <i class="ti-settings m-r-5 m-l-5"></i> Perfil
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="@Url.Action("CambiarContrasenna","Usuario")">
-                                        <i class="ti-lock m-r-5 m-l-5"></i> Seguridad
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="@Url.Action("CerrarSesion","Home")">
-                                        <i class="fa fa-sign-out-alt m-r-5 m-l-5"></i> Salir
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
+                               
+                        
+                        </span>
                     </ul>
                 </div>
             </nav>
