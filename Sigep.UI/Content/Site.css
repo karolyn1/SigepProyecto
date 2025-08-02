@@ -16,10 +16,6 @@
 /* Set width on the form input elements since they're 100% wide by default */
 
 
-textarea {
-    max-width: 280px;
-}
-
 
 .gradient-custom {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('imagenes/ctp.jpg') no-repeat center center fixed;

@@ -9,9 +9,15 @@ namespace Sigep.UI.Controllers
     public class PracticasController : Controller
     {
         // GET: Practicas
+        [HttpGet]
         public ActionResult VacantesEstudiantes()
         {
             return View();
         }
+
+
+
+
+
     }
 }
