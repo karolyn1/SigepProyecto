@@ -21,10 +21,20 @@ namespace Sigep.UI.Controllers
             return View();
         }
 
-        public ActionResult CambiarEstadoUsuario(int id)
+        [HttpPost]
+        public ActionResult EditarRol(int usuarioId, string rol)
         {
-            return View();
+            // Aquí haces la actualización del rol...
+            // ...
+
+            // Luego rediriges a la pestaña adecuada:
+            return RedirectToAction("GestionAdministracion", "AdministracionGeneral", new { tab = "usuarios" });
         }
+
+        //public ActionResult CambiarEstadoUsuario(int id)
+        //{
+        //    return View();
+        //}
 
         // Especialidades
         public ActionResult CrearEspecialidad()
@@ -33,11 +43,39 @@ namespace Sigep.UI.Controllers
         }
         public ActionResult EditarEspecialidad(int id)
         {
+            // Como no tienes BD, mandás datos quemados al ViewBag
+            if (id == 1) // ejemplo solo para id = 1
+            {
+                ViewBag.Id = id;
+                ViewBag.Nombre = "Informática";
+                ViewBag.Descripcion = "Desarrollo de software y redes";
+            }
+            else
+            {
+                ViewBag.Id = id;
+                ViewBag.Nombre = "Especialidad";
+                ViewBag.Descripcion = "";
+            }
+
             return View();
         }
+
+
+        // POST: Acción que procesa el formulario y redirige
+        [HttpPost]
+        public ActionResult EditarEspecialidad(int id, string nombreEspecialidad, string descripcionEspecialidad)
+        {
+            // Aquí harías la lógica para guardar cambios (ahora no tienes BD, así que no hace nada)
+
+            // Redirigir a GestionAdministracion en la pestaña especialidades
+            return RedirectToAction("GestionAdministracion", "AdministracionGeneral", new { tab = "especialidades" });
+        }
+
         public ActionResult EliminarEspecialidad(int id)
         {
-            return View();
+            TempData["Mensaje"] = $"Especialidad con ID {id} eliminada (demo).";
+            return RedirectToAction("GestionAdministracion", new { tab = "especialidades" });
+            return RedirectToAction("Index"); // O la acción que cargue tu panel general
         }
 
 
@@ -54,12 +92,40 @@ namespace Sigep.UI.Controllers
         }
         public ActionResult EditarSeccion(int id)
         {
+            // Simulación de datos quemados para la sección con id = 1
+            if (id == 1)
+            {
+                ViewBag.Id = id;
+                ViewBag.Nombre = "SEC-01"; // Código o nombre de la sección
+                ViewBag.Descripcion = "Descripción ejemplo para la sección SEC-01";
+            }
+            else
+            {
+                ViewBag.Id = id;
+                ViewBag.Nombre = "Sección";
+                ViewBag.Descripcion = "";
+            }
+
             return View();
         }
+        [HttpPost]
+        public ActionResult EditarSeccion(int id, string nombreSeccion, string descripcionSeccion)
+        {
+            // Aquí podrías agregar la lógica para guardar los cambios
+            // Como no tienes base de datos, solo simulamos la acción
+
+            // Redirigir a la vista principal con la pestaña "secciones" activa
+            return RedirectToAction("GestionAdministracion", "AdministracionGeneral", new { tab = "secciones" });
+        }
+
         public ActionResult EliminarSeccion(int id)
         {
-            return View();
+            // Aquí puedes agregar lógica simulada o simplemente redirigir.
+            TempData["Mensaje"] = "Sección eliminada correctamente.";
+            return RedirectToAction("GestionAdministracion", new { tab = "secciones" });
+
         }
+      
 
 
         // GET: AdministracionGeneral/Create

@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Editar Especialidad";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<section class="vacantes-wrapper">
+    <h2 class="vacantes-titulo titulo-principal">Editar Especialidad</h2>
+
+    <form class="formulario-vacante" method="post" action="@Url.Action("EditarEspecialidad", "AdministracionGeneral")">
+        <input type="hidden" name="id" value="@ViewBag.Id" />
+
+        <label for="nombreEspecialidad">Nombre de la especialidad <span style="color:#E04F4F">*</span></label>
+        <input type="text" id="nombreEspecialidad" name="nombreEspecialidad" placeholder="Ejemplo: Informática" required value="@ViewBag.Nombre" />
+
+        <label for="descripcionEspecialidad">Descripción <span style="color:#E04F4F">*</span></label>
+        <textarea id="descripcionEspecialidad" name="descripcionEspecialidad" required>@ViewBag.Descripcion</textarea>
+
+        <button type="submit" class="btn-guardar">Guardar Cambios</button>
+    </form>
+</section>
+
+<link href="~/Content/estilos/estilos.css" rel="stylesheet" />

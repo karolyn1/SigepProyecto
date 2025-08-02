@@ -10,19 +10,19 @@
     <div class="container mt-4">
         <div class="row gy-3 mb-4">
             <div class="col-md-4">
-                <button class="btn btn-outline-primary w-100 py-3 shadow rounded-4"
+                <button class="btn btn-outline-usuarios w-100 py-3 shadow rounded-4"
                         onclick="mostrarSeccion('usuarios')">
                     <i class="fas fa-users me-2"></i> Gestión de Usuarios
                 </button>
             </div>
             <div class="col-md-4">
-                <button class="btn btn-outline-success w-100 py-3 shadow rounded-4"
+                <button class="btn btn-outline-especialidades w-100 py-3 shadow rounded-4"
                         onclick="mostrarSeccion('especialidades')">
                     <i class="fas fa-tools me-2"></i> Gestión de Especialidades
                 </button>
             </div>
             <div class="col-md-4">
-                <button class="btn btn-outline-warning w-100 py-3 shadow rounded-4"
+                <button class="btn btn-outline-secciones w-100 py-3 shadow rounded-4"
                         onclick="mostrarSeccion('secciones')">
                     <i class="fas fa-layer-group me-2"></i> Gestión de Secciones
                 </button>
@@ -31,42 +31,9 @@
     </div>
 
 
-
-    <!-- Gestión de Usuarios -->
-    <!--<div id="usuarios" class="seccion-adm" style="display: none;">
-        <h3>Gestión de Usuarios</h3>
-        <div class="table-container">
-            <table class="display responsive nowrap w-100">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Cédula</th>
-                        <th>Email</th>
-                        <th>Rol</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Laura Rodríguez</td>
-                        <td>12345678</td>
-                        <td>laura@email.com</td>
-                        <td>Estudiante</td>
-                        <td>Activo</td>
-                        <td>
-                            <a href="@Url.Action("EditarRolUsuario", "AdministracionGeneral", new { id = 1 })" class="btn bg-transparent" title="Editar Rol"><i class="fas fa-user-cog"></i></a>
-                            <a href="@Url.Action("CambiarEstadoUsuario", "AdministracionGeneral", new { id = 1 })" class="btn bg-transparent" title="Inactivar"><i class="fas fa-user-slash"></i></a>
-                        </td>
-                    </tr>-->
-    <!-- Más usuarios -->
-    <!--</tbody>
-            </table>
-        </div>
-    </div>-->
     <!-- Gestión de Usuarios -->
     <div id="usuarios" class="seccion-adm" style="display: none;">
-        <h3>Gestión de Usuarios</h3>
+        <h3 class="text-center">Gestión de Usuarios</h3>
 
         <!-- Filtro por Rol -->
         <div class="row mb-3">
@@ -101,16 +68,15 @@
                         <td>12345678</td>
                         <td>laura@email.com</td>
                         <td>Estudiante</td>
-                        <td>Activo</td>
+                        <td class="estado">Activo</td>
                         <td>
                             <a href="@Url.Action("EditarRolUsuario", "AdministracionGeneral", new { id = 1 })"
-                               class="btn btn-sm btn-outline-secondary me-1" title="Editar Rol">
-                                <i class="fas fa-user-cog"></i>
+                               class="btn bg-transparent me-1" title="Editar Rol">
+                                <i class="fas fa-user-cog icono-accion"></i>
                             </a>
 
-                            <a href="@Url.Action("CambiarEstadoUsuario", "AdministracionGeneral", new { id = 1 })"
-                               class="btn btn-sm btn-outline-danger" title="Inactivar">
-                                <i class="fas fa-user-slash"></i>
+                            <a href="#" class="btn bg-transparent" title="Inactivar" onclick="confirmarCambioEstado(this)">
+                                <i class="fas fa-user-slash icono-accion"></i>
                             </a>
                         </td>
                     </tr>
@@ -122,10 +88,13 @@
 
     <!-- Gestión de Especialidades -->
     <div id="especialidades" class="seccion-adm" style="display: none;">
-        <h3>Gestión de Especialidades</h3>
-        <a href="@Url.Action("CrearEspecialidad", "AdministracionGeneral")" class="btn btn-success mb-2">+ Nueva Especialidad</a>
+        <h3 class="text-center">Especialidades Registradas</h3>
+
+        <a href="@Url.Action("CrearEspecialidad", "AdministracionGeneral")"
+           class="btn-cta btn-nuevo" style="margin-bottom: 25px;">+ Nueva Especialidad</a>
+
         <div class="table-container">
-            <table class="display responsive nowrap w-100">
+            <table id="tablaEspecialidades" class="display responsive nowrap w-100">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -134,26 +103,58 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr data-id="1">
                         <td>Informática</td>
                         <td>Desarrollo de software y redes</td>
                         <td>
-                            <a href="@Url.Action("EditarEspecialidad", "AdministracionGeneral", new { id = 1 })" class="btn bg-transparent" title="Editar"><i class="fas fa-edit"></i></a>
-                            <a href="@Url.Action("EliminarEspecialidad", "AdministracionGeneral", new { id = 1 })" class="btn bg-transparent" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            <a href="@Url.Action("EditarEspecialidad", "AdministracionGeneral", new { id = 1 })"
+                               class="btn bg-transparent" title="Editar">
+                                <i class="fas fa-edit icono-accion"></i>
+                            </a>
+                            <a href="#"
+                               class="btn bg-transparent btn-eliminar-especialidad"
+                               data-id="1"
+                               data-nombre="Informática"
+                               title="Eliminar">
+                                <i class="fas fa-trash-alt icono-accion"></i>
+                            </a>
                         </td>
                     </tr>
                     <!-- Más especialidades -->
                 </tbody>
             </table>
+            <!-- Modal Confirmar Eliminación Especialidad -->
+            <div class="modal fade" id="modalEliminarEspecialidad" tabindex="-1" aria-labelledby="modalEliminarEspecialidadLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Confirmar Eliminación</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                            ¿Está seguro que desea eliminar esta especialidad?
+                        </div>
+                        <div class="modal-footer">
+                            <form id="formEliminarEspecialidad">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Gestión de Secciones -->
     <div id="secciones" class="seccion-adm" style="display: none;">
-        <h3>Gestión de Secciones</h3>
-        <a href="@Url.Action("CrearSeccion", "AdministracionGeneral")" class="btn btn-success mb-2">+ Nueva Sección</a>
+        <h3 class="text-center">Secciones Registradas</h3>
+
+        <a href="@Url.Action("CrearSeccion", "AdministracionGeneral")"
+           class="btn-cta btn-nuevo mb-3">+ Nueva Sección</a>
+
         <div class="table-container">
-            <table class="display responsive nowrap w-100">
+            <table id="tablaSecciones" class="display responsive nowrap w-100">
                 <thead>
                     <tr>
                         <th>Código</th>
@@ -161,77 +162,180 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr data-id="1">
                         <td>SEC-01</td>
                         <td>
-                            <a href="@Url.Action("EditarSeccion", "AdministracionGeneral", new { id = 1 })" class="btn bg-transparent" title="Editar"><i class="fas fa-edit"></i></a>
-                            <a href="@Url.Action("EliminarSeccion", "AdministracionGeneral", new { id = 1 })" class="btn bg-transparent" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            <a href="@Url.Action("EditarSeccion", "AdministracionGeneral", new { id = 1 })"
+                               class="btn bg-transparent" title="Editar">
+                                <i class="fas fa-edit icono-accion"></i>
+                            </a>
+                            <a href="#"
+                               class="btn bg-transparent btn-eliminar-seccion"
+                               data-id="1"
+                               title="Eliminar">
+                                <i class="fas fa-trash-alt icono-accion"></i>
+                            </a>
                         </td>
                     </tr>
                     <!-- Más secciones -->
+
+
+
                 </tbody>
             </table>
+            <!-- Modal Confirmar Eliminación Sección -->
+            <div class="modal fade" id="modalEliminarSeccion" tabindex="-1" aria-labelledby="modalEliminarSeccionLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Confirmar Eliminación</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                            ¿Está seguro que desea eliminar esta sección?
+                        </div>
+                        <div class="modal-footer">
+                            <form id="formEliminarSeccion" method="post" action="">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-</section>
 
-@section Scripts {
-    <!-- Font Awesome actualizado -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @section Scripts {
+        <!-- Font Awesome actualizado -->
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+              integrity="sha512-..." crossorigin="anonymous"
+              referrerpolicy="no-referrer" />
 
-    <script>
-        function mostrarSeccion(id) {
-            document.querySelectorAll('.seccion-adm').forEach(s => s.style.display = 'none');
-            document.getElementById(id).style.display = 'block';
+        <script>
+            function mostrarSeccion(id) {
+                document.querySelectorAll('.seccion-adm').forEach(s => s.style.display = 'none');
+                const seccion = document.getElementById(id);
+                if (seccion) seccion.style.display = 'block';
 
-            if (id === 'usuarios') {
-                // Destruir tabla si ya está inicializada
-                if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
-                    $('#tablaUsuarios').DataTable().destroy();
+                document.querySelectorAll('.btn[onclick^="mostrarSeccion"]').forEach(btn => {
+                    btn.classList.remove('btn-tab-active-usuarios', 'btn-tab-active-especialidades', 'btn-tab-active-secciones');
+                });
+
+                const btnActivo = document.querySelector(`button[onclick*="${id}"]`);
+                if (btnActivo) {
+                    btnActivo.classList.add(`btn-tab-active-${id}`);
                 }
 
-                // Re-inicializar
-                $('#tablaUsuarios').DataTable({
-                    responsive: true
-                });
+                if (id === 'usuarios') {
+                    if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
+                        $('#tablaUsuarios').DataTable().destroy();
+                    }
+                    $('#tablaUsuarios').DataTable({ responsive: true });
+                }
             }
-        }
 
-        $(document).ready(function () {
-            // Inicializa todas las demás tablas (excepto usuarios, que se inicializa con mostrarSeccion)
-            $('table.display').not('#tablaUsuarios').each(function () {
-                $(this).DataTable({
-                    responsive: true
+            $(document).ready(function () {
+                // Inicializar DataTables
+                $('table.display').not('#tablaUsuarios').each(function () {
+                    $(this).DataTable({ responsive: true });
+                });
+
+                // Filtro por rol
+                $('#filtroRol').on('change', function () {
+                    const valor = this.value;
+                    const tabla = $('#tablaUsuarios').DataTable();
+                    tabla.column(3).search(valor).draw();
+                });
+
+                // Leer tab desde URL
+                const params = new URLSearchParams(window.location.search);
+                const tab = params.get('tab');
+                mostrarSeccion(tab || 'usuarios');
+
+                // Lógica común para eliminar filas de especialidades y secciones
+                let filaAEliminar = null;
+
+                $('.btn-eliminar-especialidad').on('click', function (e) {
+                    e.preventDefault();
+                    filaAEliminar = $(this).closest('tr');
+                    $('#modalEliminarEspecialidad').modal('show');
+                });
+
+                $('#formEliminarEspecialidad').on('submit', function (e) {
+                    e.preventDefault();
+                    if (filaAEliminar) {
+                        filaAEliminar.remove();
+                        $('#modalEliminarEspecialidad').modal('hide');
+                        alert("Especialidad eliminada correctamente.");
+                    }
+                });
+
+                $('.btn-eliminar-seccion').on('click', function (e) {
+                    e.preventDefault();
+                    filaAEliminar = $(this).closest('tr');
+                    $('#modalEliminarSeccion').modal('show');
+                });
+
+                $('#formEliminarSeccion').on('submit', function (e) {
+                    e.preventDefault();
+                    if (filaAEliminar) {
+                        filaAEliminar.remove();
+                        $('#modalEliminarSeccion').modal('hide');
+                        alert("Sección eliminada correctamente.");
+                    }
                 });
             });
 
-            // Filtro por rol usando DataTable API
-            $('#filtroRol').on('change', function () {
-                const valor = this.value;
-                const tabla = $('#tablaUsuarios').DataTable();
-                tabla.column(3).search(valor).draw(); // Columna 3 = Rol
-            });
-        });
+            function toggleEstado(btn) {
+                const fila = btn.closest('tr');
+                const celdaEstado = fila.querySelector('.estado');
+                const icono = btn.querySelector('i');
 
-        $(document).ready(function () {
-            // Lo que ya tienes...
-            // ...
-
-            // Mostrar pestaña según query string "tab"
-            const params = new URLSearchParams(window.location.search);
-            const tab = params.get('tab');
-
-            if (tab) {
-                mostrarSeccion(tab);
-            } else {
-                // Si no hay parámetro, puedes mostrar una pestaña por defecto, ej:
-                mostrarSeccion('usuarios');
+                if (celdaEstado.textContent.trim() === 'Activo') {
+                    celdaEstado.textContent = 'Inactivo';
+                    btn.title = 'Activar';
+                    icono.classList.remove('fa-user-slash');
+                    icono.classList.add('fa-user-check');
+                    btn.classList.remove('btn-outline-danger');
+                    btn.classList.add('btn-outline-success');
+                } else {
+                    celdaEstado.textContent = 'Activo';
+                    btn.title = 'Inactivar';
+                    icono.classList.remove('fa-user-check');
+                    icono.classList.add('fa-user-slash');
+                    btn.classList.remove('btn-outline-success');
+                    btn.classList.add('btn-outline-danger');
+                }
             }
-        });
-    </script>
 
+            function confirmarCambioEstado(btn) {
+                const fila = btn.closest('tr');
+                const celdaEstado = fila.querySelector('.estado');
+                const icono = btn.querySelector('i');
+                const nombre = fila.querySelector('td').textContent.trim();
 
+                const estadoActual = celdaEstado.textContent.trim();
+                const nuevoEstado = estadoActual === 'Activo' ? 'Inactivo' : 'Activo';
+                const mensaje = `¿Deseas ${nuevoEstado === 'Activo' ? 'activar' : 'inactivar'} al usuario ${nombre}?`;
 
-
-}
-
+                if (confirm(mensaje)) {
+                    celdaEstado.textContent = nuevoEstado;
+                    if (nuevoEstado === 'Inactivo') {
+                        btn.title = 'Activar';
+                        icono.classList.remove('fa-user-slash');
+                        icono.classList.add('fa-user-check');
+                        icono.style.color = '#768C46';
+                    } else {
+                        btn.title = 'Inactivar';
+                        icono.classList.remove('fa-user-check');
+                        icono.classList.add('fa-user-slash');
+                        icono.style.color = '#2D594D';
+                    }
+                    alert(`Usuario ${nombre} ha sido marcado como ${nuevoEstado}.`);
+                }
+            }
+        </script>
+    }

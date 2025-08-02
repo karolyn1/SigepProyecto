@@ -327,6 +327,12 @@
     <Content Include="Views\Empresa\EditarEmpresa.cshtml" />
     <Content Include="Views\Empresa\EliminarEmpresa.cshtml" />
     <Content Include="Views\Evaluacion\ListarEstudianteConPractica.cshtml" />
+    <Content Include="Views\AdministracionGeneral\EditarRolUsuario.cshtml" />
+    <Content Include="Views\AdministracionGeneral\GestionAdministracion.cshtml" />
+    <Content Include="Views\AdministracionGeneral\CrearEspecialidad.cshtml" />
+    <Content Include="Views\AdministracionGeneral\EditarEspecialidad.cshtml" />
+    <Content Include="Views\AdministracionGeneral\CrearSeccion.cshtml" />
+    <Content Include="Views\AdministracionGeneral\EditarSeccion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
