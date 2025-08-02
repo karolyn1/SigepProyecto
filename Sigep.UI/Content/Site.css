@@ -188,3 +188,24 @@ textarea {
         margin-bottom: 8px;
         box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
+
+.action-buttons button {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: #2D594D;
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+    .action-buttons button:hover {
+        background-color: #768C46;
+    }
+
+.top-buttons .col-md-6 {
+    margin-bottom: 1rem;
+}
