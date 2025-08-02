@@ -177,6 +177,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdministracionGeneralController.cs" />
     <Compile Include="Controllers\ComunicadosController.cs" />
     <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="Controllers\EvaluacionController.cs" />
@@ -325,6 +326,8 @@
     <Content Include="Views\Empresa\CrearEmpresa.cshtml" />
     <Content Include="Views\Empresa\EditarEmpresa.cshtml" />
     <Content Include="Views\Empresa\EliminarEmpresa.cshtml" />
+    <Content Include="Views\AdministracionGeneral\GestionAdministracion.cshtml" />
+    <Content Include="Views\AdministracionGeneral\EditarRolUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
