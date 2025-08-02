@@ -1,7 +1,6 @@
 ﻿/* Set padding to keep content from hitting the edges */
 .body-content {
     font-family: 'Inter', sans-serif;
-
     margin-top: 15px;
     padding-left: 15px;
     padding-right: 15px;
@@ -153,19 +152,39 @@ textarea {
     .PostulacionesPerfil:hover {
         transform: scale(1.03);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-       
         cursor: pointer;
     }
 
-    .CerrarModal {
-        background-color: #2d594d;
-        color: white;
-        border-radius: 2px;
+.CerrarModal {
+    background-color: #2d594d;
+    color: white;
+    border-radius: 2px;
+}
 
+    .CerrarModal:hover {
+        transform: scale(1.03);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
     }
 
-.CerrarModal:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    cursor: pointer;
+.comentario-item {
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: pre-wrap;
 }
+
+#comentariosAnteriores {
+    max-height: 250px;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+    #comentariosAnteriores li {
+        word-break: break-word; /* Rompe palabras largas */
+        white-space: pre-wrap; /* Respeta saltos de línea y espacios */
+        background-color: #f1f1f1; /* Color suave */
+        border-radius: 8px;
+        padding: 10px 12px;
+        margin-bottom: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }

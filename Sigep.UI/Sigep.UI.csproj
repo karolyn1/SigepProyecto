@@ -325,12 +325,12 @@
     <Content Include="Views\Empresa\CrearEmpresa.cshtml" />
     <Content Include="Views\Empresa\EditarEmpresa.cshtml" />
     <Content Include="Views\Empresa\EliminarEmpresa.cshtml" />
+    <Content Include="Views\Evaluacion\ListarEstudianteConPractica.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
     <Folder Include="Views\Egresado\" />
-    <Folder Include="Views\Evaluacion\" />
     <Folder Include="Views\Profesor\" />
   </ItemGroup>
   <ItemGroup>
