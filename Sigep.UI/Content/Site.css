@@ -17,10 +17,6 @@
 /* Set width on the form input elements since they're 100% wide by default */
 
 
-textarea {
-    max-width: 280px;
-}
-
 
 .gradient-custom {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('imagenes/ctp.jpg') no-repeat center center fixed;
@@ -168,4 +164,21 @@ textarea {
     transform: scale(1.03);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
     cursor: pointer;
+}
+
+.OpcionesVacantes {
+    padding: 5px;
+    line-height: 24px;
+    color: #2d594d;
+    border: 0px;
+    border-radius: 5px;
+    -moz-appearance: none; /*Firefox legacy*/
+    -webkit-appearance: none; /* Chromes legacy*/
+    appearance: none;
+    /*Y a continuación añadimos el nuestro como background*/
+    background-image: url(/caret.svg);
+    background-size: 18px;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 12px) center; /*Lo posicionamos a la derecha*/
+    padding-right: 24px; /*le damos algo d
 }

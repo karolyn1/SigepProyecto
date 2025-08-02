@@ -3,306 +3,663 @@
     ViewBag.Title = "Vacantes - Prácticas";
 }
 <h2 class="vacantes-titulo titulo-principal d-flex justify-content-center align-items-center">
-    Vacantes @DateTime.Now.Year</h2>
-    <div class="vacantes-titulo titulo-principal d-flex justify-content-between align-items-center">
-      
-        <a href="@Url.Action("CrearVacante", "Vacante")" class="btn-cta btn-nuevo" style="margin-bottom: 25px;">+ Publicar Nueva Vacante</a>
-        <div class="dropdown">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filtroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-filter"></i>
-            </button>
-            <div class="dropdown-menu p-3" style="min-width: 300px;">
-                <div class="mb-2">
-                    <label>Estado de práctica</label>
-                    <select id="filtroPractica" class="form-control">
-                        <option value="">Todos</option>
-                        <option value="Asignada">Asignada</option>
-                        <option value="No asignada">No Asignada</option>
-                    </select>
-                </div>
-                <div>
-                    <label>Especialidad</label>
-                    <input type="text" id="filtroEspecialidad" class="form-control" placeholder="Filtrar por especialidad" />
-                </div>
+    Vacantes @DateTime.Now.Year
+</h2>
+<div class="vacantes-titulo titulo-principal d-flex justify-content-between align-items-center">
+
+    <button type="button" class="btn-cta btn-nuevo" data-bs-toggle="modal" data-bs-target="#modalCrearVacante"> + Registrar</button>
+    <div class="dropdown">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filtroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-filter"></i>
+        </button>
+        <div class="dropdown-menu p-3" style="min-width: 300px;">
+            <div class="mb-2">
+                <label>Estado de vacante</label>
+                <select id="filtroPractica" class="form-control">
+                    <option value="">Todos</option>
+                    <option value="Asignada">Asignada</option>
+                    <option value="No asignada">No Asignada</option>
+                </select>
+            </div>
+            <div>
+                <label>Especialidad</label>
+                <input type="text" id="filtroEspecialidad" class="form-control" placeholder="Filtrar por especialidad" />
             </div>
         </div>
     </div>
+</div>
 
 
-    <div class="card rounded-5 p-3">
-        <table id="miTabla" class="display responsive nowrap w-100">
-            <thead>
-                <tr>
-                    <th>Empresa</th>
-                    <th>Especialidad</th>
-                    <th>Requisitos</th>
-                    <th>Cupos Disponibles</th>
-                    <th>Estudiantes Postulados</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Align</td>
-                    <td>Informática</td>
-                    <td>Inglés B1</td>
-                    <td>3</td>
-                    <td>2</td>
-                    <td><span class="badge badge-no-asignada">No Asignada</span></td>
-                    <td>
-                        <button data-bs-toggle="modal" data-bs-target="#modalPerfil" class="btn text-decoration-none bg-transparent" style="color: #2d594d"><i class="fas fa-eye"></i></button>
-                        <button class="btn bg-transparent text-decoration-none" style="color: #2d594d">	<i class="fas fa-sync-alt"></i></button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+<div class="card rounded-5 p-3">
+    <table id="miTabla" class="display responsive nowrap w-100">
+        <thead>
+            <tr>
+                <th>Empresa</th>
+                <th>Especialidad</th>
+                <th>Requisitos</th>
+                <th>Cupos Disponibles</th>
+                <th>Estudiantes Postulados</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Align</td>
+                <td>Informática</td>
+                <td>Inglés B1</td>
+                <td>3</td>
+                <td>2</td>
+                <td><span class="badge badge-no-asignada">No Asignada</span></td>
+                <td>
+                    <button data-bs-toggle="modal"
+                            data-bs-target="#modalEditarVacante"
+                            class="btn text-decoration-none bg-transparent"
+                            style="color: #2d594d"
+                            data-empresa="Align"
+                            data-especialidad="Informática"
+                            data-requisitos="Inglés B1"
+                            data-cupos="3"
+                            data-asignados="2" ;
+                            data-fecha-aplicacion="2025-08-15"
+                            data-fecha-cierre="2025-09-01">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                    <button class="btn bg-transparent text-decoration-none BtnEliminarVacante" data-asignados="2"  style="color: #2d594d">	<i class="fas fa-trash"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>Boston Scientific</td>
+                <td>Informática</td>
+                <td>Javascript</td>
+                <td>3</td>
+                <td>0</td>
+                <td><span class="badge badge-no-asignada">No Asignada</span></td>
+                <td>
+                    <button data-bs-toggle="modal"
+                            data-bs-target="#modalEditarVacante"
+                            class="btn text-decoration-none bg-transparent"
+                            style="color: #2d594d"
+                            data-empresa="Align"
+                            data-especialidad="Informática"
+                            data-requisitos="Inglés B1"
+                            data-cupos="3"
+                            data-asignados="2" ;
+                            data-fecha-aplicacion="2025-08-15"
+                            data-fecha-cierre="2025-09-01">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                    <button class="btn bg-transparent text-decoration-none BtnEliminarVacante" data-asignados="0" style="color: #2d594d">	<i class="fas fa-trash"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--MODAL PARA EDITAR Y VISUALIZAR-->
+
+<div class="modal fade" id="modalEditarVacante" tabindex="-1" aria-labelledby="modalCrearVacanteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content" style="border-radius: 12px; background-color: #F2F2F2; color: #2D594D;">
+
+            <!-- HEADER -->
+            <div class="modal-header" style="background-color: #2D594D; color: white;">
+                <h5 class="modal-title">Edición de Práctica</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+
+            <div class="modal-body px-4">
+                <!-- Sección: Información General -->
+                <div class="mb-4">
+                    <h5 class="section-title">Información General</h5>
+                    <div class="row">
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Nombre de la Vacante <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="nombrePuestoEditar" placeholder="Ejemplo: Asistente bancario" required>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Empresa <span class="text-danger">*</span></label>
+                            <select class="form-select OpcionesVacantes w-100" name="empresaEditar" required>
+                                <option value="" disabled selected>-- Seleccione empresa --</option>
+                                <option value="Align">Align</option>
+                                <option value="InnovaTech">BCR</option>
+                                <option value="Grupo Delta">Grupo Delta</option>
+                                <option value="Soluciones Web CR">Soluciones Web CR</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Lugar / Ubicación <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="ubicacion" placeholder="Cartago, 200 metros norte" readonly>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Especialidad <span class="text-danger">*</span></label>
+                            <select class="form-select OpcionesVacantes w-100" name="areaProfesionalEditar" required>
+                                <option class="text-dark" value="" disabled selected>-- Seleccione área --</option>
+                                <option value="Administración">Contabilidad</option>
+                                <option value="Informática">Informática</option>
+                                <option value="Salud">Electrotecnia</option>
+                                <option value="Educación">Ejecutivo para centros de servicios</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Cantidad de Cupos <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" name="cuposEditar" placeholder="Ejemplo: 3" min="1" required>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Modalidad <span class="text-danger">*</span></label>
+                            <br />
+                            <select class="form-select OpcionesVacantes w-100" name="modalidadEditar" required>
+                                <option value="" disabled selected>-- Seleccione modalidad --</option>
+                                <option value="Presencial">Presencial</option>
+                                <option value="Remoto">Remoto</option>
+                                <option value="Híbrido">Híbrido</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Fecha Límite de Aplicación <span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="FechaAplicacionEditar" aname="fechaLimite" required>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Fecha de Cierre<span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="FechaCierreEditar" name="fechaPublicacion" required>
+                        </div>
+
+                        <div class="col-12 form-group mb-3">
+                            <label>Requisitos <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="requisitosEditar" rows="3" placeholder="Habilidades y conocimientos requeridos" required></textarea>
+                        </div>
+
+                        <div class="col-12 form-group mb-3 w-100">
+                            <label>Descripción <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="descripcionEditar" rows="3" value="Sé parte de align y aprende..." placeholder="Detalles de la vacante..." required></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer px-4">
+                <button id="btnEditarVacante" type="button" class="btn CerrarModal">Actualizar Vacante</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+
     </div>
+</div>
 
+<div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="modalPerfilLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content" style="border-radius: 12px; background-color: #F2F2F2; color: #2D594D;">
 
-    <div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="modalPerfilLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <div class="modal-content" style="border-radius: 12px; background-color: #F2F2F2; color: #2D594D;">
+            <!-- HEADER -->
+            <div class="modal-header" style="background-color: #2D594D; color: white;">
+                <h5 class="modal-title">Perfil del Estudiante</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
 
-                <!-- HEADER -->
-                <div class="modal-header" style="background-color: #2D594D; color: white;">
-                    <h5 class="modal-title">Perfil del Estudiante</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                </div>
-
-                <!-- BODY -->
-                <div class="modal-body px-4">
-                    <!-- Sección: Información Personal -->
-                    <div class="mb-4">
-                        <h5 class="section-title">Información Personal</h5>
-                        <div class="row">
-                            <div class="col-md-6 form-group mb-3">
-                                <label>Nombre y Apellidos</label>
-                                <input type="text" class="form-control" value="Johnny Castillo Fallas" readonly>
-                            </div>
-                            <div class="col-md-6 form-group mb-3">
-                                <label>Correo Electrónico</label>
-                                <input type="email" class="form-control" value="johnny.castillo@example.com" readonly>
-                            </div>
-                            <div class="col-md-6 form-group mb-3">
-                                <label>Teléfono</label>
-                                <input type="text" class="form-control" value="8888-0000" readonly>
-                            </div>
-                            <div class="col-md-6 form-group mb-3">
-                                <label>Dirección</label>
-                                <input type="text" class="form-control" value="San José, Costa Rica" readonly>
-                            </div>
-                            <div class="col-md-6 form-group mb-3">
-                                <label>Sexo</label>
-                                <input type="text" class="form-control" value="Masculino" readonly>
-                            </div>
-                            <div class="col-md-6 form-group mb-3">
-                                <label>Especialidad</label>
-                                <input type="text" class="form-control" value="Informática" readonly>
-                            </div>
-                            <div class="col-md-6 form-group mb-3">
-                                <label>Edad</label>
-                                <input type="text" class="form-control" value="19 años" readonly>
-                            </div>
-                            <div class="col-md-6 form-group mb-3">
-                                <label>Sección</label>
-                                <input type="text" class="form-control" value="12-4" readonly>
-                            </div>
+            <!-- BODY -->
+            <div class="modal-body px-4">
+                <!-- Sección: Información Personal -->
+                <div class="mb-4">
+                    <h5 class="section-title">Información Personal</h5>
+                    <div class="row">
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Nombre y Apellidos</label>
+                            <input type="text" class="form-control" value="Johnny Castillo Fallas" readonly>
                         </div>
-                    </div>
-
-                    <div class="mb-4">
-                        <h5 class="section-title">Información del Encargado</h5>
-                        <div class="row">
-                            <div class="col-md-6 form-group mb-3">
-                                <label>Nombre y Apellidos</label>
-                                <input type="text" class="form-control" value="Carlos Fallas" readonly>
-                            </div>
-                            <div class="col-md-6 form-group mb-3">
-                                <label>Teléfono</label>
-                                <input type="text" class="form-control" value="8899-1122" readonly>
-                            </div>
-                            <div class="col-md-6 form-group mb-3">
-                                <label>Parentesco</label>
-                                <input type="text" class="form-control" value="Padre" readonly>
-                            </div>
-                            <div class="col-md-6 form-group mb-3">
-                                <label>Residencia o Trabajo</label>
-                                <input type="text" class="form-control" value="Cartago, CR" readonly>
-                            </div>
-                            <div class="col-md-6 form-group mb-3">
-                                <label>Ocupación</label>
-                                <input type="text" class="form-control" value="Ingeniero Civil" readonly>
-                            </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Correo Electrónico</label>
+                            <input type="email" class="form-control" value="johnny.castillo@example.com" readonly>
                         </div>
-                    </div>
-
-                    <!-- Sección: Prácticas / Postulaciones -->
-                    <div class="mb-4">
-                        <h5 class="section-title">Prácticas / Postulaciones</h5>
-                        <ul class="list-group">
-                            <li style="color: #2D594D;" class="d-flex justify-content-between  PostulacionesPerfil align-items-center p-2 border rounded mb-2">
-                                Práctica en Banco Nacional
-                                <span class="badge badge-asignada">Aceptado</span>
-                            </li>
-                            <li style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil align-items-center p-2 border rounded mb-2">
-                                Postulación a ICE
-                                <span class="badge badge-no-asignada" style="background-color: darkgoldenrod; color: white">En Proceso</span>
-                            </li>
-                            <li style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil  align-items-center p-2 border rounded mb-2">
-                                Postulación a Amazon
-                                <span class="badge badge-no-asignada" style="background-color: darkred; color: WHITE">Rechazado</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Sección: Documentos -->
-                    <div class="mb-3">
-                        <h5 class="section-title">Documentos</h5>
-
-                        <!-- Documento 1 -->
-                        <div class="d-flex justify-content-between align-items-center p-2 border rounded mb-2">
-                            <span style="color: #2D594D;">CV_JohnnyCastillo.pdf</span>
-
-                            <div>
-                                <!-- Ver PDF -->
-                                <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   style="color: #2D594D; margin-right: 10px;">
-                                    <i class="fas fa-eye PostulacionesPerfil" title="Visualizar" style="cursor: pointer;"></i>
-                                </a>
-
-                                <!-- Descargar PDF -->
-                                <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
-                                   download
-                                   style="color: #2D594D;">
-                                    <i class="fas fa-download PostulacionesPerfil" title="Descargar" style="cursor: pointer;"></i>
-                                </a>
-                            </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Teléfono</label>
+                            <input type="text" class="form-control" value="8888-0000" readonly>
                         </div>
-
-                        <!-- Documento 2 -->
-                        <div class="d-flex justify-content-between align-items-center p-2 border rounded mb-2">
-                            <span style="color: #2D594D;">Cedula_Frontal.pdf</span>
-                            <div>
-                                <!-- Ver PDF -->
-                                <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   style="color: #2D594D; margin-right: 10px;">
-                                    <i class="fas fa-eye PostulacionesPerfil" title="Visualizar" style="cursor: pointer;"></i>
-                                </a>
-
-                                <!-- Descargar PDF -->
-                                <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
-                                   download
-                                   style="color: #2D594D;">
-                                    <i class="fas fa-download PostulacionesPerfil" title="Descargar" style="cursor: pointer;"></i>
-                                </a>
-                            </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Dirección</label>
+                            <input type="text" class="form-control" value="San José, Costa Rica" readonly>
                         </div>
-
-                        <!-- Documento 3 -->
-                        <div class="d-flex justify-content-between align-items-center p-2 border rounded">
-                            <span style="color: #2D594D;">Autorizacion_Practica.pdf</span>
-                            <div>
-                                <!-- Ver PDF -->
-                                <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   style="color: #2D594D; margin-right: 10px;">
-                                    <i class="fas fa-eye PostulacionesPerfil" title="Visualizar" style="cursor: pointer;"></i>
-                                </a>
-
-                                <!-- Descargar PDF -->
-                                <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
-                                   download
-                                   style="color: #2D594D;">
-                                    <i class="fas fa-download PostulacionesPerfil" title="Descargar" style="cursor: pointer;"></i>
-                                </a>
-                            </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Sexo</label>
+                            <input type="text" class="form-control" value="Masculino" readonly>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Especialidad</label>
+                            <input type="text" class="form-control" value="Informática" readonly>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Edad</label>
+                            <input type="text" class="form-control" value="19 años" readonly>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Sección</label>
+                            <input type="text" class="form-control" value="12-4" readonly>
                         </div>
                     </div>
                 </div>
 
-                <!-- FOOTER -->
-                <div class="modal-footer">
-                    <button type="button" class="btn CerrarModal" data-bs-dismiss="modal">Cerrar</button>
+                <div class="mb-4">
+                    <h5 class="section-title">Información del Encargado</h5>
+                    <div class="row">
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Nombre y Apellidos</label>
+                            <input type="text" class="form-control" value="Carlos Fallas" readonly>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Teléfono</label>
+                            <input type="text" class="form-control" value="8899-1122" readonly>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Parentesco</label>
+                            <input type="text" class="form-control" value="Padre" readonly>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Residencia o Trabajo</label>
+                            <input type="text" class="form-control" value="Cartago, CR" readonly>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Ocupación</label>
+                            <input type="text" class="form-control" value="Ingeniero Civil" readonly>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Sección: Prácticas / Postulaciones -->
+                <div class="mb-4">
+                    <h5 class="section-title">Prácticas / Postulaciones</h5>
+                    <ul class="list-group">
+                        <li style="color: #2D594D;" class="d-flex justify-content-between  PostulacionesPerfil align-items-center p-2 border rounded mb-2">
+                            Práctica en Banco Nacional
+                            <span class="badge badge-asignada">Aceptado</span>
+                        </li>
+                        <li style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil align-items-center p-2 border rounded mb-2">
+                            Postulación a ICE
+                            <span class="badge badge-no-asignada" style="background-color: darkgoldenrod; color: white">En Proceso</span>
+                        </li>
+                        <li style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil  align-items-center p-2 border rounded mb-2">
+                            Postulación a Amazon
+                            <span class="badge badge-no-asignada" style="background-color: darkred; color: WHITE">Rechazado</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Sección: Documentos -->
+                <div class="mb-3">
+                    <h5 class="section-title">Documentos</h5>
+
+                    <!-- Documento 1 -->
+                    <div class="d-flex justify-content-between align-items-center p-2 border rounded mb-2">
+                        <span style="color: #2D594D;">CV_JohnnyCastillo.pdf</span>
+
+                        <div>
+                            <!-- Ver PDF -->
+                            <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               style="color: #2D594D; margin-right: 10px;">
+                                <i class="fas fa-eye PostulacionesPerfil" title="Visualizar" style="cursor: pointer;"></i>
+                            </a>
+
+                            <!-- Descargar PDF -->
+                            <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
+                               download
+                               style="color: #2D594D;">
+                                <i class="fas fa-download PostulacionesPerfil" title="Descargar" style="cursor: pointer;"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Documento 2 -->
+                    <div class="d-flex justify-content-between align-items-center p-2 border rounded mb-2">
+                        <span style="color: #2D594D;">Cedula_Frontal.pdf</span>
+                        <div>
+                            <!-- Ver PDF -->
+                            <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               style="color: #2D594D; margin-right: 10px;">
+                                <i class="fas fa-eye PostulacionesPerfil" title="Visualizar" style="cursor: pointer;"></i>
+                            </a>
+
+                            <!-- Descargar PDF -->
+                            <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
+                               download
+                               style="color: #2D594D;">
+                                <i class="fas fa-download PostulacionesPerfil" title="Descargar" style="cursor: pointer;"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Documento 3 -->
+                    <div class="d-flex justify-content-between align-items-center p-2 border rounded">
+                        <span style="color: #2D594D;">Autorizacion_Practica.pdf</span>
+                        <div>
+                            <!-- Ver PDF -->
+                            <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               style="color: #2D594D; margin-right: 10px;">
+                                <i class="fas fa-eye PostulacionesPerfil" title="Visualizar" style="cursor: pointer;"></i>
+                            </a>
+
+                            <!-- Descargar PDF -->
+                            <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
+                               download
+                               style="color: #2D594D;">
+                                <i class="fas fa-download PostulacionesPerfil" title="Descargar" style="cursor: pointer;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="modal-footer">
+                <button type="button" class="btn CerrarModal" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
+</div>
+
+<!--MODAL PARA CREAR-->
+
+<div class="modal fade" id="modalCrearVacante" tabindex="-1" aria-labelledby="modalCrearVacanteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content" style="border-radius: 12px; background-color: #F2F2F2; color: #2D594D;">
+
+            <!-- HEADER -->
+            <div class="modal-header" style="background-color: #2D594D; color: white;">
+                <h5 class="modal-title">Nueva Vacante para Práctica</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+
+            <div class="modal-body px-4">
+                <!-- Sección: Información General -->
+                <div class="mb-4">
+                    <h5 class="section-title">Información General</h5>
+                    <div class="row">
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Nombre de la Vacante <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="nombrePuesto" placeholder="Ejemplo: Asistente bancario" required>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Empresa <span class="text-danger">*</span></label>
+                            <select class="form-select OpcionesVacantes w-100" name="empresa" required>
+                                <option value="" disabled selected>-- Seleccione empresa --</option>
+                                <option value="TechSolutions S.A.">TechSolutions S.A.</option>
+                                <option value="InnovaTech">BCR</option>
+                                <option value="Grupo Delta">Grupo Delta</option>
+                                <option value="Soluciones Web CR">Soluciones Web CR</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Lugar / Ubicación <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="ubicacion" placeholder="Cartago, 200 metros norte" readonly>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Especialidad <span class="text-danger">*</span></label>
+                            <select class="form-select OpcionesVacantes w-100" name="areaProfesional" required>
+                                <option class="text-dark" value="" disabled selected>-- Seleccione área --</option>
+                                <option value="Administración">Contabilidad</option>
+                                <option value="Ingeniería">Informática</option>
+                                <option value="Salud">Electrotecnia</option>
+                                <option value="Educación">Ejecutivo para centros de servicios</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Cantidad de Cupos <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" name="cupos" placeholder="Ejemplo: 3" min="1" required>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Modalidad <span class="text-danger">*</span></label>
+                            <br />
+                            <select class="form-select OpcionesVacantes w-100" name="modalidad" required>
+                                <option value="" disabled selected>-- Seleccione modalidad --</option>
+                                <option value="Presencial">Presencial</option>
+                                <option value="Remoto">Remoto</option>
+                                <option value="Híbrido">Híbrido</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Fecha Límite de Aplicación <span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="FechaAplicacion" aname="fechaLimite" required>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Fecha de Cierre<span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="FechaCierre" name="fechaPublicacion" required>
+                        </div>
+
+                        <div class="col-12 form-group mb-3">
+                            <label>Requisitos <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="requisitos" rows="3" placeholder="Habilidades y conocimientos requeridos" required></textarea>
+                        </div>
+
+                        <div class="col-12 form-group mb-3 w-100">
+                            <label>Descripción <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="descripcion" rows="3" placeholder="Detalles de la vacante..." required></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer px-4">
+                <button id="btnGuardarVacante" type="button" class="btn CerrarModal">Guardar y Publicar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 
 
-    @section scripts {
 
-
-        <script>
-            $(document).ready(function () {
-                var table = $('#miTabla').DataTable({
-                    responsive: true
-                });
-
-                // Filtro por estado académico
-                $('#filtroEstadoAcademico').on('change', function () {
-                    table.column(5).search(this.value).draw();
-                });
-
-                // Filtro por estado de práctica
-                $('#filtroPractica').on('change', function () {
-                    table.column(4).search(this.value).draw();
-                });
-
-                // Filtro por especialidad
-                $('#filtroEspecialidad').on('keyup', function () {
-                    table.column(2).search(this.value).draw();
-                });
-
-                $(".CambiarEstado").on("click", function () {
-                    var fila = $(this).closest("tr");
-                    var estadoAcademicoSpan = fila.find("td:nth-child(6) .badge-estado-academico");
-
-                    Swal.fire({
-                        title: 'Selecciona el nuevo estado académico',
-                        input: 'select',
-                        inputOptions: {
-                            'Aprobado': 'Aprobado',
-                            'Rezagado': 'Rezagado'
-                        },
-                        inputPlaceholder: 'Selecciona un estado',
-                        showCancelButton: true,
-                        confirmButtonText: 'Actualizar',
-                        customClass: {
-                            confirmButton: 'btn-verde-personalizado'
-                        },
-                        cancelButtonText: 'Cancelar',
-                        customClass: {
-                            confirmButton: 'btn-verde-personalizado'
-                        },
-                        inputValidator: (value) => {
-                            if (!value) {
-                                return 'Debes seleccionar un estado';
-                            }
-                        }
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-
-                            var nuevoEstado = result.value;
-                            estadoAcademicoSpan.text(nuevoEstado);
-
-                            if (nuevoEstado === 'Aprobado') {
-                                estadoAcademicoSpan.removeClass().addClass('badge badge-estado-academico badge-asignada');
-                            } else if (nuevoEstado === 'Rezagado') {
-                                estadoAcademicoSpan.removeClass().addClass('badge badge-estado-academico badge-no-asignada');
-                            }
-
-                            Swal.fire('Actualizado!', 'El estado académico ha sido actualizado.', 'success');
-                        }
-                    });
-                });
-
+@section scripts {
+ 
+    <script>
+        $(document).ready(function () {
+            var table = $('#miTabla').DataTable({
+                responsive: true
             });
-        </script>
-    }
+
+            // Filtro por estado académico
+            $('#filtroEstadoAcademico').on('change', function () {
+                table.column(5).search(this.value).draw();
+            });
+
+            // Filtro por estado de práctica
+            $('#filtroPractica').on('change', function () {
+                table.column(4).search(this.value).draw();
+            });
+
+            // Filtro por especialidad
+            $('#filtroEspecialidad').on('keyup', function () {
+                table.column(2).search(this.value).draw();
+            });
+
+             document.getElementById("btnGuardarVacante").addEventListener("click", function () {
+        const formFields = document.querySelectorAll(".modal-body [required]");
+        let valid = true;
+
+        // Validar campos vacíos
+        formFields.forEach(field => {
+            if (!field.value || field.value.trim() === "") {
+                valid = false;
+                field.classList.add("is-invalid");
+            } else {
+                field.classList.remove("is-invalid");
+            }
+        });
+
+        // Obtener fechas
+        const fechaAplicacion = document.getElementById("FechaAplicacion"); // Asegúrate que este ID esté en tu input
+        const fechaCierre = document.getElementById("FechaCierre");         // Igual aquí
+
+        const fechaAplicacionVal = new Date(fechaAplicacion.value);
+        const fechaCierreVal = new Date(fechaCierre.value);
+
+        // Validación de fechas
+        if (fechaAplicacion.value && fechaCierre.value && fechaAplicacionVal > fechaCierreVal) {
+            valid = false;
+            fechaAplicacion.classList.add("is-invalid");
+            fechaCierre.classList.add("is-invalid");
+
+            Swal.fire({
+                icon: "error",
+                title: "Fechas inválidas",
+                text: "La fecha de aplicación no puede ser mayor a la fecha de cierre.",
+                confirmButtonColor: "#d33"
+            });
+
+            return; // Detener ejecución
+        } else {
+            fechaAplicacion.classList.remove("is-invalid");
+            fechaCierre.classList.remove("is-invalid");
+        }
+
+        // Validación final
+        if (!valid) {
+            Swal.fire({
+                icon: "error",
+                title: "Campos Incompletos",
+                text: "Por favor, complete todos los campos requeridos.",
+                confirmButtonColor: "#d33"
+            });
+        } else {
+            Swal.fire({
+                icon: "success",
+                title: "Vacante Registrada",
+                text: "La vacante fue registrada exitosamente.",
+                confirmButtonColor: "#198754"
+            }).then(() => {
+                // Redirección al controlador y acción deseada
+                window.location.href = '@Url.Action( "VacantesEstudiantes", "Practicas")';
+            });
+        }
+    });
+
+
+            let filaActual; // Para mantener referencia a la fila seleccionada
+
+            // Al hacer clic en el botón de ver/editar
+            $('#miTabla').on('click', 'button[data-bs-target="#modalEditarVacante"]', function () {
+                const btn = $(this);
+                filaActual = btn.closest('tr');
+
+                // Carga los datos en el modal
+                $('select[name="empresaEditar"]').val(btn.data('empresa'));
+                $('select[name="areaProfesionalEditar"]').val(btn.data('especialidad'));
+                $('textarea[name="requisitosEditar"]').val(btn.data('requisitos'));
+                $('input[name="cuposEditar"]').val(btn.data('cupos'));
+                $('#FechaAplicacionEditar').val(btn.data('fecha-aplicacion'));
+                $('#FechaCierreEditar').val(btn.data('fecha-cierre'));
+            });
+
+            // Al hacer clic en Guardar
+            $('#btnEditarVacante').on('click', function () {
+                // Obtener valores del modal
+                const empresa = $('select[name="empresaEditar"]').val();
+                const especialidad = $('select[name="areaProfesionalEditar"]').val();
+                const requisitos = $('textarea[name="requisitosEditar"]').val();
+                const cupos = $('input[name="cuposEditar"]').val();
+                const fechaAplicacion = $('#FechaAplicacionEditar').val();
+                const fechaCierre = $('#FechaCierreEditar').val();
+
+                // Validación
+                if (!empresa || !especialidad || !requisitos || !cupos || !fechaAplicacion || !fechaCierre) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Campos incompletos',
+                        text: 'Por favor completa todos los campos obligatorios.'
+                    });
+                    return;
+                }
+
+                if (new Date(fechaAplicacion) > new Date(fechaCierre)) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Fechas inválidas',
+                        text: 'La fecha de aplicación no puede ser mayor que la fecha de cierre.'
+                    });
+                    return;
+                }
+
+                // Actualizar fila de la tabla
+                filaActual.find('td:eq(0)').text(empresa);
+                filaActual.find('td:eq(1)').text(especialidad);
+                filaActual.find('td:eq(2)').text(requisitos);
+                filaActual.find('td:eq(3)').text(cupos);
+
+                // Mensaje de éxito
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Vacante actualizada exitosamente',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+
+                // Cerrar el modal después de medio segundo
+                setTimeout(() => {
+                    $('#modalEditarVacante').modal('hide');
+                }, 500);
+            });
+
+
+            $(".BtnEliminarVacante").on("click", function () {
+                let cupos = $(this).data('asignados');
+
+                Swal.fire({
+                    title: '¿Está seguro?',
+                    text: "Esta acción eliminará la vacante.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Sí, eliminar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        if (cupos > 0) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Estudiantes Asignados',
+                                text: 'No se puede eliminar la vacante porque tiene estudiantes asignados.'
+                            });
+                        } else {
+                            // Aquí puedes eliminar de la tabla o hacer una llamada AJAX
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Vacante eliminada correctamente',
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+
+                            // Opcional: eliminar la fila visualmente (si tienes una referencia)
+                            if (typeof filaSeleccionada !== 'undefined' && filaSeleccionada) {
+                                filaSeleccionada.remove();
+                            }
+                        }
+                    }
+                });
+            });
+
+
+
+
+        });
+
+    </script>
+}
