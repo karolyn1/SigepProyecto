@@ -42,6 +42,7 @@
                 <th>Especialidad</th>
                 <th>Teléfono</th>
                 <th>Práctica asignada</th>
+                <th>Nota</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -52,36 +53,89 @@
                 <td>Informática</td>
                 <td>8888-8888</td>
                 <td>Práctica en Banco Nacional</td>
+                <td>50</td>
 
                 <td>
-                    <button data-bs-toggle="modal" data-bs-target="#modalPerfil" class="btn text-decoration-none bg-transparent" style="color: #2d594d"><i class="fas fa-eye"></i></button>
+                    <button data-bs-toggle="modal" data-bs-target="#modalPerfil" class="btn text-decoration-none bg-transparent VerPerfil" data-cedula="2023101234" style="color: #2d594d"><i class="fas fa-eye"></i></button>
                     <button class="btn Comentarios bg-transparent text-decoration-none" style="color: #2d594d">	<i class="fas fa-comment"></i></button>
+                    <button class="btn btnEditarNota bg-transparent text-decoration-none" style="color: #2d594d;" data-cedula="2023101234"> <i class="bi bi-pencil-square"></i></button>
                 </td>
-            </tr>
             <tr>
                 <td>2022105678</td>
                 <td>Juan Pérez</td>
                 <td>Electrónica</td>
                 <td>8999-9999</td>
                 <td>Práctica en ICE</td>
+                <td>-</td>
 
                 <td>
-                    <button data-bs-toggle="modal" data-bs-target="#modalPerfil" class="btn text-decoration-none bg-transparent" style="color: #2d594d"><i class="fas fa-eye"></i></button>
+                    <button data-bs-toggle="modal" data-bs-target="#modalPerfil" class="btn text-decoration-none bg-transparent VerPerfil" data-cedula="2022105678" style="color: #2d594d"><i class="fas fa-eye"></i></button>
                     <button class="btn Comentarios bg-transparent text-decoration-none" style="color: #2d594d">	<i class="fas fa-comment"></i></button>
+                    <button class="btn btnEditarNota bg-transparent text-decoration-none" style="color: #2d594d;" data-cedula="2022105678"> <i class="bi bi-pencil-square"></i></button>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
 
+<!-- Modal para editar nota -->
+<div class="modal fade" id="modalNota" tabindex="-1" aria-labelledby="modalNotaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content rounded-4">
+
+            <!-- HEADER -->
+            <div class="modal-header rounded-top-4" style="background-color: #2D594D; color: white;">
+                <h5 class="modal-title" id="modalNotaLabel">
+                    <i class="fas fa-clipboard-list me-2"></i> Asignar Nota Final
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+
+            <!-- BODY -->
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <p class="mb-1 text-muted">Estudiante:</p>
+                            <h5 id="nombreEstudianteNota" class="fw-semibold"></h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="inputNotaFinal" class="form-label fw-bold">Nota final (0 - 100)</label>
+                            <input type="number" class="form-control form-control-lg" id="inputNotaFinal" min="0" max="100" step="0.1" placeholder="Ej. 85.5" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOOTER  -->
+            <div class="modal-footer">
+                <button type="button" id="btnGuardarNota" class="btn CerrarModal">
+                    <i class="fas fa-save me-1"></i> Guardar
+                </button>
+                <button type="button" class="btn CerrarModal" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <!-- Modal Comentarios -->
 <div class="modal fade" id="modalComentarios" tabindex="-1" aria-labelledby="modalComentariosLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalComentariosLabel">Comentarios del Tutor</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        <div class="modal-content rounded-4">
+
+            <!-- HEADER -->
+            <div class="modal-header rounded-top-4" style="background-color: #2D594D; color: white;">
+                <h5 class="modal-title" id="modalComentariosLabel">
+                    Comentarios del Tutor
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
+
+
             <div class="modal-body">
                 <p><strong>Nombre:</strong> <span id="nombreEstudiante"></span></p>
                 <p><strong>Cédula:</strong> <span id="cedulaEstudiante"></span></p>
@@ -99,9 +153,13 @@
                     <textarea class="form-control" id="nuevoComentario" rows="3" placeholder="Escriba el comentario aquí..."></textarea>
                 </div>
             </div>
+
+            <!-- FOOTER  -->
             <div class="modal-footer">
-                <button id="btnGuardarComentario" class="btn btn-success">Guardar Comentario</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button id="btnGuardarComentario" class="btn CerrarModal">
+                    <i class="fas fa-save me-1"></i> Guardar
+                </button>
+                <button type="button" class="btn CerrarModal" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
@@ -119,6 +177,17 @@
 
             <!-- BODY -->
             <div class="modal-body px-4">
+
+                <!-- BOTONES DOCUMENTOS ARRIBA -->
+                <div class="row top-buttons mb-4 action-buttons">
+                    <div class="col-md-6">
+                        <button data-bs-toggle="modal" onclick="$('#modalSubirDocumento').modal('show')">
+                            <i class="fas fa-folder-open me-2"></i> Subir Documentos
+                        </button>
+                    </div>
+
+                </div>
+
                 <!-- Sección: Información Personal -->
                 <div class="mb-4">
                     <h5 class="section-title">Información Personal</h5>
@@ -163,7 +232,7 @@
                     <h5 class="section-title">Retroalimentaciones</h5>
                     <div class="row">
                         <div id="retroalimentacionComentarios" class="col-md-6 form-group mb-3">
-                            
+
                         </div>
                     </div>
                 </div>
@@ -239,20 +308,61 @@
     </div>
 </div>
 
+<!-- Modal para Subir Documento -->
+<div class="modal fade" id="modalSubirDocumento" tabindex="-1" aria-labelledby="modalSubirDocumentoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content rounded-4">
+
+            <!-- HEADER -->
+            <div class="modal-header rounded-top-4" style="background-color: #2D594D; color: white;">
+                <h5 class="modal-title" id="modalSubirDocumentoLabel">
+                    <i class="fas fa-upload me-2"></i> Subir Documento de Evaluación
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+
+            <!-- BODY -->
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="inputArchivo" class="form-label fw-semibold">Seleccione un archivo (.xls, .xlsx, .pdf)</label>
+                    <input class="form-control" type="file" id="inputArchivo" accept=".xls,.xlsx,.pdf">
+                </div>
+                <div id="listaArchivos" class="mt-4">
+                    <h6 class="fw-bold">Documentos Subidos:</h6>
+                    <ul id="archivosSubidos" class="list-group"></ul>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="modal-footer">
+                <button type="button" id="btnSubirArchivo" class="btn CerrarModal">
+                    <i class="fas fa-cloud-upload-alt me-1"></i> Guardar
+                </button>
+                <button class="btn CerrarModal" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 @section scripts {
-
-
     <script>
         $(document).ready(function () {
             var table = $('#miTabla').DataTable({
                 responsive: true
             });
 
-            // Simular el usuario actual (puedes cambiarlo dinámicamente si lo necesitas)
-            var usuarioActual = '@Session["nombre"]';
+            var notasFinales = {
+                '2023101234': null,
+                '2022105678': null
+            };
 
+            const archivosSimulados = [];
+
+            var estudianteActual = null;
+
+            // Simular el usuario actual
+            var usuarioActual = 'Jean Pool';
 
             // Simulación de comentarios quemados por cédula con fecha y autor
             var comentariosPorEstudiante = {
@@ -265,6 +375,63 @@
                     { texto: 'Puntual en sus entregas.', fecha: '2025-07-31 10:05', autor: 'Daniel Campos' }
                 ]
             };
+
+            document.getElementById("btnSubirArchivo").addEventListener("click", function () {
+                const input = document.getElementById("inputArchivo");
+                const archivo = input.files[0];
+
+                if (!archivo) {
+                    Swal.fire({
+                        icon: "warning",
+                        title: "Ningún archivo seleccionado",
+                        text: "Por favor seleccione un archivo.",
+                    });
+                    return;
+                }
+
+                const extensionesValidas = [".xls", ".xlsx", ".pdf"];
+                const nombre = archivo.name.toLowerCase();
+                const esValido = extensionesValidas.some(ext => nombre.endsWith(ext));
+
+                if (!esValido) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Formato no válido",
+                        text: "Solo se permiten archivos .xls, .xlsx o .pdf",
+                    });
+                    input.value = "";
+                    return;
+                }
+
+                // Simular almacenamiento (solo nombre)
+                archivosSimulados.push(archivo.name);
+                actualizarListaArchivos();
+
+                Swal.fire({
+                    icon: "success",
+                    title: "Archivo cargado",
+                    text: "El documento fue almacenado correctamente.",
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+
+                input.value = "";
+            });
+
+            function actualizarListaArchivos() {
+                const lista = document.getElementById("archivosSubidos");
+                lista.innerHTML = "";
+
+                archivosSimulados.forEach((archivo, index) => {
+                    const li = document.createElement("li");
+                    li.className = "list-group-item d-flex justify-content-between align-items-center";
+                    li.innerHTML = `
+                    ${archivo}
+                   
+                `;
+                    lista.appendChild(li);
+                });
+            }
 
             // Filtros
             $('#filtroEstadoAcademico').on('change', function () {
@@ -279,13 +446,76 @@
                 table.column(2).search(this.value).draw();
             });
 
-            // Abrir modal al hacer clic en el botón de comentarios
-            $(".Comentarios").on("click", function () {
-                var fila = $(this).closest("tr");
+            // Abrir modal de nota al hacer clic en botón
+            $('#miTabla').on('click', '.btnEditarNota', function () {
+                var tr = $(this).closest('tr');
+                var row = table.row(tr.hasClass('child') ? tr.prev() : tr);
+                var data = row.data();
 
-                var nombre = fila.find("td:nth-child(1)").text();
-                var cedula = fila.find("td:nth-child(2)").text();
-                var practica = fila.find("td:nth-child(5)").text();
+                if (!data) return;
+
+                var cedula = data[0];
+                var nombre = data[1];
+
+                estudianteActual = { cedula, nombre };
+
+                $('#nombreEstudianteNota').text(nombre);
+                var notaActual = notasFinales[cedula];
+                $('#inputNotaFinal').val(notaActual !== null ? notaActual : '');
+
+                var modal = new bootstrap.Modal(document.getElementById('modalNota'));
+                modal.show();
+            });
+
+            // Guardar nota
+            $('#btnGuardarNota').on('click', function () {
+                var nota = parseFloat($('#inputNotaFinal').val());
+
+                if (isNaN(nota) || nota < 0 || nota > 100) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Nota inválida',
+                        text: 'Por favor ingrese una nota entre 0 y 100.',
+                    });
+                    return;
+                }
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Nota guardada',
+                    text: 'La nota final fue registrada correctamente.',
+                    timer: 3000,
+                    showConfirmButton: false
+                });
+
+                notasFinales[estudianteActual.cedula] = nota;
+
+                // Actualizar tabla (columna Nota Final)
+                table.rows().every(function (rowIdx, tableLoop, rowLoop) {
+                    var data = this.data();
+                    if (data[0] === estudianteActual.cedula) {
+                        data[5] = nota.toFixed(1);
+                        this.data(data).draw(false);
+                    }
+                });
+
+                var modal = bootstrap.Modal.getInstance(document.getElementById('modalNota'));
+                modal.hide();
+            });
+
+            // Abrir modal al hacer clic en el botón de comentarios
+            // Manejar clic en el botón de comentarios, compatible con modo responsive
+            $('#miTabla').on('click', '.Comentarios', function () {
+                // Obtener la fila del botón (incluso si es responsive)
+                var tr = $(this).closest('tr');
+                var row = table.row(tr.hasClass('child') ? tr.prev() : tr);
+
+                var data = row.data();
+                if (!data) return;
+
+                var cedula = data[0];
+                var nombre = data[1];
+                var practica = data[4];
 
                 $("#nombreEstudiante").text(nombre);
                 $("#cedulaEstudiante").text(cedula);
@@ -297,14 +527,14 @@
                     const fecha = comentarioObj.fecha || '';
                     const autor = comentarioObj.autor || 'Desconocido';
                     ul.append(`
-                <li class="list-group-item" style="word-break: break-word; white-space: pre-wrap; background-color: #f8f9fa; border-radius: 8px; margin-bottom: 6px; padding: 10px;">
-                    <div><strong>Comentario:</strong> ${comentarioObj.texto}</div>
-                    <small class="text-muted">
-                        <i class="bi bi-person"></i> ${autor} |
-                        <i class="bi bi-clock"></i> ${fecha}
-                    </small>
-                </li>
-            `);
+                                                <li class="list-group-item" style="word-break: break-word; white-space: pre-wrap; background-color: #f8f9fa; border-radius: 8px; margin-bottom: 6px; padding: 10px;">
+                                                    <div><strong>Comentario:</strong> ${comentarioObj.texto}</div>
+                                                    <small class="text-muted">
+                                                        <i class="bi bi-person"></i> ${autor} |
+                                                        <i class="bi bi-clock"></i> ${fecha}
+                                                    </small>
+                                                </li>
+                                            `);
                 });
 
                 $("#nuevoComentario").val("");
@@ -312,10 +542,15 @@
                 $('#modalComentarios').modal('show');
             });
 
+
             // Mostrar comentarios en el modal de perfil
-            $(".fa-eye").on("click", function () {
-                var fila = $(this).closest("tr");
-                var cedula = fila.find("td:nth-child(1)").text();
+            $('#miTabla').on('click', '.VerPerfil', function () {
+                var tr = $(this).closest('tr');
+                var row = table.row(tr.hasClass('child') ? tr.prev() : tr);
+                var data = row.data();
+                if (!data) return;
+
+                var cedula = data[0]; // Asegúrate de que esta sea la columna de cédula
 
                 var comentarios = comentariosPorEstudiante[cedula] || [];
                 var contenedor = $("#retroalimentacionComentarios").empty();
@@ -327,13 +562,15 @@
                         const fecha = comentarioObj.fecha || '';
                         const autor = comentarioObj.autor || 'Desconocido';
                         contenedor.append(`
-                <div style="margin-bottom: 10px; padding: 6px; border-bottom: 1px solid #ddd;">
-                    <div><strong>${autor}</strong> <small class="text-muted">(${fecha})</small></div>
-                    <div>${comentarioObj.texto}</div>
-                </div>
-            `);
+                                                    <div style="margin-bottom: 10px; padding: 6px; border-bottom: 1px solid #ddd;">
+                                                        <div><strong>${autor}</strong> <small class="text-muted">(${fecha})</small></div>
+                                                        <div>${comentarioObj.texto}</div>
+                                                    </div>
+                                                `);
                     });
                 }
+
+                $('#modalPerfil').modal('show'); // Por si necesitas forzar la apertura
             });
 
 
@@ -366,20 +603,60 @@
                 comentariosPorEstudiante[cedula].push(nuevoComentarioObj);
 
                 $("#comentariosAnteriores").append(`
-            <li class="list-group-item" style="word-break: break-word; white-space: pre-wrap; background-color: #f8f9fa; border-radius: 8px; margin-bottom: 6px; padding: 10px;">
-                <div><strong>Comentario:</strong> ${comentario}</div>
-                <small class="text-muted">
-                    <i class="bi bi-person"></i> ${usuarioActual} |
-                    <i class="bi bi-clock"></i> ${fechaFormateada}
-                </small>
-            </li>
-        `);
+                                                <li class="list-group-item" style="word-break: break-word; white-space: pre-wrap; background-color: #f8f9fa; border-radius: 8px; margin-bottom: 6px; padding: 10px;">
+                                                    <div><strong>Comentario:</strong> ${comentario}</div>
+                                                    <small class="text-muted">
+                                                        <i class="bi bi-person"></i> ${usuarioActual} |
+                                                        <i class="bi bi-clock"></i> ${fechaFormateada}
+                                                    </small>
+                                                </li>
+                                            `);
 
                 $("#nuevoComentario").val("");
                 Swal.fire('Éxito', 'Comentario agregado exitosamente.', 'success');
+
+                // Si el modal de perfil está abierto, actualizar también su retroalimentación
+                if ($("#modalPerfil").hasClass("show")) {
+                    actualizarRetroalimentacion(cedula);
+                }
+            });
+
+            // Función para actualizar la retroalimentación en el modal de perfil
+            function actualizarRetroalimentacion(cedula) {
+                var comentarios = comentariosPorEstudiante[cedula] || [];
+                var contenedor = $("#retroalimentacionComentarios").empty();
+
+                if (comentarios.length === 0) {
+                    contenedor.html(`<span class="text-muted">Sin comentarios registrados.</span>`);
+                } else {
+                    comentarios.forEach(function (comentarioObj) {
+                        const fecha = comentarioObj.fecha || '';
+                        const autor = comentarioObj.autor || 'Desconocido';
+                        contenedor.append(`
+                                                        <div style="margin-bottom: 10px; padding: 6px; border-bottom: 1px solid #ddd;">
+                                                            <div><strong>${autor}</strong> <small class="text-muted">(${fecha})</small></div>
+                                                            <div>${comentarioObj.texto}</div>
+                                                        </div>
+                                                    `);
+                    });
+                }
+            }
+            function mostrarSuccessMensaje() {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Información guardada correctamente',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            }
+
+            // Agregar eventos a los otros botones si existen
+            ["btnSubirDoc"].forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) {
+                    btn.addEventListener("click", mostrarSuccessMensaje);
+                }
             });
         });
-
-
     </script>
 }
