@@ -9,7 +9,7 @@ namespace Sigep.UI.Controllers
     public class EvaluacionController : Controller
     {
         // GET: Evaluacion
-        public ActionResult Index()
+        public ActionResult ListarEstudianteConPractica()
         {
             return View();
         }

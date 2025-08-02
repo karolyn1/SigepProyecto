@@ -1,0 +1,385 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    ViewBag.Title = "Listado de Estudiantes";
+}
+<h2 class="vacantes-titulo titulo-principal d-flex justify-content-between align-items-center">
+    Estudiantes @DateTime.Now.Year
+    <div class="dropdown">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filtroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-filter"></i>
+        </button>
+        <div class="dropdown-menu p-3" style="min-width: 300px;">
+            <div class="mb-2">
+                <label class="Filtros">Estado académico</label>
+                <select id="filtroEstadoAcademico" class="form-control">
+                    <option value="">Todos</option>
+                    <option value="Aprobado">Aprobado</option>
+                    <option value="Rezagado">Rezagado</option>
+                </select>
+            </div>
+            <div class="mb-2">
+                <label>Estado de práctica</label>
+                <select id="filtroPractica" class="form-control">
+                    <option value="">Todos</option>
+                    <option value="Asignada">Con práctica asignada</option>
+                    <option value="No asignada">Sin práctica</option>
+                </select>
+            </div>
+            <div>
+                <label>Especialidad</label>
+                <input type="text" id="filtroEspecialidad" class="form-control" placeholder="Filtrar por especialidad" />
+            </div>
+        </div>
+    </div>
+</h2>
+
+<div class="card rounded-5 p-3">
+    <table id="miTabla" class="display responsive nowrap w-100">
+        <thead>
+            <tr>
+                <th>Cédula</th>
+                <th>Nombre</th>
+                <th>Especialidad</th>
+                <th>Teléfono</th>
+                <th>Práctica asignada</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2023101234</td>
+                <td>Laura Rodríguez</td>
+                <td>Informática</td>
+                <td>8888-8888</td>
+                <td>Práctica en Banco Nacional</td>
+
+                <td>
+                    <button data-bs-toggle="modal" data-bs-target="#modalPerfil" class="btn text-decoration-none bg-transparent" style="color: #2d594d"><i class="fas fa-eye"></i></button>
+                    <button class="btn Comentarios bg-transparent text-decoration-none" style="color: #2d594d">	<i class="fas fa-comment"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>2022105678</td>
+                <td>Juan Pérez</td>
+                <td>Electrónica</td>
+                <td>8999-9999</td>
+                <td>Práctica en ICE</td>
+
+                <td>
+                    <button data-bs-toggle="modal" data-bs-target="#modalPerfil" class="btn text-decoration-none bg-transparent" style="color: #2d594d"><i class="fas fa-eye"></i></button>
+                    <button class="btn Comentarios bg-transparent text-decoration-none" style="color: #2d594d">	<i class="fas fa-comment"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal Comentarios -->
+<div class="modal fade" id="modalComentarios" tabindex="-1" aria-labelledby="modalComentariosLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalComentariosLabel">Comentarios del Tutor</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Nombre:</strong> <span id="nombreEstudiante"></span></p>
+                <p><strong>Cédula:</strong> <span id="cedulaEstudiante"></span></p>
+                <p><strong>Práctica Asignada:</strong> <span id="practicaAsignada"></span></p>
+
+                <hr>
+
+                <h6>Comentarios anteriores</h6>
+                <ul id="comentariosAnteriores" class="list-group mb-3">
+                    <!-- Comentarios dinámicos -->
+                </ul>
+
+                <div class="mb-3">
+                    <label for="nuevoComentario" class="form-label">Comentario</label>
+                    <textarea class="form-control" id="nuevoComentario" rows="3" placeholder="Escriba el comentario aquí..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnGuardarComentario" class="btn btn-success">Guardar Comentario</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="modalPerfilLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content" style="border-radius: 12px; background-color: #F2F2F2; color: #2D594D;">
+
+            <!-- HEADER -->
+            <div class="modal-header" style="background-color: #2D594D; color: white;">
+                <h5 class="modal-title">Perfil del Estudiante</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+
+            <!-- BODY -->
+            <div class="modal-body px-4">
+                <!-- Sección: Información Personal -->
+                <div class="mb-4">
+                    <h5 class="section-title">Información Personal</h5>
+                    <div class="row">
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Nombre y Apellidos</label>
+                            <input type="text" class="form-control" value="Johnny Castillo Fallas" readonly>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Correo Electrónico</label>
+                            <input type="email" class="form-control" value="johnny.castillo@example.com" readonly>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Teléfono</label>
+                            <input type="text" class="form-control" value="8888-0000" readonly>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Dirección</label>
+                            <input type="text" class="form-control" value="San José, Costa Rica" readonly>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Sexo</label>
+                            <input type="text" class="form-control" value="Masculino" readonly>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Especialidad</label>
+                            <input type="text" class="form-control" value="Informática" readonly>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Edad</label>
+                            <input type="text" class="form-control" value="19 años" readonly>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Sección</label>
+                            <input type="text" class="form-control" value="12-4" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección: Retroalimentación -->
+                <div class="mb-4">
+                    <h5 class="section-title">Retroalimentaciones</h5>
+                    <div class="row">
+                        <div id="retroalimentacionComentarios" class="col-md-6 form-group mb-3">
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección: Práctica -->
+                <div class="mb-4">
+                    <h5 class="section-title">Información de la práctica</h5>
+                    <div class="row">
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Nombre de la empresa</label>
+                            <input type="text" class="form-control" value="Instituto Costarricense de Eléctricidad" readonly>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Teléfono de Contacto</label>
+                            <input type="text" class="form-control" value="8899-1122" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección: Documentos -->
+                <div class="mb-3">
+                    <h5 class="section-title">Evaluaciones</h5>
+
+                    <!-- Documento 1 -->
+                    <div class="d-flex justify-content-between align-items-center p-2 border rounded mb-2">
+                        <span style="color: #2D594D;">Evaluacion1.pdf</span>
+
+                        <div>
+                            <!-- Ver PDF -->
+                            <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               style="color: #2D594D; margin-right: 10px;">
+                                <i class="fas fa-eye PostulacionesPerfil" title="Visualizar" style="cursor: pointer;"></i>
+                            </a>
+
+                            <!-- Descargar PDF -->
+                            <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
+                               download
+                               style="color: #2D594D;">
+                                <i class="fas fa-download PostulacionesPerfil" title="Descargar" style="cursor: pointer;"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Documento 2 -->
+                    <div class="d-flex justify-content-between align-items-center p-2 border rounded mb-2">
+                        <span style="color: #2D594D;">Evaluacion2.pdf</span>
+                        <div>
+                            <!-- Ver PDF -->
+                            <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               style="color: #2D594D; margin-right: 10px;">
+                                <i class="fas fa-eye PostulacionesPerfil" title="Visualizar" style="cursor: pointer;"></i>
+                            </a>
+
+                            <!-- Descargar PDF -->
+                            <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
+                               download
+                               style="color: #2D594D;">
+                                <i class="fas fa-download PostulacionesPerfil" title="Descargar" style="cursor: pointer;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FOOTER -->
+            <div class="modal-footer">
+                <button type="button" class="btn CerrarModal" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts {
+
+
+    <script>
+        $(document).ready(function () {
+            var table = $('#miTabla').DataTable({
+                responsive: true
+            });
+
+            // Simular el usuario actual (puedes cambiarlo dinámicamente si lo necesitas)
+            var usuarioActual = '@Session["nombre"]';
+
+
+            // Simulación de comentarios quemados por cédula con fecha y autor
+            var comentariosPorEstudiante = {
+                '2022105678': [
+                    { texto: 'El estudiante ha mostrado responsabilidad.', fecha: '2025-08-01 14:30', autor: 'Ariana' },
+                    { texto: 'Requiere mejorar en entrega de reportes.', fecha: '2025-08-02 09:10', autor: 'Fabian' }
+                ],
+                '2023101234': [
+                    { texto: 'Muy buena actitud y disposición.', fecha: '2025-07-30 16:45', autor: 'Ana Solano' },
+                    { texto: 'Puntual en sus entregas.', fecha: '2025-07-31 10:05', autor: 'Daniel Campos' }
+                ]
+            };
+
+            // Filtros
+            $('#filtroEstadoAcademico').on('change', function () {
+                table.column(5).search(this.value).draw();
+            });
+
+            $('#filtroPractica').on('change', function () {
+                table.column(4).search(this.value).draw();
+            });
+
+            $('#filtroEspecialidad').on('keyup', function () {
+                table.column(2).search(this.value).draw();
+            });
+
+            // Abrir modal al hacer clic en el botón de comentarios
+            $(".Comentarios").on("click", function () {
+                var fila = $(this).closest("tr");
+
+                var nombre = fila.find("td:nth-child(1)").text();
+                var cedula = fila.find("td:nth-child(2)").text();
+                var practica = fila.find("td:nth-child(5)").text();
+
+                $("#nombreEstudiante").text(nombre);
+                $("#cedulaEstudiante").text(cedula);
+                $("#practicaAsignada").text(practica);
+
+                var ul = $("#comentariosAnteriores").empty();
+                var comentarios = comentariosPorEstudiante[cedula] || [];
+                comentarios.forEach(function (comentarioObj) {
+                    const fecha = comentarioObj.fecha || '';
+                    const autor = comentarioObj.autor || 'Desconocido';
+                    ul.append(`
+                <li class="list-group-item" style="word-break: break-word; white-space: pre-wrap; background-color: #f8f9fa; border-radius: 8px; margin-bottom: 6px; padding: 10px;">
+                    <div><strong>Comentario:</strong> ${comentarioObj.texto}</div>
+                    <small class="text-muted">
+                        <i class="bi bi-person"></i> ${autor} |
+                        <i class="bi bi-clock"></i> ${fecha}
+                    </small>
+                </li>
+            `);
+                });
+
+                $("#nuevoComentario").val("");
+                $("#btnGuardarComentario").data("cedula", cedula);
+                $('#modalComentarios').modal('show');
+            });
+
+            // Mostrar comentarios en el modal de perfil
+            $(".fa-eye").on("click", function () {
+                var fila = $(this).closest("tr");
+                var cedula = fila.find("td:nth-child(1)").text();
+
+                var comentarios = comentariosPorEstudiante[cedula] || [];
+                var contenedor = $("#retroalimentacionComentarios").empty();
+
+                if (comentarios.length === 0) {
+                    contenedor.html(`<span class="text-muted">Sin comentarios registrados.</span>`);
+                } else {
+                    comentarios.forEach(function (comentarioObj) {
+                        const fecha = comentarioObj.fecha || '';
+                        const autor = comentarioObj.autor || 'Desconocido';
+                        contenedor.append(`
+                <div style="margin-bottom: 10px; padding: 6px; border-bottom: 1px solid #ddd;">
+                    <div><strong>${autor}</strong> <small class="text-muted">(${fecha})</small></div>
+                    <div>${comentarioObj.texto}</div>
+                </div>
+            `);
+                    });
+                }
+            });
+
+
+
+            // Guardar nuevo comentario
+            $("#btnGuardarComentario").on("click", function () {
+                var comentario = $("#nuevoComentario").val().trim();
+                var cedula = $(this).data("cedula");
+
+                if (comentario === "") {
+                    Swal.fire('Error', 'Debe escribir un comentario antes de guardar.', 'error');
+                    return;
+                }
+
+                var fechaActual = new Date();
+                var fechaFormateada = fechaActual.toLocaleString("es-CR", {
+                    dateStyle: "medium",
+                    timeStyle: "short"
+                });
+
+                var nuevoComentarioObj = {
+                    texto: comentario,
+                    fecha: fechaFormateada,
+                    autor: usuarioActual
+                };
+
+                if (!comentariosPorEstudiante[cedula]) {
+                    comentariosPorEstudiante[cedula] = [];
+                }
+                comentariosPorEstudiante[cedula].push(nuevoComentarioObj);
+
+                $("#comentariosAnteriores").append(`
+            <li class="list-group-item" style="word-break: break-word; white-space: pre-wrap; background-color: #f8f9fa; border-radius: 8px; margin-bottom: 6px; padding: 10px;">
+                <div><strong>Comentario:</strong> ${comentario}</div>
+                <small class="text-muted">
+                    <i class="bi bi-person"></i> ${usuarioActual} |
+                    <i class="bi bi-clock"></i> ${fechaFormateada}
+                </small>
+            </li>
+        `);
+
+                $("#nuevoComentario").val("");
+                Swal.fire('Éxito', 'Comentario agregado exitosamente.', 'success');
+            });
+        });
+
+
+    </script>
+}
