@@ -711,3 +711,14 @@ table.dataTable {
 .grupo-campo {
     margin-bottom: 15px;
 }
+
+.btn-sm {
+    opacity: 1; /* Siempre visibles */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .btn-sm:hover {
+        background-color: #ddd; /* O cualquier color suave */
+        color: #000; /* Cambia color de ícono/texto si quieres */
+        cursor: pointer;
+    }
