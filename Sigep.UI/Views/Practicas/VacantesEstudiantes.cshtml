@@ -5,9 +5,9 @@
 <h2 class="vacantes-titulo titulo-principal d-flex justify-content-center align-items-center">
     Vacantes @DateTime.Now.Year
 </h2>
-<div class="vacantes-titulo titulo-principal d-flex justify-content-between align-items-center">
+<div class="vacantes-titulo titulo-principal d-flex justify-content-between mb-0 align-items-center">
 
-    <button type="button" class="btn-cta btn-nuevo" data-bs-toggle="modal" data-bs-target="#modalCrearVacante"> + Registrar</button>
+    <button type="button" class="btn-cta btn-nuevo mb-0" data-bs-toggle="modal" data-bs-target="#modalCrearVacante"> + Registrar</button>
     <div class="dropdown">
         <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filtroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fas fa-filter"></i>
@@ -52,6 +52,7 @@
                 <td>2</td>
                 <td><span class="badge badge-no-asignada">No Asignada</span></td>
                 <td>
+                    <button class="btn bg-transparent text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalAsignar" style="color: #2d594d"><i class="fas fa-user-plus"></i></button>
                     <button class="btn bg-transparent text-decoration-none BtnVisualizarVacante" data-bs-toggle="modal"
                             data-bs-target="#modalVisualizarVacante" data-asignados="2" style="color: #2d594d">
                         <i class="fas fa-eye"></i>
@@ -80,6 +81,7 @@
                 <td>0</td>
                 <td><span class="badge badge-no-asignada">No Asignada</span></td>
                 <td>
+                    <button class="btn bg-transparent text-decoration-none BtnEliminarVacante" data-asignados="0" style="color: #2d594d"><i class="fas fa-user-plus"></i></button>
                     <button class="btn bg-transparent text-decoration-none BtnVisualizarVacante" data-bs-toggle="modal"
                             data-bs-target="#modalVisualizarVacante" data-asignados="0" style="color: #2d594d">
                         <i class="fas fa-eye"></i>
@@ -98,11 +100,73 @@
                         <i class="fas fa-sync-alt"></i>
                     </button>
                     <button class="btn bg-transparent text-decoration-none BtnEliminarVacante" data-asignados="0" style="color: #2d594d">	<i class="fas fa-trash"></i></button>
+
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
+
+<!--MODAL ASIGNAR-->
+<div class="modal fade" id="modalAsignar" tabindex="-1" aria-labelledby="modalCrearVacanteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content" style="border-radius: 12px; background-color: #F2F2F2; color: #2D594D;">
+
+            <!-- HEADER -->
+            <div class="modal-header" style="background-color: #2D594D; color: white;">
+                <h5 class="modal-title">Asignar Vacante</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+
+            <!-- BODY -->
+            <div class="modal-body px-4">
+                <div class="mb-4 card rounded-5 p-3">
+                    <h5 class="section-title">Seleccionar Estudiante para Asignar</h5>
+
+                  
+                    <table id="miTablaAsignar" class="display responsive nowrap w-100">
+                        <thead class="table-light">
+                            <tr style="text-align: center;">
+                                <th> Nombre</th>
+                                <th> Cédula</th>
+                                <th>Estado Práctica</th>
+                                <th>Especialidad</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                            <tr>
+                                <td>Johnny Castillo Fallas</td>
+                                <td>803883038</td>
+                                <td><span class="badge-asignada">Práctica Asignada</span></td>
+                                <td>Informática</td>
+                                <td class="text-center">
+                                    <button class="btn bg-transparent asignar-btn text-decoration-none" title="Asignar" style="color: #2d594d"><i class="fas fa-user-plus"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ariana Fallas Calderón</td>
+                                <td>118810955</td>
+                                <td><span class="badge-no-asignada">Sin Práctica Asignada</span></td>
+                                <td>Informática</td>
+
+                                <td class="text-center">
+                                    <button class="btn bg-transparent asignar-btn text-decoration-none" title="Asignar" style="color: #2d594d"><i class="fas fa-user-plus"></i></button>
+                                </td>
+
+                            </tr>
+                            <!-- Más estudiantes... -->
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+
 
 <!--MODAL VISUALIZAR-->
 <!-- MODAL -->
@@ -589,6 +653,59 @@
 
     <script>
         $(document).ready(function () {
+         $('#miTablaAsignar').DataTable({
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
+            },
+            responsive: true,
+            pageLength: 5
+        });
+
+          $('.asignar-btn').on('click', function () {
+            var $row = $(this).closest('tr'); // Fila actual
+            var nombre = $row.find('td:eq(0)').text().trim(); // Nombre estudiante
+            var estado = $row.find('td:eq(2)').text().trim(); // Estado práctica
+
+            // Simula validación
+            if (estado === "Práctica Asignada") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Lo sentimos',
+                    text: 'El estudiante ya tiene una práctica asignada',
+                    confirmButtonColor: '#2D594D'
+                });
+            } else {
+                // Confirmar asignación
+                Swal.fire({
+                    title: '¿Asignar estudiante?',
+                    text: `¿Deseas asignar a ${nombre} a esta vacante?`,
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#2D594D',
+                    cancelButtonColor: '#aaa',
+                    confirmButtonText: 'Sí, asignar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: 'Asignado',
+                            text: `${nombre} ha sido asignado.`,
+                            icon: 'success',
+                            timer: 5000,
+                            timerProgressBar: true,
+                            showConfirmButton: false,
+                            willClose: () => {
+                                // Redirección simulada o lógica AJAX aquí
+                                window.location.href = '@Url.Action("VacantesEstudiantes", "Practicas")';
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+           //---------------------------------
+
 
             $(".BtnVisualizarVacante").on("click", function () {
                 const asignados = parseInt($(this).data("asignados"));

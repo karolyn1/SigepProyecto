@@ -334,6 +334,8 @@
     <Content Include="Views\AdministracionGeneral\CrearSeccion.cshtml" />
     <Content Include="Views\AdministracionGeneral\EditarSeccion.cshtml" />
     <Content Include="Views\Practicas\VisualizacionPostulacion.cshtml" />
+    <Content Include="Views\Practicas\PracticasCoordinador.cshtml" />
+    <Content Include="Views\Practicas\VistaVacantesProfesor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

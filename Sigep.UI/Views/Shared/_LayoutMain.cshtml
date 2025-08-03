@@ -90,8 +90,17 @@
                                             </a>
                                         </li>
                                     }
+                                    @if (rol == 4)
+                                    {
+                                        <li class="sidebar-item">
+                                            <a href="@Url.Action("VistaVacantesProfesor", "Practicas")" class="sidebar-link">
+                                                <i class="fas fa-briefcase "></i>
+                                                <span class="hide-menu"> Vacantes Disponibles</span>
+                                            </a>
+                                        </li>
+                                    }
                                     <li class="sidebar-item">
-                                        <a href="@Url.Action("ListarEstudiante", "Estudiante")" class="sidebar-link">
+                                        <a href="@Url.Action("PracticasCoordinador", "Practicas")" class="sidebar-link">
                                             <i class="fas fa-user"></i>
                                             <span class="hide-menu"> Gestión de Prácticas </span>
                                         </a>

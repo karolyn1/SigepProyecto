@@ -23,6 +23,18 @@ namespace Sigep.UI.Controllers
             return View();
         }
 
+        [HttpGet]
 
+        public ActionResult PracticasCoordinador()
+        {
+            return View();
+        }
+
+        [HttpGet]
+
+        public ActionResult VistaVacantesProfesor()
+        {
+            return View();
+        }
     }
 }

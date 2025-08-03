@@ -557,7 +557,41 @@ table#miTabla {
     word-wrap: break-word;
 }
 
+table#miTablaAsignar {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    background-color: white;
+    font-family: 'Rubik', sans-serif;
+    width: 100% !important;
+}
 
+#miTablaAsignar thead th {
+    background-color: #2D594D;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 12px;
+    font-size: 0.85rem;
+    border-bottom: none;
+}
+
+#miTablaAsignar tbody tr {
+    background-color: #EAF2D8;
+    /*box-shadow: 0 4px 10px rgba(0,0,0,0.05);*/
+    box-shadow: 4px 0 0 white, -4px 0 0 white; /* Bordes izquierdo y derecho */
+    border-radius: 8px;
+}
+
+#miTablaAsignar tbody td {
+    color: white;
+    padding: 12px;
+    vertical-align: middle;
+    color: #2D594D;
+    font-size: 0.9rem;
+    border-bottom: none;
+    white-space: normal !important; /* permite salto de línea dentro de celdas */
+    word-wrap: break-word;
+}
 .vacantes-table {
     min-width: 1000px;
     width: 100%;

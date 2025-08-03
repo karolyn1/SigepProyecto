@@ -1,0 +1,289 @@
+﻿@{
+    ViewBag.Title = "Bolsa de Empleo";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<section class="vacantes-wrapper">
+    <h2 class="vacantes-titulo titulo-principal">Vacantes Disponibles</h2>
+
+    <!-- Filtro por área profesional -->
+    <!--<div class="filtro-container">
+        <label for="filtro-area" class="filtro-label">Filtrar por área profesional:</label>
+        <select id="filtro-area" class="filtro-select">
+            <option value="">-- Seleccione un área --</option>
+            <option value="Administración">Administración</option>
+            <option value="Ingeniería">Ingeniería</option>
+            <option value="Salud">Salud</option>
+            <option value="Educación">Educación</option>
+        </select>
+    </div>-->
+
+    <div class="vacantes-lista">
+
+        <!-- Mensaje si no hay vacantes para el área -->
+        <div id="mensaje-vacio" class="vacante-alerta" style="display:none;">
+            <strong>Información:</strong> No se encontraron vacantes en esta área.
+        </div>
+
+        <article class="vacante-card" data-area="Informática">
+            <header class="vacante-header">
+                <h3 class="vacante-titulo">Desarrollador Full Stack Internship</h3>
+                <span class="vacante-empresa">Boston Scientific</span>
+            </header>
+            <ul class="vacante-detalles">
+                <li><strong>Requisitos:</strong> C#, .NET, SQL Server, JavaScript</li>
+                <li><strong>Modalidad:</strong> Presencial</li>
+                <li><strong>Fecha límite de aplicación:</strong> 30/06/2025</li>
+                <li><strong>Número de cupos:</strong> 0</li>
+            </ul>
+            <div class="row justify-content-between">
+                <button data-bs-target="#modalVisualizar" data-bs-toggle="modal" class="col-md-6 btn btn-cta">Ver más</button>
+
+                <button data-bs-target="#modalAsignarVacante" data-bs-toggle="modal" class="col-md-5 btn btn-cta">Asignar</button>
+            </div>
+
+        </article>
+
+        <article class="vacante-card" data-area="Informática">
+            <header class="vacante-header">
+                <h3 class="vacante-titulo">Desarrollador Full Stack Internship</h3>
+                <span class="vacante-empresa">Boston Scientific</span>
+            </header>
+            <ul class="vacante-detalles">
+                <li><strong>Requisitos:</strong> C#, .NET, SQL Server, JavaScript</li>
+                <li><strong>Modalidad:</strong> Presencial</li>
+                <li><strong>Fecha límite de aplicación:</strong> 30/06/2025</li>
+                <li><strong>Número de cupos:</strong> 0</li>
+            </ul>
+            <div class="row justify-content-between">
+                <button data-bs-target="#modalVisualizar" data-bs-toggle="modal" class="col-md-6 btn btn-cta">Ver más</button>
+
+                <button data-bs-target="#modalAsignarVacante" data-bs-toggle="modal" class="col-md-5 btn btn-cta">Asignar</button>
+            </div>
+
+        </article>
+
+        <article class="vacante-card" data-area="Informática">
+            <header class="vacante-header">
+                <h3 class="vacante-titulo">Desarrollador Full Stack Internship</h3>
+                <span class="vacante-empresa">Boston Scientific</span>
+            </header>
+            <ul class="vacante-detalles">
+                <li><strong>Requisitos:</strong> C#, .NET, SQL Server, JavaScript</li>
+                <li><strong>Modalidad:</strong> Presencial</li>
+                <li><strong>Fecha límite de aplicación:</strong> 30/06/2025</li>
+                <li><strong>Número de cupos:</strong> 0</li>
+            </ul>
+            <div class="row justify-content-between">
+                <button data-bs-target="#modalVisualizar" data-bs-toggle="modal" class="col-md-6 btn btn-cta">Ver más</button>
+
+                <button data-bs-target="#modalAsignarVacante" data-bs-toggle="modal" class="col-md-5 btn btn-cta">Asignar</button>
+            </div>
+
+        </article>
+
+        <article class="vacante-card" data-area="Informática">
+            <header class="vacante-header">
+                <h3 class="vacante-titulo">Desarrollador Full Stack Internship</h3>
+                <span class="vacante-empresa">Boston Scientific</span>
+            </header>
+            <ul class="vacante-detalles">
+                <li><strong>Requisitos:</strong> C#, .NET, SQL Server, JavaScript</li>
+                <li><strong>Modalidad:</strong> Presencial</li>
+                <li><strong>Fecha límite de aplicación:</strong> 30/06/2025</li>
+                <li><strong>Número de cupos:</strong> 0</li>
+            </ul>
+            <div class="row justify-content-between">
+                <button data-bs-target="#modalVisualizar" data-bs-toggle="modal" class="col-md-6 btn btn-cta">Ver más</button>
+
+                <button data-bs-target="#modalAsignarVacante" data-bs-toggle="modal" class="col-md-5 btn btn-cta">Asignar</button>
+            </div>
+
+        </article>
+
+
+    </div>
+</section>
+
+
+<!--MODAL ASIGNAR-->
+<div class="modal fade" id="modalAsignarVacante" tabindex="-1" aria-labelledby="modalCrearVacanteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content" style="border-radius: 12px; background-color: #F2F2F2; color: #2D594D;">
+
+            <!-- HEADER -->
+            <div class="modal-header" style="background-color: #2D594D; color: white;">
+                <h5 class="modal-title">Asignar Vacante</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+
+            <!-- BODY -->
+            <div class="modal-body px-4">
+                <div class="mb-4 card rounded-5 p-3">
+                    <h5 class="section-title">Seleccionar Estudiante para Asignar</h5>
+
+
+                    <table id="miTablaAsignar" class="display responsive nowrap w-100">
+                        <thead class="table-light">
+                            <tr style="text-align: center;">
+                                <th> Nombre</th>
+                                <th> Cédula</th>
+                                <th>Estado Práctica</th>
+                                <th>Especialidad</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>Johnny Castillo Fallas</td>
+                                <td>803883038</td>
+                                <td><span class="badge-asignada">Práctica Asignada</span></td>
+                                <td>Informática</td>
+                                <td class="text-center">
+                                    <button class="btn bg-transparent asignar-btn text-decoration-none" title="Asignar" style="color: #2d594d"><i class="fas fa-user-plus"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ariana Fallas Calderón</td>
+                                <td>118810955</td>
+                                <td><span class="badge-no-asignada">Sin Práctica Asignada</span></td>
+                                <td>Informática</td>
+
+                                <td class="text-center">
+                                    <button class="btn bg-transparent asignar-btn text-decoration-none" title="Asignar" style="color: #2d594d"><i class="fas fa-user-plus"></i></button>
+                                </td>
+
+                            </tr>
+                            <!-- Más estudiantes... -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--MODAL VISUALIZAR-->
+<!-- MODAL -->
+<div class="modal fade" id="modalVisualizar" tabindex="-1" aria-labelledby="modalCrearVacanteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content" style="border-radius: 12px; background-color: #F2F2F2; color: #2D594D;">
+
+            <!-- HEADER -->
+            <div class="modal-header" style="background-color: #2D594D; color: white;">
+                <h5 class="modal-title">Visualizar Vacante</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+
+            <!-- BODY -->
+            <div class="modal-body px-4">
+                <section class="vacante-detalle bg-transparent">
+                    <h2 class="vacante-titulo">Desarrollador Full Stack</h2>
+                    <p class="vacante-empresa"><strong>Empresa:</strong> Boston Scientific</p>
+
+                    <div class="vacante-info">
+                        <p><strong>Descripción:</strong> Empresa de desarrollo busca profesional para diseñar, construir y mantener aplicaciones web modernas usando tecnologías .NET y JavaScript.</p>
+                        <p><strong>Requisitos:</strong> C#, ASP.NET Core, SQL Server, JavaScript, HTML5, CSS3, experiencia con Git.</p>
+
+                        <p><strong>Modalidad:</strong> Híbrida (3 días presencial, 2 días remoto)</p>
+                        <p><strong>Ubicación:</strong> San José, Costa Rica</p>
+                        <p><strong>Fecha límite de aplicación:</strong> 30/06/2025</p>
+
+                    </div>
+                    <hr />
+                    <h5 class="section-title">Información de Contacto</h5>
+
+                    <p><strong>Nombre:</strong> Kimberly Rojas</p>
+                    <p><strong>Teléfono:</strong> 8888888</p>
+                    <p><strong>Email:</strong> rrhh@bsci.co.cr</p>
+                    <hr />
+                    <div class="mb-4">
+                        <h5 class="section-title">Aplicaciones</h5>
+
+
+                        <ul class="list-group" id="listaPostulaciones">
+                            <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil align-items-center p-2 border rounded mb-2">
+                                Johhny Castillo Fallas | 803883038 | Informática
+                                <span class="badge badge-asignada">Aceptado</span>
+                            </a>
+                            <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil align-items-center p-2 border rounded mb-2">
+                                Ariana Fallas Calderón | 118810955 | Informática
+                                <span class="badge badge-no-asignada" style="background-color: darkgoldenrod; color: white">En Proceso</span>
+                            </a>
+                        </ul>
+
+
+                        <span id="mensajeSinAsignados" class="text-muted" style="display: none;">Ningún estudiante asignado aún</span>
+                    </div>
+
+                </section>
+
+             
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<link href="~/Content/estilos/estilos.css" rel="stylesheet" />
+@section Scripts {
+    <script>
+    $(document).ready(function () {
+        $('#miTablaAsignar').DataTable({
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
+            },
+            responsive: true,
+            pageLength: 5
+        });
+
+        $('.asignar-btn').on('click', function () {
+            var $row = $(this).closest('tr'); // Fila actual
+            var nombre = $row.find('td:eq(0)').text().trim(); // Nombre estudiante
+            var estado = $row.find('td:eq(2)').text().trim(); // Estado práctica
+
+            // Simula validación
+            if (estado === "Práctica Asignada") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Lo sentimos',
+                    text: 'El estudiante ya tiene una práctica asignada',
+                    confirmButtonColor: '#2D594D'
+                });
+            } else {
+                // Confirmar asignación
+                Swal.fire({
+                    title: '¿Asignar estudiante?',
+                    text: `¿Deseas asignar a ${nombre} a esta vacante?`,
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#2D594D',
+                    cancelButtonColor: '#aaa',
+                    confirmButtonText: 'Sí, asignar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: 'Asignado',
+                            text: `${nombre} ha sido asignado.`,
+                            icon: 'success',
+                            timer: 5000,
+                            timerProgressBar: true,
+                            showConfirmButton: false,
+                            willClose: () => {
+                                // Redirección simulada o lógica AJAX aquí
+                                window.location.href = '@Url.Action("VacantesEstudiantes", "Practicas")';
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+    });
+    </script>
+}
