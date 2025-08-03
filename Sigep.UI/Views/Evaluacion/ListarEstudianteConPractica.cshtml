@@ -2,8 +2,13 @@
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
     ViewBag.Title = "Listado de Estudiantes";
 }
+
+@{
+    var rol = Session["rol"] != null ? Convert.ToInt32(Session["rol"]) : 0;
+}
+
 <h2 class="vacantes-titulo titulo-principal d-flex justify-content-between align-items-center">
-    Estudiantes @DateTime.Now.Year
+    Prácticas Profesionales @DateTime.Now.Year
     <div class="dropdown">
         <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filtroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fas fa-filter"></i>
@@ -17,14 +22,6 @@
                     <option value="Rezagado">Rezagado</option>
                 </select>
             </div>
-            <div class="mb-2">
-                <label>Estado de práctica</label>
-                <select id="filtroPractica" class="form-control">
-                    <option value="">Todos</option>
-                    <option value="Asignada">Con práctica asignada</option>
-                    <option value="No asignada">Sin práctica</option>
-                </select>
-            </div>
             <div>
                 <label>Especialidad</label>
                 <input type="text" id="filtroEspecialidad" class="form-control" placeholder="Filtrar por especialidad" />
@@ -32,6 +29,7 @@
         </div>
     </div>
 </h2>
+
 
 <div class="card rounded-5 p-3">
     <table id="miTabla" class="display responsive nowrap w-100">
@@ -42,7 +40,8 @@
                 <th>Especialidad</th>
                 <th>Teléfono</th>
                 <th>Práctica asignada</th>
-                <th>Nota</th>
+                <th>Estado Académico</th>
+                <th>Nota de la práctica</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -53,12 +52,17 @@
                 <td>Informática</td>
                 <td>8888-8888</td>
                 <td>Práctica en Banco Nacional</td>
+                <td><span class="badge badge-asignada">Aprobado</span></td>
                 <td>50</td>
 
                 <td>
                     <button data-bs-toggle="modal" data-bs-target="#modalPerfil" class="btn text-decoration-none bg-transparent VerPerfil" data-cedula="2023101234" style="color: #2d594d"><i class="fas fa-eye"></i></button>
                     <button class="btn Comentarios bg-transparent text-decoration-none" style="color: #2d594d">	<i class="fas fa-comment"></i></button>
-                    <button class="btn btnEditarNota bg-transparent text-decoration-none" style="color: #2d594d;" data-cedula="2023101234"> <i class="bi bi-pencil-square"></i></button>
+                    @if (rol == 4)
+                    {
+                        <button class="btn btnEditarNota bg-transparent text-decoration-none" style="color: #2d594d;" data-cedula="2023101234"> <i class="bi bi-pencil-square"></i></button>
+                    }
+
                 </td>
             <tr>
                 <td>2022105678</td>
@@ -66,12 +70,16 @@
                 <td>Electrónica</td>
                 <td>8999-9999</td>
                 <td>Práctica en ICE</td>
+                <td><span class="badge badge-asignada">Aprobado</span></td>
                 <td>-</td>
 
                 <td>
                     <button data-bs-toggle="modal" data-bs-target="#modalPerfil" class="btn text-decoration-none bg-transparent VerPerfil" data-cedula="2022105678" style="color: #2d594d"><i class="fas fa-eye"></i></button>
                     <button class="btn Comentarios bg-transparent text-decoration-none" style="color: #2d594d">	<i class="fas fa-comment"></i></button>
-                    <button class="btn btnEditarNota bg-transparent text-decoration-none" style="color: #2d594d;" data-cedula="2022105678"> <i class="bi bi-pencil-square"></i></button>
+                    @if (rol == 4)
+                    {
+                        <button class="btn btnEditarNota bg-transparent text-decoration-none" style="color: #2d594d;" data-cedula="2022105678"> <i class="bi bi-pencil-square"></i></button>
+                    }
                 </td>
             </tr>
         </tbody>
@@ -177,17 +185,17 @@
 
             <!-- BODY -->
             <div class="modal-body px-4">
-
-                <!-- BOTONES DOCUMENTOS ARRIBA -->
-                <div class="row top-buttons mb-4 action-buttons">
-                    <div class="col-md-6">
-                        <button data-bs-toggle="modal" onclick="$('#modalSubirDocumento').modal('show')">
-                            <i class="fas fa-folder-open me-2"></i> Subir Documentos
-                        </button>
+                @if (rol == 4)
+                {
+                    <!-- BOTONES DOCUMENTOS ARRIBA -->
+                    <div class="row top-buttons mb-4 action-buttons">
+                        <div class="col-md-6">
+                            <button data-bs-toggle="modal" onclick="$('#modalSubirDocumento').modal('show')">
+                                <i class="fas fa-folder-open me-2"></i> Subir Documentos
+                            </button>
+                        </div>
                     </div>
-
-                </div>
-
+                }
                 <!-- Sección: Información Personal -->
                 <div class="mb-4">
                     <h5 class="section-title">Información Personal</h5>
@@ -349,8 +357,27 @@
     <script>
         $(document).ready(function () {
             var table = $('#miTabla').DataTable({
-                responsive: true
+                responsive: true,
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel"></i> Exportar a Excel',
+                        className: 'btn btn-verde-personalizado btn-sm'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        text: '<i class="fas fa-file-pdf"></i> Exportar a PDF',
+                        className: 'btn btn-verde-personalizado btn-sm',
+                        orientation: 'landscape',
+                        pageSize: 'A4'
+                    },
+                ],
+                language: {
+                    url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
+                }
             });
+ 
 
             var notasFinales = {
                 '2023101234': null,
@@ -426,9 +453,9 @@
                     const li = document.createElement("li");
                     li.className = "list-group-item d-flex justify-content-between align-items-center";
                     li.innerHTML = `
-                    ${archivo}
-                   
-                `;
+                                    ${archivo}
+
+                                `;
                     lista.appendChild(li);
                 });
             }
@@ -436,10 +463,6 @@
             // Filtros
             $('#filtroEstadoAcademico').on('change', function () {
                 table.column(5).search(this.value).draw();
-            });
-
-            $('#filtroPractica').on('change', function () {
-                table.column(4).search(this.value).draw();
             });
 
             $('#filtroEspecialidad').on('keyup', function () {
@@ -504,7 +527,6 @@
             });
 
             // Abrir modal al hacer clic en el botón de comentarios
-            // Manejar clic en el botón de comentarios, compatible con modo responsive
             $('#miTabla').on('click', '.Comentarios', function () {
                 // Obtener la fila del botón (incluso si es responsive)
                 var tr = $(this).closest('tr');
@@ -527,14 +549,14 @@
                     const fecha = comentarioObj.fecha || '';
                     const autor = comentarioObj.autor || 'Desconocido';
                     ul.append(`
-                                                <li class="list-group-item" style="word-break: break-word; white-space: pre-wrap; background-color: #f8f9fa; border-radius: 8px; margin-bottom: 6px; padding: 10px;">
-                                                    <div><strong>Comentario:</strong> ${comentarioObj.texto}</div>
-                                                    <small class="text-muted">
-                                                        <i class="bi bi-person"></i> ${autor} |
-                                                        <i class="bi bi-clock"></i> ${fecha}
-                                                    </small>
-                                                </li>
-                                            `);
+                                                                <li class="list-group-item" style="word-break: break-word; white-space: pre-wrap; background-color: #f8f9fa; border-radius: 8px; margin-bottom: 6px; padding: 10px;">
+                                                                    <div><strong>Comentario:</strong> ${comentarioObj.texto}</div>
+                                                                    <small class="text-muted">
+                                                                        <i class="bi bi-person"></i> ${autor} |
+                                                                        <i class="bi bi-clock"></i> ${fecha}
+                                                                    </small>
+                                                                </li>
+                                                            `);
                 });
 
                 $("#nuevoComentario").val("");
@@ -562,11 +584,11 @@
                         const fecha = comentarioObj.fecha || '';
                         const autor = comentarioObj.autor || 'Desconocido';
                         contenedor.append(`
-                                                    <div style="margin-bottom: 10px; padding: 6px; border-bottom: 1px solid #ddd;">
-                                                        <div><strong>${autor}</strong> <small class="text-muted">(${fecha})</small></div>
-                                                        <div>${comentarioObj.texto}</div>
-                                                    </div>
-                                                `);
+                                                                    <div style="margin-bottom: 10px; padding: 6px; border-bottom: 1px solid #ddd;">
+                                                                        <div><strong>${autor}</strong> <small class="text-muted">(${fecha})</small></div>
+                                                                        <div>${comentarioObj.texto}</div>
+                                                                    </div>
+                                                                `);
                     });
                 }
 
@@ -603,14 +625,14 @@
                 comentariosPorEstudiante[cedula].push(nuevoComentarioObj);
 
                 $("#comentariosAnteriores").append(`
-                                                <li class="list-group-item" style="word-break: break-word; white-space: pre-wrap; background-color: #f8f9fa; border-radius: 8px; margin-bottom: 6px; padding: 10px;">
-                                                    <div><strong>Comentario:</strong> ${comentario}</div>
-                                                    <small class="text-muted">
-                                                        <i class="bi bi-person"></i> ${usuarioActual} |
-                                                        <i class="bi bi-clock"></i> ${fechaFormateada}
-                                                    </small>
-                                                </li>
-                                            `);
+                                                                <li class="list-group-item" style="word-break: break-word; white-space: pre-wrap; background-color: #f8f9fa; border-radius: 8px; margin-bottom: 6px; padding: 10px;">
+                                                                    <div><strong>Comentario:</strong> ${comentario}</div>
+                                                                    <small class="text-muted">
+                                                                        <i class="bi bi-person"></i> ${usuarioActual} |
+                                                                        <i class="bi bi-clock"></i> ${fechaFormateada}
+                                                                    </small>
+                                                                </li>
+                                                            `);
 
                 $("#nuevoComentario").val("");
                 Swal.fire('Éxito', 'Comentario agregado exitosamente.', 'success');
@@ -633,11 +655,11 @@
                         const fecha = comentarioObj.fecha || '';
                         const autor = comentarioObj.autor || 'Desconocido';
                         contenedor.append(`
-                                                        <div style="margin-bottom: 10px; padding: 6px; border-bottom: 1px solid #ddd;">
-                                                            <div><strong>${autor}</strong> <small class="text-muted">(${fecha})</small></div>
-                                                            <div>${comentarioObj.texto}</div>
-                                                        </div>
-                                                    `);
+                                                                        <div style="margin-bottom: 10px; padding: 6px; border-bottom: 1px solid #ddd;">
+                                                                            <div><strong>${autor}</strong> <small class="text-muted">(${fecha})</small></div>
+                                                                            <div>${comentarioObj.texto}</div>
+                                                                        </div>
+                                                                    `);
                     });
                 }
             }

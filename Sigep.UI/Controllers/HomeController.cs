@@ -29,8 +29,8 @@ namespace Sigep.UI.Controllers
         }
 
         [HttpPost]
-
-        public ActionResult Login(Usuario usuario) {
+        public ActionResult Login(Usuario usuario)
+        {
             var coordinador = "118810955";
             var nombreCoordinador = "Ariana";
             var estudiante = "305550650";
@@ -41,33 +41,42 @@ namespace Sigep.UI.Controllers
             var nombreProfesor = "Jean Pool";
             var contrasenna = "Hola123456";
 
+            bool credencialesValidas = false;
+
             if (usuario.cedula == coordinador && contrasenna == usuario.contrasenna)
             {
                 Session["rol"] = 1;
                 Session["nombre"] = nombreCoordinador;
-            } else if (usuario.cedula == estudiante && contrasenna == usuario.contrasenna)
+                credencialesValidas = true;
+            }
+            else if (usuario.cedula == estudiante && contrasenna == usuario.contrasenna)
             {
                 Session["rol"] = 2;
                 Session["nombre"] = nombreEstudiante;
-
-            } else if (usuario.cedula == egresado && contrasenna == usuario.contrasenna)
+                credencialesValidas = true;
+            }
+            else if (usuario.cedula == egresado && contrasenna == usuario.contrasenna)
             {
                 Session["rol"] = 3;
                 Session["nombre"] = nombreEgresado;
+                credencialesValidas = true;
             }
             else if (usuario.cedula == profesor && contrasenna == usuario.contrasenna)
             {
                 Session["rol"] = 4;
                 Session["nombre"] = nombreProfesor;
-            } else
-            {
-                TempData["SwalError"] = "Lo sentimos, el usuario no se encuentra registrado. Por favor, crea una cuenta";
+                credencialesValidas = true;
             }
 
+            if (!credencialesValidas)
+            {
+                TempData["SwalError"] = "Lo sentimos, el usuario no se encuentra registrado. Por favor, crea una cuenta";
+                return View("Login", usuario);
+            }
+
+          
             return RedirectToAction("Index");
-
         }
-
         [HttpPost] 
         public ActionResult Registro(Usuario usuario)
         {
@@ -103,6 +112,15 @@ namespace Sigep.UI.Controllers
                 TempData["SwalError"] = "La cédula proporcionada no se encuentra registrada";
                 return View();
             }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CerrarSesion()
+        {
+            Session.Abandon();
+            Session.Clear();
+            return RedirectToAction("Login");
         }
     }
 }

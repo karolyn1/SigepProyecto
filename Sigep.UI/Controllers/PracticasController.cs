@@ -16,7 +16,12 @@ namespace Sigep.UI.Controllers
         }
 
 
+        [HttpGet]
 
+        public ActionResult VisualizacionPostulacion()
+        {
+            return View();
+        }
 
 
     }
