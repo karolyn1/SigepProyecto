@@ -217,20 +217,46 @@ else
                 <div class="mb-4">
                     <h5 class="section-title">Prácticas / Postulaciones</h5>
                     <ul class="list-group">
-                        <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" style="color: #2D594D;" class="d-flex justify-content-between  PostulacionesPerfil align-items-center p-2 border rounded mb-2">
-                            Práctica en Banco Nacional
-                            <span class="badge badge-asignada">Aceptado</span>
-                        </a>
-                        <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil align-items-center p-2 border rounded mb-2">
-                            Postulación a ICE
-                            <span class="badge badge-no-asignada" style="background-color: darkgoldenrod; color: white">En Proceso</span>
-                        </a>
-                        <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil  align-items-center p-2 border rounded mb-2">
-                            Postulación a Amazon
-                            <span class="badge badge-no-asignada" style="background-color: darkred; color: WHITE">Rechazado</span>
-                        </a>
+
+                        <!-- Aceptado -->
+                        <li class="d-flex justify-content-between align-items-center p-2 border rounded mb-2">
+                            <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" class="text-decoration-none" style="color: #2D594D;">
+                                Práctica en Banco Nacional
+                            </a>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="badge badge-asignada">Aceptado</span>
+                                <button class="btn BtnDesasignarPracticaEstudiante" data-nombre="Juan Pérez" style="color: #2D594D; background: none; border: none;" title="Desasignar práctica">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </li>
+
+                        <!-- En Proceso -->
+                        <li class="d-flex justify-content-between align-items-center p-2 border rounded mb-2">
+                            <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" class="text-decoration-none" style="color: #2D594D;">
+                                Postulación a ICE
+                            </a>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="badge badge-no-asignada" style="background-color: darkgoldenrod; color: white">En Proceso</span>
+                                <button class="btn BtnDesasignarPracticaEstudiante" data-nombre="Juan Pérez" style="color: #2D594D; background: none; border: none;" title="Desasignar práctica">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </li>
+
+                        <!-- Rechazado (sin botón) -->
+                        <li class="d-flex justify-content-between align-items-center p-2 border rounded mb-2">
+                            <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" class="text-decoration-none" style="color: #2D594D;">
+                                Postulación a Amazon
+                            </a>
+                            <div class="d-flex align-items-center">
+                                <span class="badge badge-no-asignada BtnDesasignarPracticaEstudiante" style="background-color: darkred; color: white">Rechazado</span>
+                            </div>
+                        </li>
+
                     </ul>
                 </div>
+
 
                 <!-- Sección: Documentos -->
                 <div class="mb-3">
@@ -374,7 +400,12 @@ else
                             estadoAcademicoSpan.removeClass().addClass('badge badge-estado-academico badge-no-asignada');
                         }
 
-                        Swal.fire('Actualizado!', 'El estado académico ha sido actualizado.', 'success');
+                        Swal.fire({
+                            title: 'Actualizado!',
+                            text: 'El estado académico ha sido actualizado.',
+                            icon: 'success',
+                            confirmButtonColor: '#2D594D'
+                        });
                     }
                 });
             });

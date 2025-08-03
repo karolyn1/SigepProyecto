@@ -34,7 +34,8 @@
                 <li><strong>Requisitos:</strong> C#, .NET, SQL Server, JavaScript</li>
                 <li><strong>Modalidad:</strong> Presencial</li>
                 <li><strong>Fecha límite de aplicación:</strong> 30/06/2025</li>
-                <li><strong>Número de cupos:</strong> 0</li>
+                <li><strong>Número de cupos:</strong> 1</li>
+                <li><strong>Número de aplicaciones:</strong> 2</li>
             </ul>
             <div class="row justify-content-between">
                 <button data-bs-target="#modalVisualizar" data-bs-toggle="modal" class="col-md-6 btn btn-cta">Ver más</button>
@@ -42,18 +43,40 @@
                 <button data-bs-target="#modalAsignarVacante" data-bs-toggle="modal" class="col-md-5 btn btn-cta">Asignar</button>
             </div>
 
+        </article>
+        <article class="vacante-card" data-area="Diseño">
+            <header class="vacante-header d-flex justify-content-between align-items-start">
+                <div>
+                    <h3 class="vacante-titulo">Diseñador UX/UI Intern</h3>
+                    <span class="vacante-empresa">Grupo Nación</span>
+                </div>
+                <span class="badge text-white fw-bold" style="background-color: darkgoldenrod; font-size: 14px">Vacante llena</span>
+            </header>
+            <ul class="vacante-detalles">
+                <li><strong>Requisitos:</strong> Figma, Adobe XD, Empatía, Portafolio</li>
+                <li><strong>Modalidad:</strong> Remoto</li>
+                <li><strong>Fecha límite de aplicación:</strong> 15/07/2025</li>
+                <li><strong>Número de cupos:</strong> 0</li>
+                <li><strong>Número de aplicaciones:</strong> 2</li>
+            </ul>
+      
+            <div class="row justify-content-between">
+                <button class="col-md-6 btn btn-cta" data-bs-toggle="modal" data-bs-target="#modalVisualizar">Ver más</button>
+                <button class="col-md-5 btn btn-cta" disabled>Asignar</button>
+            </div>
         </article>
 
         <article class="vacante-card" data-area="Informática">
             <header class="vacante-header">
-                <h3 class="vacante-titulo">Desarrollador Full Stack Internship</h3>
-                <span class="vacante-empresa">Boston Scientific</span>
+                <h3 class="vacante-titulo">Soporte Técnico Intern</h3>
+                <span class="vacante-empresa">Align</span>
             </header>
             <ul class="vacante-detalles">
-                <li><strong>Requisitos:</strong> C#, .NET, SQL Server, JavaScript</li>
+                <li><strong>Requisitos:</strong> Habilidades de comunicación, proactividad</li>
                 <li><strong>Modalidad:</strong> Presencial</li>
                 <li><strong>Fecha límite de aplicación:</strong> 30/06/2025</li>
-                <li><strong>Número de cupos:</strong> 0</li>
+                <li><strong>Número de cupos:</strong> 3</li>
+                <li><strong>Número de aplicaciones:</strong> 2</li>
             </ul>
             <div class="row justify-content-between">
                 <button data-bs-target="#modalVisualizar" data-bs-toggle="modal" class="col-md-6 btn btn-cta">Ver más</button>
@@ -63,43 +86,7 @@
 
         </article>
 
-        <article class="vacante-card" data-area="Informática">
-            <header class="vacante-header">
-                <h3 class="vacante-titulo">Desarrollador Full Stack Internship</h3>
-                <span class="vacante-empresa">Boston Scientific</span>
-            </header>
-            <ul class="vacante-detalles">
-                <li><strong>Requisitos:</strong> C#, .NET, SQL Server, JavaScript</li>
-                <li><strong>Modalidad:</strong> Presencial</li>
-                <li><strong>Fecha límite de aplicación:</strong> 30/06/2025</li>
-                <li><strong>Número de cupos:</strong> 0</li>
-            </ul>
-            <div class="row justify-content-between">
-                <button data-bs-target="#modalVisualizar" data-bs-toggle="modal" class="col-md-6 btn btn-cta">Ver más</button>
-
-                <button data-bs-target="#modalAsignarVacante" data-bs-toggle="modal" class="col-md-5 btn btn-cta">Asignar</button>
-            </div>
-
-        </article>
-
-        <article class="vacante-card" data-area="Informática">
-            <header class="vacante-header">
-                <h3 class="vacante-titulo">Desarrollador Full Stack Internship</h3>
-                <span class="vacante-empresa">Boston Scientific</span>
-            </header>
-            <ul class="vacante-detalles">
-                <li><strong>Requisitos:</strong> C#, .NET, SQL Server, JavaScript</li>
-                <li><strong>Modalidad:</strong> Presencial</li>
-                <li><strong>Fecha límite de aplicación:</strong> 30/06/2025</li>
-                <li><strong>Número de cupos:</strong> 0</li>
-            </ul>
-            <div class="row justify-content-between">
-                <button data-bs-target="#modalVisualizar" data-bs-toggle="modal" class="col-md-6 btn btn-cta">Ver más</button>
-
-                <button data-bs-target="#modalAsignarVacante" data-bs-toggle="modal" class="col-md-5 btn btn-cta">Asignar</button>
-            </div>
-
-        </article>
+     
 
 
     </div>
@@ -208,14 +195,29 @@
                         <ul class="list-group" id="listaPostulaciones">
                             <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil align-items-center p-2 border rounded mb-2">
                                 Johhny Castillo Fallas | 803883038 | Informática
-                                <span class="badge badge-asignada">Aceptado</span>
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="badge badge-asignada">Aceptado</span>
+                                    </div>
+                                    <div class="col">
+                                        <button class="badge btn-desasignar"  style="color: #2D594D; border: 0px" data-nombre="Johhny Castillo Fallas" style="border: 0px"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
                             </a>
-                            <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil align-items-center p-2 border rounded mb-2">
+
+                            <a href="@Url.Action("VisualizacionPostulacion", "Practicas")"  style="color: #2D594D;"  class="d-flex justify-content-between PostulacionesPerfil align-items-center p-2 border rounded mb-2">
                                 Ariana Fallas Calderón | 118810955 | Informática
-                                <span class="badge badge-no-asignada" style="background-color: darkgoldenrod; color: white">En Proceso</span>
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="badge badge-no-asignada" style="background-color: darkgoldenrod; color: white">En Proceso</span>
+                                    </div>
+                                    <div class="col">
+                                        <button class="badge btn-desasignar" style="color: #2D594D; border: 0px" data-nombre="Ariana Fallas Calderón" style="border: 0px"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                                
                             </a>
                         </ul>
-
 
                         <span id="mensajeSinAsignados" class="text-muted" style="display: none;">Ningún estudiante asignado aún</span>
                     </div>
@@ -232,7 +234,9 @@
 <link href="~/Content/estilos/estilos.css" rel="stylesheet" />
 @section Scripts {
     <script>
-    $(document).ready(function () {
+        $(document).ready(function () {
+
+     
         $('#miTablaAsignar').DataTable({
             language: {
                 url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
@@ -276,7 +280,7 @@
                             showConfirmButton: false,
                             willClose: () => {
                                 // Redirección simulada o lógica AJAX aquí
-                                window.location.href = '@Url.Action("VacantesEstudiantes", "Practicas")';
+                                window.location.href = '@Url.Action("VistaVacantesProfesor", "Practicas")';
                             }
                         });
                     }

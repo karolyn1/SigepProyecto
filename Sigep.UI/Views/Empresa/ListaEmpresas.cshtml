@@ -11,7 +11,7 @@
        style="margin-bottom: 25px;">+ Nueva Empresa</a>
 
     <div class="table-container">
-        <table id="tablaEmpresas" class="display responsive nowrap w-100">
+        <table id="miTabla" class="display responsive nowrap w-100">
             <thead>
                 <tr>
                     <th>Nombre de Empresa</th>
@@ -89,7 +89,7 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            $('#tablaEmpresas').DataTable({
+            $('#miTabla').DataTable({
                 responsive: true
             });
 

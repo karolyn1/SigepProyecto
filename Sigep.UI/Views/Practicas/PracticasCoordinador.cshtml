@@ -58,24 +58,11 @@
                 <td>Boston Scientific</td>
                 <td><span class="badge badge-asignada">Autogestionada</span></td>
                 <td>
-                    <button data-bs-toggle="modal" data-bs-target="#modalPerfil" class="btn text-decoration-none bg-transparent" style="color: #2d594d"><i class="fas fa-eye"></i></button>
-                    <button class="btn bg-transparent text-decoration-none" style="color: #2d594d">	<i class="fas fa-sync-alt"></i></button>
+                   <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" class="btn text-decoration-none bg-transparent" style="color: #2d594d"><i class="fas fa-eye"></i></a>
+                   <button class="btn-desasignar-practica bg-transparent text-decoration-none" data-nombre="Laura Rodriguez" style="color: #2d594d; border: 0px;">	<i class="fas fa-trash"></i></button>
                 </td>
             </tr>
-            <tr>
-                <td>2023101234</td>
-                <td>Jose Fallas</td>
-                <td>Secretariado</td>
-                <td>8888-8888</td>
-                <td><span class="badge badge-no-asignada">Sin Práctica</span></td>
-
-                <td></td>
-                <td><span ></span></td>
-                <td>
-                    <button data-bs-toggle="modal" data-bs-target="#modalPerfil" class="btn text-decoration-none bg-transparent" style="color: #2d594d"><i class="fas fa-eye"></i></button>
-                    <button class="btn bg-transparent text-decoration-none" style="color: #2d594d">	<i class="fas fa-sync-alt"></i></button>
-                </td>
-            </tr>
+            
             <tr>
                 <td>2022105678</td>
                 <td>Juan Pérez</td>
@@ -85,188 +72,14 @@
                 <td>Boston Scientific</td>
                 <td><span class="badge badge-asignada">Asignada por profesor/coordinador</span></td>
                 <td>
-                    <button data-bs-toggle="modal" data-bs-target="#modalPerfil" class="btn text-decoration-none bg-transparent" style="color: #2d594d"><i class="fas fa-eye"></i></button>
-                    <button class="btn CambiarEstado bg-transparent text-decoration-none" style="color: #2d594d">	<i class="fas fa-sync-alt"></i></button>
+                    <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" class="btn text-decoration-none bg-transparent" style="color: #2d594d"><i class="fas fa-eye"></i></a>
+                    <button class="btn-desasignar-practica bg-transparent text-decoration-none" data-nombre="Juan Pérez" style="color: #2d594d; border: 0px;">	<i class="fas fa-trash"></i></button>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
 
-
-<div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="modalPerfilLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable">
-        <div class="modal-content" style="border-radius: 12px; background-color: #F2F2F2; color: #2D594D;">
-
-            <!-- HEADER -->
-            <div class="modal-header" style="background-color: #2D594D; color: white;">
-                <h5 class="modal-title">Perfil del Estudiante</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-            </div>
-
-            <!-- BODY -->
-            <div class="modal-body px-4">
-                <!-- Sección: Información Personal -->
-                <div class="mb-4">
-                    <h5 class="section-title">Información Personal</h5>
-                    <div class="row">
-                        <div class="col-md-6 form-group mb-3">
-                            <label>Nombre y Apellidos</label>
-                            <input type="text" class="form-control" value="Johnny Castillo Fallas" readonly>
-                        </div>
-                        <div class="col-md-6 form-group mb-3">
-                            <label>Correo Electrónico</label>
-                            <input type="email" class="form-control" value="johnny.castillo@example.com" readonly>
-                        </div>
-                        <div class="col-md-6 form-group mb-3">
-                            <label>Teléfono</label>
-                            <input type="text" class="form-control" value="8888-0000" readonly>
-                        </div>
-                        <div class="col-md-6 form-group mb-3">
-                            <label>Dirección</label>
-                            <input type="text" class="form-control" value="San José, Costa Rica" readonly>
-                        </div>
-                        <div class="col-md-6 form-group mb-3">
-                            <label>Sexo</label>
-                            <input type="text" class="form-control" value="Masculino" readonly>
-                        </div>
-                        <div class="col-md-6 form-group mb-3">
-                            <label>Especialidad</label>
-                            <input type="text" class="form-control" value="Informática" readonly>
-                        </div>
-                        <div class="col-md-6 form-group mb-3">
-                            <label>Edad</label>
-                            <input type="text" class="form-control" value="19 años" readonly>
-                        </div>
-                        <div class="col-md-6 form-group mb-3">
-                            <label>Sección</label>
-                            <input type="text" class="form-control" value="12-4" readonly>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-4">
-                    <h5 class="section-title">Información del Encargado</h5>
-                    <div class="row">
-                        <div class="col-md-6 form-group mb-3">
-                            <label>Nombre y Apellidos</label>
-                            <input type="text" class="form-control" value="Carlos Fallas" readonly>
-                        </div>
-                        <div class="col-md-6 form-group mb-3">
-                            <label>Teléfono</label>
-                            <input type="text" class="form-control" value="8899-1122" readonly>
-                        </div>
-                        <div class="col-md-6 form-group mb-3">
-                            <label>Parentesco</label>
-                            <input type="text" class="form-control" value="Padre" readonly>
-                        </div>
-                        <div class="col-md-6 form-group mb-3">
-                            <label>Residencia o Trabajo</label>
-                            <input type="text" class="form-control" value="Cartago, CR" readonly>
-                        </div>
-                        <div class="col-md-6 form-group mb-3">
-                            <label>Ocupación</label>
-                            <input type="text" class="form-control" value="Ingeniero Civil" readonly>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sección: Prácticas / Postulaciones -->
-                <div class="mb-4">
-                    <h5 class="section-title">Prácticas / Postulaciones</h5>
-                    <ul class="list-group">
-                        <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" style="color: #2D594D;" class="d-flex justify-content-between  PostulacionesPerfil align-items-center p-2 border rounded mb-2">
-                            Práctica en Banco Nacional
-                            <span class="badge badge-asignada">Aceptado</span>
-                        </a>
-                        <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil align-items-center p-2 border rounded mb-2">
-                            Postulación a ICE
-                            <span class="badge badge-no-asignada" style="background-color: darkgoldenrod; color: white">En Proceso</span>
-                        </a>
-                        <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil  align-items-center p-2 border rounded mb-2">
-                            Postulación a Amazon
-                            <span class="badge badge-no-asignada" style="background-color: darkred; color: WHITE">Rechazado</span>
-                        </a>
-                    </ul>
-                </div>
-
-                <!-- Sección: Documentos -->
-                <div class="mb-3">
-                    <h5 class="section-title">Documentos</h5>
-
-                    <!-- Documento 1 -->
-                    <div class="d-flex justify-content-between align-items-center p-2 border rounded mb-2">
-                        <span style="color: #2D594D;">CV_JohnnyCastillo.pdf</span>
-
-                        <div>
-                            <!-- Ver PDF -->
-                            <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               style="color: #2D594D; margin-right: 10px;">
-                                <i class="fas fa-eye PostulacionesPerfil" title="Visualizar" style="cursor: pointer;"></i>
-                            </a>
-
-                            <!-- Descargar PDF -->
-                            <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
-                               download
-                               style="color: #2D594D;">
-                                <i class="fas fa-download PostulacionesPerfil" title="Descargar" style="cursor: pointer;"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Documento 2 -->
-                    <div class="d-flex justify-content-between align-items-center p-2 border rounded mb-2">
-                        <span style="color: #2D594D;">Cedula_Frontal.pdf</span>
-                        <div>
-                            <!-- Ver PDF -->
-                            <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               style="color: #2D594D; margin-right: 10px;">
-                                <i class="fas fa-eye PostulacionesPerfil" title="Visualizar" style="cursor: pointer;"></i>
-                            </a>
-
-                            <!-- Descargar PDF -->
-                            <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
-                               download
-                               style="color: #2D594D;">
-                                <i class="fas fa-download PostulacionesPerfil" title="Descargar" style="cursor: pointer;"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Documento 3 -->
-                    <div class="d-flex justify-content-between align-items-center p-2 border rounded">
-                        <span style="color: #2D594D;">Autorizacion_Practica.pdf</span>
-                        <div>
-                            <!-- Ver PDF -->
-                            <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               style="color: #2D594D; margin-right: 10px;">
-                                <i class="fas fa-eye PostulacionesPerfil" title="Visualizar" style="cursor: pointer;"></i>
-                            </a>
-
-                            <!-- Descargar PDF -->
-                            <a href="@Url.Content("~/Content/Documentos/Estudio de caso.pdf")"
-                               download
-                               style="color: #2D594D;">
-                                <i class="fas fa-download PostulacionesPerfil" title="Descargar" style="cursor: pointer;"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FOOTER -->
-            <div class="modal-footer">
-                <button type="button" class="btn CerrarModal" data-bs-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 
