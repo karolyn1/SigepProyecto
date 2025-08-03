@@ -80,7 +80,7 @@
 <section class="vh-100 gradient-custom">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-6">
                 <div class="card cardLogin" style="border-radius: 1rem;">
                     <div class="card-body p-5 text-center">
 
@@ -89,37 +89,36 @@
                             <h2 class="fw-bold mb-2 ">CREA TU CUENTA</h2>
                             <hr />
                             <form id="loginForm" method="post" action="@Url.Action("Registro", "Home")" class="custom-form container mt-4">
-
-                                <div class="row">
-                                   
-                                    <div class="col-md-12">
+                                <div class="row g-3">
+                                    <!-- Cédula - Nombre -->
+                                    <div class="col-md-6">
                                         <div class="input-icon-container mb-3">
                                             <i class="fas fa-id-card"></i>
                                             <input type="text" id="cedula" name="cedula" placeholder="Ingresa tu cédula" class="input-field" />
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="input-icon-container mb-3">
                                             <i class="fas fa-users"></i>
                                             <input type="text" id="nombre" name="nombreRegistro" placeholder="Nombre" class="input-field" />
                                         </div>
-
-
-                                        <div class="input-icon-container mb-3">
-                                            <i class="fas fa-user"></i>
-                                            <input type="text" id="apellido1" name="primerApellido" class="input-field" placeholder="Primer Apellido" readonly />
-                                        </div>
-
-                                    </div>
-                                    <div class="col-md-12">
-
-                  
-                                        <div class="input-icon-container mb-3">
-                                            <i class="fas fa-user"></i>
-                                            <input type="text" id="apellido2" name="segundoApellido" class="input-field" placeholder="Segundo Apellido" readonly />
-                                        </div>
                                     </div>
 
-                          
-                                    <div class="col-md-12">
+                                    <!-- Primer Apellido - Segundo Apellido -->
+                                    <div class="col-md-6">
+                                        <div class="input-icon-container mb-3">
+                                            <i class="fas fa-user"></i>
+                                            <input type="text" id="apellido1" name="primerApellido" placeholder="Primer Apellido" class="input-field" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-icon-container mb-3">
+                                            <i class="fas fa-user"></i>
+                                            <input type="text" id="apellido2" name="segundoApellido" placeholder="Segundo Apellido" class="input-field" readonly />
+                                        </div>
+                                    </div>
+                                    <!-- Especialidad -->
+                                    <div class="col-md-6">
                                         <div class="input-icon-container mb-3">
                                             <i class="fas fa-briefcase"></i>
                                             <select id="especialidad" name="especialidad" class="input-field">
@@ -131,20 +130,39 @@
                                                 <option value="5">Electrotecnia</option>
                                             </select>
                                         </div>
+                                    </div>
 
-                                        <div class="input-icon-container mb-3 position-relative">
-                                            <i class="fas fa-calendar-alt"></i>
-                                            <input type="text" id="fechaNacimiento" name="fechaNacimiento" class="input-field" placeholder="Fecha de Nacimiento" autocomplete="off" />
+                                    <!-- Sección -->
+                                    <div class="col-md-6">
+                                        <div class="input-icon-container mb-3">
+                                            <i class="fas fa-briefcase"></i>
+                                            <select id="seccion" name="seccion" class="input-field">
+                                                <option value="">Sección</option>
+                                                <option value="1">12-1</option>
+                                                <option value="1">12-2</option>
+                                                <option value="1">12-3</option>
+                                                <option value="1">12-4</option>
+                                                <option value="1">12-5</option>
+                                                <option value="1">No Aplica</option>
+                                            </select>
                                         </div>
-
-
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="input-icon-container mb-3">
+                                            <i class="fas fa-calendar-alt"></i>
+                                            <input type="text" id="fechaNacimiento" name="fechaNacimiento" placeholder="Fecha de Nacimiento" class="input-field" autocomplete="off" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
                                         <div class="input-icon-container mb-3">
                                             <i class="fas fa-key"></i>
                                             <input type="password" id="contrasennaRegistro" name="contrasenna" placeholder="Ingresa tu contraseña" class="input-field password-input" />
                                             <i class="fas fa-eye-slash toggle-password"></i>
                                         </div>
-
-
+                                    </div>
+                                    <div class="col-md-12">
                                         <div class="input-icon-container mb-3">
                                             <i class="fas fa-key"></i>
                                             <input type="password" id="contrasennaConfirmar" name="contrasenna" placeholder="Confirmar contraseña" class="input-field password-input" />
@@ -152,6 +170,12 @@
                                         </div>
                                     </div>
                                 </div>
+                                    <!-- Fecha de nacimiento -->
+                                 
+
+                                <!-- Contraseña - Confirmar contraseña -->
+                              
+
 
                                 <div class="text-center mt-4">
                                     <button id="IniciarSesionBTN" class="btnInicio btn btn-lg px-5" type="submit">
@@ -159,6 +183,7 @@
                                     </button>
                                 </div>
                             </form>
+
 
                         </div>
 

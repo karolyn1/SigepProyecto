@@ -222,6 +222,7 @@
     <Content Include="Content\DataTable\dataTables.dataTables.css" />
     <Content Include="Content\estilos\estilos.css" />
     <Content Include="Content\imagenes\CTP.jpg" />
+    <Content Include="Content\imagenes\CTP_BG.jpg" />
     <Content Include="Content\imagenes\HPcolegio.jpg" />
     <Content Include="Content\imagenes\HPcolegio.jpg.jpg" />
     <Content Include="Content\style.css" />
