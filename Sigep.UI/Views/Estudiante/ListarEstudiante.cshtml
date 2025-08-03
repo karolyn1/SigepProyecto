@@ -2,36 +2,79 @@
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
     ViewBag.Title = "Listado de Estudiantes";
 }
-<h2 class="vacantes-titulo titulo-principal d-flex justify-content-between align-items-center">
-    Estudiantes @DateTime.Now.Year
-    <div class="dropdown">
-        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filtroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fas fa-filter"></i>
-        </button>
-        <div class="dropdown-menu p-3" style="min-width: 300px;">
-            <div class="mb-2">
-                <label class="Filtros">Estado académico</label>
-                <select id="filtroEstadoAcademico" class="form-control">
-                    <option value="">Todos</option>
-                    <option value="Aprobado">Aprobado</option>
-                    <option value="Rezagado">Rezagado</option>
-                </select>
-            </div>
-            <div class="mb-2">
-                <label>Estado de práctica</label>
-                <select id="filtroPractica" class="form-control">
-                    <option value="">Todos</option>
-                    <option value="Asignada">Con práctica asignada</option>
-                    <option value="No asignada">Sin práctica</option>
-                </select>
-            </div>
-            <div>
-                <label>Especialidad</label>
-                <input type="text" id="filtroEspecialidad" class="form-control" placeholder="Filtrar por especialidad" />
+
+@{
+    var rol = Session["rol"] != null ? Convert.ToInt32(Session["rol"]) : 0;
+}
+
+
+@if (rol == 1)
+{
+    <h2 class="vacantes-titulo titulo-principal d-flex justify-content-between align-items-center">
+        Estudiantes @DateTime.Now.Year
+        <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filtroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-filter"></i>
+            </button>
+            <div class="dropdown-menu p-3" style="min-width: 300px;">
+                <div class="mb-2">
+                    <label class="Filtros">Estado académico</label>
+                    <select id="filtroEstadoAcademico" class="form-control">
+                        <option value="">Todos</option>
+                        <option value="Aprobado">Aprobado</option>
+                        <option value="Rezagado">Rezagado</option>
+                    </select>
+                </div>
+                <div class="mb-2">
+                    <label>Estado de práctica</label>
+                    <select id="filtroPractica" class="form-control">
+                        <option value="">Todos</option>
+                        <option value="Asignada">Con práctica asignada</option>
+                        <option value="No asignada">Sin práctica</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Especialidad</label>
+                    <input type="text" id="filtroEspecialidad" class="form-control" placeholder="Filtrar por especialidad" />
+                </div>
             </div>
         </div>
-    </div>
-</h2>
+    </h2>
+}
+else
+{
+    <h2 class="vacantes-titulo titulo-principal d-flex justify-content-between align-items-center">
+        Mis Estudiantes @DateTime.Now.Year
+        <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filtroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-filter"></i>
+            </button>
+            <div class="dropdown-menu p-3" style="min-width: 300px;">
+                <div class="mb-2">
+                    <label class="Filtros">Estado académico</label>
+                    <select id="filtroEstadoAcademico" class="form-control">
+                        <option value="">Todos</option>
+                        <option value="Aprobado">Aprobado</option>
+                        <option value="Rezagado">Rezagado</option>
+                    </select>
+                </div>
+                <div class="mb-2">
+                    <label>Estado de práctica</label>
+                    <select id="filtroPractica" class="form-control">
+                        <option value="">Todos</option>
+                        <option value="Asignada">Con práctica asignada</option>
+                        <option value="No asignada">Sin práctica</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Especialidad</label>
+                    <input type="text" id="filtroEspecialidad" class="form-control" placeholder="Filtrar por especialidad" />
+                </div>
+            </div>
+        </div>
+    </h2>
+}
+
 
 <div class="card rounded-5 p-3">
     <table id="miTabla" class="display responsive nowrap w-100">
@@ -43,7 +86,7 @@
                 <th>Teléfono</th>
                 <th>Estado de Práctica</th>
                 <th>Estado Académico</th>
-               
+
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -182,7 +225,7 @@
                             Postulación a ICE
                             <span class="badge badge-no-asignada" style="background-color: darkgoldenrod; color: white">En Proceso</span>
                         </a>
-                        <a href="@Url.Action("VisualizacionPostulacion", "Practicas")"style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil  align-items-center p-2 border rounded mb-2">
+                        <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil  align-items-center p-2 border rounded mb-2">
                             Postulación a Amazon
                             <span class="badge badge-no-asignada" style="background-color: darkred; color: WHITE">Rechazado</span>
                         </a>
@@ -321,7 +364,7 @@
                     }
                 }).then((result) => {
                     if (result.isConfirmed) {
-                  
+
                         var nuevoEstado = result.value;
                         estadoAcademicoSpan.text(nuevoEstado);
 
