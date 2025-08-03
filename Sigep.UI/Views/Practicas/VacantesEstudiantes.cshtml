@@ -80,7 +80,9 @@
                 <td>0</td>
                 <td><span class="badge badge-no-asignada">No Asignada</span></td>
                 <td>
-                    <button class="btn bg-transparent text-decoration-none BtnVisualizarVacante"	<i class="fas fa-eye"></i>
+                    <button class="btn bg-transparent text-decoration-none BtnVisualizarVacante" data-bs-toggle="modal"
+                            data-bs-target="#modalVisualizarVacante" data-asignados="0" style="color: #2d594d">
+                        <i class="fas fa-eye"></i>
                     </button>
                     <button data-bs-toggle="modal"
                             data-bs-target="#modalEditarVacante"
@@ -192,13 +194,13 @@
                     <h5 class="section-title">Aplicaciones</h5>
                     <ul class="list-group">
                         <li style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil align-items-center p-2 border rounded mb-2">
-                            Johhny Castillo Fallas | 803883038
+                            Johhny Castillo Fallas | 803883038 | Informática
                             <span class="badge badge-asignada">Aceptado</span>
                         </li>
-                        <li style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil align-items-center p-2 border rounded mb-2">
-                            Ariana Fallas Calderón | 118810955
+                        <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil align-items-center p-2 border rounded mb-2">
+                            Ariana Fallas Calderón | 118810955 | Informática
                             <span class="badge badge-no-asignada" style="background-color: darkgoldenrod; color: white">En Proceso</span>
-                        </li>
+                        </a>
                     </ul>
                 </div>
             </div>
