@@ -6,20 +6,20 @@
 <section class="vacantes-wrapper">
     <h2 class="vacantes-titulo titulo-principal">Editar Rol de Usuario</h2>
 
-    <form class="formulario-vacante" method="post" action="@Url.Action("EditarRol", "Usuarios")">
+    <form class="formulario-vacante" method="post" action="@Url.Action("EditarRol", "AdministracionGeneral")">
         <div>
             <label>Nombre:</label>
-            <p><strong>Juan Pérez</strong></p> <!-- Aquí pones el nombre real -->
+            <p><strong>Laura Rodríguez</strong></p> <!-- Aquí pones el nombre real -->
         </div>
 
         <div>
             <label>Cédula:</label>
-            <p><strong>1-2345-6789</strong></p> <!-- Aquí la cédula real -->
+            <p><strong>12345678</strong></p> <!-- Aquí la cédula real -->
         </div>
 
         <div>
             <label>Email:</label>
-            <p><strong>juan.perez@example.com</strong></p> <!-- Aquí el email real -->
+            <p><strong>laura@email.com</strong></p> <!-- Aquí el email real -->
         </div>
 
         <label for="rol">Rol <span style="color:#E04F4F">*</span></label>
@@ -33,8 +33,7 @@
 
         <input type="hidden" name="usuarioId" value="123" />  @* ID del usuario para identificar en el servidor *@
 
-       @* <button type="submit" class="btn-guardar" style="margin-top: 15px;">Guardar Cambios</button>*@
-        <a href="@Url.Action("GestionAdministracion", "AdministracionGeneral", new { tab = "usuarios" });)" class="btn-guardar">Guardar Cambios</a>
+        <button type="submit" class="btn-guardar" style="margin-top: 15px;">Guardar Cambios</button>
     </form>
 </section>
 

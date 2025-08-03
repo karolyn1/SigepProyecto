@@ -52,6 +52,10 @@
                 <td>2</td>
                 <td><span class="badge badge-no-asignada">No Asignada</span></td>
                 <td>
+                    <button class="btn bg-transparent text-decoration-none BtnVisualizarVacante" data-bs-toggle="modal"
+                            data-bs-target="#modalVisualizarVacante" data-asignados="0" style="color: #2d594d">
+                        <i class="fas fa-eye"></i>
+                    </button>
                     <button data-bs-toggle="modal"
                             data-bs-target="#modalEditarVacante"
                             class="btn text-decoration-none bg-transparent"
@@ -65,7 +69,7 @@
                             data-fecha-cierre="2025-09-01">
                         <i class="fas fa-sync-alt"></i>
                     </button>
-                    <button class="btn bg-transparent text-decoration-none BtnEliminarVacante" data-asignados="2"  style="color: #2d594d">	<i class="fas fa-trash"></i></button>
+                    <button class="btn bg-transparent text-decoration-none BtnEliminarVacante" data-asignados="2" style="color: #2d594d">	<i class="fas fa-trash"></i></button>
                 </td>
             </tr>
             <tr>
@@ -76,6 +80,8 @@
                 <td>0</td>
                 <td><span class="badge badge-no-asignada">No Asignada</span></td>
                 <td>
+                    <button class="btn bg-transparent text-decoration-none BtnVisualizarVacante"	<i class="fas fa-eye"></i>
+                    </button>
                     <button data-bs-toggle="modal"
                             data-bs-target="#modalEditarVacante"
                             class="btn text-decoration-none bg-transparent"
@@ -95,6 +101,111 @@
         </tbody>
     </table>
 </div>
+
+<!--MODAL VISUALIZAR-->
+<!-- MODAL -->
+<div class="modal fade" id="modalVisualizarVacante" tabindex="-1" aria-labelledby="modalCrearVacanteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content" style="border-radius: 12px; background-color: #F2F2F2; color: #2D594D;">
+
+            <!-- HEADER -->
+            <div class="modal-header" style="background-color: #2D594D; color: white;">
+                <h5 class="modal-title">Visualizar Vacante</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+
+            <!-- BODY -->
+            <div class="modal-body px-4">
+                <div class="mb-4">
+                    <h5 class="section-title">Información General</h5>
+                    <div class="row">
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Nombre de la Vacante <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="nombrePuestoEditar" value="Asistente Bancario" readonly>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Empresa <span class="text-danger">*</span></label>
+                            <select class="form-select OpcionesVacantes w-100" name="empresaEditar" disabled>
+                                <option value="" disabled>-- Seleccione empresa --</option>
+                                <option value="Align" selected>Align</option>
+                                <option value="InnovaTech">BCR</option>
+                                <option value="Grupo Delta">Grupo Delta</option>
+                                <option value="Soluciones Web CR">Soluciones Web CR</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Lugar / Ubicación <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="ubicacion" value="Cartago, 200 metros norte de la Basílica" readonly>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Especialidad <span class="text-danger">*</span></label>
+                            <select class="form-select OpcionesVacantes w-100" name="areaProfesionalEditar" disabled>
+                                <option value="" disabled>-- Seleccione área --</option>
+                                <option value="Administración">Contabilidad</option>
+                                <option value="Informática" selected>Informática</option>
+                                <option value="Salud">Electrotecnia</option>
+                                <option value="Educación">Ejecutivo para centros de servicios</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Cantidad de Cupos <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" name="cuposEditar" value="3" min="1" readonly>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Modalidad <span class="text-danger">*</span></label>
+                            <select class="form-select OpcionesVacantes w-100" name="modalidadEditar" disabled>
+                                <option value="" disabled>-- Seleccione modalidad --</option>
+                                <option value="Presencial" selected>Presencial</option>
+                                <option value="Remoto">Remoto</option>
+                                <option value="Híbrido">Híbrido</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Fecha Límite de Aplicación <span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="FechaAplicacionEditar" name="fechaLimite" value="2025-08-10" readonly>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Fecha de Cierre <span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="FechaCierreEditar" name="fechaPublicacion" value="2025-08-15" readonly>
+                        </div>
+
+                        <div class="col-12 form-group mb-3">
+                            <label>Requisitos <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="requisitosEditar" rows="3" readonly>Conocimientos básicos en Excel, habilidades de comunicación, disponibilidad inmediata.</textarea>
+                        </div>
+
+                        <div class="col-12 form-group mb-3 w-100">
+                            <label>Descripción <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="descripcionEditar" rows="3" readonly>Únete a nuestro equipo como Asistente Bancario en Align. Aprenderás sobre atención al cliente, manejo de información financiera y mucho más.</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="section-title">Aplicaciones</h5>
+                    <ul class="list-group">
+                        <li style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil align-items-center p-2 border rounded mb-2">
+                            Johhny Castillo Fallas | 803883038
+                            <span class="badge badge-asignada">Aceptado</span>
+                        </li>
+                        <li style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil align-items-center p-2 border rounded mb-2">
+                            Ariana Fallas Calderón | 118810955
+                            <span class="badge badge-no-asignada" style="background-color: darkgoldenrod; color: white">En Proceso</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!--MODAL PARA EDITAR Y VISUALIZAR-->
 
@@ -468,7 +579,7 @@
 
 
 @section scripts {
- 
+
     <script>
         $(document).ready(function () {
             var table = $('#miTabla').DataTable({

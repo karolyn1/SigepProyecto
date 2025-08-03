@@ -184,25 +184,24 @@
         margin-bottom: 8px;
         box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
-.CerrarModal:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+
+.action-buttons button {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: #2D594D;
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem;
+    border-radius: 6px;
+    transition: background-color 0.3s;
     cursor: pointer;
 }
 
-.OpcionesVacantes {
-    padding: 5px;
-    line-height: 24px;
-    color: #2d594d;
-    border: 0px;
-    border-radius: 5px;
-    -moz-appearance: none; /*Firefox legacy*/
-    -webkit-appearance: none; /* Chromes legacy*/
-    appearance: none;
-    /*Y a continuación añadimos el nuestro como background*/
-    background-image: url(/caret.svg);
-    background-size: 18px;
-    background-repeat: no-repeat;
-    background-position: calc(100% - 12px) center; /*Lo posicionamos a la derecha*/
-    padding-right: 24px; /*le damos algo d
+    .action-buttons button:hover {
+        background-color: #768C46;
+    }
+
+.top-buttons .col-md-6 {
+    margin-bottom: 1rem;
 }
