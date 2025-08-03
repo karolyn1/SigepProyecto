@@ -160,8 +160,12 @@
         @if (rol == 2)
         {
             <!-- CONTACTO EMERGENCIA -->
-            <h5 class="section-title">ENCARGADO 1</h5>
+            <h5 class="section-title">ENCARGADOS</h5>
             <div class="row">
+                <div class="col-md-6 form-group">
+                    <label>Cédula</label>
+                    <input type="text" class="form-control" value="1-1035-0212" />
+                </div>
                 <div class="col-md-6 form-group">
                     <label>Nombre y Apellidos</label>
                     <input type="text" class="form-control" value="Carlos Fallas" />
@@ -183,40 +187,22 @@
                     <input type="text" class="form-control" value="Ingeniero Civil" />
                 </div>
             </div>
-
-            <div class="action-buttons mt-3">
-                <button type="button" id="btnActualizarEncargado1">
-                    <i class="fas fa-edit me-2"></i> Actualizar Encargado 1
-                </button>
-            </div>
-
-            <h5 class="section-title">ENCARGADO 2</h5>
             <div class="row">
-                <div class="col-md-6 form-group">
-                    <label>Nombre y Apellidos</label>
-                    <input type="text" class="form-control" value="Carlos Fallas" />
+                <div class="action-buttons mt-3 col-md-6 form-group">
+                    <button type="button" id="btnActualizarEncargado">
+                        <i class="fas fa-edit me-2"></i> Actualizar Encargado
+                    </button>
                 </div>
-                <div class="col-md-6 form-group">
-                    <label>Teléfono</label>
-                    <input type="text" class="form-control" value="8899-1122" />
-                </div>
-                <div class="col-md-6 form-group">
-                    <label>Parentesco</label>
-                    <input type="text" class="form-control" value="Padre" />
-                </div>
-                <div class="col-md-6 form-group">
-                    <label>Residencia o Trabajo</label>
-                    <input type="text" class="form-control" value="Cartago, CR" />
-                </div>
-                <div class="col-md-6 form-group">
-                    <label>Ocupación</label>
-                    <input type="text" class="form-control" value="Ingeniero Civil" />
+
+                <div class="action-buttons mt-3 col-md-6 form-group">
+                    <button type="button" id="btnEliminarEncargado">
+                        <i class="fas fa-trash-alt me-2"></i> Eliminar Encargado
+                    </button>
                 </div>
             </div>
-
             <div class="action-buttons mt-3">
-                <button type="button" id="btnActualizarEncargado2">
-                    <i class="fas fa-edit me-2"></i> Actualizar Encargado 2
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarEncargado">
+                    <i class="fas fa-plus me-2"></i> Agregar Encargado
                 </button>
             </div>
         }
@@ -271,6 +257,60 @@
     </div>
 </div>
 
+
+<!-- Modal para Agregar Encargado -->
+<div class="modal fade" id="modalAgregarEncargado" tabindex="-1" aria-labelledby="modalAgregarEncargadoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="border-radius: 10px; background-color: #F2F2F2;">
+
+            <!-- Header -->
+            <div class="modal-header" style="background-color: #2D594D; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                <h5 class="modal-title text-white" id="modalAgregarEncargadoLabel">Agregar Nuevo Encargado</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold" style="color: #2D594D;">Cédula</label>
+                            <input type="text" class="form-control" placeholder="Ej. 1-1035-0212">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold" style="color: #2D594D;">Nombre y Apellidos</label>
+                            <input type="text" class="form-control" placeholder="Ej. Juan Pérez">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold" style="color: #2D594D;">Teléfono</label>
+                            <input type="text" class="form-control" placeholder="Ej. 8888-9999">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold" style="color: #2D594D;">Parentesco</label>
+                            <input type="text" class="form-control" placeholder="Ej. Madre, Tío, etc.">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold" style="color: #2D594D;">Residencia o Trabajo</label>
+                            <input type="text" class="form-control" placeholder="Ej. Cartago, CR">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold" style="color: #2D594D;">Ocupación</label>
+                            <input type="text" class="form-control" placeholder="Ej. Ingeniero Civil">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                <button type="button" class="btn btn-secondary" style="background-color: #A0A0A0; border: none;" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" id="btnGuardarEncargado" class="btn" style="background-color: #2D594D; color: white; border: none;">Guardar Encargado</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- Modal para Subir Documento -->
 <div class="modal fade" id="modalSubirDoc" tabindex="-1" aria-labelledby="modalSubirDocLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -284,7 +324,7 @@
             <!-- Body -->
             <div class="modal-body">
                 <form>
-                    
+
                     <div class="mb-3">
                         <label class="form-label fw-bold" style="color: #2D594D;">Archivo</label><br />
                         <button type="button" class="btn" style="background-color: #8CA653; color: white;">
@@ -320,27 +360,31 @@
             <!-- Body -->
             <div class="modal-body">
                 <div class="list-group">
-                    
+
                     <div class="list-group-item d-flex justify-content-between align-items-center" style="background-color: white; border: 1px solid #8CA653; border-radius: 8px; margin-bottom: 10px;">
                         <div>
                             <strong>cedula_johnny_castillo.pdf</strong><br />
                             <small>Cargado: 2025-07-28</small>
                         </div>
-                        <div>
-                            <button class="btn btn-sm btn-outline-danger" title="Eliminar">
-                                <i class="fas fa-trash-alt"></i> Eliminar
+                        <div class="d-flex gap-3">
+                            <button title="Ver" class="btn btn-link p-0 text-secondary" id="btnVerFile">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button title="Descargar" class="btn btn-link p-0 text-secondary" id="btnDescargarFile">
+                                <i class="fas fa-download"></i>
+                            </button>
+                            <button title="Eliminar" class="btn btn-link p-0 text-secondary" id="btnEliminarFile">
+                                <i class="fas fa-trash-alt"></i>
                             </button>
                         </div>
                     </div>
+
 
                     <!-- Puedes repetir para más documentos -->
                 </div>
             </div>
 
-            <!-- Footer -->
-            <div class="modal-footer" style="background-color: #F2F2F2;">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            </div>
+
 
         </div>
     </div>
@@ -375,7 +419,6 @@
         }
     });
 
-    // Función para mostrar Swal éxito para otros botones sin validación
     function mostrarSuccessMensaje() {
         Swal.fire({
             icon: 'success',
@@ -385,11 +428,28 @@
         });
     }
 
-    // Agregar eventos a los otros botones si existen
-    ["btnActualizarAcademica", "btnActualizarEncargado1", "btnActualizarEncargado2", "btnActualizarLaboral", "btnActualizarMedica", "btnSubirDoc"].forEach(id => {
+
+    ["btnActualizarAcademica", "btnActualizarEncargado", "btnActualizarLaboral", "btnActualizarMedica", "btnSubirDoc"].forEach(id => {
         const btn = document.getElementById(id);
         if (btn) {
             btn.addEventListener("click", mostrarSuccessMensaje);
+        }
+    });
+
+
+    function mostrarWarningMensaje() {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Ha Ocurrido Un Error',
+            showConfirmButton: false,
+            timer: 2000
+        });
+    }
+
+    ["btnEliminarEncargado", "btnEliminarFile", "btnDescargarFile", "btnVerFile", "btnGuardarEncargado"].forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) {
+            btn.addEventListener("click", mostrarWarningMensaje);
         }
     });
 </script>
