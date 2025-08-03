@@ -43,6 +43,7 @@
                 <th>Teléfono</th>
                 <th>Estado de Práctica</th>
                 <th>Estado Académico</th>
+                <th>Tipo</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -55,8 +56,9 @@
                 <td><span class="badge badge-asignada">Asignada</span></td>
 
                 <td><span class="badge badge-asignada">Aprobado</span></td>
+                <td><span class="badge badge-asignada">Autogestionada</span></td>
                 <td>
-                    <button data-bs-toggle="modal" data-bs-target="#modalPerfil" class ="btn text-decoration-none bg-transparent" style="color: #2d594d"><i class="fas fa-eye"></i></button>
+                    <button data-bs-toggle="modal" data-bs-target="#modalPerfil" class="btn text-decoration-none bg-transparent" style="color: #2d594d"><i class="fas fa-eye"></i></button>
                     <button class="btn bg-transparent text-decoration-none" style="color: #2d594d">	<i class="fas fa-sync-alt"></i></button>
                 </td>
             </tr>
@@ -67,6 +69,7 @@
                 <td>8999-9999</td>
                 <td><span class="badge badge-no-asignada badge-estado-academico">No Asignada</span></td>
                 <td><span class="badge badge-no-asignada badge-estado-academico">Rezagado</span></td>
+                <td><span class="badge badge-asignada">Asignada por profesor/coordinador</span></td>
                 <td>
                     <button data-bs-toggle="modal" data-bs-target="#modalPerfil" class="btn text-decoration-none bg-transparent" style="color: #2d594d"><i class="fas fa-eye"></i></button>
                     <button class="btn CambiarEstado bg-transparent text-decoration-none" style="color: #2d594d">	<i class="fas fa-sync-alt"></i></button>
@@ -158,18 +161,18 @@
                 <div class="mb-4">
                     <h5 class="section-title">Prácticas / Postulaciones</h5>
                     <ul class="list-group">
-                        <li style="color: #2D594D;" class="d-flex justify-content-between  PostulacionesPerfil align-items-center p-2 border rounded mb-2">
+                        <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" style="color: #2D594D;" class="d-flex justify-content-between  PostulacionesPerfil align-items-center p-2 border rounded mb-2">
                             Práctica en Banco Nacional
                             <span class="badge badge-asignada">Aceptado</span>
-                        </li>
-                        <li style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil align-items-center p-2 border rounded mb-2">
+                        </a>
+                        <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil align-items-center p-2 border rounded mb-2">
                             Postulación a ICE
                             <span class="badge badge-no-asignada" style="background-color: darkgoldenrod; color: white">En Proceso</span>
-                        </li>
-                        <li style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil  align-items-center p-2 border rounded mb-2">
+                        </a>
+                        <a href="@Url.Action("VisualizacionPostulacion", "Practicas")"style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil  align-items-center p-2 border rounded mb-2">
                             Postulación a Amazon
                             <span class="badge badge-no-asignada" style="background-color: darkred; color: WHITE">Rechazado</span>
-                        </li>
+                        </a>
                     </ul>
                 </div>
 

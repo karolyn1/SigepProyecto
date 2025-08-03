@@ -178,7 +178,18 @@
                         <ul id="sidebarnav">
                             <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("MiPerfil", "Perfil")" aria-expanded="false"><i class="ti-id-badge"></i> <span class="hide-menu">Mi Perfil</span></a></li>
                         </ul>
-
+                   
+                    @if (Session["Nombre"] != null && !string.IsNullOrEmpty(Session["Nombre"].ToString()))
+                    {
+                        using (Html.BeginForm("CerrarSesion", "Home", FormMethod.Post, new { id = "logoutForm", style = "display:none;" }))
+                        {
+                            @Html.AntiForgeryToken()
+                        }
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" onclick="event.preventDefault(); document.getElementById('logoutForm').submit();" aria-expanded="false">
+                            <i class="ti-power-off"></i>
+                            <span class="hide-menu">Cerrar Sesión</span>
+                        </a>
+                    }
                 </nav>
             </div>
         </aside>

@@ -53,7 +53,7 @@
                 <td><span class="badge badge-no-asignada">No Asignada</span></td>
                 <td>
                     <button class="btn bg-transparent text-decoration-none BtnVisualizarVacante" data-bs-toggle="modal"
-                            data-bs-target="#modalVisualizarVacante" data-asignados="0" style="color: #2d594d">
+                            data-bs-target="#modalVisualizarVacante" data-asignados="2" style="color: #2d594d">
                         <i class="fas fa-eye"></i>
                     </button>
                     <button data-bs-toggle="modal"
@@ -128,7 +128,7 @@
 
                         <div class="col-md-6 form-group mb-3">
                             <label>Empresa <span class="text-danger">*</span></label>
-                            <select class="form-select OpcionesVacantes w-100" name="empresaEditar" disabled>
+                            <select class="form-select OpcionesVacantes w-100"  style="font-size:14px" name="empresaEditar" disabled>
                                 <option value="" disabled>-- Seleccione empresa --</option>
                                 <option value="Align" selected>Align</option>
                                 <option value="InnovaTech">BCR</option>
@@ -144,7 +144,7 @@
 
                         <div class="col-md-6 form-group mb-3">
                             <label>Especialidad <span class="text-danger">*</span></label>
-                            <select class="form-select OpcionesVacantes w-100" name="areaProfesionalEditar" disabled>
+                            <select class="form-select OpcionesVacantes w-100"  style="font-size:14px" name="areaProfesionalEditar" disabled>
                                 <option value="" disabled>-- Seleccione área --</option>
                                 <option value="Administración">Contabilidad</option>
                                 <option value="Informática" selected>Informática</option>
@@ -160,7 +160,7 @@
 
                         <div class="col-md-6 form-group mb-3">
                             <label>Modalidad <span class="text-danger">*</span></label>
-                            <select class="form-select OpcionesVacantes w-100" name="modalidadEditar" disabled>
+                            <select class="form-select OpcionesVacantes w-100"  style="font-size:14px" name="modalidadEditar" disabled>
                                 <option value="" disabled>-- Seleccione modalidad --</option>
                                 <option value="Presencial" selected>Presencial</option>
                                 <option value="Remoto">Remoto</option>
@@ -192,16 +192,21 @@
 
                 <div class="mb-4">
                     <h5 class="section-title">Aplicaciones</h5>
-                    <ul class="list-group">
-                        <li style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil align-items-center p-2 border rounded mb-2">
+
+                  
+                    <ul class="list-group" id="listaPostulaciones">
+                                     <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil align-items-center p-2 border rounded mb-2">
                             Johhny Castillo Fallas | 803883038 | Informática
                             <span class="badge badge-asignada">Aceptado</span>
-                        </li>
+                        </a>
                         <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil align-items-center p-2 border rounded mb-2">
                             Ariana Fallas Calderón | 118810955 | Informática
                             <span class="badge badge-no-asignada" style="background-color: darkgoldenrod; color: white">En Proceso</span>
                         </a>
                     </ul>
+
+                  
+                    <span id="mensajeSinAsignados" class="text-muted" style="display: none;">Ningún estudiante asignado aún</span>
                 </div>
             </div>
         </div>
@@ -233,7 +238,7 @@
 
                         <div class="col-md-6 form-group mb-3">
                             <label>Empresa <span class="text-danger">*</span></label>
-                            <select class="form-select OpcionesVacantes w-100" name="empresaEditar" required>
+                            <select class="form-select OpcionesVacantes w-100"  style="font-size:14px" name="empresaEditar" required>
                                 <option value="" disabled selected>-- Seleccione empresa --</option>
                                 <option value="Align">Align</option>
                                 <option value="InnovaTech">BCR</option>
@@ -249,7 +254,7 @@
 
                         <div class="col-md-6 form-group mb-3">
                             <label>Especialidad <span class="text-danger">*</span></label>
-                            <select class="form-select OpcionesVacantes w-100" name="areaProfesionalEditar" required>
+                            <select class="form-select OpcionesVacantes w-100"  style="font-size:14px" name="areaProfesionalEditar" required>
                                 <option class="text-dark" value="" disabled selected>-- Seleccione área --</option>
                                 <option value="Administración">Contabilidad</option>
                                 <option value="Informática">Informática</option>
@@ -266,7 +271,7 @@
                         <div class="col-md-6 form-group mb-3">
                             <label>Modalidad <span class="text-danger">*</span></label>
                             <br />
-                            <select class="form-select OpcionesVacantes w-100" name="modalidadEditar" required>
+                            <select class="form-select OpcionesVacantes w-100"  style="font-size:14px" name="modalidadEditar" required>
                                 <option value="" disabled selected>-- Seleccione modalidad --</option>
                                 <option value="Presencial">Presencial</option>
                                 <option value="Remoto">Remoto</option>
@@ -504,7 +509,7 @@
 
                         <div class="col-md-6 form-group mb-3">
                             <label>Empresa <span class="text-danger">*</span></label>
-                            <select class="form-select OpcionesVacantes w-100" name="empresa" required>
+                            <select class="form-select OpcionesVacantes w-100" name="empresa"  style="font-size:14px" required>
                                 <option value="" disabled selected>-- Seleccione empresa --</option>
                                 <option value="TechSolutions S.A.">TechSolutions S.A.</option>
                                 <option value="InnovaTech">BCR</option>
@@ -520,7 +525,7 @@
 
                         <div class="col-md-6 form-group mb-3">
                             <label>Especialidad <span class="text-danger">*</span></label>
-                            <select class="form-select OpcionesVacantes w-100" name="areaProfesional" required>
+                            <select class="form-select OpcionesVacantes w-100" style="font-size:14px" name="areaProfesional" required>
                                 <option class="text-dark" value="" disabled selected>-- Seleccione área --</option>
                                 <option value="Administración">Contabilidad</option>
                                 <option value="Ingeniería">Informática</option>
@@ -537,7 +542,7 @@
                         <div class="col-md-6 form-group mb-3">
                             <label>Modalidad <span class="text-danger">*</span></label>
                             <br />
-                            <select class="form-select OpcionesVacantes w-100" name="modalidad" required>
+                            <select class="form-select OpcionesVacantes w-100" style="font-size:14px"  name="modalidad" required>
                                 <option value="" disabled selected>-- Seleccione modalidad --</option>
                                 <option value="Presencial">Presencial</option>
                                 <option value="Remoto">Remoto</option>
@@ -584,6 +589,19 @@
 
     <script>
         $(document).ready(function () {
+
+            $(".BtnVisualizarVacante").on("click", function () {
+                const asignados = parseInt($(this).data("asignados"));
+
+                if (asignados === 0) {
+                    $("#listaPostulaciones").hide();
+                    $("#mensajeSinAsignados").show();
+                } else {
+                    $("#listaPostulaciones").show();
+                    $("#mensajeSinAsignados").hide();
+                }
+            });
+
             var table = $('#miTabla').DataTable({
                 responsive: true
             });

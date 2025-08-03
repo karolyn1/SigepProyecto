@@ -61,12 +61,14 @@
         const toggle = document.querySelector('.toggle-password');
         const input = document.querySelector('.password-input');
 
-        toggle.addEventListener('click', function () {
-            const type = input.type === 'password' ? 'text' : 'password';
-            input.type = type;
-            toggle.classList.toggle('fa-eye');
-            toggle.classList.toggle('fa-eye-slash');
-        });
+        if (toggle && input) {
+            toggle.addEventListener('click', function () {
+                const type = input.type === 'password' ? 'text' : 'password';
+                input.type = type;
+                toggle.classList.toggle('fa-eye');
+                toggle.classList.toggle('fa-eye-slash');
+            });
+        }
 
         $("#loginForm").on("submit", function (e) {
             e.preventDefault();
@@ -86,29 +88,30 @@
 
             this.submit();
         });
-
-        @if (TempData["SwalError"] != null)
- {
-     <text>
-         Swal.fire({
-             icon: 'error',
-             title: 'Error',
-              text: '@Html.Raw(HttpUtility.JavaScriptStringEncode(TempData["SwalError"].ToString()))'
-         });
-     </text>
- }
-
- @if (TempData["SwalSuccess"] != null)
- {
-     <text>
-         Swal.fire({
-             icon: 'success',
-             title: 'Éxito',
-             text: '@Html.Raw(HttpUtility.JavaScriptStringEncode(TempData["SwalSuccess"].ToString()))'
-         });
-     </text>
- }
-
-
     });
 </script>
+
+@if (TempData["SwalError"] != null)
+{
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '@Html.Raw(HttpUtility.JavaScriptStringEncode(TempData["SwalError"].ToString()))',
+            confirmButtonColor: '#2D594D'
+        });
+    </script>
+}
+
+@if (TempData["SwalSuccess"] != null)
+{
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Éxito',
+            text: '@Html.Raw(HttpUtility.JavaScriptStringEncode(TempData["SwalSuccess"].ToString()))',
+            confirmButtonColor: '#2D594D'
+        });
+    </script>
+}
+
