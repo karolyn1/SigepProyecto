@@ -12,6 +12,12 @@ namespace Sigep.UI.Controllers
         // GET: Estudiante comunicados
         public ActionResult Comunicados()
         {
+            if (Session["rol"] == null)
+            {
+                // Redirige a login o página principal si no hay sesión de rol
+                return RedirectToAction("Login", "Home");
+            }
+
             return View();
         }
     }
