@@ -1,12 +1,32 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
 
-    // Fechas escritas directamente como cadenas
+
     var comunicados = new List<dynamic> {
-        new { Id = 1, Titulo = "Apertura de Prácticas II-2025", FechaPublicacion = "25 de julio de 2025", FechaAplicacion = "5 de agosto de 2025", Descripcion = "Se abre oficialmente el proceso de matrícula para Prácticas Profesionales del ciclo II-2025. Consultar requisitos con el coordinador.", PublicadoPor = "coordinador_pp" },
-        new { Id = 2, Titulo = "Entrega de Convenio Obligatorio", FechaPublicacion = "20 de julio de 2025", FechaAplicacion = "1 de agosto de 2025", Descripcion = "Todos los estudiantes deben entregar el convenio firmado por la empresa y el tutor antes del 1 de agosto.", PublicadoPor = "admin_pp" },
-        new { Id = 3, Titulo = "Capacitación Inicial para Estudiantes", FechaPublicacion = "18 de julio de 2025", FechaAplicacion = "N/A", Descripcion = "El día 30 de julio se brindará una capacitación sobre lineamientos éticos y operativos de las prácticas profesionales.", PublicadoPor = "soporte_pp" }
+        // Estudiantes
+        new { Id = 1, Titulo = "Apertura de Prácticas II-2025", FechaPublicacion = "25 de julio de 2025", FechaAplicacion = "5 de agosto de 2025", Descripcion = "Se abre oficialmente el proceso de matrícula para Prácticas Profesionales del ciclo II-2025. Consultar requisitos con el coordinador.", PublicadoPor = "Yalena", Estado = "Activo", DirigidoA = "Estudiantes" },
+        new { Id = 2, Titulo = "Entrega de Convenio Obligatorio", FechaPublicacion = "20 de julio de 2025", FechaAplicacion = "1 de agosto de 2025", Descripcion = "Todos los estudiantes deben entregar el convenio firmado por la empresa y el tutor antes del 1 de agosto.", PublicadoPor = "Yalena", Estado = "Activo", DirigidoA = "Estudiantes" },
+        new { Id = 3, Titulo = "Capacitación Inicial para Estudiantes", FechaPublicacion = "18 de julio de 2025", FechaAplicacion = "N/A", Descripcion = "El 30 de julio se brindará una capacitación sobre lineamientos éticos y operativos de las prácticas profesionales.", PublicadoPor = "Yalena", Estado = "Activo", DirigidoA = "Estudiantes" },
+
+        // Egresados
+        new { Id = 4, Titulo = "Actualización de Datos de Egresados", FechaPublicacion = "22 de julio de 2025", FechaAplicacion = "31 de julio de 2025", Descripcion = "Se solicita a los egresados actualizar sus datos de contacto en el sistema institucional.", PublicadoPor = "Coordinación Egresados", Estado = "Activo", DirigidoA = "Egresados" },
+        new { Id = 5, Titulo = "Encuesta de Seguimiento a Egresados", FechaPublicacion = "15 de julio de 2025", FechaAplicacion = "15 de agosto de 2025", Descripcion = "Le invitamos a completar la encuesta de seguimiento laboral disponible en el portal.", PublicadoPor = "Coordinación Egresados", Estado = "Activo", DirigidoA = "Egresados" },
+        new { Id = 6, Titulo = "Convocatoria a Feria de Empleo", FechaPublicacion = "28 de julio de 2025", FechaAplicacion = "10 de agosto de 2025", Descripcion = "Se invita a egresados a participar en la Feria de Empleo organizada por la universidad.", PublicadoPor = "Oficina de Empleo", Estado = "Activo", DirigidoA = "Egresados" },
+
+        // Profesores
+        new { Id = 7, Titulo = "Capacitación en Herramientas Digitales", FechaPublicacion = "19 de julio de 2025", FechaAplicacion = "2 de agosto de 2025", Descripcion = "Se invita al cuerpo docente a participar en una capacitación sobre nuevas herramientas digitales.", PublicadoPor = "Dirección Académica", Estado = "Activo", DirigidoA = "Profesores" },
+        new { Id = 8, Titulo = "Entrega de Calificaciones", FechaPublicacion = "23 de julio de 2025", FechaAplicacion = "29 de julio de 2025", Descripcion = "Recordatorio para docentes sobre la entrega de calificaciones finales del ciclo anterior.", PublicadoPor = "Registro Académico", Estado = "Activo", DirigidoA = "Profesores" },
+        new { Id = 9, Titulo = "Reunión de Coordinación Docente", FechaPublicacion = "17 de julio de 2025", FechaAplicacion = "24 de julio de 2025", Descripcion = "Convocatoria a todos los profesores para reunión de coordinación académica.", PublicadoPor = "Dirección de Carrera", Estado = "Activo", DirigidoA = "Profesores" },
+
+        // Generales
+        new { Id = 10, Titulo = "Suspensión de Clases por Mantenimiento", FechaPublicacion = "21 de julio de 2025", FechaAplicacion = "27 de julio de 2025", Descripcion = "Se suspenderán las clases el día 27 por trabajos de mantenimiento eléctrico.", PublicadoPor = "Administración", Estado = "Activo", DirigidoA = "General" },
+        new { Id = 11, Titulo = "Lanzamiento de Nuevo Portal Institucional", FechaPublicacion = "16 de julio de 2025", FechaAplicacion = "1 de agosto de 2025", Descripcion = "La universidad estrenará un nuevo portal web institucional con mejoras de navegación.", PublicadoPor = "Tecnología", Estado = "Activo", DirigidoA = "General" },
+        new { Id = 12, Titulo = "Celebración del Aniversario Institucional", FechaPublicacion = "24 de julio de 2025", FechaAplicacion = "31 de julio de 2025", Descripcion = "Se celebrará el aniversario institucional con una serie de actividades culturales y académicas.", PublicadoPor = "Rectoría", Estado = "Activo", DirigidoA = "General" }
     };
+
+
+
+    var rol = Session["rol"] != null ? Convert.ToInt32(Session["rol"]) : 0;
 }
 
 @section Styles {
@@ -22,9 +42,10 @@
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             padding: 1.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2rem; /* espacio entre filas */
             height: 100%;
         }
+
 
             .comunicado-card h5 {
                 color: #2D594D;
@@ -43,10 +64,11 @@
             background-color: #2D594D;
             color: white;
             border: none;
-            padding: 0.6rem 1rem;
+            padding: 0.5rem 0.8rem;
             border-radius: 6px;
             font-weight: 600;
             transition: background-color 0.3s;
+            margin-right: 0.5rem;
         }
 
             .btn-ver:hover {
@@ -60,45 +82,490 @@
             text-align: center;
             margin-bottom: 2.5rem;
         }
+
+        .botones-acciones {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 1rem;
+        }
     </style>
 }
 
 <div class="comunicados-wrapper">
     <h2 class="titulo-pagina">Comunicados de Prácticas Profesionales</h2>
 
-    <div class="row">
-        @foreach (var c in comunicados)
-        {
-            <div class="col-md-4 d-flex">
-                <div class="comunicado-card w-100">
-                    <p><strong>@c.Titulo</strong></p>
-                    <p><strong>Publicado:</strong> "@c.FechaPublicacion"</p>
-                    <button class="btn-ver mt-3" data-bs-toggle="modal" data-bs-target="#modalComunicado@c.Id">Abrir Comunicado</button>
-                </div>
-            </div>
+    @if (rol == 1)
+    {
+        <div class="d-flex justify-content-end gap-3 mb-4">
+            <button class="btn-ver" data-bs-toggle="modal" data-bs-target="#modalAgregarComunicado">
+                <i class="bi bi-plus-circle"></i> Agregar Comunicado
+            </button>
+            <button class="btn-ver" data-bs-toggle="modal" data-bs-target="#modalEnviarCorreo">
+                <i class="bi bi-envelope-fill"></i> Enviar Email
+            </button>
+        </div>
+    }
 
-            <!-- Modal -->
-            <div class="modal fade" id="modalComunicado@c.Id" tabindex="-1" aria-labelledby="modalLabel@c.Id" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content" style="border-radius: 10px; background-color: #F2F2F2;">
-                        <div class="modal-header" style="background-color: #2D594D; color: white; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                            <h5 class="modal-title" id="modalLabel@c.Id">@c.Titulo</h5>
-                        </div>
-                        <div class="modal-body">
-                            <p><strong style="color: #2D594D;">Descripción:</strong><br /> @c.Descripcion</p>
-                            @if (c.FechaAplicacion != "N/A")
-                            {
-                                <p><strong style="color: #2D594D;">Fecha de Aplicación:</strong> "@c.FechaAplicacion"</p>
-                            }
-                            <p><strong style="color: #2D594D;">Fecha de Publicación:</strong> "@c.FechaPublicacion"</p>
-                            <p><strong style="color: #2D594D;">Publicado por:</strong> @c.PublicadoPor</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+
+
+    <div class="row g-4" id="contenedorComunicados">
+        @foreach (var c in comunicados.Where(c => c.Estado == "Activo"))
+        {
+            if (
+                (rol == 2 && (c.DirigidoA == "Estudiantes" || c.DirigidoA == "General")) ||
+                (rol == 3 && (c.DirigidoA == "Egresados" || c.DirigidoA == "General")) ||
+                (rol == 4 && (c.DirigidoA == "Profesores" || c.DirigidoA == "General")) ||
+                rol == 1 // Admin ve todo
+            )
+            {
+                <div class="col-md-4 d-flex" id="comunicado-@c.Id">
+                    <div class="comunicado-card w-100">
+                        <p><strong>@c.Titulo</strong></p>
+                        <p><strong>Publicado:</strong> "@c.FechaPublicacion"</p>
+
+                        <div class="botones-acciones">
+                            <button class="btn-ver btn-abrir-comunicado"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalComunicadoUnico"
+                                    data-id="@c.Id"
+                                    data-titulo="@c.Titulo"
+                                    data-descripcion="@c.Descripcion"
+                                    data-fecha="@c.FechaPublicacion"
+                                    data-aplicacion="@c.FechaAplicacion"
+                                    data-publicado="@c.PublicadoPor">
+                                Abrir
+                            </button>
+
                         </div>
                     </div>
                 </div>
-            </div>
+            }
         }
     </div>
+
 </div>
+
+<!-- Modal Enviar Correo -->
+<div class="modal fade" id="modalEnviarCorreo" tabindex="-1" aria-labelledby="modalEnviarCorreoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="border-radius: 10px; background-color: #F9F9F9;">
+            <div class="modal-header" style="background-color: #2D594D; color: white;">
+                <h5 class="modal-title" id="modalEnviarCorreoLabel"><i class="bi bi-envelope-fill"></i> Enviar Correo Electrónico</h5>
+            </div>
+            <div class="modal-body">
+                <form id="formEnviarCorreo">
+                    <!-- Para -->
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Para:</strong></label>
+                        <select class="form-control" id="destinatario" required>
+                            <option value="">Seleccione destinatario</option>
+                            <option value="Profesores">Profesores</option>
+                            <option value="Estudiantes">Estudiantes</option>
+                            <option value="Egresados">Egresados</option>
+                        </select>
+                    </div>
+
+                    <!-- Especialidad (solo para Profesores y Estudiantes) -->
+                    <div class="mb-3" id="grupoEspecialidad" style="display: none;">
+                        <label class="form-label"><strong>Especialidad:</strong></label>
+                        <select class="form-control" id="especialidad">
+                            <option value="">Seleccione especialidad</option>
+                            <option value="General">General</option>
+                            <option value="Ejecutivo Para Centros de Servicio">Ejecutivo Para Centros de Servicio</option>
+                            <option value="Informatica Empresarial">Informática Empresarial</option>
+                            <option value="Contabilidad">Contabilidad</option>
+                            <option value="Secretariado Ejecutivo">Secretariado Ejecutivo</option>
+                        </select>
+                    </div>
+
+                    <!-- Sección (solo si especialidad ≠ General) -->
+                    <div class="mb-3" id="grupoSeccion" style="display: none;">
+                        <label class="form-label"><strong>Sección:</strong></label>
+                        <select class="form-control" id="seccion">
+                            <option value="">Seleccione sección</option>
+                            <option value="12-1">12-1</option>
+                            <option value="12-2">12-2</option>
+                            <option value="12-3">12-3</option>
+                            <option value="12-4">12-4</option>
+                            <option value="12-5">12-5</option>
+                        </select>
+                    </div>
+
+                    <!-- Título -->
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Título:</strong></label>
+                        <input type="text" class="form-control" placeholder="Ej. Recordatorio de entrega" required />
+                    </div>
+
+                    <!-- Mensaje -->
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Mensaje:</strong></label>
+                        <textarea class="form-control" rows="4" placeholder="Escriba el mensaje aquí..." required></textarea>
+                    </div>
+
+                    <!-- Archivo Adjunto -->
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Adjuntar Archivo:</strong></label>
+                        <input type="file" class="form-control" />
+                        <small class="text-muted">Formatos permitidos: PDF, DOCX, XLSX.</small>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" id="btnEnviar" class="btn-ver">Enviar Correo</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Agregar Comunicado -->
+<div class="modal fade" id="modalAgregarComunicado" tabindex="-1" aria-labelledby="modalAgregarLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="border-radius: 10px; background-color: #F9F9F9;">
+            <div class="modal-header" style="background-color: #2D594D; color: white;">
+                <h5 class="modal-title" id="modalAgregarLabel">Agregar Comunicado</h5>
+            </div>
+            <div class="modal-body">
+                <form id="info-personal">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label"><strong>Título</strong></label>
+                            <input type="text" class="form-control" placeholder="Ej. Aviso de prácticas" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label"><strong>Publicado por</strong></label>
+                            <input type="text" class="form-control" placeholder="Ej. admin_pp" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Descripción</strong></label>
+                        <textarea class="form-control" rows="4" placeholder="Escriba aquí la descripción del comunicado..."></textarea>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label"><strong>Fecha de Publicación</strong></label>
+                            <input type="text" class="form-control" value="@DateTime.Now.ToString("dd-MM-yyyy")" readonly />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label"><strong>Fecha de Aplicación</strong></label>
+                            <input type="date" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label"><strong>¿Quién puede visualizarlo?</strong></label>
+                        <select class="form-control">
+                            <option value="General">General</option>
+                            <option value="Estudiantes">Estudiantes</option>
+                            <option value="Profesores">Profesores</option>
+                            <option value="Egresados">Egresados</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Adjuntar Documento</strong></label>
+                        <input type="file" class="form-control" />
+                        <small class="text-muted">Solo se permite subir un archivo PDF o XLSX.</small>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" id="btnGuardarComunicado" class="btn-ver">Guardar Comunicado</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal reutilizable -->
+<div class="modal fade" id="modalComunicadoUnico" tabindex="-1" aria-labelledby="modalComunicadoUnicoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="border-radius: 10px; background-color: #F2F2F2;">
+            <div class="modal-header" style="background-color: #2D594D; color: white;">
+                <h5 class="modal-title" id="modalComunicadoUnicoLabel">Título del Comunicado</h5>
+            </div>
+            <div class="modal-body">
+                <p><strong style="color: #2D594D;">Descripción:</strong><br /><span id="comunicadoDescripcion"></span></p>
+                <p><strong style="color: #2D594D;">Fecha de Aplicación:</strong> <span id="comunicadoAplicacion"></span></p>
+                <p><strong style="color: #2D594D;">Fecha de Publicación:</strong> <span id="comunicadoFecha"></span></p>
+                <p><strong style="color: #2D594D;">Publicado por:</strong> <span id="comunicadoPublicadoPor"></span></p>
+            </div>
+            <div class="modal-footer">
+                @if (rol == 1)
+                {
+                    <button class="btn-ver btn-editar" id="btnEditarModal" data-id="">Editar</button>
+                    <button class="btn-ver btn-eliminar" id="btnEliminarModal" data-id="">Eliminar</button>
+                }
+
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Editar Comunicado -->
+<div class="modal fade" id="modalEditarComunicado" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="border-radius: 10px; background-color: #F9F9F9;">
+            <div class="modal-header" style="background-color: #2D594D; color: white;">
+                <h5 class="modal-title" id="modalEditarLabel">Editar Comunicado</h5>
+            </div>
+            <div class="modal-body">
+                <form id="formEditarComunicado">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label"><strong>Título</strong></label>
+                            <input type="text" class="form-control" id="editTitulo" placeholder="" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label"><strong>Publicado por</strong></label>
+                            <input type="text" class="form-control" id="editPublicadoPor" placeholder="" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Descripción</strong></label>
+                        <textarea class="form-control" id="editDescripcion" rows="4" placeholder=""></textarea>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label"><strong>Fecha de Publicación</strong></label>
+                            <input type="text" class="form-control" id="editFechaPublicacion" placeholder="" readonly />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label"><strong>Fecha de Aplicación</strong></label>
+                            <input type="date" class="form-control" id="editFechaAplicacion" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label"><strong>¿Quién puede visualizarlo?</strong></label>
+                        <select class="form-control" id="editDirigidoA">
+                            <option value="General">General</option>
+                            <option value="Estudiantes">Estudiantes</option>
+                            <option value="Profesores">Profesores</option>
+                            <option value="Egresados">Egresados</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Adjuntar Documento</strong></label>
+                        <input type="file" class="form-control" />
+                        <small class="text-muted">Solo se permite subir un archivo PDF o XLSX.</small>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn-ver" id="btnGuardarCambios">Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Scripts -->
+<script>
+    document.getElementById("btnGuardarComunicado").addEventListener("click", function () {
+        const campos = document.querySelectorAll('#info-personal input, #info-personal textarea');
+        let incompletos = false;
+
+        campos.forEach(el => {
+            if (el.type !== "file" && el.offsetParent !== null && el.value.trim() === "") {
+                incompletos = true;
+            }
+        });
+
+        if (incompletos) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Campos incompletos',
+                text: 'Por favor complete todos los campos obligatorios',
+                confirmButtonColor: '#8CA653'
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Hubo un error al intentar publicar el Comunicado',
+                showConfirmButton: false,
+                timer: 2000
+            });
+        }
+    });
+
+
+        document.getElementById("btnEnviar").addEventListener("click", function () {
+        const campos = document.querySelectorAll('#formEnviarCorreo input, #formEnviarCorreo textarea, #formEnviarCorreo select');
+        let incompletos = false;
+
+        campos.forEach(el => {
+            const visible = el.offsetParent !== null;
+        if (visible && el.hasAttribute("required") && el.value.trim() === "") {
+            incompletos = true;
+            }
+        });
+
+        if (incompletos) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Campos incompletos',
+                text: 'Por favor complete todos los campos obligatorios',
+                confirmButtonColor: '#8CA653'
+            });
+        } else {
+            Swal.fire({
+                icon: 'success',
+                title: 'Correo enviado con éxito',
+                confirmButtonColor: '#8CA653',
+                timer: 2000
+            });
+
+            // Limpia el formulario después de un pequeño retraso
+            setTimeout(() => {
+            document.getElementById("formEnviarCorreo").reset();
+        document.getElementById("grupoEspecialidad").style.display = "none";
+        document.getElementById("grupoSeccion").style.display = "none";
+        const modal = bootstrap.Modal.getInstance(document.getElementById('modalEnviarCorreo'));
+        modal.hide();
+            }, 2000);
+        }
+    });
+
+
+
+    // Abrir comunicado y llenar modal dinámicamente
+    document.querySelectorAll(".btn-abrir-comunicado").forEach(btn => {
+        btn.addEventListener("click", function () {
+            const titulo = this.getAttribute("data-titulo");
+            const descripcion = this.getAttribute("data-descripcion");
+            const fecha = this.getAttribute("data-fecha");
+            const aplicacion = this.getAttribute("data-aplicacion");
+            const publicado = this.getAttribute("data-publicado");
+            const id = this.getAttribute("data-id");
+
+            document.getElementById("modalComunicadoUnicoLabel").textContent = titulo;
+            document.getElementById("comunicadoDescripcion").textContent = descripcion;
+            document.getElementById("comunicadoFecha").textContent = fecha;
+            document.getElementById("comunicadoAplicacion").textContent = aplicacion !== "N/A" ? aplicacion : "No aplica";
+            document.getElementById("comunicadoPublicadoPor").textContent = publicado;
+
+            const eliminarBtn = document.getElementById("btnEliminarModal");
+            if (eliminarBtn) eliminarBtn.setAttribute("data-id", id);
+        });
+    });
+    document.getElementById("btnEliminarModal")?.addEventListener("click", function () {
+        const id = this.getAttribute("data-id");
+
+        if (id) {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: 'Esta acción eliminará el comunicado.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#2D594D',
+                cancelButtonColor: '#A9A9A9',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Ocultar card
+                    document.getElementById("comunicado-" + id)?.remove();
+
+                    // Cerrar modal
+                    const modal = bootstrap.Modal.getInstance(document.getElementById("modalComunicadoUnico"));
+                    modal.hide();
+
+                    // Mostrar mensaje de éxito
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Comunicado eliminado',
+                        confirmButtonColor: '#8CA653',
+                        timer: 1800
+                    });
+                }
+            });
+        }
+    });
+
+    document.getElementById("btnEditarModal")?.addEventListener("click", function () {
+        const titulo = document.getElementById("modalComunicadoUnicoLabel").textContent;
+        const descripcion = document.getElementById("comunicadoDescripcion").textContent;
+        const publicadoPor = document.getElementById("comunicadoPublicadoPor").textContent;
+        const fechaPublicacion = document.getElementById("comunicadoFecha").textContent;
+        const fechaAplicacion = document.getElementById("comunicadoAplicacion").textContent;
+
+        // Asignar valores como placeholder
+        document.getElementById("editTitulo").placeholder = titulo;
+        document.getElementById("editDescripcion").placeholder = descripcion;
+        document.getElementById("editPublicadoPor").placeholder = publicadoPor;
+        document.getElementById("editFechaPublicacion").placeholder = fechaPublicacion;
+
+        // Fecha aplicación como valor directo
+        if (fechaAplicacion !== "No aplica") {
+            document.getElementById("editFechaAplicacion").value = fechaAplicacion;
+        }
+
+        // Mostrar modal de edición
+        const modalEditar = new bootstrap.Modal(document.getElementById("modalEditarComunicado"));
+        modalEditar.show();
+    });
+
+    function mostrarWarningMensaje() {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Ha ocurrido un error al actualizar el Comunicado',
+            showConfirmButton: false,
+            timer: 2000
+        });
+    }
+
+    ["btnGuardarCambios"].forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) {
+            btn.addEventListener("click", mostrarWarningMensaje);
+        }
+    });
+
+
+        document.getElementById("destinatario").addEventListener("change", function () {
+        const valor = this.value;
+        const especialidad = document.getElementById("grupoEspecialidad");
+        const seccion = document.getElementById("grupoSeccion");
+
+        if (valor === "Profesores" || valor === "Estudiantes") {
+            especialidad.style.display = "block";
+        } else {
+            especialidad.style.display = "none";
+        seccion.style.display = "none";
+        }
+
+        // Reset selects
+        document.getElementById("especialidad").value = "";
+        document.getElementById("seccion").value = "";
+    });
+
+        document.getElementById("especialidad").addEventListener("change", function () {
+        const valor = this.value;
+        const seccion = document.getElementById("grupoSeccion");
+
+        if (valor !== "General" && valor !== "") {
+            seccion.style.display = "block";
+        } else {
+            seccion.style.display = "none";
+        document.getElementById("seccion").value = "";
+        }
+    });
+
+
+</script>
+
+
+
+

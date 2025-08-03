@@ -1,24 +1,25 @@
 ﻿<!DOCTYPE html>
 <html dir="ltr" lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
     <title>SIGEP</title>
-    <!-- Fuente Rubik desde Google Fonts -->
+
+    <!-- Google Fonts: Rubik -->
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="~/Content/DataTable/dataTables.dataTables.css" rel="stylesheet" />
-    <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap, DataTables y estilos -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css" />
 
+    <link href="~/Content/DataTable/dataTables.dataTables.css" rel="stylesheet" />
     <link href="~/Content/style.css" rel="stylesheet" />
     <link href="~/Content/estilos/estilos.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
+
     @RenderSection("Styles", required: false)
 </head>
 
@@ -28,6 +29,7 @@
     }
 
     <div id="main-wrapper">
+        <!-- Topbar -->
         <header class="topbar">
             <nav class="navbar top-navbar navbar-expand-md navbar-dark">
                 <div class="navbar-header">
@@ -40,53 +42,50 @@
                                 <img src="~/Images/logo-icon.png" alt="homepage" class="dark-logo" />
                                 <img src="~/Images/logo-light-icon.png" alt="homepage" class="light-logo" />
                             </b>
-                            <span class="logo-text text-white">
-                                SIGEP
-                            </span>
+                            <span class="logo-text text-white">SIGEP</span>
                         </a>
                         <a class="sidebartoggler d-none d-md-block" href="javascript:void(0)" data-sidebartype="mini-sidebar">
                             <i class="mdi mdi-toggle-switch mdi-toggle-switch-off font-20"></i>
                         </a>
                     </div>
-                    <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="ti-more"></i>
                     </a>
                 </div>
                 <div class="navbar-collapse collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav float-left mr-auto">
-                    </ul>
-                    <ul class="navbar-nav float-right">
-
-                        <span class="mr-3" style="color: #2d594d">
-                            <b>                                Hola, @Session["nombre"]</b>
+                    <ul class="navbar-nav float-left mr-auto"></ul>
+                    <ul class="navbar-nav float-end">
+                        <span class="me-3" style="color: #2d594d">
+                            <b>Hola, @Session["nombre"]</b>
                         </span>
                     </ul>
                 </div>
             </nav>
         </header>
+
+        <!-- Sidebar -->
         <aside class="left-sidebar">
             <div class="scroll-sidebar">
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="nav-small-cap">
-                            <i class="mdi mdi-dots-horizontal"></i>
-                            <span class="hide-menu">PRÁCTICAS</span>
-                        </li>
+                        <!-- Prácticas -->
+                        <li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i><span class="hide-menu">PRÁCTICAS</span></li>
+
                         @if (rol == 1 || rol == 4)
                         {
                             <li class="sidebar-item">
                                 <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                                     <i class="ti-briefcase"></i>
-                                    <span class="hide-menu">Prácticas Profesionales </span>
+                                    <span class="hide-menu">Prácticas Profesionales</span>
                                 </a>
-                                <ul aria-expanded="false" class="collapse  first-level">
+                                <ul aria-expanded="false" class="collapse first-level">
                                     @if (rol == 1)
                                     {
                                         <li class="sidebar-item">
                                             <a href="@Url.Action("VacantesEstudiantes", "Practicas")" class="sidebar-link">
-                                                <i class="fas fa-briefcase "></i>
-                                                <span class="hide-menu"> Gestión de Vacantes</span>
+                                                <i class="fas fa-briefcase"></i>
+                                                <span class="hide-menu">Gestión de Vacantes</span>
                                             </a>
                                         </li>
                                     }
@@ -102,84 +101,91 @@
                                     <li class="sidebar-item">
                                         <a href="@Url.Action("PracticasCoordinador", "Practicas")" class="sidebar-link">
                                             <i class="fas fa-user"></i>
-                                            <span class="hide-menu"> Gestión de Prácticas </span>
+                                            <span class="hide-menu">Gestión de Prácticas</span>
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
                                         <a href="@Url.Action("ListarEstudianteConPractica", "Evaluacion")" class="sidebar-link">
                                             <i class="fas fa-graduation-cap"></i>
-                                            <span class="hide-menu"> Evaluaciones </span>
+                                            <span class="hide-menu">Evaluaciones</span>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
 
-
-
-                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("ListarEstudiante", "Estudiante")" aria-expanded="false"><i class="ti-user"></i> <span class="hide-menu">Estudiantes</span></a></li>
-                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html" aria-expanded="false"><i class="fas fa-building "></i> <span class="hide-menu">Empresas</span></a></li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("ListarEstudiante", "Estudiante")">
+                                    <i class="ti-user"></i><span class="hide-menu">Estudiantes</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html">
+                                    <i class="fas fa-building"></i><span class="hide-menu">Empresas</span>
+                                </a>
+                            </li>
                         }
+
                         @if (rol == 2)
                         {
-
                             <li class="sidebar-item">
                                 <a href="@Url.Action("MisPostulaciones", "Estudiante")" class="sidebar-link">
-                                    <i class="fas fa-briefcase"></i>
-                                    <span class="hide-menu">Mis Postulaciones</span>
+                                    <i class="fas fa-briefcase"></i><span class="hide-menu">Mis Postulaciones</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="@Url.Action("MiPractica", "Estudiante")" class="sidebar-link">
-                                    <i class="fas fa-briefcase"></i>
-                                    <span class="hide-menu">Mi Práctica</span>
+                                    <i class="fas fa-briefcase"></i><span class="hide-menu">Mi Práctica</span>
                                 </a>
                             </li>
                         }
 
-                        <li class="nav-small-cap">
-                            <i class="mdi mdi-dots-horizontal"></i>
-                            <span class="hide-menu">COMUNICACIONES</span>
+                        <!-- Comunicaciones -->
+                        <li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i><span class="hide-menu">COMUNICACIONES</span></li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Comunicados", "Comunicados")">
+                                <i class="ti-announcement"></i><span class="hide-menu">Comunicados</span>
+                            </a>
                         </li>
-                        <ul id="sidebarnav">
-                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Comunicados", "Comunicados")" aria-expanded="false"><i class="ti-announcement"></i><span class="hide-menu">Comunicados</span></a></li>
-                        </ul>
+
+                        <!-- Egresados -->
                         @if (rol == 1 || rol == 3)
                         {
-                            <li class="nav-small-cap">
-                                <i class="mdi mdi-dots-horizontal"></i>
-                                <span class="hide-menu">EGRESADOS</span>
+                            <li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i><span class="hide-menu">EGRESADOS</span></li>
+
+                            if (rol == 1)
+                            {
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("ListaEgresados", "Coordinador")">
+                                        <i class="ti-id-badge"></i><span class="hide-menu">Historial</span>
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("ListaVacanteCoordinador", "Vacante")">
+                                        <i class="ti-id-badge"></i><span class="hide-menu">Bolsa de Empleo</span>
+                                    </a>
+                                </li>
+                            }
+                        }
+
+
+                        <!-- Administración -->
+                        <li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i><span class="hide-menu">ADMINISTRACIÓN</span></li>
+                        @if (rol == 1)
+                        {
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html">
+                                    <i class="ti-id-badge"></i><span class="hide-menu">Administración General</span>
+                                </a>
                             </li>
-
-                        }
-                        @if (rol == 1 || rol == 3)
-                        {
-                            <ul id="sidebarnav">
-                                @if (rol == 1)
-                                {
-                                    <li class="sidebar-item">
-                                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("ListaEgresados", "Coordinador")" aria-expanded="false">
-                                            <i class="ti-id-badge"></i>
-                                            <span class="hide-menu">Historial</span>
-                                        </a>
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li class="sidebar-item">
-                                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("ListaVacanteCoordinador", "Vacante")" aria-expanded="false">
-                                            <i class="ti-id-badge"></i>
-                                            <span class="hide-menu">Bolsa de Empleo</span>
-                                        </a>
-                                    </li>
-                                }
-                            </ul>
                         }
 
-
-
-                        <li class="nav-small-cap">
-                            <i class="mdi mdi-dots-horizontal"></i>
-                            <span class="hide-menu">ADMINISTRACIÓN</span>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("MiPerfil", "Perfil")">
+                                <i class="ti-id-badge"></i><span class="hide-menu">Mi Perfil</span>
+                            </a>
                         </li>
                         <ul id="sidebarnav">
                             <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html" aria-expanded="false"><i class="ti-id-badge"></i> <span class="hide-menu">Administración General</span></a></
@@ -202,19 +208,17 @@
                 </nav>
             </div>
         </aside>
+
+        <!-- Contenido principal -->
         <div class="page-wrapper">
             <div class="container-fluid">
-
                 <div class="row">
                     <div class="col-12">
                         @RenderBody()
                     </div>
                 </div>
-
             </div>
-            <footer class="footer text-center">
-                SIGEP | Todos los derechos reservados.
-            </footer>
+            <footer class="footer text-center">SIGEP | Todos los derechos reservados.</footer>
         </div>
     </div>
 
@@ -222,7 +226,6 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 
     <script src="~/Scripts/app.min.js"></script>
     <script src="~/Scripts/app.init.js"></script>
@@ -233,6 +236,7 @@
     <script src="~/Scripts/sidebarmenu.js"></script>
     <script src="~/Scripts/custom.min.js"></script>
 
+    <!-- DataTables y SweetAlert2 -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css" />
 
@@ -245,7 +249,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     @RenderSection("Scripts", required: false)
 </body>
-
 </html>
