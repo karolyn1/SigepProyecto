@@ -13,14 +13,14 @@ namespace Sigep.UI.Controllers
         {
             return View();
         }
-        [AllowAnonymous]
+     
         [HttpGet]
 
         public ActionResult Registro() { 
         
             return View();
         }
-        [AllowAnonymous]
+       
         [HttpGet]
 
         public ActionResult Login()
@@ -29,7 +29,7 @@ namespace Sigep.UI.Controllers
             Session["MensajeError"] = null; 
             return View();
         }
-        [AllowAnonymous]
+        
         [HttpPost]
         public ActionResult Login(Usuario usuario)
         {
@@ -79,7 +79,7 @@ namespace Sigep.UI.Controllers
           
             return RedirectToAction("Index");
         }
-        [AllowAnonymous]
+       
         [HttpPost] 
         public ActionResult Registro(Usuario usuario)
         {
