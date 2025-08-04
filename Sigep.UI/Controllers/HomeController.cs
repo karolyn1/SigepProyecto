@@ -25,7 +25,8 @@ namespace Sigep.UI.Controllers
 
         public ActionResult Login()
         {
-            ViewBag.Mensaje = TempData["MensajeError"];
+            ViewBag.Mensaje = Session["MensajeError"];
+            Session["MensajeError"] = null; 
             return View();
         }
         [AllowAnonymous]

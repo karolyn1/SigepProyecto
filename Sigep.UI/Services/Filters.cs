@@ -19,8 +19,9 @@ namespace Sigep.UI.Services
 
                 if (!(controller == "Home" && (action == "Login" || action == "Registro")))
                 {
-                    filterContext.Controller.TempData["MensajeError"] = "Acceso no autorizado. Por favor, inicie sesión.";
+                    HttpContext.Current.Session["MensajeError"] = "Acceso no autorizado. Por favor, inicie sesión.";
                     filterContext.Result = new RedirectResult("~/Home/Login");
+                   
                 }
             }
 

@@ -16,12 +16,7 @@
 
                             <h2 class="fw-bold mb-2 ">BIENVENIDO A SIGEP</h2>
                             <hr />
-                            @if (!string.IsNullOrEmpty(Request.QueryString["mensaje"]))
-                            {
-                                <div class="alert alert-warning">
-                                    @Request.QueryString["mensaje"]
-                                </div>
-                            }
+                            <p style="color:red">@ViewBag.Mensaje</p>
 
                             @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @id = "loginForm", @class = "custom-form" }))
                             {
