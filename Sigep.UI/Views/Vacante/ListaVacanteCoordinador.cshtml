@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Lista de Vacantes - Coordinador";
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
 }
@@ -7,7 +6,9 @@
 <section class="vacantes-wrapper">
     <h2 class="vacantes-titulo titulo-principal">Vacantes Publicadas</h2>
 
-    <a href="@Url.Action("CrearVacante", "Vacante")" class="btn-cta btn-nuevo" style="margin-bottom: 25px;">+ Publicar Nueva Vacante</a>
+    <button class="btn-cta btn-nuevo" style="margin-bottom: 25px;" data-bs-toggle="modal" data-bs-target="#modalCrearVacante">
+        + Publicar Nueva Vacante
+    </button>
 
     <div class="table-container">
         <table id="miTabla" class="display responsive" style="width:100%">
@@ -37,9 +38,18 @@
                     <td>30/06/2025</td>
                     <td>Ingeniería</td>
                     <td class="acciones">
-                        <a href="@Url.Action("EditarVacante", "Vacante", new { id = 1 })" class="btn-editar">Editar</a>
-                        <a href="@Url.Action("ConfirmarDesactivacion", "Vacante", new { id = 1 })" class="btn-eliminar">Desactivar</a>
+                        <!-- Botón de editar (ícono) -->
+                        <button class="btn-editar-icono" data-bs-toggle="modal" data-bs-target="#modalEditarVacante" title="Editar vacante" style="background: none; border: none; color: #2D594D;">
+                            <i class="fas fa-edit"></i>
+                        </button>
+
+                        <!-- Botón de eliminar simulado (solo alerta) -->
+                        <button class="btn-eliminar-icono" onclick="confirmarDesactivacionSimulada()" title="Desactivar vacante" style="background: none; border: none; color: #E04F4F;">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
                     </td>
+
+
                 </tr>
                 <!-- Más filas aquí -->
             </tbody>
@@ -47,6 +57,154 @@
     </div>
 </section>
 
+<!-- Modal Crear Vacante -->
+<div class="modal fade" id="modalCrearVacante" tabindex="-1" aria-labelledby="modalCrearVacanteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="border-radius: 10px; background-color: #F2F2F2;">
+            <!-- Header -->
+            <div class="modal-header" style="background-color: #2D594D; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                <h5 class="modal-title text-white" id="modalCrearVacanteLabel">Publicar Nueva Vacante</h5>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body">
+                <form class="formulario-vacante" method="post" action="#">
+                    <label for="nombrePuesto">Nombre del puesto <span style="color:#E04F4F">*</span></label>
+                    <input type="text" id="nombrePuesto" name="nombrePuesto" placeholder="Ejemplo: Desarrollador Full Stack" required />
+
+                    <label for="empresa">Empresa <span style="color:#E04F4F">*</span></label>
+                    <input type="text" id="empresa" name="empresa" placeholder="Ejemplo: TechSolutions S.A." required />
+
+                    <label for="descripcion">Descripción <span style="color:#E04F4F">*</span></label>
+                    <textarea id="descripcion" name="descripcion" placeholder="Detalles de la vacante..." required></textarea>
+
+                    <label for="requisitos">Requisitos <span style="color:#E04F4F">*</span></label>
+                    <textarea id="requisitos" name="requisitos" placeholder="Habilidades y conocimientos requeridos" required></textarea>
+
+                    <label for="ubicacion">Ubicación <span style="color:#E04F4F">*</span></label>
+                    <input type="text" id="ubicacion" name="ubicacion" placeholder="Ciudad, país, etc." required />
+
+                    <label for="modalidad">Modalidad <span style="color:#E04F4F">*</span></label>
+                    <select id="modalidad" name="modalidad" required>
+                        <option value="" disabled selected>-- Seleccione modalidad --</option>
+                        <option value="Presencial">Presencial</option>
+                        <option value="Remoto">Remoto</option>
+                        <option value="Híbrido">Híbrido</option>
+                    </select>
+
+                    <label for="fechaPublicacion">Fecha de publicación <span style="color:#E04F4F">*</span></label>
+                    <input type="date" id="fechaPublicacion" name="fechaPublicacion" required />
+
+                    <label for="fechaLimite">Fecha límite de aplicación <span style="color:#E04F4F">*</span></label>
+                    <input type="date" id="fechaLimite" name="fechaLimite" required />
+
+                    <label for="areaProfesional">Área profesional <span style="color:#E04F4F">*</span></label>
+                    <select id="areaProfesional" name="areaProfesional" required>
+                        <option value="" disabled selected>-- Seleccione área --</option>
+                        <option value="Administración">Administración</option>
+                        <option value="Ingeniería">Ingeniería</option>
+                        <option value="Salud">Salud</option>
+                        <option value="Educación">Educación</option>
+                    </select>
+                </form>
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                <button type="button" class="btn btn-secondary" style="background-color: #A0A0A0; border: none;" data-bs-dismiss="modal">Cancelar</button>
+                <a href="@Url.Action("ListaVacanteCoordinador", "Vacante")" class="btn" style="background-color: #2D594D; color: white; border: none;">Guardar y Publicar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Editar Vacante -->
+<div class="modal fade" id="modalEditarVacante" tabindex="-1" aria-labelledby="modalEditarVacanteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="border-radius: 10px; background-color: #F2F2F2;">
+            <!-- Header -->
+            <div class="modal-header" style="background-color: #2D594D; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                <h5 class="modal-title text-white" id="modalEditarVacanteLabel">Editar Vacante</h5>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body">
+                <form class="formulario-vacante" method="post" action="#">
+                    <label for="nombrePuesto">Nombre del puesto <span style="color:#E04F4F">*</span></label>
+                    <input type="text" id="nombrePuesto" name="nombrePuesto" value="Desarrollador Full Stack" required />
+
+                    <label for="empresa">Empresa <span style="color:#E04F4F">*</span></label>
+                    <input type="text" id="empresa" name="empresa" value="TechSolutions S.A." required />
+
+                    <label for="descripcion">Descripción <span style="color:#E04F4F">*</span></label>
+                    <textarea id="descripcion" name="descripcion" required>Responsable de desarrollo backend y frontend usando C# y JS.</textarea>
+
+                    <label for="requisitos">Requisitos <span style="color:#E04F4F">*</span></label>
+                    <textarea id="requisitos" name="requisitos" required>C#, .NET, SQL Server, JavaScript</textarea>
+
+                    <label for="ubicacion">Ubicación <span style="color:#E04F4F">*</span></label>
+                    <input type="text" id="ubicacion" name="ubicacion" value="San José, Costa Rica" required />
+
+                    <label for="modalidad">Modalidad <span style="color:#E04F4F">*</span></label>
+                    <select id="modalidad" name="modalidad" required>
+                        <option value="Presencial">Presencial</option>
+                        <option value="Remoto" selected>Remoto</option>
+                        <option value="Híbrido">Híbrido</option>
+                    </select>
+
+                    <label for="fechaPublicacion">Fecha de publicación <span style="color:#E04F4F">*</span></label>
+                    <input type="date" id="fechaPublicacion" name="fechaPublicacion" value="2025-06-15" required />
+
+                    <label for="fechaLimite">Fecha límite de aplicación <span style="color:#E04F4F">*</span></label>
+                    <input type="date" id="fechaLimite" name="fechaLimite" value="2025-06-30" required />
+
+                    <label for="areaProfesional">Área profesional <span style="color:#E04F4F">*</span></label>
+                    <select id="areaProfesional" name="areaProfesional" required>
+                        <option value="Administración">Administración</option>
+                        <option value="Ingeniería" selected>Ingeniería</option>
+                        <option value="Salud">Salud</option>
+                        <option value="Educación">Educación</option>
+                    </select>
+                </form>
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                <button type="button" class="btn btn-secondary" style="background-color: #A0A0A0; border: none;" data-bs-dismiss="modal">Cancelar</button>
+                <a href="@Url.Action("ListaVacanteCoordinador", "Vacante")" class="btn" style="background-color: #2D594D; color: white; border: none;">Guardar Cambios</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @section Scripts {
     <script src="~/Scripts/validaciones.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function confirmarDesactivacionSimulada() {
+            Swal.fire({
+                title: '¿Está seguro?',
+                text: "Esta acción simulará la desactivación de la vacante.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#2D594D',
+                cancelButtonColor: '#A0A0A0',
+                confirmButtonText: 'Sí, desactivar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Desactivado',
+                        text: 'La vacante ha sido desactivada',
+                        icon: 'success',
+                        confirmButtonColor: '#2D594D'
+                    });
+                }
+            });
+        }
+    </script>
+
 }

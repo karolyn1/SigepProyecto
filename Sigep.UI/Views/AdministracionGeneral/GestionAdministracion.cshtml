@@ -238,8 +238,6 @@
                     </tr>
                     <!-- Más secciones -->
 
-
-
                 </tbody>
             </table>
             <!-- Modal Confirmar Eliminación Sección -->
@@ -265,13 +263,13 @@
 
         </div>
     </div>
-
+</section>
     <!-- MODALES -->
     <!-- Modal Crear Especialidad -->
     <div class="modal fade" id="modalCrearEspecialidad" tabindex="-1" aria-labelledby="modalCrearEspecialidadLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <form id="formCrearEspecialidad" method="post" action="@Url.Action("CrearEspecialidad", "AdministracionGeneral")">
+                <form id="formCrearEspecialidad">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalCrearEspecialidadLabel">Registrar Nueva Especialidad</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
@@ -295,7 +293,7 @@
     <div class="modal fade" id="modalEditarEspecialidad" tabindex="-1" aria-labelledby="modalEditarEspecialidadLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <form id="formEditarEspecialidad" method="post" action="@Url.Action("EditarEspecialidad", "AdministracionGeneral")">
+                <form id="formEditarEspecialidad">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalEditarEspecialidadLabel">Editar Especialidad</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
@@ -321,7 +319,7 @@
     <div class="modal fade" id="modalCrearSeccion" tabindex="-1" aria-labelledby="modalCrearSeccionLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <form id="formCrearSeccion" method="post" action="@Url.Action("CrearSeccion", "AdministracionGeneral")">
+                <form id="formCrearSeccion">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalCrearSeccionLabel">Registrar Nueva Sección</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
@@ -345,7 +343,7 @@
     <div class="modal fade" id="modalEditarSeccion" tabindex="-1" aria-labelledby="modalEditarSeccionLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <form id="formEditarSeccion" method="post" action="@Url.Action("EditarSeccion", "AdministracionGeneral")">
+                <form id="formEditarSeccion">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalEditarSeccionLabel">Editar Sección</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
@@ -371,7 +369,7 @@
     <div class="modal fade" id="modalEditarRolUsuario" tabindex="-1" aria-labelledby="modalEditarRolUsuarioLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <form id="formEditarRolUsuario" method="post" action="@Url.Action("EditarRol", "AdministracionGeneral")">
+                <form id="formEditarRolUsuario">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalEditarRolUsuarioLabel">Editar Rol de Usuario</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
@@ -582,5 +580,21 @@
                     alert(`Usuario ${nombre} ha sido marcado como ${nuevoEstado}.`);
                 }
             }
+
+            // Interceptar todos los formularios y simular confirmación
+            $('#formCrearEspecialidad, #formEditarEspecialidad, #formCrearSeccion, #formEditarSeccion, #formEditarRolUsuario').on('submit', function (e) {
+                e.preventDefault(); // evitar envío real del form
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Operación exitosa',
+                    text: 'Los cambios han sido guardados correctamente.',
+                    confirmButtonColor: '#2D594D'
+                }).then(() => {
+                    // Cerrar el modal correspondiente
+                    $(this).closest('.modal').modal('hide');
+                });
+            });
+
         </script>
     }
