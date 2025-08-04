@@ -16,6 +16,7 @@
 
                             <h2 class="fw-bold mb-2 ">BIENVENIDO A SIGEP</h2>
                             <hr />
+                            <p style="color:red">@ViewBag.Mensaje</p>
 
                             @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @id = "loginForm", @class = "custom-form" }))
                             {
@@ -57,7 +58,9 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
+
     document.addEventListener('DOMContentLoaded', function () {
+
         const toggle = document.querySelector('.toggle-password');
         const input = document.querySelector('.password-input');
 
@@ -113,5 +116,7 @@
             confirmButtonColor: '#2D594D'
         });
     </script>
+
+
 }
 

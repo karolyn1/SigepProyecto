@@ -25,14 +25,17 @@
             </tr>
         </thead>
         <tbody>
-            <tr data-id="1" data-nombre="TechSolutions">
+            <tr data-id="1" data-nombre="TechSolutions" data-contacto="Juan Pérez"
+                data-email="juan@tech.com" data-telefono="8888-8888" data-provincia="San José"
+                data-canton="San José" data-distrito="Carmen"
+                data-direccion="Av. Central 123" data-areas="Informática, Electrónica">
                 <td>TechSolutions</td>
                 <td>Informática, Electrónica</td>
                 <td>San José</td>
                 <td>5 vacantes anteriores</td>
                 <td>
                     <button data-id="1" data-bs-toggle="modal" data-bs-target="#ModalEditarEmpresa"
-                       class="btn bg-transparent" title="Editar">
+                            class="btn bg-transparent btn-editar-empresa" title="Editar">
                         <i class="fas fa-edit icono-accion"></i>
                     </button>
                     <a href="#"
@@ -50,17 +53,16 @@
                 <td>Heredia</td>
                 <td>3 vacantes anteriores</td>
                 <td>
-                    <a href="@Url.Action("EditarEmpresa", "Empresa", new { id = 2 })"
-                       class="btn bg-transparent" title="Editar">
+                    <button data-id="1" data-bs-toggle="modal" data-bs-target="#ModalEditarEmpresa"
+                            class="btn bg-transparent" title="Editar">
                         <i class="fas fa-edit icono-accion"></i>
-                    </a>
-                    <a href="#"
-                       class="btn bg-transparent btn-eliminar-empresa"
-                       data-id="2"
-                       data-nombre="InnovaCorp"
-                       title="Eliminar">
+                    </button>
+                    <button class="btn bg-transparent btn-eliminar-empresa"
+                            data-id="2"
+                            data-nombre="InnovaCorp"
+                            title="Eliminar">
                         <i class="fas fa-trash-alt icono-accion"></i>
-                    </a>
+                    </button>
                 </td>
             </tr>
         </tbody>
@@ -68,149 +70,404 @@
 </div>
 
 
-<!-- Modal Confirmar Eliminación Empresa -->
-<div class="modal fade" id="modalEliminarEmpresa" tabindex="-1" aria-labelledby="modalEliminarEmpresaLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Confirmar Eliminación</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-            </div>
-            <div class="modal-body">
-                ¿Está seguro que desea eliminar la empresa <strong id="nombreEmpresaEliminar"></strong>?
-            </div>
-            <div class="modal-footer">
-                <form id="formEliminarEmpresa">
+<div class="modal fade" id="ModalAgregarEmpresa" tabindex="-1" aria-labelledby="modalCrearVacanteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content" style="border-radius: 12px; background-color: #F2F2F2; color: #2D594D;">
+
+            <form id="formAgregarEmpresa">
+                <!-- HEADER -->
+                <div class="modal-header" style="background-color: #2D594D; color: white;">
+                    <h5 class="modal-title">Edición de Práctica</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+
+                <!-- BODY -->
+                <div class="modal-body px-4">
+                    <div class="mb-4">
+                        <h5 class="section-title">Información General</h5>
+                        <div class="row">
+
+                            <div class="col-md-6 form-group mb-3">
+                                <label>Nombre de la Empresa <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="nombreEmpresa" placeholder="Ejemplo: Asistente bancario">
+                            </div>
+
+                            <div class="col-md-6 form-group mb-3">
+                                <label>Nombre del contacto <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="nombreContacto" placeholder="Contacto con la empresa">
+                            </div>
+
+                            <div class="col-md-6 form-group mb-3">
+                                <label>Email <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="emailContacto" placeholder="correo@empresa.com">
+                            </div>
+
+                            <div class="col-md-6 form-group mb-3">
+                                <label>Teléfono <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="telefonoContacto" placeholder="8888-8888">
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label>Provincia</label>
+                                <select class="form-select" style="font-size: 14px" id="provincia" onchange="cargarCantones()">
+                                    <option value="">Seleccione una provincia</option>
+                                    <option value="San José">San José</option>
+                                    <option value="Alajuela">Alajuela</option>
+                                    <option value="Cartago">Cartago</option>
+                                    <option value="Heredia">Heredia</option>
+                                    <option value="Guanacaste">Guanacaste</option>
+                                    <option value="Puntarenas">Puntarenas</option>
+                                    <option value="Limón">Limón</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label>Cantón</label>
+                                <select class="form-select" style="font-size: 14px" id="canton" onchange="cargarDistritos()">
+                                    <option value="">Seleccione un cantón</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label>Distrito</label>
+                                <select class="form-select" style="font-size: 14px" id="distrito">
+                                    <option value="">Seleccione un distrito</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label>Dirección exacta</label>
+                                <input type="text" class="form-control" id="direccion">
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label>Áreas Afines</label>
+                                <input type="text" class="form-control" id="areas" placeholder="Informática, Ejecutivo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOOTER -->
+                <div class="modal-footer px-4">
+                    <button id="BtnGuardarVacante" type="button" class="btn CerrarModal">Guardar Empresa</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
-
-<div class="modal fade" id="ModalAgregarEmpresa" tabindex="-1" aria-labelledby="modalCrearVacanteLabel" aria-hidden="true">
+<div class="modal fade" id="ModalEditarEmpresa" tabindex="-1" aria-labelledby="ModalEditarEmpresaLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content" style="border-radius: 12px; background-color: #F2F2F2; color: #2D594D;">
 
             <!-- HEADER -->
             <div class="modal-header" style="background-color: #2D594D; color: white;">
-                <h5 class="modal-title">Edición de Práctica</h5>
+                <h5 class="modal-title" id="ModalEditarEmpresaLabel">Editar Empresa</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
 
+            <!-- BODY -->
             <div class="modal-body px-4">
-                <!-- Sección: Información General -->
+                <input type="hidden" id="empresaIdEditar">
+
                 <div class="mb-4">
                     <h5 class="section-title">Información General</h5>
                     <div class="row">
                         <div class="col-md-6 form-group mb-3">
                             <label>Nombre de la Empresa <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="nombrePuestoEditar" placeholder="Ejemplo: Asistente bancario" required>
+                            <input type="text" class="form-control" id="nombreEmpresaEditar" name="nombreEmpresaEditar" placeholder="Ejemplo: Asistente bancario" required>
                         </div>
 
                         <div class="col-md-6 form-group mb-3">
-                            <label>Nombre del contacto <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="nombrePuestoEditar" placeholder="Contacto con la empresa" required>
-                        </div>
-                        <div class="col-md-6 form-group mb-3">
-                            <label>Areas Afines <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="nombrePuestoEditar" placeholder="Electrotecnia, informática" required>
-                        </div>
-                        <div class="col-md-6 form-group mb-3">
-                            <label>Dirección Exacta <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="ubicacion" placeholder="Cartago, 200 metros norte">
+                            <label>Nombre del Contacto <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="contactoEmpresaEditar" name="contactoEmpresaEditar" placeholder="Nombre completo" required>
                         </div>
 
                         <div class="col-md-6 form-group mb-3">
-                            <label>Especialidad <span class="text-danger">*</span></label>
-                            <select class="form-select OpcionesVacantes w-100" style="font-size:14px" name="areaProfesionalEditar" required>
-                                <option class="text-dark" value="" disabled selected>-- Seleccione área --</option>
-                                <option value="Administración">Contabilidad</option>
-                                <option value="Informática">Informática</option>
-                                <option value="Salud">Electrotecnia</option>
-                                <option value="Educación">Ejecutivo para centros de servicios</option>
+                            <label>Email <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="emailEmpresaEditar" name="emailEmpresaEditar" placeholder="correo@ejemplo.com" required>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Teléfono <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="telefonoEmpresaEditar" name="telefonoEmpresaEditar" placeholder="8888-8888" required>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label>Provincia</label>
+                            <select class="form-select" id="provinciaEditar" onchange="cargarCantonesEditar()">
+                                <option value="">Seleccione una provincia</option>
+                                <option value="San José">San José</option>
+                                <option value="Alajuela">Alajuela</option>
+                                <option value="Cartago">Cartago</option>
+                                <option value="Heredia">Heredia</option>
+                                <option value="Guanacaste">Guanacaste</option>
+                                <option value="Puntarenas">Puntarenas</option>
+                                <option value="Limón">Limón</option>
                             </select>
                         </div>
 
-                        <div class="col-md-6 form-group mb-3">
-                            <label>Cantidad de Cupos <span class="text-danger">*</span></label>
-                            <input type="number" class="form-control" name="cuposEditar" placeholder="Ejemplo: 3" min="1" required>
-                        </div>
-
-                        <div class="col-md-6 form-group mb-3">
-                            <label>Modalidad <span class="text-danger">*</span></label>
-                            <br />
-                            <select class="form-select OpcionesVacantes w-100" style="font-size:14px" name="modalidadEditar" required>
-                                <option value="" disabled selected>-- Seleccione modalidad --</option>
-                                <option value="Presencial">Presencial</option>
-                                <option value="Remoto">Remoto</option>
-                                <option value="Híbrido">Híbrido</option>
+                        <div class="col-md-4 mb-3">
+                            <label>Cantón</label>
+                            <select class="form-select" id="cantonEditar" onchange="cargarDistritosEditar()">
+                                <option value="">Seleccione un cantón</option>
                             </select>
                         </div>
 
-                        <div class="col-md-6 form-group mb-3">
-                            <label>Fecha Límite de Aplicación <span class="text-danger">*</span></label>
-                            <input type="date" class="form-control" id="FechaAplicacionEditar" aname="fechaLimite" required>
+                        <div class="col-md-4 mb-3">
+                            <label>Distrito</label>
+                            <select class="form-select" id="distritoEditar">
+                                <option value="">Seleccione un distrito</option>
+                            </select>
                         </div>
 
-                        <div class="col-md-6 form-group mb-3">
-                            <label>Fecha de Cierre<span class="text-danger">*</span></label>
-                            <input type="date" class="form-control" id="FechaCierreEditar" name="fechaPublicacion" required>
+                        <div class="col-md-12 mb-3">
+                            <label>Dirección Exacta</label>
+                            <input type="text" class="form-control" id="direccionEmpresaEditar" name="direccionEmpresaEditar" />
                         </div>
 
-                        <div class="col-12 form-group mb-3">
-                            <label>Requisitos <span class="text-danger">*</span></label>
-                            <textarea class="form-control" name="requisitosEditar" rows="3" placeholder="Habilidades y conocimientos requeridos" required></textarea>
-                        </div>
-
-                        <div class="col-12 form-group mb-3 w-100">
-                            <label>Descripción <span class="text-danger">*</span></label>
-                            <textarea class="form-control" name="descripcionEditar" rows="3" value="Sé parte de align y aprende..." placeholder="Detalles de la vacante..." required></textarea>
+                        <div class="col-md-12 mb-3">
+                            <label>Áreas Afines</label>
+                            <input type="text" class="form-control" id="areasEmpresaEditar" name="areasEmpresaEditar" placeholder="Informática, Administración..." />
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- FOOTER -->
             <div class="modal-footer px-4">
-                <button id="btnEditarVacante" type="button" class="btn CerrarModal">Actualizar Vacante</button>
+                <button type="button" class="btn CerrarModal" id="btnGuardarCambiosEmpresa">Guardar Cambios</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             </div>
-        </div>
 
+        </div>
     </div>
 </div>
-
-
-
 
 
 @section Scripts {
     <script>
         $(document).ready(function () {
+
+            const datosCR = {
+                "San José": {
+                    "San José": ["Carmen", "Merced", "Hospital", "Uruca", "Mata Redonda"],
+                    "Escazú": ["Escazú Centro", "San Rafael", "San Antonio"],
+                    "Desamparados": ["Desamparados", "San Rafael Arriba", "San Miguel"]
+                },
+                "Alajuela": {
+                    "Alajuela": ["Alajuela", "San José", "Carrizal"],
+                    "San Ramón": ["San Ramón", "Santiago", "San Juan"],
+                    "Grecia": ["Grecia", "San Isidro", "San Roque"]
+                },
+                "Cartago": {
+                    "Cartago": ["Oriental", "Occidental", "Carmen"],
+                    "Turrialba": ["Turrialba", "La Suiza", "Peralta"]
+                }
+            };
+
+            function cargarCantonesEditar(provincia, selectedCanton) {
+                const cantonSelect = $('#cantonEditar');
+                cantonSelect.empty().append('<option value="">Seleccione un cantón</option>');
+                if (datosCR[provincia]) {
+                    Object.keys(datosCR[provincia]).forEach(function (canton) {
+                        cantonSelect.append(
+                            $('<option></option>')
+                                .val(canton)
+                                .text(canton)
+                                .prop('selected', canton === selectedCanton)
+                        );
+                    });
+                }
+                cargarDistritosEditar(provincia, selectedCanton, null);
+            }
+
+            function cargarDistritosEditar(provincia, canton, selectedDistrito) {
+                const distritoSelect = $('#distritoEditar');
+                distritoSelect.empty().append('<option value="">Seleccione un distrito</option>');
+                if (datosCR[provincia] && datosCR[provincia][canton]) {
+                    datosCR[provincia][canton].forEach(function (distrito) {
+                        distritoSelect.append(
+                            $('<option></option>')
+                                .val(distrito)
+                                .text(distrito)
+                                .prop('selected', distrito === selectedDistrito)
+                        );
+                    });
+                }
+            }
+
+            // Eventos para dropdowns editar
+            $('#provinciaEditar').on('change', function () {
+                const provincia = $(this).val();
+                cargarCantonesEditar(provincia, null);
+            });
+            $('#cantonEditar').on('change', function () {
+                const provincia = $('#provinciaEditar').val();
+                const canton = $(this).val();
+                cargarDistritosEditar(provincia, canton, null);
+            });
+
+            // Eliminar con Swal (solo uno)
+            $('.btn-eliminar-empresa').on('click', function (e) {
+                e.preventDefault();
+
+                const id = $(this).data('id');
+                const nombre = $(this).data('nombre');
+
+                Swal.fire({
+                    title: '¿Eliminar empresa?',
+                    html: `
+                        ¿Está seguro que desea eliminar la empresa <strong>${nombre}</strong>?<br><br>
+                        <small class="text-muted">
+                            <i class="fas fa-exclamation-circle text-warning"></i>
+                            Las vacantes asociadas a esta empresa pasarán a estado <strong>Cancelado</strong>.
+                        </small>
+                    `,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#6c757d',
+                    confirmButtonText: 'Sí, eliminar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('tr[data-id="' + id + '"]').remove();
+                        Swal.fire({
+                            title: 'Eliminada',
+                            text: 'La empresa ' + nombre + ' ha sido eliminada.',
+                            icon: 'success',
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+                    }
+                });
+            });
+
+            // Editar empresa: cargar datos y mostrar modal
+            $('.btn-editar-empresa').on('click', function () {
+                const fila = $(this).closest('tr');
+
+                $('#empresaIdEditar').val(fila.data('id'));
+                $('#nombreEmpresaEditar').val(fila.data('nombre'));
+                $('#contactoEmpresaEditar').val(fila.data('contacto'));
+                $('#emailEmpresaEditar').val(fila.data('email'));
+                $('#telefonoEmpresaEditar').val(fila.data('telefono'));
+                $('#provinciaEditar').val(fila.data('provincia'));
+
+                cargarCantonesEditar(fila.data('provincia'), fila.data('canton'));
+                cargarDistritosEditar(fila.data('provincia'), fila.data('canton'), fila.data('distrito'));
+
+                $('#direccionEmpresaEditar').val(fila.data('direccion'));
+                $('#areasEmpresaEditar').val(fila.data('areas'));
+
+                const modal = new bootstrap.Modal(document.getElementById('ModalEditarEmpresa'));
+                modal.show();
+            });
+
+            // Guardar cambios (simulado)
+     $('#btnGuardarCambiosEmpresa').on('click', function () {
+    const id = $('#empresaIdEditar').val();
+    const nombre = $('#nombreEmpresaEditar').val().trim();
+    const contacto = $('#contactoEmpresaEditar').val().trim();
+    const email = $('#emailEmpresaEditar').val().trim();
+    const telefono = $('#telefonoEmpresaEditar').val().trim();
+    const provincia = $('#provinciaEditar').val();
+    const canton = $('#cantonEditar').val();
+    const distrito = $('#distritoEditar').val();
+    const direccion = $('#direccionEmpresaEditar').val().trim();
+    const areas = $('#areasEmpresaEditar').val().trim();
+
+    if (!nombre || !contacto || !email || !telefono) {
+        Swal.fire({
+    icon: 'warning',
+    title: 'Error',
+    text: 'Por favor complete todos los campos obligatorios.',
+    confirmButtonColor: '#2D594D'
+});
+        return;
+    }
+
+    // Simula que se guardan cambios
+    const fila = $('tr[data-id="' + id + '"]');
+    fila.data('nombre', nombre);
+    fila.data('contacto', contacto);
+    fila.data('email', email);
+    fila.data('telefono', telefono);
+    fila.data('provincia', provincia);
+    fila.data('canton', canton);
+    fila.data('distrito', distrito);
+    fila.data('direccion', direccion);
+    fila.data('areas', areas);
+
+    fila.find('td:eq(0)').text(nombre);
+    fila.find('td:eq(1)').text(areas);
+    fila.find('td:eq(2)').text(provincia + (canton ? ', ' + canton : '') + (distrito ? ', ' + distrito : ''));
+
+    const modalElement = document.getElementById('ModalEditarEmpresa');
+    const modal = bootstrap.Modal.getInstance(modalElement);
+    if (modal) {
+        modal.hide();
+    }
+
+    Swal.fire({
+        icon: 'success',
+        title: 'Guardado',
+        text: 'Los cambios han sido guardados correctamente.',
+        confirmButtonColor: '#2D594D'
+    }).then(() => {
+        window.location.href = '@Url.Action("ListaEmpresas", "Empresa")';
+    });
+});
+
+            // Validación y guardado nuevo (ejemplo BtnGuardarVacante)
+            $('#BtnGuardarVacante').on('click', function () {
+                const nombreEmpresa = $('#nombreEmpresa').val().trim();
+                const nombreContacto = $('#nombreContacto').val().trim();
+                const email = $('#emailContacto').val().trim();
+                const telefono = $('#telefonoContacto').val().trim();
+                const provincia = $('#provincia').val();
+                const canton = $('#canton').val();
+                const distrito = $('#distrito').val();
+
+                let errores = [];
+
+                if (!nombreEmpresa) errores.push("Debe ingresar el nombre de la empresa.");
+                if (!nombreContacto) errores.push("Debe ingresar el nombre del contacto.");
+                if (!email) errores.push("Debe ingresar el correo electrónico.");
+                if (!telefono) errores.push("Debe ingresar el teléfono.");
+                if (!provincia) errores.push("Debe seleccionar una provincia.");
+                if (!canton) errores.push("Debe seleccionar un cantón.");
+                if (!distrito) errores.push("Debe seleccionar un distrito.");
+
+                if (errores.length > 0) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Campos requeridos',
+                        html: errores.join('<br>'),
+                        confirmButtonColor: '#2D594D',
+                        confirmButtonText: 'Entendido'
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Empresa guardada',
+                        text: 'Los datos han sido validados correctamente.',
+                        confirmButtonColor: '#2D594D'
+                    }).then(() => {
+
+                        window.href.location("ListaEmpresas", "Empresa");
+                    });
+                }
+            });
+
+            // Inicializa DataTables
             $('#miTabla').DataTable({
                 responsive: true
             });
 
-            let filaAEliminar = null;
-
-            $('.btn-eliminar-empresa').on('click', function (e) {
-                e.preventDefault();
-                filaAEliminar = $(this).closest('tr');
-                const nombreEmpresa = $(this).data('nombre');
-                $('#nombreEmpresaEliminar').text(nombreEmpresa);
-                $('#modalEliminarEmpresa').modal('show');
-            });
-
-            $('#formEliminarEmpresa').on('submit', function (e) {
-                e.preventDefault();
-                if (filaAEliminar) {
-                    filaAEliminar.remove(); // Simulación
-                    $('#modalEliminarEmpresa').modal('hide');
-                    alert('Empresa eliminada correctamente.');
-                }
-            });
         });
     </script>
 }
