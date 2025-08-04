@@ -2,7 +2,40 @@
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
     ViewBag.Title = "Administración General";
 }
+<style>
+    .modal-header {
+        background-color: #2D594D;
+        color: #fff;
+        border-top-left-radius: .5rem;
+        border-top-right-radius: .5rem;
+    }
 
+    .modal-content {
+        border-radius: .5rem;
+        overflow: hidden;
+    }
+
+    .modal-footer .btn-cancelar {
+        background-color: #F2F2F2;
+        color: #2D594D;
+        border: 1px solid #2D594D;
+        transition: all 0.3s;
+    }
+
+        .modal-footer .btn-cancelar:hover {
+            background-color: #EAF2D8;
+        }
+
+    .modal-footer .btn-guardar {
+        background-color: #8CA653;
+        color: #fff;
+        transition: all 0.3s;
+    }
+
+        .modal-footer .btn-guardar:hover {
+            background-color: #768C46;
+        }
+</style>
 <section class="vacantes-wrapper">
     <h2 class="vacantes-titulo titulo-principal">Administración General</h2>
 
@@ -70,10 +103,16 @@
                         <td>Estudiante</td>
                         <td class="estado">Activo</td>
                         <td>
-                            <a href="@Url.Action("EditarRolUsuario", "AdministracionGeneral", new { id = 1 })"
-                               class="btn bg-transparent me-1" title="Editar Rol">
+                            <a href="#"
+                               class="btn bg-transparent btn-editar-rol-usuario me-1"
+                               data-id="1"
+                               data-nombre="Laura Rodríguez"
+                               data-cedula="12345678"
+                               data-email="laura@email.com"
+                               title="Editar Rol">
                                 <i class="fas fa-user-cog icono-accion"></i>
                             </a>
+
 
                             <a href="#" class="btn bg-transparent" title="Inactivar" onclick="confirmarCambioEstado(this)">
                                 <i class="fas fa-user-slash icono-accion"></i>
@@ -90,8 +129,13 @@
     <div id="especialidades" class="seccion-adm" style="display: none;">
         <h3 class="text-center">Especialidades Registradas</h3>
 
-        <a href="@Url.Action("CrearEspecialidad", "AdministracionGeneral")"
-           class="btn-cta btn-nuevo" style="margin-bottom: 25px;">+ Nueva Especialidad</a>
+        <button type="button"
+                class="btn-cta btn-nuevo mb-3"
+                data-bs-toggle="modal"
+                data-bs-target="#modalCrearEspecialidad">
+            + Nueva Especialidad
+        </button>
+
 
         <div class="table-container">
             <table id="tablaEspecialidades" class="display responsive nowrap w-100">
@@ -107,10 +151,15 @@
                         <td>Informática</td>
                         <td>Desarrollo de software y redes</td>
                         <td>
-                            <a href="@Url.Action("EditarEspecialidad", "AdministracionGeneral", new { id = 1 })"
-                               class="btn bg-transparent" title="Editar">
+                            <a href="#"
+                               class="btn bg-transparent btn-editar-especialidad"
+                               data-id="1"
+                               data-nombre="Informática"
+                               data-descripcion="Desarrollo de software y redes"
+                               title="Editar">
                                 <i class="fas fa-edit icono-accion"></i>
                             </a>
+
                             <a href="#"
                                class="btn bg-transparent btn-eliminar-especialidad"
                                data-id="1"
@@ -150,8 +199,13 @@
     <div id="secciones" class="seccion-adm" style="display: none;">
         <h3 class="text-center">Secciones Registradas</h3>
 
-        <a href="@Url.Action("CrearSeccion", "AdministracionGeneral")"
-           class="btn-cta btn-nuevo mb-3">+ Nueva Sección</a>
+        <button type="button"
+                class="btn-cta btn-nuevo mb-3"
+                data-bs-toggle="modal"
+                data-bs-target="#modalCrearSeccion">
+            + Nueva Sección
+        </button>
+
 
         <div class="table-container">
             <table id="tablaSecciones" class="display responsive nowrap w-100">
@@ -165,10 +219,15 @@
                     <tr data-id="1">
                         <td>SEC-01</td>
                         <td>
-                            <a href="@Url.Action("EditarSeccion", "AdministracionGeneral", new { id = 1 })"
-                               class="btn bg-transparent" title="Editar">
+                            <a href="#"
+                               class="btn bg-transparent btn-editar-seccion"
+                               data-id="1"
+                               data-nombre="SEC-01"
+                               data-descripcion="Descripción de prueba"
+                               title="Editar">
                                 <i class="fas fa-edit icono-accion"></i>
                             </a>
+
                             <a href="#"
                                class="btn bg-transparent btn-eliminar-seccion"
                                data-id="1"
@@ -207,6 +266,150 @@
         </div>
     </div>
 
+    <!-- MODALES -->
+    <!-- Modal Crear Especialidad -->
+    <div class="modal fade" id="modalCrearEspecialidad" tabindex="-1" aria-labelledby="modalCrearEspecialidadLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form id="formCrearEspecialidad" method="post" action="@Url.Action("CrearEspecialidad", "AdministracionGeneral")">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCrearEspecialidadLabel">Registrar Nueva Especialidad</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="nombreEspecialidad" class="form-label">Nombre de la especialidad <span style="color:#E04F4F">*</span></label>
+                        <input type="text" id="nombreEspecialidad" name="nombreEspecialidad" placeholder="Ejemplo: Informática" required class="form-control mb-3" />
+
+                        <label for="descripcionEspecialidad" class="form-label">Descripción <span style="color:#E04F4F">*</span></label>
+                        <textarea id="descripcionEspecialidad" name="descripcionEspecialidad" placeholder="Breve descripción de la especialidad" required class="form-control"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-guardar">Guardar Especialidad</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Editar Especialidad -->
+    <div class="modal fade" id="modalEditarEspecialidad" tabindex="-1" aria-labelledby="modalEditarEspecialidadLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form id="formEditarEspecialidad" method="post" action="@Url.Action("EditarEspecialidad", "AdministracionGeneral")">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalEditarEspecialidadLabel">Editar Especialidad</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="editarIdEspecialidad" name="id" />
+
+                        <label for="editarNombreEspecialidad" class="form-label">Nombre de la especialidad <span style="color:#E04F4F">*</span></label>
+                        <input type="text" id="editarNombreEspecialidad" name="nombreEspecialidad" class="form-control mb-3" required />
+
+                        <label for="editarDescripcionEspecialidad" class="form-label">Descripción <span style="color:#E04F4F">*</span></label>
+                        <textarea id="editarDescripcionEspecialidad" name="descripcionEspecialidad" class="form-control" required></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-guardar">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Crear Sección -->
+    <div class="modal fade" id="modalCrearSeccion" tabindex="-1" aria-labelledby="modalCrearSeccionLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form id="formCrearSeccion" method="post" action="@Url.Action("CrearSeccion", "AdministracionGeneral")">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCrearSeccionLabel">Registrar Nueva Sección</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="nombreSeccion" class="form-label">Nombre de la sección <span style="color:#E04F4F">*</span></label>
+                        <input type="text" id="nombreSeccion" name="nombreSeccion" placeholder="Ejemplo: Sección A" required class="form-control mb-3" />
+
+                        <label for="descripcionSeccion" class="form-label">Descripción <span style="color:#E04F4F">*</span></label>
+                        <textarea id="descripcionSeccion" name="descripcionSeccion" placeholder="Breve descripción de la sección" required class="form-control"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-guardar">Guardar Sección</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Editar Sección -->
+    <div class="modal fade" id="modalEditarSeccion" tabindex="-1" aria-labelledby="modalEditarSeccionLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form id="formEditarSeccion" method="post" action="@Url.Action("EditarSeccion", "AdministracionGeneral")">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalEditarSeccionLabel">Editar Sección</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="editarIdSeccion" name="id" />
+
+                        <label for="editarNombreSeccion" class="form-label">Nombre de la sección <span style="color:#E04F4F">*</span></label>
+                        <input type="text" id="editarNombreSeccion" name="nombreSeccion" class="form-control mb-3" required />
+
+                        <label for="editarDescripcionSeccion" class="form-label">Descripción <span style="color:#E04F4F">*</span></label>
+                        <textarea id="editarDescripcionSeccion" name="descripcionSeccion" class="form-control" required></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-guardar">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Editar Rol Usuario -->
+    <div class="modal fade" id="modalEditarRolUsuario" tabindex="-1" aria-labelledby="modalEditarRolUsuarioLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form id="formEditarRolUsuario" method="post" action="@Url.Action("EditarRol", "AdministracionGeneral")">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalEditarRolUsuarioLabel">Editar Rol de Usuario</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label>Nombre:</label>
+                            <p id="rolNombre" class="fw-bold"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label>Cédula:</label>
+                            <p id="rolCedula" class="fw-bold"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label>Email:</label>
+                            <p id="rolEmail" class="fw-bold"></p>
+                        </div>
+
+                        <label for="rol" class="form-label">Rol <span style="color:#E04F4F">*</span></label>
+                        <select id="rol" name="rol" required class="form-control mb-3">
+                            <option value="">-- Seleccione un rol --</option>
+                            <option value="Profesor">Profesor</option>
+                            <option value="Estudiante">Estudiante</option>
+                            <option value="Egresado">Egresado</option>
+                            <option value="Coordinador">Coordinador</option>
+                        </select>
+
+                        <input type="hidden" id="usuarioId" name="usuarioId" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-guardar">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
     @section Scripts {
         <!-- Font Awesome actualizado -->
         <link rel="stylesheet"
@@ -215,6 +418,50 @@
               referrerpolicy="no-referrer" />
 
         <script>
+
+            $('.btn-editar-rol-usuario').on('click', function (e) {
+                e.preventDefault();
+                const id = $(this).data('id');
+                const nombre = $(this).data('nombre');
+                const cedula = $(this).data('cedula');
+                const email = $(this).data('email');
+
+                $('#rolNombre').text(nombre);
+                $('#rolCedula').text(cedula);
+                $('#rolEmail').text(email);
+                $('#usuarioId').val(id);
+
+                $('#modalEditarRolUsuario').modal('show');
+            });
+
+
+            $('.btn-editar-seccion').on('click', function (e) {
+                e.preventDefault();
+                const id = $(this).data('id');
+                const nombre = $(this).data('nombre');
+                const descripcion = $(this).data('descripcion');
+
+                $('#editarIdSeccion').val(id);
+                $('#editarNombreSeccion').val(nombre);
+                $('#editarDescripcionSeccion').val(descripcion);
+
+                $('#modalEditarSeccion').modal('show');
+            });
+
+
+            $('.btn-editar-especialidad').on('click', function (e) {
+                e.preventDefault();
+                const id = $(this).data('id');
+                const nombre = $(this).data('nombre');
+                const descripcion = $(this).data('descripcion');
+
+                $('#editarIdEspecialidad').val(id);
+                $('#editarNombreEspecialidad').val(nombre);
+                $('#editarDescripcionEspecialidad').val(descripcion);
+
+                $('#modalEditarEspecialidad').modal('show');
+            });
+
             function mostrarSeccion(id) {
                 document.querySelectorAll('.seccion-adm').forEach(s => s.style.display = 'none');
                 const seccion = document.getElementById(id);
@@ -269,7 +516,6 @@
                     if (filaAEliminar) {
                         filaAEliminar.remove();
                         $('#modalEliminarEspecialidad').modal('hide');
-                        alert("Especialidad eliminada correctamente.");
                     }
                 });
 
@@ -284,7 +530,6 @@
                     if (filaAEliminar) {
                         filaAEliminar.remove();
                         $('#modalEliminarSeccion').modal('hide');
-                        alert("Sección eliminada correctamente.");
                     }
                 });
             });
