@@ -36,5 +36,10 @@ namespace Sigep.UI.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public ActionResult PostulacionesEstudiantes()
+        {
+            return View();
+        }
     }
 }
