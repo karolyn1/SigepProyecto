@@ -469,7 +469,6 @@
                 table.column(2).search(this.value).draw();
             });
 
-            // Abrir modal de nota al hacer clic en botón
             $('#miTabla').on('click', '.btnEditarNota', function () {
                 var tr = $(this).closest('tr');
                 var row = table.row(tr.hasClass('child') ? tr.prev() : tr);
@@ -517,7 +516,7 @@
                 table.rows().every(function (rowIdx, tableLoop, rowLoop) {
                     var data = this.data();
                     if (data[0] === estudianteActual.cedula) {
-                        data[5] = nota.toFixed(1);
+                        data[6] = nota.toFixed(1);
                         this.data(data).draw(false);
                     }
                 });
@@ -526,9 +525,9 @@
                 modal.hide();
             });
 
-            // Abrir modal al hacer clic en el botón de comentarios
+      
             $('#miTabla').on('click', '.Comentarios', function () {
-                // Obtener la fila del botón (incluso si es responsive)
+                
                 var tr = $(this).closest('tr');
                 var row = table.row(tr.hasClass('child') ? tr.prev() : tr);
 
@@ -565,14 +564,13 @@
             });
 
 
-            // Mostrar comentarios en el modal de perfil
             $('#miTabla').on('click', '.VerPerfil', function () {
                 var tr = $(this).closest('tr');
                 var row = table.row(tr.hasClass('child') ? tr.prev() : tr);
                 var data = row.data();
                 if (!data) return;
 
-                var cedula = data[0]; // Asegúrate de que esta sea la columna de cédula
+                var cedula = data[0]; 
 
                 var comentarios = comentariosPorEstudiante[cedula] || [];
                 var contenedor = $("#retroalimentacionComentarios").empty();
@@ -592,7 +590,7 @@
                     });
                 }
 
-                $('#modalPerfil').modal('show'); // Por si necesitas forzar la apertura
+                $('#modalPerfil').modal('show'); 
             });
 
 
@@ -637,7 +635,6 @@
                 $("#nuevoComentario").val("");
                 Swal.fire('Éxito', 'Comentario agregado exitosamente.', 'success');
 
-                // Si el modal de perfil está abierto, actualizar también su retroalimentación
                 if ($("#modalPerfil").hasClass("show")) {
                     actualizarRetroalimentacion(cedula);
                 }
@@ -672,7 +669,7 @@
                 });
             }
 
-            // Agregar eventos a los otros botones si existen
+           
             ["btnSubirDoc"].forEach(id => {
                 const btn = document.getElementById(id);
                 if (btn) {

@@ -77,7 +77,7 @@
             <form id="formAgregarEmpresa">
                 <!-- HEADER -->
                 <div class="modal-header" style="background-color: #2D594D; color: white;">
-                    <h5 class="modal-title">Edición de Práctica</h5>
+                    <h5 class="modal-title">Registro de Empresa</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
 
@@ -249,25 +249,26 @@
 
 @section Scripts {
     <script>
+        const datosCR = {
+            "San José": {
+                "San José": ["Carmen", "Merced", "Hospital", "Uruca", "Mata Redonda"],
+                "Escazú": ["Escazú Centro", "San Rafael", "San Antonio"],
+                "Desamparados": ["Desamparados", "San Rafael Arriba", "San Miguel"]
+            },
+            "Alajuela": {
+                "Alajuela": ["Alajuela", "San José", "Carrizal"],
+                "San Ramón": ["San Ramón", "Santiago", "San Juan"],
+                "Grecia": ["Grecia", "San Isidro", "San Roque"]
+            },
+            "Cartago": {
+                "Cartago": ["Oriental", "Occidental", "Carmen"],
+                "Turrialba": ["Turrialba", "La Suiza", "Peralta"]
+            }
+        };
+
         $(document).ready(function () {
 
-            const datosCR = {
-                "San José": {
-                    "San José": ["Carmen", "Merced", "Hospital", "Uruca", "Mata Redonda"],
-                    "Escazú": ["Escazú Centro", "San Rafael", "San Antonio"],
-                    "Desamparados": ["Desamparados", "San Rafael Arriba", "San Miguel"]
-                },
-                "Alajuela": {
-                    "Alajuela": ["Alajuela", "San José", "Carrizal"],
-                    "San Ramón": ["San Ramón", "Santiago", "San Juan"],
-                    "Grecia": ["Grecia", "San Isidro", "San Roque"]
-                },
-                "Cartago": {
-                    "Cartago": ["Oriental", "Occidental", "Carmen"],
-                    "Turrialba": ["Turrialba", "La Suiza", "Peralta"]
-                }
-            };
-
+            // === CARGAR CANTONES Y DISTRITOS PARA EDITAR ===
             function cargarCantonesEditar(provincia, selectedCanton) {
                 const cantonSelect = $('#cantonEditar');
                 cantonSelect.empty().append('<option value="">Seleccione un cantón</option>');
@@ -299,18 +300,18 @@
                 }
             }
 
-            // Eventos para dropdowns editar
             $('#provinciaEditar').on('change', function () {
                 const provincia = $(this).val();
                 cargarCantonesEditar(provincia, null);
             });
+
             $('#cantonEditar').on('change', function () {
                 const provincia = $('#provinciaEditar').val();
                 const canton = $(this).val();
                 cargarDistritosEditar(provincia, canton, null);
             });
 
-            // Eliminar con Swal (solo uno)
+            // === BOTÓN ELIMINAR ===
             $('.btn-eliminar-empresa').on('click', function (e) {
                 e.preventDefault();
 
@@ -319,13 +320,9 @@
 
                 Swal.fire({
                     title: '¿Eliminar empresa?',
-                    html: `
-                        ¿Está seguro que desea eliminar la empresa <strong>${nombre}</strong>?<br><br>
-                        <small class="text-muted">
-                            <i class="fas fa-exclamation-circle text-warning"></i>
-                            Las vacantes asociadas a esta empresa pasarán a estado <strong>Cancelado</strong>.
-                        </small>
-                    `,
+                    html: `¿Está seguro que desea eliminar la empresa <strong>${nombre}</strong>?<br><br>
+                    <small class="text-muted"><i class="fas fa-exclamation-circle text-warning"></i>
+                    Las vacantes asociadas pasarán a estado <strong>Cancelado</strong>.</small>`,
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#d33',
@@ -346,7 +343,7 @@
                 });
             });
 
-            // Editar empresa: cargar datos y mostrar modal
+            // === EDITAR EMPRESA ===
             $('.btn-editar-empresa').on('click', function () {
                 const fila = $(this).closest('tr');
 
@@ -367,62 +364,57 @@
                 modal.show();
             });
 
-            // Guardar cambios (simulado)
-     $('#btnGuardarCambiosEmpresa').on('click', function () {
-    const id = $('#empresaIdEditar').val();
-    const nombre = $('#nombreEmpresaEditar').val().trim();
-    const contacto = $('#contactoEmpresaEditar').val().trim();
-    const email = $('#emailEmpresaEditar').val().trim();
-    const telefono = $('#telefonoEmpresaEditar').val().trim();
-    const provincia = $('#provinciaEditar').val();
-    const canton = $('#cantonEditar').val();
-    const distrito = $('#distritoEditar').val();
-    const direccion = $('#direccionEmpresaEditar').val().trim();
-    const areas = $('#areasEmpresaEditar').val().trim();
+            $('#btnGuardarCambiosEmpresa').on('click', function () {
+                const id = $('#empresaIdEditar').val();
+                const nombre = $('#nombreEmpresaEditar').val().trim();
+                const contacto = $('#contactoEmpresaEditar').val().trim();
+                const email = $('#emailEmpresaEditar').val().trim();
+                const telefono = $('#telefonoEmpresaEditar').val().trim();
+                const provincia = $('#provinciaEditar').val();
+                const canton = $('#cantonEditar').val();
+                const distrito = $('#distritoEditar').val();
+                const direccion = $('#direccionEmpresaEditar').val().trim();
+                const areas = $('#areasEmpresaEditar').val().trim();
 
-    if (!nombre || !contacto || !email || !telefono) {
-        Swal.fire({
-    icon: 'warning',
-    title: 'Error',
-    text: 'Por favor complete todos los campos obligatorios.',
-    confirmButtonColor: '#2D594D'
-});
-        return;
-    }
+                if (!nombre || !contacto || !email || !telefono) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Error',
+                        text: 'Por favor complete todos los campos obligatorios.',
+                        confirmButtonColor: '#2D594D'
+                    });
+                    return;
+                }
 
-    // Simula que se guardan cambios
-    const fila = $('tr[data-id="' + id + '"]');
-    fila.data('nombre', nombre);
-    fila.data('contacto', contacto);
-    fila.data('email', email);
-    fila.data('telefono', telefono);
-    fila.data('provincia', provincia);
-    fila.data('canton', canton);
-    fila.data('distrito', distrito);
-    fila.data('direccion', direccion);
-    fila.data('areas', areas);
+                const fila = $('tr[data-id="' + id + '"]');
+                fila.data('nombre', nombre);
+                fila.data('contacto', contacto);
+                fila.data('email', email);
+                fila.data('telefono', telefono);
+                fila.data('provincia', provincia);
+                fila.data('canton', canton);
+                fila.data('distrito', distrito);
+                fila.data('direccion', direccion);
+                fila.data('areas', areas);
 
-    fila.find('td:eq(0)').text(nombre);
-    fila.find('td:eq(1)').text(areas);
-    fila.find('td:eq(2)').text(provincia + (canton ? ', ' + canton : '') + (distrito ? ', ' + distrito : ''));
+                fila.find('td:eq(0)').text(nombre);
+                fila.find('td:eq(1)').text(areas);
+                fila.find('td:eq(2)').text(`${provincia}${canton ? ', ' + canton : ''}${distrito ? ', ' + distrito : ''}`);
 
-    const modalElement = document.getElementById('ModalEditarEmpresa');
-    const modal = bootstrap.Modal.getInstance(modalElement);
-    if (modal) {
-        modal.hide();
-    }
+                const modal = bootstrap.Modal.getInstance(document.getElementById('ModalEditarEmpresa'));
+                if (modal) modal.hide();
 
-    Swal.fire({
-        icon: 'success',
-        title: 'Guardado',
-        text: 'Los cambios han sido guardados correctamente.',
-        confirmButtonColor: '#2D594D'
-    }).then(() => {
-        window.location.href = '@Url.Action("ListaEmpresas", "Empresa")';
-    });
-});
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Guardado',
+                    text: 'Los cambios han sido guardados correctamente.',
+                    confirmButtonColor: '#2D594D'
+                }).then(() => {
+                    window.location.href = '@Url.Action("ListaEmpresas", "Empresa")';
+                });
+            });
 
-            // Validación y guardado nuevo (ejemplo BtnGuardarVacante)
+            // === VALIDAR GUARDADO NUEVO ===
             $('#BtnGuardarVacante').on('click', function () {
                 const nombreEmpresa = $('#nombreEmpresa').val().trim();
                 const nombreContacto = $('#nombreContacto').val().trim();
@@ -447,8 +439,7 @@
                         icon: 'warning',
                         title: 'Campos requeridos',
                         html: errores.join('<br>'),
-                        confirmButtonColor: '#2D594D',
-                        confirmButtonText: 'Entendido'
+                        confirmButtonColor: '#2D594D'
                     });
                 } else {
                     Swal.fire({
@@ -457,17 +448,46 @@
                         text: 'Los datos han sido validados correctamente.',
                         confirmButtonColor: '#2D594D'
                     }).then(() => {
-
-                        window.href.location("ListaEmpresas", "Empresa");
+                        window.location.href = '@Url.Action("ListaEmpresas", "Empresa")';
                     });
                 }
             });
 
-            // Inicializa DataTables
+            // === CARGAR CANTONES Y DISTRITOS PARA CREACIÓN NUEVA ===
+            $('#provincia').on('change', function () {
+                const provincia = $(this).val();
+                const cantonSelect = $('#canton');
+                const distritoSelect = $('#distrito');
+
+                cantonSelect.empty().append('<option value="">Seleccione un cantón</option>');
+                distritoSelect.empty().append('<option value="">Seleccione un distrito</option>');
+
+                if (datosCR[provincia]) {
+                    Object.keys(datosCR[provincia]).forEach(function (canton) {
+                        cantonSelect.append($('<option></option>').val(canton).text(canton));
+                    });
+                }
+            });
+
+            $('#canton').on('change', function () {
+                const provincia = $('#provincia').val();
+                const canton = $(this).val();
+                const distritoSelect = $('#distrito');
+
+                distritoSelect.empty().append('<option value="">Seleccione un distrito</option>');
+
+                if (datosCR[provincia] && datosCR[provincia][canton]) {
+                    datosCR[provincia][canton].forEach(function (distrito) {
+                        distritoSelect.append($('<option></option>').val(distrito).text(distrito));
+                    });
+                }
+            });
+
+            // === DATATABLES ===
             $('#miTabla').DataTable({
                 responsive: true
             });
-
         });
     </script>
 }
+

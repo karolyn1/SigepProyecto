@@ -123,7 +123,7 @@
                 <div class="mb-4 card rounded-5 p-3">
                     <h5 class="section-title">Seleccionar Estudiante para Asignar</h5>
 
-                  
+
                     <table id="miTablaAsignar" class="display responsive nowrap w-100">
                         <thead class="table-light">
                             <tr style="text-align: center;">
@@ -135,7 +135,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                           
+
                             <tr>
                                 <td>Johnny Castillo Fallas</td>
                                 <td>803883038</td>
@@ -159,13 +159,13 @@
                             <!-- Más estudiantes... -->
                         </tbody>
                     </table>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-   
+
 
 
 <!--MODAL VISUALIZAR-->
@@ -192,7 +192,7 @@
 
                         <div class="col-md-6 form-group mb-3">
                             <label>Empresa <span class="text-danger">*</span></label>
-                            <select class="form-select OpcionesVacantes w-100"  style="font-size:14px" name="empresaEditar" disabled>
+                            <select class="form-select OpcionesVacantes w-100" style="font-size:14px" name="empresaEditar" disabled>
                                 <option value="" disabled>-- Seleccione empresa --</option>
                                 <option value="Align" selected>Align</option>
                                 <option value="InnovaTech">BCR</option>
@@ -208,7 +208,7 @@
 
                         <div class="col-md-6 form-group mb-3">
                             <label>Especialidad <span class="text-danger">*</span></label>
-                            <select class="form-select OpcionesVacantes w-100"  style="font-size:14px" name="areaProfesionalEditar" disabled>
+                            <select class="form-select OpcionesVacantes w-100" style="font-size:14px" name="areaProfesionalEditar" disabled>
                                 <option value="" disabled>-- Seleccione área --</option>
                                 <option value="Administración">Contabilidad</option>
                                 <option value="Informática" selected>Informática</option>
@@ -224,7 +224,7 @@
 
                         <div class="col-md-6 form-group mb-3">
                             <label>Modalidad <span class="text-danger">*</span></label>
-                            <select class="form-select OpcionesVacantes w-100"  style="font-size:14px" name="modalidadEditar" disabled>
+                            <select class="form-select OpcionesVacantes w-100" style="font-size:14px" name="modalidadEditar" disabled>
                                 <option value="" disabled>-- Seleccione modalidad --</option>
                                 <option value="Presencial" selected>Presencial</option>
                                 <option value="Remoto">Remoto</option>
@@ -257,9 +257,9 @@
                 <div class="mb-4">
                     <h5 class="section-title">Aplicaciones</h5>
 
-                  
+
                     <ul class="list-group" id="listaPostulaciones">
-                                     <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil align-items-center p-2 border rounded mb-2">
+                        <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" style="color: #2D594D;" class="d-flex justify-content-between PostulacionesPerfil align-items-center p-2 border rounded mb-2">
                             Johhny Castillo Fallas | 803883038 | Informática
                             <span class="badge badge-asignada">Aceptado</span>
                         </a>
@@ -269,7 +269,7 @@
                         </a>
                     </ul>
 
-                  
+
                     <span id="mensajeSinAsignados" class="text-muted" style="display: none;">Ningún estudiante asignado aún</span>
                 </div>
             </div>
@@ -302,7 +302,7 @@
 
                         <div class="col-md-6 form-group mb-3">
                             <label>Empresa <span class="text-danger">*</span></label>
-                            <select class="form-select OpcionesVacantes w-100"  style="font-size:14px" name="empresaEditar" required>
+                            <select class="form-select OpcionesVacantes w-100" style="font-size:14px" name="empresaEditar" required>
                                 <option value="" disabled selected>-- Seleccione empresa --</option>
                                 <option value="Align">Align</option>
                                 <option value="InnovaTech">BCR</option>
@@ -318,7 +318,7 @@
 
                         <div class="col-md-6 form-group mb-3">
                             <label>Especialidad <span class="text-danger">*</span></label>
-                            <select class="form-select OpcionesVacantes w-100"  style="font-size:14px" name="areaProfesionalEditar" required>
+                            <select class="form-select OpcionesVacantes w-100" style="font-size:14px" name="areaProfesionalEditar" required>
                                 <option class="text-dark" value="" disabled selected>-- Seleccione área --</option>
                                 <option value="Administración">Contabilidad</option>
                                 <option value="Informática">Informática</option>
@@ -335,7 +335,7 @@
                         <div class="col-md-6 form-group mb-3">
                             <label>Modalidad <span class="text-danger">*</span></label>
                             <br />
-                            <select class="form-select OpcionesVacantes w-100"  style="font-size:14px" name="modalidadEditar" required>
+                            <select class="form-select OpcionesVacantes w-100" style="font-size:14px" name="modalidadEditar" required>
                                 <option value="" disabled selected>-- Seleccione modalidad --</option>
                                 <option value="Presencial">Presencial</option>
                                 <option value="Remoto">Remoto</option>
@@ -573,7 +573,7 @@
 
                         <div class="col-md-6 form-group mb-3">
                             <label>Empresa <span class="text-danger">*</span></label>
-                            <select class="form-select OpcionesVacantes w-100" name="empresa"  style="font-size:14px" required>
+                            <select class="form-select OpcionesVacantes w-100" name="empresa" style="font-size:14px" required>
                                 <option value="" disabled selected>-- Seleccione empresa --</option>
                                 <option value="TechSolutions S.A.">TechSolutions S.A.</option>
                                 <option value="InnovaTech">BCR</option>
@@ -584,7 +584,7 @@
 
                         <div class="col-md-6 form-group mb-3">
                             <label>Lugar / Ubicación <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="ubicacion" placeholder="Cartago, 200 metros norte" readonly>
+                            <input type="text" class="form-control" name="ubicacion" value="Cartago, La Lima" required>
                         </div>
 
                         <div class="col-md-6 form-group mb-3">
@@ -606,7 +606,7 @@
                         <div class="col-md-6 form-group mb-3">
                             <label>Modalidad <span class="text-danger">*</span></label>
                             <br />
-                            <select class="form-select OpcionesVacantes w-100" style="font-size:14px"  name="modalidad" required>
+                            <select class="form-select OpcionesVacantes w-100" style="font-size:14px" name="modalidad" required>
                                 <option value="" disabled selected>-- Seleccione modalidad --</option>
                                 <option value="Presencial">Presencial</option>
                                 <option value="Remoto">Remoto</option>
@@ -738,29 +738,34 @@
                 table.column(2).search(this.value).draw();
             });
 
-             document.getElementById("btnGuardarVacante").addEventListener("click", function () {
-        const formFields = document.querySelectorAll(".modal-body [required]");
-        let valid = true;
+            //------------------------------------------------------------------
 
-        // Validar campos vacíos
-        formFields.forEach(field => {
-            if (!field.value || field.value.trim() === "") {
-                valid = false;
-                field.classList.add("is-invalid");
-            } else {
-                field.classList.remove("is-invalid");
-            }
-        });
 
-        // Obtener fechas
-        const fechaAplicacion = document.getElementById("FechaAplicacion"); // Asegúrate que este ID esté en tu input
-        const fechaCierre = document.getElementById("FechaCierre");         // Igual aquí
+document.getElementById("btnGuardarVacante").addEventListener("click", function () {
+    // Todos los campos dentro del modal
+    const modal = document.querySelector("#modalCrearVacante .modal-body");
+    const requiredFields = modal.querySelectorAll("[required]");
+    let valid = true;
 
+    // Validar todos los campos requeridos
+    requiredFields.forEach(field => {
+        if (!field.value || field.value.trim() === "") {
+            valid = false;
+            field.classList.add("is-invalid");
+        } else {
+            field.classList.remove("is-invalid");
+        }
+    });
+
+    // Validar fechas
+    const fechaAplicacion = document.getElementById("FechaAplicacion");
+    const fechaCierre = document.getElementById("FechaCierre");
+
+    if (fechaAplicacion.value && fechaCierre.value) {
         const fechaAplicacionVal = new Date(fechaAplicacion.value);
         const fechaCierreVal = new Date(fechaCierre.value);
 
-        // Validación de fechas
-        if (fechaAplicacion.value && fechaCierre.value && fechaAplicacionVal > fechaCierreVal) {
+        if (fechaAplicacionVal > fechaCierreVal) {
             valid = false;
             fechaAplicacion.classList.add("is-invalid");
             fechaCierre.classList.add("is-invalid");
@@ -772,142 +777,149 @@
                 confirmButtonColor: "#d33"
             });
 
-            return; // Detener ejecución
+            return; // Detiene el proceso aquí
         } else {
             fechaAplicacion.classList.remove("is-invalid");
             fechaCierre.classList.remove("is-invalid");
         }
+    }
 
-        // Validación final
-        if (!valid) {
-            Swal.fire({
-                icon: "error",
-                title: "Campos Incompletos",
-                text: "Por favor, complete todos los campos requeridos.",
-                confirmButtonColor: "#d33"
-            });
-        } else {
-            Swal.fire({
-                icon: "success",
-                title: "Vacante Registrada",
-                text: "La vacante fue registrada exitosamente.",
-                confirmButtonColor: "#198754"
-            }).then(() => {
-                // Redirección al controlador y acción deseada
-                window.location.href = '@Url.Action( "VacantesEstudiantes", "Practicas")';
-            });
-        }
+    // Si algún campo está vacío
+    if (!valid) {
+        Swal.fire({
+            icon: "error",
+            title: "Campos Incompletos",
+            text: "Por favor, complete todos los campos requeridos.",
+            confirmButtonColor: "#d33"
+        });
+        return;
+    }
+
+    // Si todo está bien
+    Swal.fire({
+        icon: "success",
+        title: "Vacante Registrada",
+        text: "La vacante fue registrada exitosamente.",
+        confirmButtonColor: "#198754",
+        timer: 5000,
+        timerProgressBar: true
+    }).then(() => {
+        window.location.href = '@Url.Action("VacantesEstudiantes", "Practicas")';
+    });
+});
+  
+
+
+    //------------------------------------------------------------------
+
+    let filaActual;
+
+
+    $('#miTabla').on('click', 'button[data-bs-target="#modalEditarVacante"]', function () {
+    const btn = $(this);
+    filaActual = btn.closest('tr');
+
+
+    $('select[name="empresaEditar"]').val(btn.data('empresa'));
+    $('select[name="areaProfesionalEditar"]').val(btn.data('especialidad'));
+    $('textarea[name="requisitosEditar"]').val(btn.data('requisitos'));
+    $('input[name="cuposEditar"]').val(btn.data('cupos'));
+    $('#FechaAplicacionEditar').val(btn.data('fecha-aplicacion'));
+    $('#FechaCierreEditar').val(btn.data('fecha-cierre'));
     });
 
 
-            let filaActual; // Para mantener referencia a la fila seleccionada
+    $('#btnEditarVacante').on('click', function () {
+   
+    const empresa = $('select[name="empresaEditar"]').val();
+    const especialidad = $('select[name="areaProfesionalEditar"]').val();
+    const requisitos = $('textarea[name="requisitosEditar"]').val();
+    const cupos = $('input[name="cuposEditar"]').val();
+    const fechaAplicacion = $('#FechaAplicacionEditar').val();
+    const fechaCierre = $('#FechaCierreEditar').val();
 
-            // Al hacer clic en el botón de ver/editar
-            $('#miTabla').on('click', 'button[data-bs-target="#modalEditarVacante"]', function () {
-                const btn = $(this);
-                filaActual = btn.closest('tr');
+   
+    if (!empresa || !especialidad || !requisitos || !cupos || !fechaAplicacion || !fechaCierre) {
+    Swal.fire({
+    icon: 'warning',
+    title: 'Campos incompletos',
+    text: 'Por favor completa todos los campos obligatorios.'
+    });
+    return;
+    }
 
-                // Carga los datos en el modal
-                $('select[name="empresaEditar"]').val(btn.data('empresa'));
-                $('select[name="areaProfesionalEditar"]').val(btn.data('especialidad'));
-                $('textarea[name="requisitosEditar"]').val(btn.data('requisitos'));
-                $('input[name="cuposEditar"]').val(btn.data('cupos'));
-                $('#FechaAplicacionEditar').val(btn.data('fecha-aplicacion'));
-                $('#FechaCierreEditar').val(btn.data('fecha-cierre'));
-            });
+    if (new Date(fechaAplicacion) > new Date(fechaCierre)) {
+    Swal.fire({
+    icon: 'error',
+    title: 'Fechas inválidas',
+    text: 'La fecha de aplicación no puede ser mayor que la fecha de cierre.'
+    });
+    return;
+    }
 
-            // Al hacer clic en Guardar
-            $('#btnEditarVacante').on('click', function () {
-                // Obtener valores del modal
-                const empresa = $('select[name="empresaEditar"]').val();
-                const especialidad = $('select[name="areaProfesionalEditar"]').val();
-                const requisitos = $('textarea[name="requisitosEditar"]').val();
-                const cupos = $('input[name="cuposEditar"]').val();
-                const fechaAplicacion = $('#FechaAplicacionEditar').val();
-                const fechaCierre = $('#FechaCierreEditar').val();
+    
+    filaActual.find('td:eq(0)').text(empresa);
+    filaActual.find('td:eq(1)').text(especialidad);
+    filaActual.find('td:eq(2)').text(requisitos);
+    filaActual.find('td:eq(3)').text(cupos);
 
-                // Validación
-                if (!empresa || !especialidad || !requisitos || !cupos || !fechaAplicacion || !fechaCierre) {
-                    Swal.fire({
-                        icon: 'warning',
-                        title: 'Campos incompletos',
-                        text: 'Por favor completa todos los campos obligatorios.'
-                    });
-                    return;
-                }
+    Swal.fire({
+    icon: 'success',
+    title: 'Vacante actualizada exitosamente',
+    showConfirmButton: false,
+    timer: 2000
+    });
 
-                if (new Date(fechaAplicacion) > new Date(fechaCierre)) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Fechas inválidas',
-                        text: 'La fecha de aplicación no puede ser mayor que la fecha de cierre.'
-                    });
-                    return;
-                }
-
-                // Actualizar fila de la tabla
-                filaActual.find('td:eq(0)').text(empresa);
-                filaActual.find('td:eq(1)').text(especialidad);
-                filaActual.find('td:eq(2)').text(requisitos);
-                filaActual.find('td:eq(3)').text(cupos);
-
-                // Mensaje de éxito
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Vacante actualizada exitosamente',
-                    showConfirmButton: false,
-                    timer: 2000
-                });
-
-                // Cerrar el modal después de medio segundo
-                setTimeout(() => {
-                    $('#modalEditarVacante').modal('hide');
-                }, 500);
-            });
+   
+    setTimeout(() => {
+    $('#modalEditarVacante').modal('hide');
+    }, 500);
+    });
 
 
-            $(".BtnEliminarVacante").on("click", function () {
-                let cupos = $(this).data('asignados');
+    $(".BtnEliminarVacante").on("click", function () {
+    let cupos = $(this).data('asignados');
 
-                Swal.fire({
-                    title: '¿Está seguro?',
-                    text: "Esta acción eliminará la vacante.",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#d33',
-                    cancelButtonColor: '#3085d6',
-                    confirmButtonText: 'Sí, eliminar',
-                    cancelButtonText: 'Cancelar'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        if (cupos > 0) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Estudiantes Asignados',
-                                text: 'No se puede eliminar la vacante porque tiene estudiantes asignados.'
-                            });
-                        } else {
-                            // Aquí puedes eliminar de la tabla o hacer una llamada AJAX
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Vacante eliminada correctamente',
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
+    Swal.fire({
+    title: '¿Está seguro?',
+    text: "Esta acción eliminará la vacante.",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#2d594d',
+    cancelButtonColor: '#333',
+    confirmButtonText: 'Sí, eliminar',
+    cancelButtonText: 'Cancelar'
+    }).then((result) => {
+    if (result.isConfirmed) {
+    if (cupos > 0) {
+    Swal.fire({
+    icon: 'error',
+    title: 'Estudiantes Asignados',
+        text: 'No se puede eliminar la vacante porque tiene estudiantes asignados.',
+        confirmButtonColor: '#2d594d'
+    });
+    } else {
+    
+    Swal.fire({
+    icon: 'success',
+    title: 'Vacante eliminada correctamente',
+    showConfirmButton: false,
+    timer: 1500
+    });
 
-                            // Opcional: eliminar la fila visualmente (si tienes una referencia)
-                            if (typeof filaSeleccionada !== 'undefined' && filaSeleccionada) {
-                                filaSeleccionada.remove();
-                            }
-                        }
-                    }
-                });
-            });
+   
+    if (typeof filaSeleccionada !== 'undefined' && filaSeleccionada) {
+    filaSeleccionada.remove();
+    }
+    }
+    }
+    });
+    });
 
 
 
 
-        });
+});
 
     </script>
 }

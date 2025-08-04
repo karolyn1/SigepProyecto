@@ -58,22 +58,27 @@
         @if (TempData["SwalError"] != null)
  {
      <text>
-         Swal.fire({
-             icon: 'error',
-             title: 'Error',
-              text: '@Html.Raw(HttpUtility.JavaScriptStringEncode(TempData["SwalError"].ToString()))'
-         });
+        Swal.fire({
+    icon: 'error',
+    title: 'Error',
+    text: '@Html.Raw(HttpUtility.JavaScriptStringEncode(TempData["SwalError"]?.ToString() ?? ""))',
+    confirmButtonText: 'Entendido',
+    confirmButtonColor: '#2D594D'
+});
      </text>
  }
 
  @if (TempData["SwalSuccess"] != null)
  {
      <text>
-         Swal.fire({
-             icon: 'success',
-             title: 'Éxito',
-             text: '@Html.Raw(HttpUtility.JavaScriptStringEncode(TempData["SwalSuccess"].ToString()))'
-         });
+              Swal.fire({
+    icon: 'error',
+    title: 'Error',
+    text: '@Html.Raw(HttpUtility.JavaScriptStringEncode(TempData["SwalError"]?.ToString() ?? ""))',
+    confirmButtonText: 'Entendido',
+    confirmButtonColor: '#2D594D'
+});
+ });
      </text>
  }
 
