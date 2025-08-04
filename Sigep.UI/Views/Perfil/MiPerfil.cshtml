@@ -131,12 +131,19 @@
     {
         <h5 class="section-title">INFORMACIÓN ACADÉMICA</h5>
         <div class="row">
-            <div class="col-md-6 form-group">
-                <label>Especialidad</label>
-                <input type="text" class="form-control" value="Ejecutivo Para Centros de Servicio" />
-            </div>
+            @if (rol == 2)
+            {
+                <div class="col-md-6 form-group">
+                    <label>Especialidad</label>
+                    <input type="text" class="form-control" value="Ejecutivo Para Centros de Servicio" />
+                </div>
+            }
             @if (rol == 3)
             {
+                <div class="col-md-6 form-group">
+                    <label>Carrera</label>
+                    <input type="email" class="form-control" value="xxxxxxxxx" />
+                </div>
                 <div class="col-md-6 form-group">
                     <label>Año De Graduación</label>
                     <input type="text" class="form-control" value="2022" />
@@ -145,10 +152,7 @@
                     <label>Título</label>
                     <input type="email" class="form-control" value="xxxxxx" />
                 </div>
-                <div class="col-md-6 form-group">
-                    <label>Área Profesional</label>
-                    <input type="email" class="form-control" value="xxxxxxxxx" />
-                </div>
+
             }
         </div>
 
