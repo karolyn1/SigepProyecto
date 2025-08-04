@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using Sigep.UI.Services;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Sigep.UI
@@ -7,7 +8,9 @@ namespace Sigep.UI
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
+            filters.Add(new Filters());
             filters.Add(new HandleErrorAttribute());
+          
         }
     }
 }
