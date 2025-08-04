@@ -3,67 +3,70 @@
     ViewBag.Title = "Listado de Empresas";
 }
 
-<section class="vacantes-wrapper">
-    <h2 class="vacantes-titulo titulo-principal">Empresas Registradas</h2>
 
-    <a href="@Url.Action("CrearEmpresa", "Empresa")"
-       class="btn-cta btn-nuevo"
-       style="margin-bottom: 25px;">+ Nueva Empresa</a>
+<h2 class="vacantes-titulo titulo-principal">Empresas Registradas</h2>
 
-    <div class="table-container">
-        <table id="miTabla" class="display responsive nowrap w-100">
-            <thead>
-                <tr>
-                    <th>Nombre de Empresa</th>
-                    <th>Especialidades que Reciben</th>
-                    <th>Ubicación</th>
-                    <th>Historial de Vacantes</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr data-id="1" data-nombre="TechSolutions">
-                    <td>TechSolutions</td>
-                    <td>Informática, Electrónica</td>
-                    <td>San José</td>
-                    <td>5 vacantes anteriores</td>
-                    <td>
-                        <a href="@Url.Action("EditarEmpresa", "Empresa", new { id = 1 })"
-                           class="btn bg-transparent" title="Editar">
-                            <i class="fas fa-edit icono-accion"></i>
-                        </a>
-                        <a href="#"
-                           class="btn bg-transparent btn-eliminar-empresa"
-                           data-id="1"
-                           data-nombre="TechSolutions"
-                           title="Eliminar">
-                            <i class="fas fa-trash-alt icono-accion"></i>
-                        </a>
-                    </td>
-                </tr>
-                <tr data-id="2" data-nombre="InnovaCorp">
-                    <td>InnovaCorp</td>
-                    <td>Electromecánica</td>
-                    <td>Heredia</td>
-                    <td>3 vacantes anteriores</td>
-                    <td>
-                        <a href="@Url.Action("EditarEmpresa", "Empresa", new { id = 2 })"
-                           class="btn bg-transparent" title="Editar">
-                            <i class="fas fa-edit icono-accion"></i>
-                        </a>
-                        <a href="#"
-                           class="btn bg-transparent btn-eliminar-empresa"
-                           data-id="2"
-                           data-nombre="InnovaCorp"
-                           title="Eliminar">
-                            <i class="fas fa-trash-alt icono-accion"></i>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</section>
+<button data-bs-toggle="modal" data-bs-target="#ModalAgregarEmpresa"
+        class="btn-cta btn-nuevo"
+        style="margin-bottom: 25px;">
+    + Nueva Empresa
+</button>
+
+<div class="card rounded-5 p-3">
+    <table id="miTabla" class="display responsive nowrap w-100">
+
+        <thead>
+            <tr>
+                <th>Nombre de Empresa</th>
+                <th>Especialidades que Reciben</th>
+                <th>Ubicación</th>
+                <th>Historial de Vacantes</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-id="1" data-nombre="TechSolutions">
+                <td>TechSolutions</td>
+                <td>Informática, Electrónica</td>
+                <td>San José</td>
+                <td>5 vacantes anteriores</td>
+                <td>
+                    <button data-id="1" data-bs-toggle="modal" data-bs-target="#ModalEditarEmpresa"
+                       class="btn bg-transparent" title="Editar">
+                        <i class="fas fa-edit icono-accion"></i>
+                    </button>
+                    <a href="#"
+                       class="btn bg-transparent btn-eliminar-empresa"
+                       data-id="1"
+                       data-nombre="TechSolutions"
+                       title="Eliminar">
+                        <i class="fas fa-trash-alt icono-accion"></i>
+                    </a>
+                </td>
+            </tr>
+            <tr data-id="2" data-nombre="InnovaCorp">
+                <td>InnovaCorp</td>
+                <td>Electromecánica</td>
+                <td>Heredia</td>
+                <td>3 vacantes anteriores</td>
+                <td>
+                    <a href="@Url.Action("EditarEmpresa", "Empresa", new { id = 2 })"
+                       class="btn bg-transparent" title="Editar">
+                        <i class="fas fa-edit icono-accion"></i>
+                    </a>
+                    <a href="#"
+                       class="btn bg-transparent btn-eliminar-empresa"
+                       data-id="2"
+                       data-nombre="InnovaCorp"
+                       title="Eliminar">
+                        <i class="fas fa-trash-alt icono-accion"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 
 <!-- Modal Confirmar Eliminación Empresa -->
 <div class="modal fade" id="modalEliminarEmpresa" tabindex="-1" aria-labelledby="modalEliminarEmpresaLabel" aria-hidden="true">
@@ -85,6 +88,103 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="ModalAgregarEmpresa" tabindex="-1" aria-labelledby="modalCrearVacanteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content" style="border-radius: 12px; background-color: #F2F2F2; color: #2D594D;">
+
+            <!-- HEADER -->
+            <div class="modal-header" style="background-color: #2D594D; color: white;">
+                <h5 class="modal-title">Edición de Práctica</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+
+            <div class="modal-body px-4">
+                <!-- Sección: Información General -->
+                <div class="mb-4">
+                    <h5 class="section-title">Información General</h5>
+                    <div class="row">
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Nombre de la Empresa <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="nombrePuestoEditar" placeholder="Ejemplo: Asistente bancario" required>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Nombre del contacto <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="nombrePuestoEditar" placeholder="Contacto con la empresa" required>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Areas Afines <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="nombrePuestoEditar" placeholder="Electrotecnia, informática" required>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Dirección Exacta <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="ubicacion" placeholder="Cartago, 200 metros norte">
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Especialidad <span class="text-danger">*</span></label>
+                            <select class="form-select OpcionesVacantes w-100" style="font-size:14px" name="areaProfesionalEditar" required>
+                                <option class="text-dark" value="" disabled selected>-- Seleccione área --</option>
+                                <option value="Administración">Contabilidad</option>
+                                <option value="Informática">Informática</option>
+                                <option value="Salud">Electrotecnia</option>
+                                <option value="Educación">Ejecutivo para centros de servicios</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Cantidad de Cupos <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" name="cuposEditar" placeholder="Ejemplo: 3" min="1" required>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Modalidad <span class="text-danger">*</span></label>
+                            <br />
+                            <select class="form-select OpcionesVacantes w-100" style="font-size:14px" name="modalidadEditar" required>
+                                <option value="" disabled selected>-- Seleccione modalidad --</option>
+                                <option value="Presencial">Presencial</option>
+                                <option value="Remoto">Remoto</option>
+                                <option value="Híbrido">Híbrido</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Fecha Límite de Aplicación <span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="FechaAplicacionEditar" aname="fechaLimite" required>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Fecha de Cierre<span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="FechaCierreEditar" name="fechaPublicacion" required>
+                        </div>
+
+                        <div class="col-12 form-group mb-3">
+                            <label>Requisitos <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="requisitosEditar" rows="3" placeholder="Habilidades y conocimientos requeridos" required></textarea>
+                        </div>
+
+                        <div class="col-12 form-group mb-3 w-100">
+                            <label>Descripción <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="descripcionEditar" rows="3" value="Sé parte de align y aprende..." placeholder="Detalles de la vacante..." required></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer px-4">
+                <button id="btnEditarVacante" type="button" class="btn CerrarModal">Actualizar Vacante</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
 
 @section Scripts {
     <script>
