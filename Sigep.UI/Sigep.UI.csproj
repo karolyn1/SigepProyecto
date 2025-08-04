@@ -235,6 +235,7 @@
     <Content Include="Images\logo-light-icon.png" />
     <Content Include="Images\logo-light-text.png" />
     <Content Include="Images\logo-text.png" />
+    <Content Include="Images\logoSIGEP.png" />
     <Content Include="Scripts\app-style-switcher.js" />
     <Content Include="Scripts\app.init.js" />
     <Content Include="Scripts\app.min.js" />

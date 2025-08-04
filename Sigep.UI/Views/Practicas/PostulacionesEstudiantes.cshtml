@@ -87,14 +87,31 @@
 
         .btn-outline-verde {
             background-color: transparent;
-            color: #2D594D;
-            border: 2px solid #2D594D;
+            border: 1px solid #8CA653;
+            color: #2D594D; /* Aplica a texto e íconos */
+            border-radius: 6px;
+            padding: 6px 12px;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
+
+            .btn-outline-verde i {
+                color: #2D594D; /* Asegura que el ícono se vea siempre */
+            }
+
+            .btn-outline-verde:hover {
+                background-color: #8CA653;
+                color: white;
+            }
+
+                .btn-outline-verde:hover i {
+                    color: white; /* Cambia color del ícono al hacer hover */
+                }
 
         .btn:hover,
         .btn:focus {
             opacity: 0.85;
         }
+
     </style>
 }
 
@@ -108,12 +125,12 @@
     <!-- Cards de Postulaciones -->
     <div class="card-postulacion">
         <div>
-            <h5>Asistente de Soporte Técnico</h5>
+            <h5>Internship IT Asset Management</h5>
             <span class="estado-badge estado-Asignada">Asignada</span>
         </div>
-        <button class="btn btn-outline-verde">
+        <a href="@Url.Action("VisualizacionPostulacion", "Practicas")" class="btn btn-outline-verde">
             <i class="fas fa-plus"></i>
-        </button>
+        </a>
     </div>
 
     <div class="card-postulacion">
