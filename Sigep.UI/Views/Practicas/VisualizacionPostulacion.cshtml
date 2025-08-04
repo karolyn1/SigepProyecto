@@ -1,11 +1,20 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
     ViewBag.Title = "Vacantes - Prácticas";
+    var rol = Session["rol"] != null ? Convert.ToInt32(Session["rol"]) : 0;
 }
-<h2 class="vacantes-titulo titulo-principal d-flex justify-content-center align-items-center">
-    Proceso de Aplicación - Ariana Fallas Calderón
-</h2>
-
+@if (rol == 1)
+{
+    <h2 class="vacantes-titulo titulo-principal d-flex justify-content-center align-items-center">
+        Proceso de Aplicación - Ariana Fallas Calderón
+    </h2>
+}
+@if (rol == 2)
+{
+    <h2 class="vacantes-titulo titulo-principal d-flex justify-content-center align-items-center">
+        Mi Práctica - Ariana Fallas Calderón
+    </h2>
+}
 <div class="d-flex flex-wrap justify-content-between" style="gap: 2rem;">
     <!-- Columna Izquierda: Información General -->
     <div class="card p-4 shadow mb-4" style="flex: 1 1 48%;">
@@ -18,7 +27,14 @@
             <!-- Columna de Vacante -->
             <div class="col-md-6">
                 <div class="card shadow-sm p-3" style="border-radius: 12px; background-color: #F9F9F9;">
-                    <h5 class="mb-3" style="color: #2D594D;"><strong>Información de Vacante</strong></h5>
+                    @if (rol == 1 || rol == 4)
+                    {
+                        <h5 class="mb-3" style="color: #2D594D;"><strong>Información de Vacante</strong></h5>
+                    }
+                    @if (rol == 2)
+                    {
+                        <h5 class="mb-3" style="color: #2D594D;"><strong>Información del Puesto</strong></h5>
+                    }
                     <div class="mb-2">
                         <label class="form-label text-muted"><strong>Nombre</strong></label><br />
                         <span>Internship IT Asset Management</span>
@@ -45,7 +61,14 @@
             <!-- Columna de Estudiante -->
             <div class="col-md-6">
                 <div class="card shadow-sm p-3" style="border-radius: 12px; background-color: #F9F9F9;">
-                    <h5 class="mb-3" style="color: #2D594D;"><strong>Información del Estudiante</strong></h5>
+                    @if (rol == 1 || rol == 4)
+                    {
+                        <h5 class="mb-3" style="color: #2D594D;"><strong>Información del Estudiante</strong></h5>
+                    }
+                    @if (rol == 2)
+                    {
+                        <h5 class="mb-3" style="color: #2D594D;"><strong>Mi Información</strong></h5>
+                    }
                     <div class="mb-2">
                         <label class="form-label text-muted"><strong>Nombre</strong></label><br />
                         <span>Ariana Fallas Calderón</span>
@@ -73,8 +96,14 @@
 
 
         <hr />
-
-        <h3 class="section-title">Información de Contacto</h3>
+        @if (rol == 1 || rol == 4)
+        {
+            <h3 class="section-title">Información de Contacto</h3>
+        }
+        @if (rol == 2)
+        {
+            <h3 class="section-title">Contacto con la Empresa</h3>
+        }
         <div class="mb-2"><label style="color: #2D594D"><strong>Contacto en la empresa</strong></label><br /><span>Kimberly Rojas Sánchez</span></div>
         <div class="mb-2"><label style="color: #2D594D"><strong>Email</strong></label><br /><span>krojas@ejemplo.com</span></div>
         <div class="mb-2"><label style="color: #2D594D"><strong>Teléfono</strong></label><br /><span>88888888</span></div>
@@ -82,9 +111,18 @@
 
     <!-- Columna Derecha: Proceso de Aplicación -->
     <div class="card p-4 shadow mb-4" style="flex: 1 1 48%;">
-        <h3 class="section-title">Proceso de Aplicación</h3>
-        <h4 style="color: #2D594D; font-weight: 600;">Comentarios del Proceso</h4>
-        <hr />
+        @if (rol == 1 || rol == 4)
+        {
+            <h3 class="section-title">Proceso de Aplicación</h3>
+            <h4 style="color: #2D594D; font-weight: 600;">Comentarios del Proceso</h4>
+            <hr />
+        }
+        @if (rol == 2)
+        {
+            <h3 class="section-title">Proceso de la Práctica</h3>
+            <h4 style="color: #2D594D; font-weight: 600;">Comentarios de la Práctica</h4>
+            <hr />
+        }
 
         <!-- Comentarios -->
         <div id="comentariosAnteriores">
@@ -107,7 +145,14 @@
         <!-- Estado -->
         <div class="mt-4">
             <h4 style="color: #2D594D; font-weight: 600;">Estado Actual</h4>
-            <span class="badge badge-asignada">En Progreso</span>
+            @if (rol == 1 || rol == 4)
+            {
+                <span class="badge badge-asignada">En Progreso</span>
+            }
+            @if (rol == 2)
+            {
+                <span class="badge badge-asignada">Asignada</span>
+            }
         </div>
 
         <!-- Botones -->
@@ -118,13 +163,27 @@
                         Agregar Comentario
                     </button>
                 </div>
-                <div class="col-md-6">
-                    <button type="button" class="btn-verde-personalizado w-100" data-bs-toggle="modal" data-bs-target="#modalActualizarEstado">
-                        Actualizar Estado
-                    </button>
-                </div>
+                @if (rol == 1 || rol == 4)
+                {
+                    <div class="col-md-6">
+                        <button type="button" class="btn-verde-personalizado w-100" data-bs-toggle="modal" data-bs-target="#modalActualizarEstado">
+                            Actualizar Estado
+                        </button>
+                    </div>
+                }
             </div>
         </div>
+        <!-- evaluaciones -->
+        @if (rol == 2)
+        {
+            <div class="mt-4">
+                <h4 style="color: #2D594D; font-weight: 600;">Evaluaciones</h4>
+                <div class="alert alert-warning mt-2" role="alert" style="background-color: #FFF3CD; color: #856404; border: 1px solid #FFEEBA;">
+                    Aún no cuenta con ninguna evaluación.
+                </div>
+            </div>  
+        }
+
         <!--MODAL PARA ACTUALIZAR ESTADO-->
         <div class="modal fade" id="modalActualizarEstado" tabindex="-1" aria-labelledby="modalCrearVacanteLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -181,7 +240,7 @@
 
                             <div class="mb-3">
                                 <label for="comentarioEstado" class="form-label">Comentario</label>
-                                <textarea id="ComentarioProceso" name="comentarioEstado" class="form-control" rows="4"  placeholder="Agrega un comentario sobre el proceso de postulación.."></textarea>
+                                <textarea id="ComentarioProceso" name="comentarioEstado" class="form-control" rows="4" placeholder="Agrega un comentario sobre el proceso de postulación.."></textarea>
                             </div>
                             <div class="text-end">
                                 <button type="submit" class="btn-verde-personalizado" id="BtnAgregarComentario">Agregar</button>
@@ -232,7 +291,7 @@
             });
 
              $("#BtnAgregarComentario").on("click", function (event) {
-    
+
      let comentarioInput = $("#ComentarioProceso");
 
      event.preventDefault();

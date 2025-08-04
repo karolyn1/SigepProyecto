@@ -337,6 +337,7 @@
     <Content Include="Views\Practicas\VisualizacionPostulacion.cshtml" />
     <Content Include="Views\Practicas\PracticasCoordinador.cshtml" />
     <Content Include="Views\Practicas\VistaVacantesProfesor.cshtml" />
+    <Content Include="Views\Practicas\PostulacionesEstudiantes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
