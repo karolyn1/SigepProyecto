@@ -79,182 +79,183 @@
             </div>
         </div>
     }
-    <div class="info-box">
-        <div class="perfil-icon">
-            <i class="fas fa-user-graduate"></i>
+<div class="info-box">
+    <div class="perfil-icon">
+        <img src="@Url.Content("~/Images/logoSIGEP.png")" alt="Perfil" class="perfil-img" width="65">
+    </div>
+
+
+    <h5 class="section-title">INFORMACIÓN PERSONAL</h5>
+    <div class="row" id="info-personal">
+        <div class="col-md-6 form-group">
+            <label>Nombre y Apellidos</label>
+            <input type="text" class="form-control" value="Johnny Castillo Fallas" required />
+        </div>
+        <div class="col-md-6 form-group">
+            <label>Cédula</label>
+            <input type="text" class="form-control" value="305550650" required />
+        </div>
+        <div class="col-md-6 form-group">
+            <label>Teléfono</label>
+            <input type="text" class="form-control" value="8888-0000" required />
+        </div>
+        <div class="col-md-6 form-group">
+            <label>Correo Electrónico</label>
+            <input type="email" class="form-control" value="johnny.castillo@hotmail.com" required />
+        </div>
+        <div class="col-md-6 form-group">
+            <label>Correo Electrónico MEP</label>
+            <input type="email" class="form-control" value="305550650@mep.ac.cr" required />
+        </div>
+        <div class="col-md-6 form-group">
+            <label>Dirección</label>
+            <input type="text" class="form-control" value="San José, Costa Rica" required />
+        </div>
+        <div class="col-md-6 form-group">
+            <label>Sexo</label>
+            <input type="text" class="form-control" value="Masculino" required />
+        </div>
+        <div class="col-md-6 form-group">
+            <label>Nacionalidad</label>
+            <input type="text" class="form-control" value="Costarricense" required />
+        </div>
+    </div>
+
+    <div class="action-buttons mt-3 mb-4">
+        <button type="button" id="btnActualizarInfo">
+            <i class="fas fa-edit me-2"></i> Actualizar Información Personal
+        </button>
+    </div>
+
+    @if (rol == 2 || rol == 3)
+    {
+        <h5 class="section-title">INFORMACIÓN ACADÉMICA</h5>
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label>Especialidad</label>
+                <input type="text" class="form-control" value="Ejecutivo Para Centros de Servicio" />
+            </div>
+            @if (rol == 3)
+            {
+                <div class="col-md-6 form-group">
+                    <label>Año De Graduación</label>
+                    <input type="text" class="form-control" value="2022" />
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Título</label>
+                    <input type="email" class="form-control" value="xxxxxx" />
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Área Profesional</label>
+                    <input type="email" class="form-control" value="xxxxxxxxx" />
+                </div>
+            }
         </div>
 
-        <h5 class="section-title">INFORMACIÓN PERSONAL</h5>
-        <div class="row" id="info-personal">
-            <div class="col-md-6 form-group">
-                <label>Nombre y Apellidos</label>
-                <input type="text" class="form-control" value="Johnny Castillo Fallas" required />
-            </div>
+        <div class="action-buttons mt-3 mb-4">
+            <button type="button" id="btnActualizarAcademica">
+                <i class="fas fa-edit me-2"></i> Actualizar Información Académica
+            </button>
+        </div>
+    }
+    @if (rol == 2)
+    {
+        <!-- CONTACTO EMERGENCIA -->
+        <h5 class="section-title">ENCARGADOS</h5>
+        <div class="row">
             <div class="col-md-6 form-group">
                 <label>Cédula</label>
-                <input type="text" class="form-control" value="305550650" required />
+                <input type="text" class="form-control" value="1-1035-0212" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Nombre y Apellidos</label>
+                <input type="text" class="form-control" value="Carlos Fallas" />
             </div>
             <div class="col-md-6 form-group">
                 <label>Teléfono</label>
-                <input type="text" class="form-control" value="8888-0000" required />
+                <input type="text" class="form-control" value="8899-1122" />
             </div>
             <div class="col-md-6 form-group">
-                <label>Correo Electrónico</label>
-                <input type="email" class="form-control" value="johnny.castillo@hotmail.com" required />
+                <label>Parentesco</label>
+                <input type="text" class="form-control" value="Padre" />
             </div>
             <div class="col-md-6 form-group">
-                <label>Correo Electrónico MEP</label>
-                <input type="email" class="form-control" value="305550650@mep.ac.cr" required />
+                <label>Residencia o Trabajo</label>
+                <input type="text" class="form-control" value="Cartago, CR" />
             </div>
             <div class="col-md-6 form-group">
-                <label>Dirección</label>
-                <input type="text" class="form-control" value="San José, Costa Rica" required />
+                <label>Ocupación</label>
+                <input type="text" class="form-control" value="Ingeniero Civil" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="action-buttons mt-3 col-md-6 form-group">
+                <button type="button" id="btnActualizarEncargado">
+                    <i class="fas fa-edit me-2"></i> Actualizar Encargado
+                </button>
+            </div>
+
+            <div class="action-buttons mt-3 col-md-6 form-group">
+                <button type="button" id="btnEliminarEncargado">
+                    <i class="fas fa-trash-alt me-2"></i> Eliminar Encargado
+                </button>
+            </div>
+        </div>
+        <div class="action-buttons mt-3">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarEncargado">
+                <i class="fas fa-plus me-2"></i> Agregar Encargado
+            </button>
+        </div>
+    }
+    @if (rol == 3)
+    {
+        <h5 class="section-title">INFORMACIÓN LABORAL</h5>
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label>Empresa</label>
+                <input type="text" class="form-control" value="BOSCH" />
             </div>
             <div class="col-md-6 form-group">
-                <label>Sexo</label>
-                <input type="text" class="form-control" value="Masculino" required />
+                <label>Puesto</label>
+                <input type="text" class="form-control" value="Payroll Analyst" />
             </div>
             <div class="col-md-6 form-group">
-                <label>Nacionalidad</label>
-                <input type="text" class="form-control" value="Costarricense" required />
+                <label>Correo Electrónico Laboral</label>
+                <input type="email" class="form-control" value="johnny@bosch.com" />
             </div>
         </div>
 
         <div class="action-buttons mt-3 mb-4">
-            <button type="button" id="btnActualizarInfo">
-                <i class="fas fa-edit me-2"></i> Actualizar Información Personal
+            <button type="button" id="btnActualizarLaboral">
+                <i class="fas fa-edit me-2"></i> Actualizar Información Laboral
             </button>
         </div>
+    }
+    @if (rol == 2)
+    {
+        <h5 class="section-title">INFORMACIÓN MÉDICA</h5>
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label>Padécimientos</label>
+                <input type="text" class="form-control" value="Asma" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Medicamentos</label>
+                <input type="text" class="form-control" value="N/A" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Alergías</label>
+                <input type="email" class="form-control" value="Tomate" />
+            </div>
+        </div>
 
-        @if (rol == 2 || rol == 3)
-        {
-            <h5 class="section-title">INFORMACIÓN ACADÉMICA</h5>
-            <div class="row">
-                <div class="col-md-6 form-group">
-                    <label>Especialidad</label>
-                    <input type="text" class="form-control" value="Ejecutivo Para Centros de Servicio" />
-                </div>
-                @if (rol == 3)
-                {
-                    <div class="col-md-6 form-group">
-                        <label>Año De Graduación</label>
-                        <input type="text" class="form-control" value="2022" />
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label>Título</label>
-                        <input type="email" class="form-control" value="xxxxxx" />
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label>Área Profesional</label>
-                        <input type="email" class="form-control" value="xxxxxxxxx" />
-                    </div>
-                }
-            </div>
-
-            <div class="action-buttons mt-3 mb-4">
-                <button type="button" id="btnActualizarAcademica">
-                    <i class="fas fa-edit me-2"></i> Actualizar Información Académica
-                </button>
-            </div>
-        }
-        @if (rol == 2)
-        {
-            <!-- CONTACTO EMERGENCIA -->
-            <h5 class="section-title">ENCARGADOS</h5>
-            <div class="row">
-                <div class="col-md-6 form-group">
-                    <label>Cédula</label>
-                    <input type="text" class="form-control" value="1-1035-0212" />
-                </div>
-                <div class="col-md-6 form-group">
-                    <label>Nombre y Apellidos</label>
-                    <input type="text" class="form-control" value="Carlos Fallas" />
-                </div>
-                <div class="col-md-6 form-group">
-                    <label>Teléfono</label>
-                    <input type="text" class="form-control" value="8899-1122" />
-                </div>
-                <div class="col-md-6 form-group">
-                    <label>Parentesco</label>
-                    <input type="text" class="form-control" value="Padre" />
-                </div>
-                <div class="col-md-6 form-group">
-                    <label>Residencia o Trabajo</label>
-                    <input type="text" class="form-control" value="Cartago, CR" />
-                </div>
-                <div class="col-md-6 form-group">
-                    <label>Ocupación</label>
-                    <input type="text" class="form-control" value="Ingeniero Civil" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="action-buttons mt-3 col-md-6 form-group">
-                    <button type="button" id="btnActualizarEncargado">
-                        <i class="fas fa-edit me-2"></i> Actualizar Encargado
-                    </button>
-                </div>
-
-                <div class="action-buttons mt-3 col-md-6 form-group">
-                    <button type="button" id="btnEliminarEncargado">
-                        <i class="fas fa-trash-alt me-2"></i> Eliminar Encargado
-                    </button>
-                </div>
-            </div>
-            <div class="action-buttons mt-3">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarEncargado">
-                    <i class="fas fa-plus me-2"></i> Agregar Encargado
-                </button>
-            </div>
-        }
-        @if (rol == 3)
-        {
-            <h5 class="section-title">INFORMACIÓN LABORAL</h5>
-            <div class="row">
-                <div class="col-md-6 form-group">
-                    <label>Empresa</label>
-                    <input type="text" class="form-control" value="BOSCH" />
-                </div>
-                <div class="col-md-6 form-group">
-                    <label>Puesto</label>
-                    <input type="text" class="form-control" value="Payroll Analyst" />
-                </div>
-                <div class="col-md-6 form-group">
-                    <label>Correo Electrónico Laboral</label>
-                    <input type="email" class="form-control" value="johnny@bosch.com" />
-                </div>
-            </div>
-
-            <div class="action-buttons mt-3 mb-4">
-                <button type="button" id="btnActualizarLaboral">
-                    <i class="fas fa-edit me-2"></i> Actualizar Información Laboral
-                </button>
-            </div>
-        }
-        @if (rol == 2)
-        {
-            <h5 class="section-title">INFORMACIÓN MÉDICA</h5>
-            <div class="row">
-                <div class="col-md-6 form-group">
-                    <label>Padécimientos</label>
-                    <input type="text" class="form-control" value="Asma" />
-                </div>
-                <div class="col-md-6 form-group">
-                    <label>Medicamentos</label>
-                    <input type="text" class="form-control" value="N/A" />
-                </div>
-                <div class="col-md-6 form-group">
-                    <label>Alergías</label>
-                    <input type="email" class="form-control" value="Tomate" />
-                </div>
-            </div>
-
-            <div class="action-buttons mt-3 mb-4">
-                <button type="button" id="btnActualizarMedica">
-                    <i class="fas fa-edit me-2"></i> Actualizar Información Médica
-                </button>
-            </div>
-        }
-    </div>
+        <div class="action-buttons mt-3 mb-4">
+            <button type="button" id="btnActualizarMedica">
+                <i class="fas fa-edit me-2"></i> Actualizar Información Médica
+            </button>
+        </div>
+    }
+</div>
 </div>
 
 
