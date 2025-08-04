@@ -3,38 +3,43 @@
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
 }
 
-<section class="vacantes-wrapper">
     <h2 class="vacantes-titulo titulo-principal">Lista de Egresados</h2>
 
-    <div class="acciones-superiores">
-        <div class="filtros">
-            <label for="filtroEspecialidad">Especialidad:</label>
+    <div class="acciones-superiores p-3">
 
-            <select id="filtroEspecialidad" class="form-control">
-                <option value="">Todas</option>
-                <option value="Informática">Informática</option>
-                <option value="Administración">Administración</option>
-                <!-- Agrega más opciones según tus datos -->
-            </select>
-
-            <label for="filtroAnio" style="margin-left: 20px;">Año:</label>
-            <select id="filtroAnio" class="form-control">
-                <option value="">Todos</option>
-                <option value="2022">2022</option>
-                <option value="2023">2023</option>
-                <option value="2024">2024</option>
-                <!-- Más años -->
-            </select>
-        </div>
 
         <div class="exportar">
             <button id="btnExportarExcel" class="btn-cta btn-nuevo">Exportar Excel</button>
             <button id="btnExportarPDF" class="btn-cta btn-nuevo">Exportar PDF</button>
         </div>
-    </div>
+        <div class="filtros row">
+            <div class="col">
+                <label for="filtroEspecialidad">Especialidad:</label>
 
-    <div class="table-container">
-        <table id="miTabla" class="display responsive" style="width:100%">
+                <select id="filtroEspecialidad" class="form-control">
+                    <option value="">Todas</option>
+                    <option value="Informática">Informática</option>
+                    <option value="Administración">Administración</option>
+                    <!-- Agrega más opciones según tus datos -->
+                </select>
+            </div>
+            <div class="col">
+                <label for="filtroAnio" style="margin-left: 20px;">Año:</label>
+                <select id="filtroAnio" class="form-control">
+                    <option value="">Todos</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <!-- Más años -->
+                </select>
+
+            </div>
+
+           
+        </div>
+    </div>
+    <div class="card rounded-5 p-3">
+        <table id="miTabla" class="display responsive nowrap w-100">
             <thead>
                 <tr>
                     <th>Nombre completo</th>

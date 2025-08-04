@@ -200,7 +200,6 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Filters.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
