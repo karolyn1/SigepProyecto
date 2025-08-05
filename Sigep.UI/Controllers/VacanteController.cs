@@ -28,23 +28,5 @@ namespace Sigep.UI.Controllers
             return View();
         }
 
-        // Formulario para crear una nueva vacante
-        public ActionResult CrearVacante()
-        {
-            return View();
-        }
-
-        // Formulario para editar una vacante existente
-        public ActionResult EditarVacante(int id)
-        {
-            // Aquí en el futuro se podrá precargar el formulario con los datos de la vacante
-            return View();
-        }
-
-        // Confirmación o formulario para desactivar vacante
-        public ActionResult ConfirmarDesactivacion(int id)
-        {
-            return View();
-        }
     }
 }

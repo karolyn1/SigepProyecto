@@ -6,7 +6,6 @@
 <section class="vacantes-wrapper">
     <h2 class="vacantes-titulo titulo-principal">Bolsa de empleo</h2>
 
-    <!-- Filtro por área profesional -->
     <div class="filtro-container">
         <label for="filtro-area" class="filtro-label">Filtrar por área profesional:</label>
         <select id="filtro-area" class="filtro-select">
@@ -20,7 +19,7 @@
 
     <div class="vacantes-lista">
 
-        <!-- Mensaje si no hay vacantes para el área -->
+        
         <div id="mensaje-vacio" class="vacante-alerta" style="display:none;">
             <strong>Información:</strong> No se encontraron vacantes en esta área.
         </div>
@@ -71,7 +70,7 @@
 </section>
 
 <script>
-    // JS para filtrar vacantes por área (solo front-end)
+   
     document.getElementById('filtro-area').addEventListener('change', function() {
         const areaSeleccionada = this.value;
         const vacantes = document.querySelectorAll('.vacante-card');

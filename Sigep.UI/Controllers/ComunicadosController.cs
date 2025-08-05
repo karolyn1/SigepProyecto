@@ -14,7 +14,7 @@ namespace Sigep.UI.Controllers
         {
             if (Session["rol"] == null)
             {
-                // Redirige a login o página principal si no hay sesión de rol
+  
                 return RedirectToAction("Login", "Home");
             }
 

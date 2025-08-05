@@ -176,7 +176,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministracionGeneralController.cs" />
     <Compile Include="Controllers\ComunicadosController.cs" />
     <Compile Include="Controllers\EmpresaController.cs" />
@@ -187,11 +186,8 @@
     <Compile Include="Controllers\PracticasController.cs" />
     <Compile Include="Controllers\VacanteController.cs" />
     <Compile Include="Controllers\CoordinadorController.cs" />
-    <Compile Include="Controllers\EgresadoController.cs" />
     <Compile Include="Controllers\EstudianteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ProfesorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -279,41 +275,25 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Estudiante\ListarEstudiante.cshtml" />
-    <Content Include="Views\Estudiante\CrearEstudiante.cshtml" />
-    <Content Include="Views\Estudiante\EditarEstudiante.cshtml" />
-    <Content Include="Views\Estudiante\EliminarEstudiante.cshtml" />
     <Content Include="Views\Shared\_LayoutMain.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutExterno.cshtml" />
     <Content Include="Views\Vacante\ListaVacantesEgresado.cshtml" />
     <Content Include="Views\Vacante\DetalleVacanteEgresado.cshtml" />
-    <Content Include="Views\Vacante\CrearVacante.cshtml" />
     <Content Include="Views\Vacante\ListaVacanteCoordinador.cshtml" />
-    <Content Include="Views\Vacante\EditarVacante.cshtml" />
     <Content Include="Views\Home\Registro.cshtml" />
     <Content Include="Views\Home\RecuperarAcceso.cshtml" />
     <Content Include="Views\Coordinador\ListaEgresados.cshtml" />
-    <Content Include="Views\Estudiante\PerfilEstudiante.cshtml" />
-    <Content Include="Views\Estudiante\ComunicadosEstudiante.cshtml" />
-    <Content Include="Views\Perfil\CompletarPerfil.cshtml" />
-    <Content Include="Views\Perfil\ActualizarPerfil.cshtml" />
-    <Content Include="Views\Perfil\FormularioEncargado.cshtml" />
     <Content Include="Views\Perfil\MiPerfil.cshtml" />
     <Content Include="Views\Comunicados\Comunicados.cshtml" />
     <Content Include="Views\Practicas\VacantesEstudiantes.cshtml" />
     <Content Include="Views\Empresa\ListaEmpresas.cshtml" />
     <Content Include="Views\Evaluacion\ListarEstudianteConPractica.cshtml" />
-    <Content Include="Views\AdministracionGeneral\EditarRolUsuario.cshtml" />
     <Content Include="Views\AdministracionGeneral\GestionAdministracion.cshtml" />
-    <Content Include="Views\AdministracionGeneral\CrearEspecialidad.cshtml" />
-    <Content Include="Views\AdministracionGeneral\EditarEspecialidad.cshtml" />
-    <Content Include="Views\AdministracionGeneral\CrearSeccion.cshtml" />
-    <Content Include="Views\AdministracionGeneral\EditarSeccion.cshtml" />
     <Content Include="Views\Practicas\VisualizacionPostulacion.cshtml" />
     <Content Include="Views\Practicas\PracticasCoordinador.cshtml" />
     <Content Include="Views\Practicas\VistaVacantesProfesor.cshtml" />
@@ -322,8 +302,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
-    <Folder Include="Views\Egresado\" />
-    <Folder Include="Views\Profesor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
